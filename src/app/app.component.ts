@@ -1,7 +1,6 @@
 import {Component, OnInit} from "@angular/core";
 import {FoodsService} from "./foods.service";
 import {removeAccentedCharacters} from "./string-utils";
-import {Config} from "./appConfig";
 import {FoodData} from "./foodData";
 import {RestaurantData} from "./restaurantsData";
 import {StatsService} from "./stats.service";
