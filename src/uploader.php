@@ -1,5 +1,5 @@
 <?php
-header('Access-Control-Allow-Origin: *');  
+header('Access-Control-Allow-Origin: *');
 function getUserIP(){
     $client  = @$_SERVER['HTTP_CLIENT_IP'];
     $forward = @$_SERVER['HTTP_X_FORWARDED_FOR'];
@@ -22,7 +22,7 @@ if (!isset($_REQUEST["content"]) || !isset($_REQUEST["login"]) || !isset($_REQUE
     exit("Wrong params");
 }
 
-$content = $_REQUEST["content"];
+$content = urldecode($_REQUEST["content"]);
 $login = $_REQUEST["login"];
 $type = $_REQUEST["type"];
 $password = $_REQUEST["password"];
@@ -40,7 +40,7 @@ if ($type == "menus") {
     if (!file_exists($fileName)) {
         if (file_put_contents($fileName, $content)) {
             echo $content;
-        } 
+        }
         else {
             exit("cannot save file" . $fileName);
         }

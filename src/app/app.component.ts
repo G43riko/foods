@@ -6,7 +6,7 @@ import {RestaurantData} from "./restaurantsData";
 import {StatsService} from "./stats.service";
 
 declare const $;
-
+const priceRegex = /\d+(,|.)?\d+ ?[gl][ \/]?/;
 @Component({
     selector: "app-root",
     templateUrl: "./app.component.html",
@@ -23,7 +23,15 @@ export class AppComponent implements OnInit {
     }
 
     private processDailyMenu(menu: any) {
-        return menu.daily_menus.length && menu.daily_menus[0].daily_menu.dishes || [];
+        const result = menu.daily_menus.length && menu.daily_menus[0].daily_menu.dishes || [];
+        result.forEach((item) => {
+            const priceResult = item.dish.name.match(priceRegex);
+            if (priceResult) {
+                const price = "<b>" + priceResult[0].replace(/(\/)/g, "").replace(",", ".").trim() + "</b>";
+                item.dish.name = price + ": " + item.dish.name.replace(priceRegex, "");
+            }
+        });
+        return result;
     }
 
     public isBold(key: string) {

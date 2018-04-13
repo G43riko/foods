@@ -7,6 +7,7 @@ export class Config {
     public static DELPHINE_ID = "16508094";
     public static PRESTO_ID = "16507666";
     public static BIGGER_ID = "16510021";
+    public static BUDIES_ID = "17740573";
 
 
     public static ZOMATO_API_URL = "https://developers.zomato.com/api/v2.1/dailymenu";

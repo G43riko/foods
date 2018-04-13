@@ -9,11 +9,16 @@ export const FoodData = [
         "value": "Mäso",
         "items": [
             "kuraci",
+            "hovadz",
+            "bravcov",
+            "telac",
             "rezen",
             "krkovicka",
-            "bravcov",
+            "maso",
             "sekana",
-            "hovedz",
+            "cevapcici",
+            "klobas",
+            "salam",
             "steak",
             "morca",
             "pecienka"
@@ -26,7 +31,12 @@ export const FoodData = [
             "zelenin",
             "brokolic",
             "spenat",
+            "zelenin",
+            "hub",
+            "hrib",
+            "sampino",
             "uhork",
+            "cicer",
             "salat",
             "kapust"
         ]
@@ -37,6 +47,8 @@ export const FoodData = [
         "items": [
             "cestoviny",
             "granadier",
+            "cestovin",
+            "pene",
             "spaget"
         ]
     },
@@ -47,6 +59,7 @@ export const FoodData = [
             "dukatove",
             "rizovy",
             "sisky",
+            "sladk",
             "bucht",
             "zemlovka"
         ]

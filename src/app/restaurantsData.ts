@@ -5,14 +5,19 @@ export const RestaurantData = [
         "key": "astra",
     },
     {
+        "id": "16508094",
+        "name": "Delfín",
+        "key": "delphine",
+    },
+    {
         "id": "16508016",
         "name": "Journal",
         "key": "journal",
     },
     {
-        "id": "16508094",
-        "name": "Delfín",
-        "key": "delphine",
+        "id": "17740573",
+        "name": "Budies",
+        "key": "budies",
     },
     {
         "id": "16507666",
