@@ -89,11 +89,11 @@ export class AppComponent implements OnInit {
         this.statsService.setVisit();
         const data = this.restaurants.map((restaurant) => this.foodsService.getZomatoFood(restaurant.id));
         Promise.all(data).then((results) => {
+            this.statsService.storeMenu(results);
             results.forEach((result, index) => {
                 this.dailyMenus[this.restaurants[index].key] = this.processDailyMenu(result);
             });
             setTimeout(() => this.setAutocomplete(), 10);
-            this.statsService.storeMenu(results);
 
             // this.setSlider();
         });

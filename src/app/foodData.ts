@@ -81,7 +81,8 @@ export const FoodList = [
     "spenat",
     ""
 ];
-const keywords = ["menu", "ponuka", "astra", "delfin", "extra", "porcia", "with", "baby", "chicken", "cream", "vegetable", "grilled"];
+const keywords = ["menu", "ponuka", "astra", "delfin", "extra", "porcia", "with", "baby", "chicken", "cream", "vegetable", "grilled",
+    "port", "soup", "fried", "homemade", "alergn", "hlavn"];
 const a = document.body
                   .innerText
                   .split(/[ \n\-/]/g)
@@ -89,7 +90,7 @@ const a = document.body
                                         e.length > 3 &&
                                         isNaN(parseFloat(e)) &&
                                         !e.toLowerCase().match(new RegExp("(" + keywords.join("|") + ")")))
-                  .map(e => e.trim());
+                  .map(e => e.substr(0, e.length - 1).trim());
 
 const res = [];
 a.forEach(e => {
