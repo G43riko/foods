@@ -7,22 +7,23 @@ import {StatsService} from "./stats.service";
 
 declare const $;
 const priceRegex = /\d+(,|.)?\d+ ?[gl][ \/]?/;
+
 @Component({
     selector: "app-root",
     templateUrl: "./app.component.html",
     styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
-    public highlightTypes: any = FoodData;
+    public readonly highlightTypes: any = FoodData;
+    public readonly restaurants         = RestaurantData;
+    public readonly dailyMenus: any     = {};
     public searchKey = "";
-    public restaurants = RestaurantData;
-    public dailyMenus: any = {};
     public highlight = this.highlightTypes[0];
 
     public constructor(private foodsService: FoodsService, private statsService: StatsService) {
     }
 
-    private processDailyMenu(menu: any) {
+    private processDailyMenu(menu: any): any[] {
         const result = menu.daily_menus.length && menu.daily_menus[0].daily_menu.dishes || [];
         result.forEach((item) => {
             const priceResult = item.dish.name.match(priceRegex);
@@ -34,7 +35,7 @@ export class AppComponent implements OnInit {
         return result;
     }
 
-    public isBold(key: string) {
+    public isBold(key: string): boolean {
         return key.startsWith("Polievky") ||
             key.startsWith("Hlavné") ||
             key.startsWith("Špeciálita") ||
@@ -53,7 +54,7 @@ export class AppComponent implements OnInit {
         return highlight;
     }
 
-    private  setAutocomplete(): void {
+    private setAutocomplete(): void {
         const keywords = ["menu", "ponuka", "astra", "delfin", "extra", "porcia", "with", "baby", "chicken", "cream",
             "vegetable", "grilled", "stala", "pon", "utor", "stre", "stvrtok", "pia", "spinach", "boiled", "potatoes",
             "pork", "rice", "baked", "dna"];

@@ -17,15 +17,15 @@ function getUserIP(){
 
     return $ip;
 }
-$body = json_decode(file_get_contents('php://input'), false);
-if (!isset($body["content"]) || !isset($body["login"]) || !isset($body["password"]) || !isset($body["type"])) {
+// $body = json_decode(file_get_contents('php://input'), true);
+if (!isset($_REQUEST["content"]) || !isset($_REQUEST["login"]) || !isset($_REQUEST["password"]) || !isset($_REQUEST["type"])) {
     exit("Wrong params");
 }
 
-$content = urldecode($body["content"]);
-$login = $body["login"];
-$type = $body["type"];
-$password = $body["password"];
+$content = urldecode($_REQUEST["content"]);
+$login = $_REQUEST["login"];
+$type = $_REQUEST["type"];
+$password = $_REQUEST["password"];
 
 
 $extension = "txt";
