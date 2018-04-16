@@ -1,9 +1,9 @@
 const MEAT = ["kuraci", "hovadz", "bravcov", "telac", "rezen", "krkovick", "maso", "sekana", "cevapcici", "klobas", "salam",
               "steak", "morca", "pecienka", "burger", "biftek", "slepac"];
 
-const CHEESES = ["syr", "ostiep", "eidam", "encian", "emental"];
+const CHEESES = ["syr", "ostiep", "eidam", "encian", "emental", "hermelin", "bryndz"];
 const SEA_FOOD = ["losos", "ryba", "stuka", "pstruh", "morske", "filet", "krevet", "krab", "homar", "kalmar", "sardink",
-                  "ancovick", "mecun", "tuniak", "kapor", "kaviar"];
+                  "ancovick", "mecun", "tuniak", "kapor", "kaviar"]; 
 export const FoodData = [
     {
         "key": "none",
