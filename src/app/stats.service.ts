@@ -1,6 +1,6 @@
 import * as qs from "querystring";
 import {Injectable} from "@angular/core";
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 const url = "http://g43.clanweb.eu/foods/uploader.php";
 const password = "gabriel";
@@ -9,6 +9,13 @@ const login = "gabriel";
 @Injectable()
 export class StatsService {
     public constructor(private http: HttpClient) { }
+
+    private getHeader(): HttpHeaders {
+        const result = new HttpHeaders();
+        result.append("Content-Type", "application/x-www-form-urlencoded");
+        result.append("Referrer-Policy", "no-referrer");
+        return result;
+    }
     public setVisit(): Promise<any> {
         return this.http.post(url, qs.stringify({
             password, login,
@@ -17,8 +24,7 @@ export class StatsService {
         }), {
             withCredentials: true,
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Referrer-Policy": "no-referrer",
+                "Content-Type": "application/x-www-form-urlencoded"
             },
         }).toPromise().catch(this.handleError);
     }
@@ -31,8 +37,7 @@ export class StatsService {
         }), {
             withCredentials: true,
             headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Referrer-Policy": "no-referrer",
+                "Content-Type": "application/x-www-form-urlencoded"
             },
         }).toPromise().catch(this.handleError);
     }
