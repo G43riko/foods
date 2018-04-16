@@ -16,7 +16,10 @@ export class StatsService {
             type: "users"
         }), {
             withCredentials: true,
-            headers: { "Content-Type": "application/x-www-form-urlencoded" }
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Referrer-Policy": "no-referrer",
+            },
         }).toPromise().catch(this.handleError);
     }
 
@@ -27,7 +30,10 @@ export class StatsService {
             content: encodeURIComponent(JSON.stringify(menu))
         }), {
             withCredentials: true,
-            headers: { "Content-Type": "application/x-www-form-urlencoded" }
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+                "Referrer-Policy": "no-referrer",
+            },
         }).toPromise().catch(this.handleError);
     }
 
