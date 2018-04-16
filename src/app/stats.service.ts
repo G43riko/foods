@@ -14,7 +14,8 @@ export class StatsService {
             content: "null",
             type: "users"
         }, {
-            withCredentials: true
+            withCredentials: true,
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }
         }).toPromise().catch(this.handleError);
     }
 
@@ -23,8 +24,9 @@ export class StatsService {
             password, login,
             type: "menus",
             content: encodeURIComponent(JSON.stringify(menu))
-        },{
-            withCredentials: true
+        }, {
+            withCredentials: true,
+            headers: { "Content-Type": "application/x-www-form-urlencoded" }
         }).toPromise().catch(this.handleError);
     }
 

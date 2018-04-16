@@ -16,7 +16,7 @@ export const RestaurantData = [
     },
     {
         "id": "16508259",
-        "name": "Hamks",
+        "name": "Hamka",
         "key": "hamka",
     },
     {

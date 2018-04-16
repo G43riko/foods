@@ -108,6 +108,7 @@ export const FoodList = [
     "prsia",
     "sote",
     "kare",
+    "bryndz",
     "hranolky",
     "cestovin",
     "krkovicka",

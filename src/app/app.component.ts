@@ -37,7 +37,7 @@ export class AppComponent implements OnInit {
     public isBold(key: string) {
         return key.startsWith("Polievky") ||
             key.startsWith("Hlavné") ||
-            key.startsWith("Špecialita") ||
+            key.startsWith("Špeciálita") ||
             key.startsWith("Zeleninové ");
     }
 
@@ -54,7 +54,6 @@ export class AppComponent implements OnInit {
     }
 
     private  setAutocomplete(): void {
-
         const keywords = ["menu", "ponuka", "astra", "delfin", "extra", "porcia", "with", "baby", "chicken", "cream",
             "vegetable", "grilled", "stala", "pon", "utor", "stre", "stvrtok", "pia", "spinach", "boiled", "potatoes",
             "pork", "rice", "baked", "dna"];
