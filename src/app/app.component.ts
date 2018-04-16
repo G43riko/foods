@@ -46,7 +46,8 @@ export class AppComponent implements OnInit {
             return false;
         }
         let highlight = false;
-        if (this.highlight.items.some(item => removeAccentedCharacters(title).toLowerCase().indexOf(item) >= 0)) {
+        if (this.highlight.include.some(item => removeAccentedCharacters(title).toLowerCase().indexOf(item) >= 0) &&
+            this.highlight.exclude.every(item => removeAccentedCharacters(title).toLowerCase().indexOf(item) < 0)) {
             highlight = true;
         }
         return highlight;

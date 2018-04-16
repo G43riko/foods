@@ -15,6 +15,11 @@ export const RestaurantData = [
         "key": "journal",
     },
     {
+        "id": "16508259",
+        "name": "Hamks",
+        "key": "hamka",
+    },
+    {
         "id": "17740573",
         "name": "Budies",
         "key": "budies",
@@ -23,6 +28,11 @@ export const RestaurantData = [
         "id": "16507666",
         "name": "Presto",
         "key": "presto",
+    },
+    {
+        "id": "16507775",
+        "name": "Rotunda",
+        "key": "rotunda"
     }
 ];
 
