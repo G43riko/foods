@@ -7,7 +7,7 @@ import "rxjs/add/operator/toPromise";
 
 @Injectable()
 export class FoodsService {
-    private headers = new HttpHeaders({
+    private readonly headers = new HttpHeaders({
         "user-key": Config.ZOMATO_API_KEY
     });
     public constructor(private http: HttpClient) {

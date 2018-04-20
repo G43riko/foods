@@ -20,7 +20,7 @@
             -->
             <label>Zvýrazňovať:</label>
             <div *ngFor="let item of highlightTypes" class="field">
-                <div class="ui radio checkbox">
+                <div class="ui radio checkbox" *ngIf="item.visible">
                     <input type="radio"
                            name="highlight"
                            title="showMeat"
@@ -35,24 +35,26 @@
     </div>
     <div id="foodContent">
         <div *ngFor="let restaurant of restaurants" style="margin-top: 20px;">
-            <h3>{{restaurant.name}}</h3>
-            <table class="ui celled table">
-                <tbody>
-                <tr *ngFor="let menu of dailyMenus[restaurant.key] | searchPipe: searchKey">
-                    <td>
-                        <div
-                            [ngClass]="{'ui': isBold(menu.dish.name), 'ribbon': isBold(menu.dish.name), 'label': isBold(menu.dish.name)}">
-                            <span [ngClass]="{highlighted: isHighlighted(menu.dish.name)}"
-                                  [innerHTML]="menu.dish.name"></span>
-                        </div>
-                    </td>
-                    <td>{{menu.dish.price}}</td>
-                </tr>
-                <tr *ngIf="!dailyMenus[restaurant.key] || dailyMenus[restaurant.key].length === 0">
-                    <td colspan="2">Neboli nájdené žiadne výsledky</td>
-                </tr>
-                </tbody>
-            </table>
+            <div *ngIf="restaurant.visible">
+                <h3>{{restaurant.name}}</h3>
+                <table class="ui celled table">
+                    <tbody>
+                    <tr *ngFor="let menu of dailyMenus[restaurant.key] | searchPipe: searchKey">
+                        <td>
+                            <div
+                                [ngClass]="{'ui': isBold(menu.dish.name), 'ribbon': isBold(menu.dish.name), 'label': isBold(menu.dish.name)}">
+                                <span [ngClass]="{highlighted: isHighlighted(menu.dish.name)}"
+                                      [innerHTML]="menu.dish.name"></span>
+                            </div>
+                        </td>
+                        <td>{{menu.dish.price}}</td>
+                    </tr>
+                    <tr *ngIf="!dailyMenus[restaurant.key] || dailyMenus[restaurant.key].length === 0">
+                        <td colspan="2">Neboli nájdené žiadne výsledky</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
     <h3>bigger</h3>

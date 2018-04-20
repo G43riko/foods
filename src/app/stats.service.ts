@@ -8,14 +8,12 @@ const login = "gabriel";
 
 @Injectable()
 export class StatsService {
+    private readonly headers = new HttpHeaders({
+        "Content-Type": "application/x-www-form-urlencoded",
+        "Referrer-Policy": "no-referrer",
+    });
     public constructor(private http: HttpClient) { }
 
-    private getHeader(): HttpHeaders {
-        const result = new HttpHeaders();
-        result.append("Content-Type", "application/x-www-form-urlencoded");
-        result.append("Referrer-Policy", "no-referrer");
-        return result;
-    }
     public setVisit(): Promise<any> {
         return this.http.post(url, qs.stringify({
             password, login,
