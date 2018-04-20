@@ -5,6 +5,7 @@
     "scripts": {
         "ng": "ng",
         "serve": "ng serve --port 4201",
+        "serveAot": "ng serve --aot=true --port 4201",
         "start": "node server.js",
         "buildProd": "ng build --aot=true ---prod --environment=prod --base-href ./",
         "postinstall": "npm run buildProd",

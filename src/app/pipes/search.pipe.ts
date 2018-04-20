@@ -1,5 +1,5 @@
 import {Pipe, PipeTransform} from "@angular/core";
-import {removeAccentedCharacters} from "./string-utils";
+import {removeAccentedCharacters} from "../utils/string-utils";
 
 @Pipe({
     name: "searchPipe"

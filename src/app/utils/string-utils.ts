@@ -59,7 +59,7 @@ export function getLastPart(text: string, divider: string): string {
     }
     return splitText[splitText.length - 1];
 }
-function fuzzy_match_simple(pattern, str) {
+function fuzzy_match_simple(pattern: string, str: string): boolean {
     let patternIdx = 0;
     let strIdx = 0;
     const patternLength = pattern.length;

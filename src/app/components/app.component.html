@@ -1,0 +1,14 @@
+<div class="main ui intro container" style="margin-top:50px">
+    <app-page-nav-bar #pageNavBar></app-page-nav-bar>
+    <div id="foodContent">
+        <div *ngFor="let restaurant of restaurants" style="margin-top: 20px;">
+            <app-restaurant-foods [dailyMenus]="dailyMenus"
+                                  [highlight]="pageNavBar.highlight"
+                                  [searchKey]="pageNavBar.searchKey"
+                                  [restaurant]="restaurant"></app-restaurant-foods>
+        </div>
+    </div>
+    <h3>bigger</h3>
+    <iframe id="biggerRest" src="http://bigger.sk/menu/"></iframe>
+    <app-restaurant-selector></app-restaurant-selector>
+</div>

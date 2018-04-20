@@ -128,7 +128,7 @@ const a = document.body
                                         !e.toLowerCase().match(new RegExp("(" + keywords.join("|") + ")")))
                   .map(e => e.substr(0, e.length - 1).trim());
 
-const res = [];
+const res: any[] = [];
 a.forEach(e => {
     const key = e.toLowerCase();
     const found = res.find((item) => item.key === key);
@@ -138,4 +138,4 @@ a.forEach(e => {
         res.push({key, count: 1});
     }
 });
-res.sort((b, c) => c.count - b.count);
+res.sort((b: any, c: any) => c.count - b.count);

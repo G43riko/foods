@@ -1,0 +1,34 @@
+<div class="ui form">
+    <div class="inline fields">
+        <div class="field">
+            <div class="ui icon input">
+                <input [(ngModel)]="searchKey" type="text" placeholder="hľadať...">
+                <i class="search icon"></i>
+            </div>
+        </div>
+        <!--
+        <div class="field" style="width: 300px;">
+            <div class="ui fluid multiple search selection dropdown">
+                <input type="hidden" name="country">
+                <i class="dropdown icon"></i>
+                <div class="default text">Kľúčové slovo</div>
+                <div class="menu">
+                </div>
+            </div>
+        </div>
+        -->
+        <label>Zvýrazňovať:</label>
+        <div *ngFor="let item of highlightTypes" class="field">
+            <div class="ui radio checkbox" *ngIf="item.visible">
+                <input type="radio"
+                       name="highlight"
+                       title="showMeat"
+                       id="radio-{{item.value}}"
+                       [value]="item"
+                       [(ngModel)]="highlight"
+                       checked="checked">
+                <label for="radio-{{item.value}}">{{item.value}}</label>
+            </div>
+        </div>
+    </div>
+</div>

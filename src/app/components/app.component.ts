@@ -1,65 +1,46 @@
 import {Component, OnInit} from "@angular/core";
-import {FoodsService} from "./foods.service";
-import {removeAccentedCharacters} from "./string-utils";
-import {FoodData} from "./foodData";
-import {RestaurantData} from "./restaurantsData";
-import {StatsService} from "./stats.service";
+import {FoodsService} from "../services/foods.service";
+import {removeAccentedCharacters} from "../utils/string-utils";
+import {RestaurantData} from "../../data/restaurantsData";
+import {StatsService} from "../services/stats.service";
+import {Restaurant} from "../models/restaurant.model";
+import {Config} from "../appConfig";
 
-declare const $;
-const priceRegex = /\d+(,|.)?\d+ ?[gl][ \/]?/;
+declare const $: any;
 
 @Component({
     selector: "app-root",
     templateUrl: "./app.component.html",
-    styleUrls: ["./app.component.css"]
+    styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-    public readonly highlightTypes: any = FoodData;
-    public readonly restaurants         = RestaurantData;
-    public readonly dailyMenus: any     = {};
-    public searchKey = "";
-    public highlight = this.highlightTypes[0];
+    public readonly restaurants: Restaurant[] = RestaurantData;
+    public readonly dailyMenus: any = {};
 
-    public constructor(private foodsService: FoodsService, private statsService: StatsService) {
+    public constructor(private foodsService: FoodsService,
+                       private statsService: StatsService) {
     }
 
     private processDailyMenu(menu: any): any[] {
         const result = menu.daily_menus.length && menu.daily_menus[0].daily_menu.dishes || [];
-        result.forEach((item) => {
-            const priceResult = item.dish.name.match(priceRegex);
+        result.forEach((item: any) => {
+            const priceResult = item.dish.name.match(Config.PRICE_REGEXP);
             if (priceResult) {
                 const price = "<b>" + priceResult[0].replace(/(\/)/g, "").replace(",", ".").trim() + "</b>";
-                item.dish.name = price + ": " + item.dish.name.replace(priceRegex, "");
+                item.dish.name = price + ": " + item.dish.name.replace(Config.PRICE_REGEXP, "");
             }
         });
         return result;
     }
 
-    public isBold(key: string): boolean {
-        return key.startsWith("Polievky") ||
-            key.startsWith("Hlavné") ||
-            key.startsWith("Špeciálita") ||
-            key.startsWith("Zeleninové ");
-    }
-
-    public isHighlighted(title: string): boolean {
-        if (this.isBold(title)) {
-            return false;
-        }
-        let highlight = false;
-        if (this.highlight.include.some(item => removeAccentedCharacters(title).toLowerCase().indexOf(item) >= 0) &&
-            this.highlight.exclude.every(item => removeAccentedCharacters(title).toLowerCase().indexOf(item) < 0)) {
-            highlight = true;
-        }
-        return highlight;
-    }
 
     private setAutocomplete(): void {
         const keywords = ["menu", "ponuka", "astra", "delfin", "extra", "porcia", "with", "baby", "chicken", "cream",
             "vegetable", "grilled", "stala", "pon", "utor", "stre", "stvrtok", "pia", "spinach", "boiled", "potatoes",
             "pork", "rice", "baked", "dna"];
-        const a = document.getElementById("foodContent")
-            .innerText
+        const aElement = document.getElementById("foodContent");
+
+        const a = !aElement ? [] : aElement.innerText
             .split(/[ \n\-/,]/g)
             .filter(e => e &&
                 e.length > 3 &&
@@ -67,9 +48,13 @@ export class AppComponent implements OnInit {
                 !removeAccentedCharacters(e.toLowerCase()).match(new RegExp("(" + keywords.join("|") + ")")))
             .map(e => e.trim());
 
-        const res = [];
-        a.forEach(e => {
-            const key = removeAccentedCharacters(e.toLowerCase());
+        const res: {
+            key: string,
+            value: string,
+            count: number,
+        }[] = [];
+        a.forEach((e: string) => {
+            const key: string = removeAccentedCharacters(e.toLowerCase());
             const found = res.find((item) => item.key === key);
             if (found) {
                 found.count++;

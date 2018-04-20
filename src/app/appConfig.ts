@@ -9,6 +9,7 @@ export class Config {
     public static BIGGER_ID = "16510021";
     public static BUDIES_ID = "17740573";
 
+    public static PRICE_REGEXP = /\d+(,|.)?\d+ ?[gl][ \/]?/;
 
     public static ZOMATO_API_URL = "https://developers.zomato.com/api/v2.1/dailymenu";
     public static PRESTO_URL = "http://www.restaurantpresto.sk/sk/menu/presto-bbc-i";
