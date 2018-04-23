@@ -9,6 +9,8 @@ import {FoodsService} from "../services/foods.service";
 import {HttpClientModule} from "@angular/common/http";
 import {StatsService} from "../services/stats.service";
 
+declare const $: any;
+
 describe("AppComponent", () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
@@ -34,7 +36,7 @@ describe("AppComponent", () => {
         const app = fixture.debugElement.componentInstance;
         expect(app).toBeTruthy();
     }));
-    it(`should have as restaurants array of restaurants`, async(() => {
+    it("should have as restaurants array of restaurants", async(() => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.debugElement.componentInstance;
         expect(app.restaurants).toEqual(jasmine.any(Array));

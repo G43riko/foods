@@ -7,11 +7,9 @@ import {Component, HostListener, OnInit} from "@angular/core";
 })
 export class RestaurantSelectorComponent implements OnInit {
     public constructor() {
-        console.log("RestaurantSelectorComponent constructor");
     }
 
     public ngOnInit() {
-        console.log("RestaurantSelectorComponent ngOnInit");
     }
 
     @HostListener("document:click", ["$event"]) public onClick(target: any) {

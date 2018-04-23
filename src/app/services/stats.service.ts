@@ -1,5 +1,5 @@
 import * as qs from "querystring";
-import {Injectable} from "@angular/core";
+import {Injectable, isDevMode} from "@angular/core";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 
 const url = "http://g43.clanweb.eu/foods/uploader.php";
@@ -15,6 +15,9 @@ export class StatsService {
     public constructor(private http: HttpClient) { }
 
     public setVisit(): Promise<any> {
+        if (isDevMode()) {
+            return Promise.resolve("success");
+        }
         return this.http.post(url, qs.stringify({
             password, login,
             content: "null",
@@ -28,6 +31,9 @@ export class StatsService {
     }
 
     public storeMenu(menu: any): Promise<any> {
+        if (isDevMode()) {
+            return Promise.resolve("success");
+        }
         return this.http.post(url, qs.stringify({
             password, login,
             type: "menus",

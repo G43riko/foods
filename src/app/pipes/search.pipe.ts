@@ -1,16 +1,20 @@
 import {Pipe, PipeTransform} from "@angular/core";
 import {removeAccentedCharacters} from "../utils/string-utils";
 
+const tagStart = `<span class="searched">`;
+const tagEnd = `</span>`;
+const regex = new RegExp(`(${tagStart}|${tagEnd})`, "g");
+
 @Pipe({
     name: "searchPipe"
 })
 export class SearchPipe implements PipeTransform {
 
-    transform(value: any[], key: string): any {
+    public transform(value: any[], key: string): any {
         if (!value) {
             return [];
         }
-        value.forEach((item) => item.dish.name = item.dish.name.replace(/(<span class="searched">|<\/span>)/g, ""));
+        value.forEach((item) => item.dish.name = item.dish.name.replace(regex, ""));
         if (!key) {
             return value;
         }
@@ -19,9 +23,10 @@ export class SearchPipe implements PipeTransform {
             const index = removeAccentedCharacters(menu.dish.name.toLowerCase()).indexOf(query);
             if (index >= 0) {
                 menu.dish.name = menu.dish.name.substr(0, index) +
-                                 `<span class="searched">${menu.dish.name.substr(index, query.length)}</span>` +
+                                 tagStart +
+                                 menu.dish.name.substr(index, query.length) +
+                                 tagEnd +
                                  menu.dish.name.substr(index + query.length, menu.dish.name.length - (index + query.length));
-                console.log(menu.dish.name);
             }
             return index >= 0;
         });

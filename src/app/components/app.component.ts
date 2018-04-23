@@ -67,8 +67,7 @@ export class AppComponent implements OnInit {
         res.forEach((e) => {
             innerHtml += `<div class="item" data-value="${e.key}">${e.value + " (" + e.count + ")"}</div>`;
         });
-        $(".ui.multiple.dropdown").find(".menu").append(innerHtml);
-        $(".ui.multiple.dropdown").dropdown();
+        $(".ui.multiple.dropdown").dropdown().find(".menu").append(innerHtml);
     }
 
     public ngOnInit(): void {

@@ -1,0 +1,5 @@
+ - Pridať možnosť zoraďovať, zobrazovať a skrývať reštaurácie
+ - Vytvoriť BE
+     - Pri prvotnom volaní treba zavolať API zomato a uložiť všetky menu
+     - Pri ďalších volaniach sa preposielajú už uložené dáta
+ - 
