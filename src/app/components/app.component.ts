@@ -24,10 +24,16 @@ export class AppComponent implements OnInit {
     private processDailyMenu(menu: any): any[] {
         const result = menu.daily_menus.length && menu.daily_menus[0].daily_menu.dishes || [];
         result.forEach((item: any) => {
+            const weightResult = item.dish.name.match(Config.WEIGHT_REGEXP);
+            if (weightResult) {
+                const price = "<b>" + weightResult[0].replace(/(\/)/g, "").replace(",", ".").trim() + "</b>";
+                item.dish.name = price + ": " + item.dish.name.replace(Config.WEIGHT_REGEXP, "");
+            }
+
             const priceResult = item.dish.name.match(Config.PRICE_REGEXP);
             if (priceResult) {
-                const price = "<b>" + priceResult[0].replace(/(\/)/g, "").replace(",", ".").trim() + "</b>";
-                item.dish.name = price + ": " + item.dish.name.replace(Config.PRICE_REGEXP, "");
+                item.dish.price = priceResult[0] + " €";
+                item.dish.name = item.dish.name.replace(Config.WEIGHT_REGEXP, "");
             }
         });
         return result;
