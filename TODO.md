@@ -2,4 +2,7 @@
  - Vytvoriť BE
      - Pri prvotnom volaní treba zavolať API zomato a uložiť všetky menu
      - Pri ďalších volaniach sa preposielajú už uložené dáta
- - 
+ - Odstrániť
+     - Dni v týždni
+     - Alergény
+     - Poradie menúčok
