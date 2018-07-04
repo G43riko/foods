@@ -24,10 +24,7 @@ export class AppComponent implements OnInit {
     }
 
     private processDelphineMenu(menu: string): any[] {
-        console.log("menu: ", menu);
-        console.log("split menu: ", menu.split("\n"));
         const splitMenu = menu.split("\n").splice(1, 100);
-        console.log("splitMenu: ", splitMenu);
         return splitMenu.map((foodName, i) => {
             return {
                 dish: {
