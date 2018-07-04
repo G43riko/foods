@@ -9,7 +9,7 @@ export const RestaurantData = [
         "id": "16508094",
         "name": "Delfín",
         "key": "delphine",
-        "visible": false
+        "visible": true
     },
     {
         "id": "16508016",

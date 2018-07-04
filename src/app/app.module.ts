@@ -9,6 +9,7 @@ import {SearchPipe} from "./pipes/search.pipe";
 import {StatsService} from "./services/stats.service";
 import {RestaurantFoodsComponent} from "./components/restaurant-foods/restaurant-foods.component";
 import {PageNavBarComponent} from "./components/page-nav-bar/page-nav-bar.component";
+import {ParserService} from "./services/parser.service";
 
 declare const window: any;
 
@@ -34,7 +35,8 @@ if (iframe) {
     ],
     providers: [
         FoodsService,
-        StatsService
+        StatsService,
+        ParserService,
     ],
     bootstrap: [AppComponent]
 })

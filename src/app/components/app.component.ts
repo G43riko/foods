@@ -5,6 +5,7 @@ import {RestaurantData} from "../../data/restaurantsData";
 import {StatsService} from "../services/stats.service";
 import {Restaurant} from "../models/restaurant.model";
 import {Config} from "../appConfig";
+import {ParserService} from "../services/parser.service";
 
 declare const $: any;
 
@@ -18,7 +19,25 @@ export class AppComponent implements OnInit {
     public readonly dailyMenus: any = {};
 
     public constructor(private foodsService: FoodsService,
+                       private parserService: ParserService,
                        private statsService: StatsService) {
+    }
+
+    private processDelphineMenu(menu: string): any[] {
+        console.log("menu: ", menu);
+        console.log("split menu: ", menu.split("\n"));
+        const splitMenu = menu.split("\n").splice(1, 100);
+        console.log("splitMenu: ", splitMenu);
+        return splitMenu.map((foodName, i) => {
+            return {
+                dish: {
+                    dish_id: NaN,
+                    name: foodName,
+                    price: i === 0 ? undefined : "4.40€",
+                }
+            };
+        });
+
     }
 
     private processDailyMenu(menu: any): any[] {
@@ -79,12 +98,18 @@ export class AppComponent implements OnInit {
     public ngOnInit(): void {
         this.statsService.setVisit();
         const data = this.restaurants.map((restaurant) => this.foodsService.getZomatoFood(restaurant.id));
+
+
         Promise.all(data).then((results) => {
             this.statsService.storeMenu(results);
             results.forEach((result, index) => {
                 this.dailyMenus[this.restaurants[index].key] = this.processDailyMenu(result);
             });
-            setTimeout(() => this.setAutocomplete(), 10);
+            this.parserService.parseDelfinMenus().then((menu) => {
+                this.dailyMenus["delphine"] = this.processDelphineMenu(menu);
+                console.log("this.dailyMenus: ", this.dailyMenus);
+                setTimeout(() => this.setAutocomplete(), 10);
+            });
 
             // this.setSlider();
         });
