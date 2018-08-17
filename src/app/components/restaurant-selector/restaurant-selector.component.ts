@@ -3,16 +3,11 @@ import {Component, HostListener, OnInit} from "@angular/core";
 @Component({
     selector: "app-restaurant-selector",
     templateUrl: "./restaurant-selector.component.html",
-    styleUrls: ["./restaurant-selector.component.scss"]
+    styleUrls: ["./restaurant-selector.component.scss"],
 })
-export class RestaurantSelectorComponent implements OnInit {
-    public constructor() {
-    }
+export class RestaurantSelectorComponent {
 
-    public ngOnInit() {
-    }
-
-    @HostListener("document:click", ["$event"]) public onClick(target: any) {
+    @HostListener("document:click", ["$event"]) public onClick(target: any): void {
         if (target.target.matches("#opener")) {
             const sideNav = document.getElementById("sideNav");
             if (sideNav) {

@@ -1,60 +1,29 @@
 import {Component, OnInit} from "@angular/core";
-import {FoodsService} from "../services/foods.service";
-import {removeAccentedCharacters} from "../utils/string-utils";
 import {RestaurantData} from "../../data/restaurantsData";
-import {StatsService} from "../services/stats.service";
-import {Restaurant} from "../models/restaurant.model";
-import {Config} from "../appConfig";
-import {ParserService} from "../services/parser.service";
+import {Dish} from "../shared/models/dish.model";
+import {Restaurant} from "../shared/models/restaurant.model";
+import {FoodsRestService} from "../shared/services/foods.rest.service";
+import {FoodsService} from "../shared/services/foods.service";
+import {ParserService} from "../shared/services/parser.service";
+import {StatsService} from "../shared/services/stats.service";
+import {StringUtils} from "../shared/utils/StringUtils";
 
 declare const $: any;
 
 @Component({
     selector: "app-root",
     templateUrl: "./app.component.html",
-    styleUrls: ["./app.component.scss"]
+    styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
     public readonly restaurants: Restaurant[] = RestaurantData;
-    public readonly dailyMenus: any = {};
+    public readonly dailyMenus: {[key: string]: Dish[]} = {};
 
-    public constructor(private foodsService: FoodsService,
-                       private parserService: ParserService,
-                       private statsService: StatsService) {
+    public constructor(private readonly foodsRestService: FoodsRestService,
+                       private readonly parserService: ParserService,
+                       private readonly foodsService: FoodsService,
+                       private readonly statsService: StatsService) {
     }
-
-    private processDelphineMenu(menu: string): any[] {
-        const splitMenu = menu.split("\n").splice(1, 100);
-        return splitMenu.map((foodName, i) => {
-            return {
-                dish: {
-                    dish_id: NaN,
-                    name: foodName,
-                    price: i === 0 ? undefined : "4.40€",
-                }
-            };
-        });
-
-    }
-
-    private processDailyMenu(menu: any): any[] {
-        const result = menu.daily_menus.length && menu.daily_menus[0].daily_menu.dishes || [];
-        result.forEach((item: any) => {
-            const weightResult = item.dish.name.match(Config.WEIGHT_REGEXP);
-            if (weightResult) {
-                const price = "<b>" + weightResult[0].replace(/(\/)/g, "").replace(",", ".").trim() + "</b>";
-                item.dish.name = price + ": " + item.dish.name.replace(Config.WEIGHT_REGEXP, "");
-            }
-
-            const priceResult = item.dish.name.match(Config.PRICE_REGEXP);
-            if (priceResult) {
-                item.dish.price = priceResult[0] + " €";
-                item.dish.name = item.dish.name.replace(Config.WEIGHT_REGEXP, "");
-            }
-        });
-        return result;
-    }
-
 
     private setAutocomplete(): void {
         const keywords = ["menu", "ponuka", "astra", "delfin", "extra", "porcia", "with", "baby", "chicken", "cream",
@@ -64,11 +33,11 @@ export class AppComponent implements OnInit {
 
         const a = !aElement ? [] : aElement.innerText
             .split(/[ \n\-/,]/g)
-            .filter(e => e &&
+            .filter((e) => e &&
                 e.length > 3 &&
                 isNaN(parseFloat(e)) &&
-                !removeAccentedCharacters(e.toLowerCase()).match(new RegExp("(" + keywords.join("|") + ")")))
-            .map(e => e.trim());
+                !StringUtils.removeAccentedCharacters(e.toLowerCase()).match(new RegExp("(" + keywords.join("|") + ")")))
+            .map((e) => e.trim());
 
         const res: {
             key: string,
@@ -76,7 +45,7 @@ export class AppComponent implements OnInit {
             count: number,
         }[] = [];
         a.forEach((e: string) => {
-            const key: string = removeAccentedCharacters(e.toLowerCase());
+            const key: string = StringUtils.removeAccentedCharacters(e.toLowerCase());
             const found = res.find((item) => item.key === key);
             if (found) {
                 found.count++;
@@ -94,17 +63,18 @@ export class AppComponent implements OnInit {
 
     public ngOnInit(): void {
         this.statsService.setVisit();
-        const data = this.restaurants.map((restaurant) => this.foodsService.getZomatoFood(restaurant.id));
-
-
+        const data = this.restaurants.map((restaurant) => this.foodsRestService.getZomatoFood(restaurant.id));
         Promise.all(data).then((results) => {
             this.statsService.storeMenu(results);
             results.forEach((result, index) => {
-                this.dailyMenus[this.restaurants[index].key] = this.processDailyMenu(result);
+                this.dailyMenus[this.restaurants[index].key] = this.foodsService.processZomatoMenu(result);
             });
             this.parserService.parseDelfinMenus().then((menu) => {
-                this.dailyMenus["delphine"] = this.processDelphineMenu(menu);
-                console.log("this.dailyMenus: ", this.dailyMenus);
+                this.dailyMenus.delphine = this.foodsService.processDelphineMenu(menu);
+                setTimeout(() => this.setAutocomplete(), 10);
+                $(".checkbox").checkbox();
+            }).catch((e) => {
+                console.error(e);
                 setTimeout(() => this.setAutocomplete(), 10);
             });
 

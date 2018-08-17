@@ -1,15 +1,17 @@
-import {FoodsService} from "./services/foods.service";
+import {FoodsRestService} from "./shared/services/foods.rest.service";
 import {BrowserModule} from "@angular/platform-browser";
 import {HttpClientModule} from "@angular/common/http";
 import {NgModule} from "@angular/core";
 import {AppComponent} from "./components/app.component";
 import {FormsModule} from "@angular/forms";
 import {RestaurantSelectorComponent} from "./components/restaurant-selector/restaurant-selector.component";
-import {SearchPipe} from "./pipes/search.pipe";
-import {StatsService} from "./services/stats.service";
+import {StatsService} from "./shared/services/stats.service";
 import {RestaurantFoodsComponent} from "./components/restaurant-foods/restaurant-foods.component";
 import {PageNavBarComponent} from "./components/page-nav-bar/page-nav-bar.component";
-import {ParserService} from "./services/parser.service";
+import {ParserService} from "./shared/services/parser.service";
+import {FoodsService} from "./shared/services/foods.service";
+import {SharedModule} from "./shared/shared.module";
+import {CoreModule} from "./shared/services/core.module";
 
 declare const window: any;
 
@@ -24,23 +26,23 @@ if (iframe) {
     declarations: [
         AppComponent,
         RestaurantSelectorComponent,
-        SearchPipe,
         RestaurantFoodsComponent,
-        PageNavBarComponent
+        PageNavBarComponent,
     ],
     imports: [
         BrowserModule,
         FormsModule,
-        HttpClientModule
+
+        SharedModule,
+        CoreModule,
     ],
     providers: [
+        FoodsRestService,
         FoodsService,
         StatsService,
         ParserService,
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
 })
 export class AppModule {
-    constructor() {
-    }
 }

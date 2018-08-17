@@ -19,10 +19,11 @@
         -->
         <label>Zvýrazňovať:</label>
         <div *ngFor="let item of highlightTypes" class="field">
-            <div class="ui radio checkbox" *ngIf="item.visible">
+            <div *ngIf="item.visible"
+                 class="ui radio checkbox"
+                 [title]="item.description">
                 <input type="radio"
                        name="highlight"
-                       title="showMeat"
                        id="radio-{{item.value}}"
                        [value]="item"
                        [(ngModel)]="highlight"

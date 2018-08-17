@@ -2,18 +2,25 @@
     <h3>{{restaurant.name}}</h3>
     <table class="ui celled table">
         <tbody>
-        <tr *ngFor="let menu of dailyMenus[restaurant.key] | searchPipe: searchKey">
-            <td>
-                <div [ngClass]="{'ui ribbon label': isBold(menu.dish.name)}">
-                    <span [ngClass]="{highlighted: isHighlighted(menu.dish.name)}"
-                          [innerHTML]="menu.dish.name"></span>
-                </div>
-            </td>
-            <td>{{menu.dish.price}}</td>
-        </tr>
-        <tr *ngIf="!dailyMenus[restaurant.key] || dailyMenus[restaurant.key].length === 0">
-            <td colspan="2">Neboli nájdené žiadne výsledky</td>
-        </tr>
+            <tr *ngFor="let dish of dailyMenus[restaurant.key] | searchPipe: searchKey">
+                <!--
+                <td>
+                    <div *ngIf="dish.price" class="ui checkbox">
+                        <input type="checkbox" name="{{'example-dish.name'}}">
+                    </div>
+                </td>
+                -->
+                <td>
+                    <div [ngClass]="{'ui ribbon label': isBold(dish.name)}" class="row">
+                        <span [ngClass]="{highlighted: isHighlighted(dish.name)}"
+                              [innerHTML]="dish.name"></span>
+                    </div>
+                </td>
+                <td>{{dish.price}}</td>
+            </tr>
+            <tr *ngIf="!dailyMenus[restaurant.key] || dailyMenus[restaurant.key].length === 0">
+                <td colspan="2">Neboli nájdené žiadne výsledky</td>
+            </tr>
         </tbody>
     </table>
 </div>

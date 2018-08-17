@@ -6,3 +6,8 @@
      - Dni v týždni
      - Alergény
      - Poradie menúčok
+
+ - zobrazovať či je reštaurácia otvorená alebo nie
+ - link na obedové menu pre reštaurácie ktoré sa nedaju parsovať
+ - link na zobrazenie reštaurácie na mape
+ 

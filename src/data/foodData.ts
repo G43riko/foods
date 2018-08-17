@@ -1,73 +1,80 @@
 const MEAT = ["kuraci", "hovadz", "bravcov", "telac", "rezen", "krkovick", "maso", "sekana", "cevapcici", "cevabcici", "klobas", "salam", "steak", "morca", "pecienka", "burger", "biftek", "slepac", "kacaci", "gulas", "fasirk"];
 const CHEESES = ["syr", "ostiep", "eidam", "encian", "emental", "hermelin", "bryndz", "masl", "tvaroh", "parmezan", "mozzarel"];
 const SEA_FOOD = ["losos", "ryba", "stuka", "pstruh", "morske", "filet", "krevet", "krab", "homar", "kalmar", "sardink", "ancovick", "mecun", "tuniak", "kapor", "kaviar"];
-const VEGETABLE = ["zelenin", "brokolic", "spenat", "zelenin", "hub", "hrib", "tekvic", "sampino", "uhork", "cicer", "salat", "kapust"
+const VEGETABLE = ["zelenin", "brokolic", "spenat", "zelenin", "hub", "hrib", "tekvic", "sampino", "uhork", "cicer", "salat", "kapust",
 ];
 const KEYWORDS = ["specialita dna"];
 const PIZZAS = ["pizza", "hawai", "prosciutto", "napoletana"];
 export const FoodData = [
     {
-        "key": "none",
-        "value": "Nič",
-        "visible": true,
-        "include": [],
-        "exclude": KEYWORDS
+        key: "none",
+        value: "Nič",
+        description: "Nič",
+        visible: true,
+        include: [],
+        exclude: KEYWORDS,
     },
     {
-        "key": "meat",
-        "value": "Mäso",
-        "visible": true,
-        "include": MEAT,
-        "exclude": KEYWORDS
+        key: "meat",
+        value: "Mäso",
+        description: "Mäso",
+        visible: true,
+        include: MEAT,
+        exclude: KEYWORDS,
     },
     {
-        "key": "pizza",
-        "value": "Pizza",
-        "visible": false,
-        "include": PIZZAS,
-        "exclude": KEYWORDS
+        key: "pizza",
+        value: "Pizza",
+        description: "Pizza",
+        visible: false,
+        include: PIZZAS,
+        exclude: KEYWORDS,
     },
     {
-        "key": "vegetable",
-        "value": "Zelenina",
-        "visible": false,
-        "include": VEGETABLE,
-        "exclude": KEYWORDS
+        key: "vegetable",
+        value: "Zelenina",
+        description: "Zelenina",
+        visible: false,
+        include: VEGETABLE,
+        exclude: KEYWORDS,
     },
     {
-        "key": "pasta",
-        "value": "Cestoviny",
-        "visible": true,
-        "include": [
+        key: "pasta",
+        value: "Cestoviny",
+        description: "Cestoviny",
+        visible: true,
+        include: [
             "cestoviny",
             "granadier",
             "cestovin",
             "pene",
             "tortelliny",
-            "spaget"
+            "spaget",
         ],
-        "exclude": KEYWORDS
+        exclude: KEYWORDS,
     },
     {
-        "key": "sweet",
-        "value": "Sladké",
-        "visible": true,
-        "include": [
+        key: "sweet",
+        value: "Sladké",
+        description: "Sladké",
+        visible: true,
+        include: [
             "dukatove",
             "rizovy",
             "sisky",
             "palacink",
             "sladk",
             "bucht",
-            "zemlovka"
+            "zemlovka",
         ],
-        "exclude": KEYWORDS
+        exclude: KEYWORDS,
     },
     {
-        "key": "asia",
-        "value": "Ázia",
-        "visible": true,
-        "include": [
+        key: "asia",
+        value: "Ázia",
+        description: "Ázia",
+        visible: true,
+        include: [
             "sladkokysl",
             "kungpao",
             "thajsk",
@@ -76,38 +83,42 @@ export const FoodData = [
             "sushi",
             "ramen",
             "tempura",
-            "kung-pao"
+            "kung-pao",
         ],
-        "exclude": KEYWORDS
+        exclude: KEYWORDS,
     },
     {
-        "key": "vegetarian",
-        "value": "Vegetariánske",
-        "visible": true,
-        "include": [""],
-        "exclude": [...MEAT, ...KEYWORDS]
+        key: "vegetarian",
+        value: "Vegetariánske",
+        description: "Vegetariánske",
+        visible: true,
+        include: [""],
+        exclude: [...MEAT, ...KEYWORDS],
     },
     {
-        "key": "vegan",
-        "value": "Veganske",
-        "visible": true,
-        "include": [""],
-        "exclude": [...MEAT, ...CHEESES, ...SEA_FOOD, ...KEYWORDS]
+        key: "vegan",
+        value: "Veganske",
+        description: "Veganske",
+        visible: true,
+        include: [""],
+        exclude: [...MEAT, ...CHEESES, ...SEA_FOOD, ...KEYWORDS],
     },
     {
-        "key": "seafood",
-        "value": "Plody mora",
-        "visible": true,
-        "include": SEA_FOOD,
-        "exclude": KEYWORDS
+        key: "seafood",
+        value: "Plody mora",
+        description: "Plody mora",
+        visible: true,
+        include: SEA_FOOD,
+        exclude: KEYWORDS,
     },
     {
-        "key": "arab",
-        "value": "Arabské",
-        "visible": true,
-        "include": ["kebab", "gyros", "pita", "arabs", "kuskus", "baklava"],
-        "exclude": KEYWORDS
-    }
+        key: "arab",
+        value: "Arabské",
+        description: "Arabské",
+        visible: true,
+        include: ["kebab", "gyros", "pita", "arabs", "kuskus", "baklava"],
+        exclude: KEYWORDS,
+    },
 ];
 export const FoodList = [
     "spagety",
@@ -124,21 +135,21 @@ export const FoodList = [
     "cestovin",
     "krkovicka",
     "spenat",
-    ""
+    "",
 ];
 const keywords = ["menu", "ponuka", "astra", "delfin", "extra", "porcia", "with", "baby", "chicken", "cream", "vegetable", "grilled",
     "port", "soup", "fried", "homemade", "alergn", "hlavn"];
 const a = document.body
                   .innerText
                   .split(/[ \n\-/]/g)
-                  .filter(e => e &&
+                  .filter((e) => e &&
                                         e.length > 3 &&
                                         isNaN(parseFloat(e)) &&
                                         !e.toLowerCase().match(new RegExp("(" + keywords.join("|") + ")")))
-                  .map(e => e.substr(0, e.length - 1).trim());
+                  .map((e) => e.substr(0, e.length - 1).trim());
 
 const res: any[] = [];
-a.forEach(e => {
+a.forEach((e) => {
     const key = e.toLowerCase();
     const found = res.find((item) => item.key === key);
     if (found) {

@@ -1,41 +1,31 @@
-import {Component, Input, OnInit} from "@angular/core";
-import {Restaurant} from "../../models/restaurant.model";
-import {FoodUtils} from "../../utils/food-utils";
-import {removeAccentedCharacters} from "../../utils/string-utils";
-import {Food} from "../../models/food.model";
+import {Component, Input} from "@angular/core";
+import {Food} from "../../shared/models/food.model";
+import {Restaurant} from "../../shared/models/restaurant.model";
+import {FoodUtils} from "../../shared/utils/food-utils";
+import {StringUtils} from "../../shared/utils/StringUtils";
 
 @Component({
     selector: "app-restaurant-foods",
     templateUrl: "./restaurant-foods.component.html",
-    styleUrls: ["./restaurant-foods.component.scss"]
+    styleUrls: ["./restaurant-foods.component.scss"],
 })
-export class RestaurantFoodsComponent implements OnInit {
-    @Input() highlight: Food = new Food();
-    @Input() searchKey: string;
-    @Input() dailyMenus: any;
-    @Input() restaurant: Restaurant = new Restaurant();
-
-    public constructor() {
-    }
-
-    public ngOnInit() {
-    }
+export class RestaurantFoodsComponent {
+    @Input() public highlight: Food = new Food();
+    @Input() public searchKey: string;
+    @Input() public dailyMenus: any;
+    @Input() public restaurant: Restaurant = new Restaurant();
 
     public isBold(key: string): boolean {
         return FoodUtils.isBold(key);
     }
 
-
     public isHighlighted(title: string): boolean {
         if (FoodUtils.isBold(title)) {
             return false;
         }
-        let highlight = false;
-        if (this.highlight.include.some(item => removeAccentedCharacters(title).toLowerCase().indexOf(item) >= 0) &&
-            this.highlight.exclude.every(item => removeAccentedCharacters(title).toLowerCase().indexOf(item) < 0)) {
-            highlight = true;
-        }
-        return highlight;
+
+        return this.highlight.include.some((item) => StringUtils.removeAccentedCharacters(title).toLowerCase().indexOf(item) >= 0) &&
+               this.highlight.exclude.every((item) => StringUtils.removeAccentedCharacters(title).toLowerCase().indexOf(item) < 0);
     }
 
 }

@@ -1,18 +1,14 @@
 import {SearchPipe} from "./search.pipe";
+import {Dish} from "../models/dish.model";
 
 describe("SearchPipe", () => {
     const pipe = new SearchPipe();
-    const defaultInput = [{
-        dish: {
-            name: "toto je kurací rezeň",
-            price: "4.50€",
-        }
-    }];
+    const defaultInput = [new Dish("005", "toto je kurací rezeň", "4.50€")];
     const changedOutput = [{
         dish: {
             name: `toto je <span class="searched">kurací</span> rezeň`,
             price: `4.50€`,
-        }
+        },
     }];
     it("create an instance", () => {
         expect(pipe).toBeTruthy();

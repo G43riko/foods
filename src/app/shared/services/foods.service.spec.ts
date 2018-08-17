@@ -1,17 +1,17 @@
 import {TestBed, inject} from "@angular/core/testing";
 
-import {FoodsService} from "./foods.service";
+import {FoodsRestService} from "./foods.rest.service";
 import {HttpClientModule} from "@angular/common/http";
 
 describe("FoodService", () => {
     beforeEach(() => {
         TestBed.configureTestingModule({
-            providers: [FoodsService],
+            providers: [FoodsRestService],
             imports: [HttpClientModule]
         });
     });
 
-    it("should be created", inject([FoodsService], (service: FoodsService) => {
+    it("should be created", inject([FoodsRestService], (service: FoodsRestService) => {
         expect(service).toBeTruthy();
     }));
 });
