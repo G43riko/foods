@@ -17,7 +17,7 @@ declare const $: any;
 })
 export class AppComponent implements OnInit {
     public readonly restaurants: Restaurant[] = RestaurantData;
-    public readonly dailyMenus: {[key: string]: Dish[]} = {};
+    public readonly dailyMenus: { [key: string]: Dish[] } = {};
 
     public constructor(private readonly foodsRestService: FoodsRestService,
                        private readonly parserService: ParserService,

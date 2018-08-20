@@ -10,10 +10,9 @@ const regex = new RegExp(`(${tagStart}|${tagEnd})`, "g");
     name: "searchPipe",
 })
 export class SearchPipe implements PipeTransform {
-
-    public transform(value: Dish[], key: string): any {
+    public transform(value: Dish[], key: string): Dish[] {
         if (!value) {
-            return [];
+            return [null];
         }
         value.forEach((item) => item.name = item.name.replace(regex, ""));
         if (!key) {
@@ -21,7 +20,7 @@ export class SearchPipe implements PipeTransform {
         }
         const query = StringUtils.removeAccentedCharacters(key.toLowerCase());
 
-        return value.filter((menu) => {
+        const result = value.filter((menu) => {
             const index = StringUtils.removeAccentedCharacters(menu.name.toLowerCase()).indexOf(query);
             if (index >= 0) {
                 menu.name = menu.name.substr(0, index) +
@@ -33,5 +32,7 @@ export class SearchPipe implements PipeTransform {
 
             return index >= 0;
         });
+
+        return result.length > 0 ? result : [null];
     }
 }

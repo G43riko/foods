@@ -1,17 +1,17 @@
-import {FoodsRestService} from "./shared/services/foods.rest.service";
-import {BrowserModule} from "@angular/platform-browser";
 import {HttpClientModule} from "@angular/common/http";
 import {NgModule} from "@angular/core";
-import {AppComponent} from "./components/app.component";
 import {FormsModule} from "@angular/forms";
-import {RestaurantSelectorComponent} from "./components/restaurant-selector/restaurant-selector.component";
-import {StatsService} from "./shared/services/stats.service";
-import {RestaurantFoodsComponent} from "./components/restaurant-foods/restaurant-foods.component";
+import {BrowserModule} from "@angular/platform-browser";
+import {AppComponent} from "./components/app.component";
 import {PageNavBarComponent} from "./components/page-nav-bar/page-nav-bar.component";
-import {ParserService} from "./shared/services/parser.service";
-import {FoodsService} from "./shared/services/foods.service";
-import {SharedModule} from "./shared/shared.module";
+import {RestaurantFoodsComponent} from "./components/restaurant-foods/restaurant-foods.component";
+import {RestaurantSelectorComponent} from "./components/restaurant-selector/restaurant-selector.component";
 import {CoreModule} from "./shared/services/core.module";
+import {FoodsRestService} from "./shared/services/foods.rest.service";
+import {FoodsService} from "./shared/services/foods.service";
+import {ParserService} from "./shared/services/parser.service";
+import {StatsService} from "./shared/services/stats.service";
+import {SharedModule} from "./shared/shared.module";
 
 declare const window: any;
 
