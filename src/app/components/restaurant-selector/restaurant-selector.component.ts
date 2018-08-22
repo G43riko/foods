@@ -1,4 +1,16 @@
-import {Component, ElementRef, EventEmitter, HostListener, Input, OnChanges, OnInit, Output, SimpleChanges, ViewChild} from "@angular/core";
+import {
+    ChangeDetectorRef,
+    Component,
+    ElementRef,
+    EventEmitter,
+    HostListener,
+    Input,
+    OnChanges,
+    OnInit,
+    Output,
+    SimpleChanges,
+    ViewChild
+} from "@angular/core";
 import {RestaurantData} from "../../../data/restaurantsData";
 import {FactoryModel} from "../../shared/models/factory.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
@@ -14,7 +26,7 @@ export class RestaurantSelectorComponent implements OnInit {
     public readonly restaurants: Restaurant[] = RestaurantData;
     @ViewChild("wrapper") public wrapper: ElementRef<HTMLDivElement>;
     @Output("restaurantsChange") public restaurantsChange: EventEmitter<Restaurant[]> = new EventEmitter<Restaurant[]>();
-    public readonly selectedRestaurants: Restaurant[] = [];
+    public selectedRestaurants: Restaurant[] = [];
 
     @HostListener("document:click", ["$event"])
     public onClick(target: any): void {
@@ -81,7 +93,7 @@ export class RestaurantSelectorComponent implements OnInit {
 
     public saveResults(data: string): void {
         const restaurantKeys = data.split(":");
-        this.selectedRestaurants.splice(0, this.selectedRestaurants.length);
+        this.selectedRestaurants = [];
         this.restaurants.forEach((restaurant) => {
             restaurant.visible = false;
             if (restaurantKeys.includes(restaurant.key)) {
@@ -89,8 +101,8 @@ export class RestaurantSelectorComponent implements OnInit {
                 this.selectedRestaurants.push(restaurant);
             }
         });
-
-        setTimeout(() => this.restaurantsChange.emit(this.selectedRestaurants), 0);
+        console.log(this.selectedRestaurants.map((e) => e.name));
+        setTimeout(() => this.restaurantsChange.emit([...this.selectedRestaurants]), 0);
         localStorage.setItem("selectedRestaurants", JSON.stringify(restaurantKeys));
     }
 }

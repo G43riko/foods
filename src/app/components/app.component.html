@@ -2,7 +2,7 @@
     <h1>Denné menu</h1>
     <app-page-nav-bar #pageNavBar></app-page-nav-bar>
     <div *ngIf="restaurants && restaurants.length > 0" id="foodContent">
-        <div *ngFor="let restaurant of restaurants" style="margin-top: 20px;">
+        <div *ngFor="let restaurant of restaurants" style="margin-top: 20px;" title="{{counter}}">
             <app-restaurant-foods [dailyMenus]="dailyMenus"
                                   [highlight]="pageNavBar.highlight"
                                   [searchKey]="pageNavBar.searchKey"

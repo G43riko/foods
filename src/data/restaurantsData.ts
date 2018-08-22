@@ -9,7 +9,7 @@ export const RestaurantData = [
         id: "16508094",
         name: "Delfín",
         key: "delphine",
-        visible: true,
+        visible: false,
     },
     {
         id: "16508016",
@@ -45,6 +45,12 @@ export const RestaurantData = [
         id: "16507666",
         name: "Presto",
         key: "presto",
+        visible: true,
+    },
+    {
+        id: "16508023",
+        name: "Sole Mio Pizza",
+        key: "soleMio",
         visible: true,
     },
     {

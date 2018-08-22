@@ -14,6 +14,7 @@ export class SearchPipe implements PipeTransform {
         if (!value) {
             return [null];
         }
+        console.log("filtrujem");
         value.forEach((item) => item.name = item.name.replace(regex, ""));
         if (!key) {
             return value;

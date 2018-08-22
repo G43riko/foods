@@ -1,4 +1,4 @@
-import {Component, Input} from "@angular/core";
+import {Component, Input, OnChanges, SimpleChanges} from "@angular/core";
 import {Food} from "../../shared/models/food.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
 import {FoodUtils} from "../../shared/utils/food-utils";
@@ -9,7 +9,7 @@ import {StringUtils} from "../../shared/utils/StringUtils";
     templateUrl: "./restaurant-foods.component.html",
     styleUrls: ["./restaurant-foods.component.scss"],
 })
-export class RestaurantFoodsComponent {
+export class RestaurantFoodsComponent implements OnChanges{
     @Input() public highlight: Food = new Food();
     @Input() public searchKey: string;
     @Input() public dailyMenus: any;
@@ -26,6 +26,9 @@ export class RestaurantFoodsComponent {
 
         return this.highlight.include.some((item) => StringUtils.removeAccentedCharacters(title).toLowerCase().indexOf(item) >= 0) &&
                this.highlight.exclude.every((item) => StringUtils.removeAccentedCharacters(title).toLowerCase().indexOf(item) < 0);
+    }
+
+    public ngOnChanges(changes: SimpleChanges): void {
     }
 
 }

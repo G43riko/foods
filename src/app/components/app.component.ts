@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {Dish} from "../shared/models/dish.model";
 import {Restaurant} from "../shared/models/restaurant.model";
 import {FoodsRestService} from "../shared/services/foods.rest.service";
@@ -14,9 +14,10 @@ declare const $: any;
     templateUrl: "./app.component.html",
     styleUrls: ["./app.component.scss"],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, OnChanges {
     public restaurants: Restaurant[] = [];
-    public readonly dailyMenus: { [key: string]: Dish[] } = {};
+    public counter = 0;
+    public dailyMenus: { [key: string]: Dish[] } = {};
 
     public constructor(private readonly foodsRestService: FoodsRestService,
                        private readonly parserService: ParserService,
@@ -61,6 +62,7 @@ export class AppComponent implements OnInit {
     }
 
     public onRestaurantChanges(selectedRestaurants: Restaurant[]): void {
+        this.counter++;
         this.restaurants = selectedRestaurants;
         this.loadDailyMenus();
     }
@@ -78,16 +80,27 @@ export class AppComponent implements OnInit {
             results.forEach((result, index) => {
                 this.dailyMenus[this.restaurants[index].key] = this.foodsService.processZomatoMenu(result);
             });
+            this.dailyMenus = {...this.dailyMenus};
+            setTimeout(() => this.setAutocomplete(), 10);
+            $(".checkbox").checkbox();
+            /*
             this.parserService.parseDelfinMenus().then((menu) => {
                 this.dailyMenus.delphine = this.foodsService.processDelphineMenu(menu);
-                setTimeout(() => this.setAutocomplete(), 10);
-                $(".checkbox").checkbox();
             }).catch((e) => {
                 console.error(e);
+            }).finally(() => {
                 setTimeout(() => this.setAutocomplete(), 10);
+                $(".checkbox").checkbox();
             });
+            */
 
             // this.setSlider();
+        }).catch((error) => {
+            console.error("Error while getting menus from zommato api: ", error);
         });
+    }
+
+    public ngOnChanges(changes: SimpleChanges): void {
+        console.log("changes: ", changes);
     }
 }
