@@ -1,5 +1,4 @@
 import {Component, OnInit} from "@angular/core";
-import {RestaurantData} from "../../data/restaurantsData";
 import {Dish} from "../shared/models/dish.model";
 import {Restaurant} from "../shared/models/restaurant.model";
 import {FoodsRestService} from "../shared/services/foods.rest.service";
@@ -16,7 +15,7 @@ declare const $: any;
     styleUrls: ["./app.component.scss"],
 })
 export class AppComponent implements OnInit {
-    public readonly restaurants: Restaurant[] = RestaurantData;
+    public restaurants: Restaurant[] = [];
     public readonly dailyMenus: { [key: string]: Dish[] } = {};
 
     public constructor(private readonly foodsRestService: FoodsRestService,
@@ -61,9 +60,19 @@ export class AppComponent implements OnInit {
         $(".ui.multiple.dropdown").dropdown().find(".menu").append(innerHtml);
     }
 
+    public onRestaurantChanges(selectedRestaurants: Restaurant[]): void {
+        this.restaurants = selectedRestaurants;
+        this.loadDailyMenus();
+    }
+
     public ngOnInit(): void {
         this.statsService.setVisit();
-        const data = this.restaurants.map((restaurant) => this.foodsRestService.getZomatoFood(restaurant.id));
+    }
+
+    private loadDailyMenus(): void {
+        const data = this.restaurants
+                         .filter((restaurant) => !this.dailyMenus[restaurant.key])
+                         .map((restaurant) => this.foodsRestService.getZomatoFood(restaurant.id));
         Promise.all(data).then((results) => {
             this.statsService.storeMenu(results);
             results.forEach((result, index) => {

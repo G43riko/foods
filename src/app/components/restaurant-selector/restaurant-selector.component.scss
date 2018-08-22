@@ -1,0 +1,114 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+    transition:
+        background-color 400ms ease-out,
+        border-color 400ms ease-out,
+        color 400ms ease-out;
+}
+
+#sideNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: 0.3s all;
+    height: 100%;
+    background: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    .content {
+        z-index: 100;
+        width: 600px;
+        overflow-y: auto;
+        height: 100%;
+    }
+    #opener {
+        z-index: 50;
+        position: absolute;
+        cursor: pointer;
+        font-size: 50px;
+        left: 600px;
+        top:0;
+        width: 60px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background: white;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 0 5px 5px 0;
+        &::before {
+            content: "<"
+        }
+    }
+    &.hidden {
+        left: -600px;
+        #opener::before {
+            content: ">"
+        }
+    }
+
+
+}
+
+html, body {
+    display: block;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    overflow-y: scroll;
+    font-family: Arial, sans-serif;
+    background: rgb(252,255,244);
+    background: radial-gradient( ellipse at center, rgba(252,255,244,1) 0%,rgba(223,229,215,1) 50%,rgba(179,190,173,1) 100% );
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+
+    div {
+        flex-basis: 40%;
+
+        h3 {
+            font-weight: bold;
+            font-size: 150%;
+            line-height: 1em;
+        }
+    }
+}
+
+ul.sortable {
+    display: block;
+    list-style: none;
+    background: #e0e0e0;
+    border-radius: 4px;
+    box-shadow: 0 0 40px rgba(0,0,0,0.4);
+    margin: 20px 0;
+    padding: 5px;
+
+    & > li {
+        display: block;
+        margin: 1px;
+        padding: 10px;
+        border-radius: 4px;
+        cursor: move;
+        background: #fff;
+
+        &:hover {
+            background: #ffffe0;
+        }
+        &.active {
+            background: #ccc;
+        }
+        &.dragging {
+            background: #e0ffff;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+            opacity: 0.5;
+        }
+    }
+}

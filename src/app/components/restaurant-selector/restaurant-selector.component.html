@@ -1,5 +1,30 @@
-<div id="sideNav">
-    <div id="opener">
-        jupii
+<div id="sideNav" class="hidden" #wrapper>
+    <div class="content">
+        <div class="container">
+            <div>
+                <h3>Všetky reštaurácie</h3>
+                <ul id="list-1" class="sortable">
+                    <ng-container *ngFor="let restaurant of restaurants">
+                        <li *ngIf="!restaurant.visible"
+                            title="{{restaurant.key}}">{{restaurant.name}}
+                        </li>
+                    </ng-container>
+                </ul>
+                <button id="sbtn-1" type="button" style="display: none;">Serialize</button>
+            </div>
+
+            <div>
+                <h3>Aktuálne zvolené reštaurácie</h3>
+                <ul id="list-2" class="sortable">
+                    <li *ngFor="let restaurant of selectedRestaurants"
+                        title="{{restaurant.key}}">{{restaurant.name}}</li>
+                </ul>
+                <button id="sbtn-2" class="ui primary button">
+                    Uložiť
+                </button>
+            </div>
+
+        </div>
     </div>
+    <div id="opener" (click)="toggleSidebar()"></div>
 </div>

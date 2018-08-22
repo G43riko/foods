@@ -8,7 +8,7 @@ describe("RestaurantSelectorComponent", () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [RestaurantSelectorComponent]
+            declarations: [RestaurantSelectorComponent],
         })
             .compileComponents();
     }));
