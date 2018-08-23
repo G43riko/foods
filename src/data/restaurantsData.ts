@@ -9,6 +9,12 @@ export const RestaurantData = [
         id: "16508094",
         name: "Delfín",
         key: "delphine",
+        visible: true,
+    },
+    {
+        id: "18481358",
+        name: "Lanogi Gurman",
+        key: "lanogi",
         visible: false,
     },
     {
@@ -48,15 +54,51 @@ export const RestaurantData = [
         visible: true,
     },
     {
+        id: "16510021",
+        name: "Bigger Smack World",
+        key: "bigger",
+        visible: false,
+    },
+    {
         id: "16508023",
         name: "Sole Mio Pizza",
         key: "soleMio",
         visible: true,
     },
     {
+        id: "16508023",
+        name: "Sole Mio Pizza",
+        key: "soleMio",
+        visible: true,
+    },
+    {
+        id: "17937259",
+        name: "TT Burgers",
+        key: "ttBurger",
+        visible: false,
+    },
+    {
         id: "16507775",
         name: "Rotunda",
         key: "rotunda",
         visible: true,
+    },
+    {
+        id: "16507731",
+        name: "Vivendy",
+        key: "vivendy",
+        visible: true,
+    },
+    {
+        id: "16547738",
+        name: "Don Quijote",
+        key: "donQuijote",
+        visible: false,
+    },
+    {
+        id: "16508120",
+        name: "U Zlatého Bažanta",
+        key: "uZlatehoBazanta",
+        visible: false,
     },
 ];

@@ -3,13 +3,16 @@
     <app-page-nav-bar #pageNavBar></app-page-nav-bar>
     <div *ngIf="restaurants && restaurants.length > 0" id="foodContent">
         <div *ngFor="let restaurant of restaurants" style="margin-top: 20px;" title="{{counter}}">
-            <app-restaurant-foods [dailyMenus]="dailyMenus"
+            <app-restaurant-foods *ngIf="restaurant.key !== 'bigger'"
+                                  [dailyMenus]="dailyMenus"
                                   [highlight]="pageNavBar.highlight"
                                   [searchKey]="pageNavBar.searchKey"
                                   [restaurant]="restaurant"></app-restaurant-foods>
+            <div *ngIf="restaurant.key === 'bigger'">
+                <h3>bigger</h3>
+                <iframe id="biggerRest" src="http://bigger.sk/menu/"></iframe>
+            </div>
         </div>
     </div>
-    <h3>bigger</h3>
-    <iframe id="biggerRest" src="http://bigger.sk/menu/"></iframe>
     <app-restaurant-selector (restaurantsChange)="onRestaurantChanges($event)"></app-restaurant-selector>
 </div>
