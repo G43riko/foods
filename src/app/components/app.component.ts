@@ -1,4 +1,4 @@
-import {ChangeDetectorRef, Component, OnChanges, OnInit, SimpleChanges} from "@angular/core";
+import {Component, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {Dish} from "../shared/models/dish.model";
 import {Restaurant} from "../shared/models/restaurant.model";
 import {FoodsRestService} from "../shared/services/foods.rest.service";
@@ -6,6 +6,7 @@ import {FoodsService} from "../shared/services/foods.service";
 import {ParserService} from "../shared/services/parser.service";
 import {StatsService} from "../shared/services/stats.service";
 import {StringUtils} from "../shared/utils/StringUtils";
+import {DomSanitizer} from "@angular/platform-browser";
 
 declare const $: any;
 
@@ -21,6 +22,7 @@ export class AppComponent implements OnInit, OnChanges {
 
     public constructor(private readonly foodsRestService: FoodsRestService,
                        private readonly parserService: ParserService,
+                       private readonly sanitizer: DomSanitizer,
                        private readonly foodsService: FoodsService,
                        private readonly statsService: StatsService) {
     }
@@ -73,7 +75,7 @@ export class AppComponent implements OnInit, OnChanges {
 
     private loadDailyMenus(): void {
         const data = this.restaurants
-                         .filter((restaurant) => !this.dailyMenus[restaurant.key])
+            .filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink)
                          .map((restaurant) => this.foodsRestService.getZomatoFood(restaurant.id));
         Promise.all(data).then((results) => {
             this.statsService.storeMenu(results);

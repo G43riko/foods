@@ -6,7 +6,7 @@
                 <td colspan="2">Neboli nájdené žiadne výsledky</td>
             </tr>
             <ng-container *ngIf="dailyMenus[restaurant.key] && dailyMenus[restaurant.key].length > 0">
-                <ng-container *ngFor="let dish of dailyMenus[restaurant.key] | searchPipe: searchKey">
+                <ng-container *ngFor="let dish of dailyMenus[restaurant.key] | searchFoodPipe: searchKey">
                     <tr *ngIf="dish !== null">
                         <!--
                         <td>

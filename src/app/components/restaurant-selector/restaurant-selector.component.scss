@@ -1,5 +1,15 @@
 $panel-width: 450px;
 
+.strong {
+    font-weight: bold;
+}
+
+small {
+    position: absolute;
+    bottom: 0;
+    padding: 9px;
+}
+
 #sideNav {
     position: fixed;
     top: 0;
@@ -39,8 +49,6 @@ $panel-width: 450px;
             content: ">"
         }
     }
-
-
 }
 
 .container {
@@ -62,11 +70,12 @@ $panel-width: 450px;
     }
 
     div {
-        flex-basis: 40%;
+        flex-basis: 48%;
 
-        h3 {
+        h4 {
             font-weight: bold;
-            font-size: 150%;
+            font-size: 120%;
+            text-align: center;
             line-height: 1em;
         }
     }
@@ -76,10 +85,11 @@ $panel-width: 450px;
         list-style: none;
         background: #e0e0e0;
         border-radius: 4px;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.13);
         margin: 20px 0;
         padding: 5px;
         min-height: 40px;
-        max-height: calc(100% - 90px);
+        max-height: calc(100% - 130px);
         overflow: auto;
         & > li {
             display: block;

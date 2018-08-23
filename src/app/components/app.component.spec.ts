@@ -1,10 +1,10 @@
-import {TestBed, async} from "@angular/core/testing";
+import {async, TestBed} from "@angular/core/testing";
 import {AppComponent} from "./app.component";
 import {PageNavBarComponent} from "./page-nav-bar/page-nav-bar.component";
 import {RestaurantFoodsComponent} from "./restaurant-foods/restaurant-foods.component";
 import {RestaurantSelectorComponent} from "./restaurant-selector/restaurant-selector.component";
 import {FormsModule} from "@angular/forms";
-import {SearchPipe} from "../shared/pipes/search.pipe";
+import {SearchFoodPipe} from "../shared/pipes/search-food.pipe";
 import {FoodsRestService} from "../shared/services/foods.rest.service";
 import {HttpClientModule} from "@angular/common/http";
 import {StatsService} from "../shared/services/stats.service";
@@ -19,7 +19,7 @@ describe("AppComponent", () => {
                 PageNavBarComponent,
                 RestaurantFoodsComponent,
                 RestaurantSelectorComponent,
-                SearchPipe,
+                SearchFoodPipe,
             ],
             providers: [
                 FoodsRestService,

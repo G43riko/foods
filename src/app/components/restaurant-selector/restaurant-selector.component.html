@@ -1,12 +1,20 @@
-<div id="sideNav" class="hidden" #wrapper>
+<div id="sideNav" class="hidden unselectable" #wrapper>
     <div class="content">
         <div class="container">
             <div>
-                <h3>Všetky reštaurácie</h3>
+                <h4>Všetky reštaurácie</h4>
+                <div class="field">
+                    <div class="ui mini icon input">
+                        <input [(ngModel)]="searchKey" type="text" placeholder="hľadať...">
+                        <i class="search icon"></i>
+                    </div>
+                </div>
                 <ul id="list-1" class="sortable">
-                    <ng-container *ngFor="let restaurant of restaurants">
+                    <ng-container *ngFor="let restaurant of restaurants | searchRestaurantPipe: searchKey">
                         <li *ngIf="!restaurant.visible"
-                            title="{{restaurant.key}}">{{restaurant.name}}
+                            [ngClass]="{'strong': !restaurant.menuLink}"
+                            title="{{restaurant.key}}">
+                            {{restaurant.name}}
                         </li>
                     </ng-container>
                 </ul>
@@ -14,14 +22,27 @@
             </div>
 
             <div>
-                <h3>Aktuálne zvolené reštaurácie</h3>
+                <h4>Zvolené reštaurácie</h4>
+                <div class="field" style="visibility: hidden">
+                    <div class="ui mini icon input">
+                        <input [(ngModel)]="searchKey" type="text" placeholder="hľadať...">
+                        <i class="search icon"></i>
+                    </div>
+                </div>
                 <ul id="list-2" class="sortable">
                     <li *ngFor="let restaurant of selectedRestaurants"
-                        title="{{restaurant.key}}">{{restaurant.name}}</li>
+                        [ngClass]="{'strong': !restaurant.menuLink}"
+                        title="{{restaurant.key}}">
+                        {{restaurant.name}}
+                    </li>
                 </ul>
-                <button id="sbtn-2" class="ui primary button">
+                <button id="sbtn-2" class="ui primary button" style="display: block">
                     Uložiť
                 </button>
+
+                <small style="display: none;">
+                    *Obedové menu reštaurácií ktoré nie sú zvýraznené sa zobrazia len v iframe
+                </small>
             </div>
 
         </div>

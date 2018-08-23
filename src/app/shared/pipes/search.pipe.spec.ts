@@ -1,8 +1,8 @@
-import {SearchPipe} from "./search.pipe";
+import {SearchFoodPipe} from "./search-food.pipe";
 import {Dish} from "../models/dish.model";
 
-describe("SearchPipe", () => {
-    const pipe = new SearchPipe();
+describe("SearchFoodPipe", () => {
+    const pipe = new SearchFoodPipe();
     const defaultInput = [new Dish("005", "toto je kurací rezeň", "4.50€")];
     const changedOutput = [{
         dish: {

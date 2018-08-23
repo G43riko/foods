@@ -3,4 +3,5 @@ export class Restaurant {
     public name: string;
     public key: string;
     public id: string;
+    public menuLink?: string;
 }

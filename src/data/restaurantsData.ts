@@ -9,12 +9,14 @@ export const RestaurantData = [
         id: "16508094",
         name: "Delfín",
         key: "delphine",
+        menuLink: "http://restauraciadelfin.sk/aktualne-denne-menu",
         visible: true,
     },
     {
         id: "18481358",
         name: "Lanogi Gurman",
         key: "lanogi",
+        menuLink: "https://www.lanogi.sk/denne-menu/",
         visible: false,
     },
     {
@@ -57,13 +59,8 @@ export const RestaurantData = [
         id: "16510021",
         name: "Bigger Smack World",
         key: "bigger",
+        menuLink: "http://bigger.sk/menu/",
         visible: false,
-    },
-    {
-        id: "16508023",
-        name: "Sole Mio Pizza",
-        key: "soleMio",
-        visible: true,
     },
     {
         id: "16508023",
@@ -75,6 +72,7 @@ export const RestaurantData = [
         id: "17937259",
         name: "TT Burgers",
         key: "ttBurger",
+        menuLink: "https://restauracie.sme.sk/restauracia/tt-burgers-family-fine-food_8662-ruzinov_2980/denne-menu",
         visible: false,
     },
     {
@@ -99,6 +97,27 @@ export const RestaurantData = [
         id: "16508120",
         name: "U Zlatého Bažanta",
         key: "uZlatehoBazanta",
+        menuLink: "http://www.uzlatehobazanta.sk/denne-menu/",
+        visible: false,
+    },
+    {
+        id: "16508074",
+        name: "Veg Life",
+        key: "vegLife",
+        visible: true,
+    },
+    {
+        id: "16508365",
+        name: "Breweria",
+        key: "breweria",
+        menuLink: "https://restauracie.sme.sk/restauracia/breweria-slimak_7191-bratislava_2983/denne-menu",
+        visible: false,
+    },
+    {
+        id: "16507905",
+        name: "La Cantina Contadina",
+        key: "cantina",
+        menuLink: "https://www.cantinacontadina.sk/denne-menu/",
         visible: false,
     },
 ];

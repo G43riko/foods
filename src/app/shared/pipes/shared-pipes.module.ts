@@ -1,13 +1,19 @@
 import {NgModule} from "@angular/core";
-import {SearchPipe} from "./search.pipe";
+import {SafePipe} from "./safe.pipe";
+import {SearchFoodPipe} from "./search-food.pipe";
+import {SearchRestaurantPipe} from "./search-restaurant.pipe";
 
 @NgModule({
     imports: [],
     declarations: [
-        SearchPipe,
+        SearchFoodPipe,
+        SafePipe,
+        SearchRestaurantPipe,
     ],
     exports: [
-        SearchPipe,
+        SearchFoodPipe,
+        SafePipe,
+        SearchRestaurantPipe,
     ],
 })
 export class SharedPipesModule {

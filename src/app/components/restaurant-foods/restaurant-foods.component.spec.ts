@@ -1,7 +1,7 @@
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 
 import {RestaurantFoodsComponent} from "./restaurant-foods.component";
-import {SearchPipe} from "../../shared/pipes/search.pipe";
+import {SearchFoodPipe} from "../../shared/pipes/search-food.pipe";
 
 describe("RestaurantFoodsComponent", () => {
     let component: RestaurantFoodsComponent;
@@ -9,7 +9,7 @@ describe("RestaurantFoodsComponent", () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [RestaurantFoodsComponent, SearchPipe]
+            declarations: [RestaurantFoodsComponent, SearchFoodPipe]
         })
             .compileComponents();
     }));

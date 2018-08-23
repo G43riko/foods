@@ -7,9 +7,9 @@ const tagEnd = `</span>`;
 const regex = new RegExp(`(${tagStart}|${tagEnd})`, "g");
 
 @Pipe({
-    name: "searchPipe",
+    name: "searchFoodPipe",
 })
-export class SearchPipe implements PipeTransform {
+export class SearchFoodPipe implements PipeTransform {
     public transform(value: Dish[], key: string): Dish[] {
         if (!value) {
             return [null];

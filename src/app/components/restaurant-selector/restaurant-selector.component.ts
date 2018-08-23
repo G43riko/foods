@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild,} from "@angular/core";
+import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild} from "@angular/core";
 import {RestaurantData} from "../../../data/restaurantsData";
 import {FactoryModel} from "../../shared/models/factory.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
@@ -15,6 +15,7 @@ export class RestaurantSelectorComponent implements OnInit {
     @ViewChild("wrapper") public wrapper: ElementRef<HTMLDivElement>;
     @Output("restaurantsChange") public restaurantsChange: EventEmitter<Restaurant[]> = new EventEmitter<Restaurant[]>();
     public readonly selectedRestaurants: Restaurant[] = [];
+    public searchKey: string;
 
     @HostListener("document:click", ["$event"])
     public onClick(target: any): void {
