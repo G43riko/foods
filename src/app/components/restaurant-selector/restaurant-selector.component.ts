@@ -1,16 +1,4 @@
-import {
-    ChangeDetectorRef,
-    Component,
-    ElementRef,
-    EventEmitter,
-    HostListener,
-    Input,
-    OnChanges,
-    OnInit,
-    Output,
-    SimpleChanges,
-    ViewChild
-} from "@angular/core";
+import {Component, ElementRef, EventEmitter, HostListener, OnInit, Output, ViewChild,} from "@angular/core";
 import {RestaurantData} from "../../../data/restaurantsData";
 import {FactoryModel} from "../../shared/models/factory.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
@@ -26,11 +14,11 @@ export class RestaurantSelectorComponent implements OnInit {
     public readonly restaurants: Restaurant[] = RestaurantData;
     @ViewChild("wrapper") public wrapper: ElementRef<HTMLDivElement>;
     @Output("restaurantsChange") public restaurantsChange: EventEmitter<Restaurant[]> = new EventEmitter<Restaurant[]>();
-    public selectedRestaurants: Restaurant[] = [];
+    public readonly selectedRestaurants: Restaurant[] = [];
 
     @HostListener("document:click", ["$event"])
     public onClick(target: any): void {
-        if (!this.wrapper.nativeElement.contains(target.target)){
+        if (!this.wrapper.nativeElement.contains(target.target)) {
             this.wrapper.nativeElement.classList.add("hidden");
         }
     }
@@ -39,25 +27,20 @@ export class RestaurantSelectorComponent implements OnInit {
         this.wrapper.nativeElement.classList.toggle("hidden");
     }
 
-    private sorter(): void {
-        ((name, factory) => {
-            if (typeof window === "object") {
-                window[name] = factory();
-                if (typeof $ === "object") {
-                    $.fn[name] = function (options): any {
-                        return this.each(function (): void {
-                            new window[name](this, options);
-                        });
-                    };
-                }
+    public saveResults(data: string): void {
+        const restaurantKeys = data.split(":");
+        this.selectedRestaurants.splice(0, this.selectedRestaurants.length);
+
+        this.restaurants.forEach((restaurant) => restaurant.visible = false);
+        restaurantKeys.forEach((key) => {
+            const restaurant = this.restaurants.find((actualRestaurant) => actualRestaurant.key === key);
+            if (restaurant) {
+                restaurant.visible = true;
+                this.selectedRestaurants.push(restaurant);
             }
-
-        })("Sortable", () => {
-            return FactoryModel;
         });
-
-        this.initSortable("list-1", "sbtn-1");
-        this.initSortable("list-2", "sbtn-2");
+        setTimeout(() => this.restaurantsChange.emit([...this.selectedRestaurants]), 0);
+        localStorage.setItem("selectedRestaurants", JSON.stringify(restaurantKeys));
     }
 
     public initSortable(list, sbtn): void {
@@ -91,18 +74,24 @@ export class RestaurantSelectorComponent implements OnInit {
         this.sorter();
     }
 
-    public saveResults(data: string): void {
-        const restaurantKeys = data.split(":");
-        this.selectedRestaurants = [];
-        this.restaurants.forEach((restaurant) => {
-            restaurant.visible = false;
-            if (restaurantKeys.includes(restaurant.key)) {
-                restaurant.visible = true;
-                this.selectedRestaurants.push(restaurant);
+    private sorter(): void {
+        ((name, factory) => {
+            if (typeof window === "object") {
+                window[name] = factory();
+                if (typeof $ === "object") {
+                    $.fn[name] = function (options): any {
+                        return this.each(function (): void {
+                            new window[name](this, options);
+                        });
+                    };
+                }
             }
+
+        })("Sortable", () => {
+            return FactoryModel;
         });
-        console.log(this.selectedRestaurants.map((e) => e.name));
-        setTimeout(() => this.restaurantsChange.emit([...this.selectedRestaurants]), 0);
-        localStorage.setItem("selectedRestaurants", JSON.stringify(restaurantKeys));
+
+        this.initSortable("list-1", "sbtn-1");
+        this.initSortable("list-2", "sbtn-2");
     }
 }
