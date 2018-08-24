@@ -1,13 +1,15 @@
 <div *ngIf="restaurant.visible">
-    <h3>{{restaurant.name}}</h3>
-    <table class="ui celled table">
+    <h3 class="ui {{appService.selectedColor}} header"
+        [ngClass]="{'inverted': appService.inverted}">{{restaurant.name}}</h3>
+    <table class="ui celled table {{appService.selectedColor}}"
+           [ngClass]="{'inverted': appService.inverted}">
         <tbody>
             <tr *ngIf="!dailyMenus[restaurant.key] || dailyMenus[restaurant.key].length === 0">
                 <td colspan="2">Neboli nájdené žiadne výsledky</td>
             </tr>
             <ng-container *ngIf="dailyMenus[restaurant.key] && dailyMenus[restaurant.key].length > 0">
                 <ng-container *ngFor="let dish of dailyMenus[restaurant.key] | searchFoodPipe: searchKey">
-                    <tr *ngIf="dish !== null">
+                    <tr *ngIf="dish !== null" [ngClass]="{positive: isHighlighted(dish.name)}">
                         <!--
                         <td>
                             <div *ngIf="dish.price" class="ui checkbox">
@@ -16,7 +18,8 @@
                         </td>
                         -->
                         <td>
-                            <div [ngClass]="{'ui ribbon label': isBold(dish.name)}" class="row">
+                            <div [ngClass]="{'ui ribbon label': isBold(dish.name)}"
+                                 class="row {{appService.selectedColor}}">
                                 <span [ngClass]="{highlighted: isHighlighted(dish.name)}"
                                       [innerHTML]="dish.name"></span>
                             </div>

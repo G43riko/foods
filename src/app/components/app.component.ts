@@ -7,6 +7,7 @@ import {ParserService} from "../shared/services/parser.service";
 import {StatsService} from "../shared/services/stats.service";
 import {StringUtils} from "../shared/utils/StringUtils";
 import {DomSanitizer} from "@angular/platform-browser";
+import {AppService} from "../shared/services/app.service";
 
 declare const $: any;
 
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit, OnChanges {
     public constructor(private readonly foodsRestService: FoodsRestService,
                        private readonly parserService: ParserService,
                        private readonly sanitizer: DomSanitizer,
+                       public readonly appService: AppService,
                        private readonly foodsService: FoodsService,
                        private readonly statsService: StatsService) {
     }
@@ -74,15 +76,14 @@ export class AppComponent implements OnInit, OnChanges {
     }
 
     private loadDailyMenus(): void {
-        const data = this.restaurants
-            .filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink)
-                         .map((restaurant) => this.foodsRestService.getZomatoFood(restaurant.id));
+        const actualRestaurants = this.restaurants.filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink);
+        const data = actualRestaurants.map((restaurant) => this.foodsRestService.getZomatoFood(restaurant.id));
+
         Promise.all(data).then((results) => {
             this.statsService.storeMenu(results);
             results.forEach((result, index) => {
-                this.dailyMenus[this.restaurants[index].key] = this.foodsService.processZomatoMenu(result);
+                this.dailyMenus[actualRestaurants[index].key] = this.foodsService.processZomatoMenu(result);
             });
-            this.dailyMenus = {...this.dailyMenus};
             setTimeout(() => this.setAutocomplete(), 10);
             $(".checkbox").checkbox();
             /*

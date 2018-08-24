@@ -1,3 +1,5 @@
+$panel-width: 450px;
+
 .strong {
     font-weight: bold;
 }
@@ -6,6 +8,47 @@ small {
     position: absolute;
     bottom: 0;
     padding: 9px;
+}
+
+#sideNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transition: 0.3s all;
+    height: 100%;
+    resize: vertical;
+    background: white;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+    .content {
+        z-index: 100;
+        max-width: $panel-width;
+        overflow-y: auto;
+        height: 100%;
+    }
+    .opener {
+        z-index: 50;
+        position: absolute;
+        cursor: pointer;
+        font-size: 50px;
+        left: 100%;
+        top: 0;
+        width: 60px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background: white;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        border-radius: 0 5px 5px 0;
+        &::before {
+            content: "<"
+        }
+    }
+    &.hidden {
+        transform: translate(-100%);
+        .opener::before {
+            content: ">"
+        }
+    }
 }
 
 .container {

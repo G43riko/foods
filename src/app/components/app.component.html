@@ -1,5 +1,6 @@
 <div class="main ui intro container" style="margin-top:50px">
-    <h1>Denné menu</h1>
+    <h1 class="ui {{appService.selectedColor}} header"
+        [ngClass]="{'inverted': appService.inverted}">Denné menu</h1>
     <app-page-nav-bar #pageNavBar></app-page-nav-bar>
     <div *ngIf="restaurants && restaurants.length > 0" id="foodContent">
         <div *ngFor="let restaurant of restaurants" style="margin-top: 20px;" class="{{counter}}">
@@ -15,5 +16,6 @@
 
         </div>
     </div>
-    <app-restaurant-selector (restaurantsChange)="onRestaurantChanges($event)"></app-restaurant-selector>
+    <!--<app-restaurant-selector (restaurantsChange)="onRestaurantChanges($event)"></app-restaurant-selector>-->
+    <app-side-nav></app-side-nav>
 </div>

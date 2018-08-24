@@ -3,6 +3,7 @@ import {Food} from "../../shared/models/food.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
 import {FoodUtils} from "../../shared/utils/food-utils";
 import {StringUtils} from "../../shared/utils/StringUtils";
+import {AppService} from "../../shared/services/app.service";
 
 @Component({
     selector: "app-restaurant-foods",
@@ -14,6 +15,9 @@ export class RestaurantFoodsComponent implements OnChanges{
     @Input() public searchKey: string;
     @Input() public dailyMenus: any;
     @Input() public restaurant: Restaurant = new Restaurant();
+
+    public constructor(public readonly appService: AppService) {
+    }
 
     public isBold(key: string): boolean {
         return FoodUtils.isBold(key);
