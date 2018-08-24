@@ -1,13 +1,13 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from "@angular/core";
+import {DomSanitizer} from "@angular/platform-browser";
 import {Dish} from "../shared/models/dish.model";
 import {Restaurant} from "../shared/models/restaurant.model";
+import {AppService} from "../shared/services/app.service";
 import {FoodsRestService} from "../shared/services/foods.rest.service";
 import {FoodsService} from "../shared/services/foods.service";
 import {ParserService} from "../shared/services/parser.service";
 import {StatsService} from "../shared/services/stats.service";
 import {StringUtils} from "../shared/utils/StringUtils";
-import {DomSanitizer} from "@angular/platform-browser";
-import {AppService} from "../shared/services/app.service";
 
 declare const $: any;
 

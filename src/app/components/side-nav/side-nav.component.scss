@@ -1,5 +1,8 @@
 $panel-width: 450px;
-
+* {
+    padding: 0;
+    margin: 0;
+}
 #sideNav {
     position: fixed;
     top: 0;
@@ -12,6 +15,7 @@ $panel-width: 450px;
     .content {
         z-index: 100;
         max-width: $panel-width;
+        transition: 0.3s all;
         min-width: 200px; // temporary
         overflow-y: auto;
         height: 100%;
@@ -20,24 +24,25 @@ $panel-width: 450px;
         z-index: 50;
         position: absolute;
         cursor: pointer;
-        font-size: 50px;
+        box-sizing: border-box;
+        padding: 0 10px;
+        font-size: 20px;
         left: 100%;
         top: 0;
-        width: 60px;
-        height: 40px;
-        line-height: 40px;
-        text-align: center;
         background: white;
         box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
         border-radius: 0 5px 5px 0;
-        &::before {
-            content: "<"
+
+        .controll {
+            position: relative;
+            min-width: 60px;
+            height: 40px;
+            line-height: 40px;
+            text-align: center;
+
         }
     }
     &.hidden {
         transform: translate(-100%);
-        .opener::before {
-            content: ">"
-        }
     }
 }

@@ -11,6 +11,8 @@ import {FoodsService} from "./shared/services/foods.service";
 import {ParserService} from "./shared/services/parser.service";
 import {StatsService} from "./shared/services/stats.service";
 import {SharedModule} from "./shared/shared.module";
+import {SideNavComponent} from "./components/side-nav/side-nav.component";
+import {OptionsComponent} from "./components/options/options.component";
 
 declare const window: any;
 
@@ -26,7 +28,9 @@ if (iframe) {
         AppComponent,
         RestaurantSelectorComponent,
         RestaurantFoodsComponent,
+        SideNavComponent,
         PageNavBarComponent,
+        OptionsComponent,
     ],
     imports: [
         BrowserModule,

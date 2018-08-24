@@ -1,0 +1,15 @@
+<div id="sideNav" class="hidden unselectable" #wrapper>
+    <div class="content">
+        <app-restaurant-selector [ngStyle]="{display: visibleComponent === 'restaurants' ? 'block' : 'none'}"
+                                 (restaurantsChange)="restaurantsChange.emit($event)"></app-restaurant-selector>
+        <app-options [ngStyle]="{display: visibleComponent === 'options' ? 'block' : 'none'}">Nastavenia</app-options>
+    </div>
+    <div class="opener">
+        <div class="controll" (click)="show('restaurants')">
+            Reštaurácie
+        </div>
+        <div class="controll" (click)="show('options')">
+            Nastavenia
+        </div>
+    </div>
+</div>
