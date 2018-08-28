@@ -73,6 +73,8 @@ export class AppComponent implements OnInit, OnChanges {
 
     public ngOnInit(): void {
         this.statsService.setVisit();
+        $(".ui.sidebar.restaurants").sidebar("attach events", ".item.opener.restaurants");
+        $(".ui.sidebar.options").sidebar("attach events", ".item.opener.options");
     }
 
     private loadDailyMenus(): void {

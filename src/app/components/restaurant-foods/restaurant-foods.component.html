@@ -19,7 +19,7 @@
                         -->
                         <td>
                             <div [ngClass]="{'ui ribbon label': isBold(dish.name)}"
-                                 class="row {{appService.selectedColor}}">
+                                 class="row {{appService.inverted || appService.selectedColor}}">
                                 <span [ngClass]="{highlighted: isHighlighted(dish.name)}"
                                       [innerHTML]="dish.name"></span>
                             </div>

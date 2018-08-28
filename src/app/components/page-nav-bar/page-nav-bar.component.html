@@ -1,7 +1,8 @@
 <div class="ui form">
     <div class="inline fields">
         <div class="field">
-            <div class="ui icon input">
+            <div class="ui icon input {{appService.selectedColor}}"
+                 [ngClass]="{'inverted': appService.inverted}">
                 <input [(ngModel)]="searchKey" type="text" placeholder="hľadať...">
                 <i class="search icon"></i>
             </div>

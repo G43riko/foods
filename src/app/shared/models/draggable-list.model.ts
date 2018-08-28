@@ -11,7 +11,7 @@ function getPoint(e): { x: number, y: number } {
     return {x: pointX, y: pointY};
 }
 
-export class FactoryModel {
+export class DraggableListModel {
     private container: HTMLElement;
     private options: any;
     private clickItem: any;

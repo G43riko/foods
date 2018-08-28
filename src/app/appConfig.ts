@@ -2,6 +2,11 @@ export class Config {
     public static readonly ZOMATO_API_KEY = "cbc11fdb6cb6e160bc12508dcb57b405";
     // public static readonly ZOMATO_API_KEY = "e9e845908aebec0e95fc72310a1a3b59";
 
+
+/*
+    public static readonly WEIGHT_REGEXP = /\d+(,|.)?\d+ ?[gl][ \/]?/g;
+    public static readonly PRICE_REGEXP = /\d+(,|.)\d+ ?(,|.)-/g;
+*/
     public static readonly WEIGHT_REGEXP = /\d+[,.]?\d+ ?[gl][ \/]?/g;
     public static readonly PRICE_REGEXP = /[0-9]+[,.][0-9]+ ?[,.]-/g;
 

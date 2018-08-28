@@ -1,4 +1,5 @@
-<div class="button {{appService.selectedColor}}">
+<div style="padding: 10px;">
+    <div class="button {{appService.selectedColor}}">
     <label for="appColor" style="font-weight: bolder; font-size: 14px; padding:10px">Farba</label>
     <select id="appColor"
             class="ui dropdown">
@@ -10,4 +11,10 @@
             {{color}}
         </option>
     </select>
+</div>
+<div class="ui {{appService.inverted && 'checked'}} checkbox">
+    <input type="checkbox" checked="" [(ngModel)]="appService.inverted">
+    <label>Invertovať farby</label>
+</div>
+
 </div>

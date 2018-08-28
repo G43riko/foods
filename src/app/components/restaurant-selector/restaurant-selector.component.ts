@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from "@angular/core";
 import {RestaurantData} from "../../../data/restaurantsData";
-import {FactoryModel} from "../../shared/models/factory.model";
+import {DraggableListModel} from "../../shared/models/draggable-list.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
 import {AppService} from "../../shared/services/app.service";
 
@@ -39,7 +39,7 @@ export class RestaurantSelectorComponent implements OnInit {
     public initSortable(list, sbtn): void {
         const listObj = document.getElementById(list);
         const sbtnObj = document.getElementById(sbtn);
-        const sortable = new FactoryModel(listObj);
+        const sortable = new DraggableListModel(listObj);
 
         sbtnObj.addEventListener("click", (e) => {
             e.preventDefault();
@@ -81,7 +81,7 @@ export class RestaurantSelectorComponent implements OnInit {
             }
 
         })("Sortable", () => {
-            return FactoryModel;
+            return DraggableListModel;
         });
 
         this.initSortable("list-1", "sbtn-1");
