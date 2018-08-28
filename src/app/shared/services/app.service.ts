@@ -7,6 +7,7 @@ export class AppService {
 
     public constructor() {
         this.selectedColorLocal = Colors[localStorage.getItem("color")];
+        this.invertedLocal = localStorage.getItem("inverted") === "true";
     }
 
     public get selectedColor(): Colors {
@@ -18,5 +19,14 @@ export class AppService {
         this.selectedColorLocal = color;
     }
 
-    public inverted = false;
+    public invertedLocal = false;
+
+    public get inverted(): boolean {
+        return this.invertedLocal;
+    }
+
+    public set inverted(value: boolean) {
+        localStorage.setItem("inverted", String(value));
+        this.invertedLocal = value;
+    }
 }
