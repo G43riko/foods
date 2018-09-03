@@ -11,7 +11,6 @@ declare const $;
 })
 export class OptionsComponent implements OnInit {
     public readonly allowedColors: string[] = Object.keys(Colors);
-    public readonly Colors = Colors;
 
     public constructor(public readonly appService: AppService) {
     }
