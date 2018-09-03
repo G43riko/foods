@@ -27,4 +27,15 @@ export class OptionsComponent implements OnInit {
             }), 100);
     }
 
+    public resetRestaurants(): void {
+    }
+
+    public resetOptions(): void {
+        this.appService.reset();
+
+        setTimeout(() => {
+            $(".ui.dropdown").dropdown("set selected", this.appService.selectedColor);
+            $(".ui.dropdown").dropdown("set text", $(".ui.dropdown").dropdown("get item", $(".ui.dropdown").dropdown("get value")).html())
+        });
+    }
 }

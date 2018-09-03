@@ -3,7 +3,8 @@ import {Colors} from "../models/colors.enum";
 
 @Injectable()
 export class AppService {
-    public selectedColorLocal?: Colors = Colors.red;
+    private selectedColorLocal?: Colors;
+    private invertedLocal = false;
 
     public constructor() {
         this.selectedColorLocal = Colors[localStorage.getItem("color")];
@@ -19,8 +20,6 @@ export class AppService {
         this.selectedColorLocal = color;
     }
 
-    public invertedLocal = false;
-
     public get inverted(): boolean {
         return this.invertedLocal;
     }
@@ -28,5 +27,10 @@ export class AppService {
     public set inverted(value: boolean) {
         localStorage.setItem("inverted", String(value));
         this.invertedLocal = value;
+    }
+
+    public reset(): void {
+        this.selectedColor = undefined;
+        this.inverted = false;
     }
 }

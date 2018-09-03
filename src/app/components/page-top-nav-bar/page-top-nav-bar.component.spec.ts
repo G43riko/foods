@@ -1,22 +1,22 @@
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 
-import {PageNavBarComponent} from "./page-nav-bar.component";
+import {PageTopNavBarComponent} from "./page-top-nav-bar.component";
 import {FormsModule} from "@angular/forms";
 
-describe("PageNavBarComponent", () => {
-    let component: PageNavBarComponent;
-    let fixture: ComponentFixture<PageNavBarComponent>;
+describe("PageTopNavBarComponent", () => {
+    let component: PageTopNavBarComponent;
+    let fixture: ComponentFixture<PageTopNavBarComponent>;
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [PageNavBarComponent],
+            declarations: [PageTopNavBarComponent],
             imports: [FormsModule]
         })
             .compileComponents();
     }));
 
     beforeEach(() => {
-        fixture = TestBed.createComponent(PageNavBarComponent);
+        fixture = TestBed.createComponent(PageTopNavBarComponent);
         component = fixture.componentInstance;
         fixture.detectChanges();
     });

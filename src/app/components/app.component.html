@@ -2,7 +2,7 @@
 <div class="main ui intro container" style="margin-top:50px">
 <h1 class="ui {{appService.selectedColor}} header"
     [ngClass]="{'inverted': appService.inverted}">Denné menu</h1>
-<app-page-nav-bar #pageNavBar></app-page-nav-bar>
+<app-page-top-nav-bar #pageNavBar></app-page-top-nav-bar>
 <div *ngIf="restaurants && restaurants.length > 0" id="foodContent">
     <div *ngFor="let restaurant of restaurants" style="margin-top: 20px;" class="{{counter}}">
         <app-restaurant-foods *ngIf="!restaurant.menuLink"
@@ -17,13 +17,13 @@
 
     </div>
 </div>
-<app-side-nav (restaurantsChange)="onRestaurantChanges($event)"></app-side-nav>
+<app-page-side-nav (restaurantsChange)="onRestaurantChanges($event)"></app-page-side-nav>
 </div>
 -->
 <div class="ui sidebar very wide vertical menu restaurants">
     <app-restaurant-selector (restaurantsChange)="onRestaurantChanges($event)"></app-restaurant-selector>
 </div>
-<div class="ui sidebar vertical menu options">
+<div class="ui sidebar wide vertical menu options">
     <app-options >Nastavenia</app-options>
 </div>
 <div class="pusher" style="margin-top: 60px; padding: 40px">

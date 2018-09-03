@@ -5,10 +5,10 @@ type allowedComponents = "restaurants" | "options";
 
 @Component({
     selector: "app-side-nav",
-    templateUrl: "./side-nav.component.html",
-    styleUrls: ["./side-nav.component.scss"],
+    templateUrl: "./page-side-nav.component.html",
+    styleUrls: ["./page-side-nav.component.scss"],
 })
-export class SideNavComponent implements OnInit {
+export class PageSideNavComponent implements OnInit {
     @ViewChild("wrapper") public wrapper: ElementRef<HTMLDivElement>;
     @Output("restaurantsChange") public restaurantsChange: EventEmitter<Restaurant[]> = new EventEmitter<Restaurant[]>();
     public visibleComponent: allowedComponents;

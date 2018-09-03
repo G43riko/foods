@@ -5,10 +5,10 @@ import {AppService} from "../../shared/services/app.service";
 
 @Component({
     selector: "app-page-nav-bar",
-    templateUrl: "./page-nav-bar.component.html",
-    styleUrls: ["./page-nav-bar.component.scss"],
+    templateUrl: "./page-top-nav-bar.component.html",
+    styleUrls: ["./page-top-nav-bar.component.scss"],
 })
-export class PageNavBarComponent {
+export class PageTopNavBarComponent {
     public highlightTypes: Food[] = FoodData;
     public searchKey: string;
     public highlight: Food = this.highlightTypes[0];

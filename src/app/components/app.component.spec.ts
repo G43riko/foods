@@ -1,6 +1,6 @@
 import {async, TestBed} from "@angular/core/testing";
 import {AppComponent} from "./app.component";
-import {PageNavBarComponent} from "./page-nav-bar/page-nav-bar.component";
+import {PageTopNavBarComponent} from "./page-top-nav-bar/page-top-nav-bar.component";
 import {RestaurantFoodsComponent} from "./restaurant-foods/restaurant-foods.component";
 import {RestaurantSelectorComponent} from "./restaurant-selector/restaurant-selector.component";
 import {FormsModule} from "@angular/forms";
@@ -16,7 +16,7 @@ describe("AppComponent", () => {
         TestBed.configureTestingModule({
             declarations: [
                 AppComponent,
-                PageNavBarComponent,
+                PageTopNavBarComponent,
                 RestaurantFoodsComponent,
                 RestaurantSelectorComponent,
                 SearchFoodPipe,
