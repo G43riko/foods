@@ -35,6 +35,7 @@ export class FoodsService {
                 item.dish.name = item.dish.name.replace(Config.PRICE_REGEXP, " ");
             }
             //
+
             result.push(new Dish(item.dish.dish_id, item.dish.name, item.dish.price));
         });
 

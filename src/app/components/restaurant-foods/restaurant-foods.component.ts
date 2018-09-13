@@ -1,16 +1,18 @@
-import {Component, Input, OnChanges, SimpleChanges} from "@angular/core";
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {Food} from "../../shared/models/food.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
+import {AppService} from "../../shared/services/app.service";
 import {FoodUtils} from "../../shared/utils/food-utils";
 import {StringUtils} from "../../shared/utils/StringUtils";
-import {AppService} from "../../shared/services/app.service";
+
+declare const $;
 
 @Component({
     selector: "app-restaurant-foods",
     templateUrl: "./restaurant-foods.component.html",
     styleUrls: ["./restaurant-foods.component.scss"],
 })
-export class RestaurantFoodsComponent implements OnChanges{
+export class RestaurantFoodsComponent implements OnChanges, OnInit {
     @Input() public highlight: Food = new Food();
     @Input() public searchKey: string;
     @Input() public dailyMenus: any;
@@ -29,10 +31,31 @@ export class RestaurantFoodsComponent implements OnChanges{
         }
 
         return this.highlight.include.some((item) => StringUtils.removeAccentedCharacters(title).toLowerCase().indexOf(item) >= 0) &&
-               this.highlight.exclude.every((item) => StringUtils.removeAccentedCharacters(title).toLowerCase().indexOf(item) < 0);
+            this.highlight.exclude.every((item) => StringUtils.removeAccentedCharacters(title).toLowerCase().indexOf(item) < 0);
     }
 
     public ngOnChanges(changes: SimpleChanges): void {
+        console.log("changes: ", changes);
+        if (changes.dailyMenus) {
+            console.log("teraz sa to meni: ", this.dailyMenus);
+        }
+        // window. = () => this.showImage("grilovanyEncian", "https://www.pizzamarro.sk/images/salad/gril-encian.png");
+
+    }
+    public ngOnInit(): void {
+        $(".foodTable").click((event) => {
+            this.showImage(event.target.getAttribute("title"), event.target.getAttribute("class"));
+        });
     }
 
+    public showImages(contentHtml: string): string {
+        return contentHtml.replace(/(guláš)/gi, "<u title='grilovanyEncian' class='https://www.pizzamarro.sk/images/salad/gril-encian.png'>$1</u>");
+    }
+
+    public showImage(name: string, src: string): void {
+        const modal = $(".ui.modal.foodImage");
+        modal.find(".header").text(name);
+        modal.find("img").attr("src", src);
+        modal.modal("show");
+    }
 }

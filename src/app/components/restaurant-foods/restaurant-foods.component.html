@@ -1,7 +1,7 @@
 <div *ngIf="restaurant.visible">
     <h3 class="ui {{appService.selectedColor}} header"
         [ngClass]="{'inverted': appService.inverted}">{{restaurant.name}}</h3>
-    <table class="ui celled table {{appService.selectedColor}}"
+    <table class="ui celled table {{appService.selectedColor}} foodTable"
            [ngClass]="{'inverted': appService.inverted}">
         <tbody>
             <tr *ngIf="!dailyMenus[restaurant.key] || dailyMenus[restaurant.key].length === 0">
@@ -21,7 +21,7 @@
                             <div [ngClass]="{'ui ribbon label': isBold(dish.name)}"
                                  class="row {{appService.inverted || appService.selectedColor}}">
                                 <span [ngClass]="{highlighted: isHighlighted(dish.name)}"
-                                      [innerHTML]="dish.name"></span>
+                                      [innerHTML]="showImages(dish.name)"></span>
                             </div>
                         </td>
                         <td>{{dish.price}}</td>
@@ -33,4 +33,5 @@
             </ng-container>
         </tbody>
     </table>
+
 </div>
