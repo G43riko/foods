@@ -15,5 +15,7 @@ export class FoodUtils {
         FoodImages.forEach((foodImage) => {
             // simpleFoodName.indexOf()
         });
+
+        return "";
     }
 }
