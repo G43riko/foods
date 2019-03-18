@@ -1,10 +1,12 @@
 import {Component, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {DomSanitizer} from "@angular/platform-browser";
+import {forkJoin} from "rxjs/internal/observable/forkJoin";
 import {Dish} from "../shared/models/dish.model";
 import {Restaurant} from "../shared/models/restaurant.model";
 import {AppService} from "../shared/services/app.service";
 import {FoodsRestService} from "../shared/services/foods.rest.service";
 import {FoodsService} from "../shared/services/foods.service";
+import {NotificationService} from "../shared/services/notification.service";
 import {ParserService} from "../shared/services/parser.service";
 import {StatsService} from "../shared/services/stats.service";
 import {StringUtils} from "../shared/utils/StringUtils";
@@ -24,6 +26,7 @@ export class AppComponent implements OnInit, OnChanges {
     public constructor(private readonly foodsRestService: FoodsRestService,
                        private readonly parserService: ParserService,
                        private readonly sanitizer: DomSanitizer,
+                       private readonly notificationService: NotificationService,
                        public readonly appService: AppService,
                        private readonly foodsService: FoodsService,
                        private readonly statsService: StatsService) {
@@ -35,8 +38,7 @@ export class AppComponent implements OnInit, OnChanges {
             "pork", "rice", "baked", "dna"];
         const aElement = document.getElementById("foodContent");
 
-        const a = !aElement ? [] : aElement.innerText
-            .split(/[ \n\-/,]/g)
+        const a = !aElement ? [] : aElement.innerText.split(/[ \n\-/,]/g)
             .filter((e) => e &&
                 e.length > 3 &&
                 isNaN(parseFloat(e)) &&
@@ -81,7 +83,7 @@ export class AppComponent implements OnInit, OnChanges {
         const actualRestaurants = this.restaurants.filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink);
         const data = actualRestaurants.map((restaurant) => this.foodsRestService.getZomatoFood(restaurant.id));
 
-        Promise.all(data).then((results) => {
+        forkJoin(data).subscribe(((results) => {
             this.statsService.storeMenu(results);
             results.forEach((result, index) => {
                 this.dailyMenus[actualRestaurants[index].key] = this.foodsService.processZomatoMenu(result);
@@ -100,8 +102,8 @@ export class AppComponent implements OnInit, OnChanges {
             */
 
             // this.setSlider();
-        }).catch((error) => {
-            console.error("Error while getting menus from zommato api: ", error);
+        }), (error) => {
+            this.notificationService.showErrorMessage("Error while getting menus from zommato api: ", error);
         });
     }
 

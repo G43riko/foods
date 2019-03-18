@@ -2,3 +2,17 @@
 .highlighted {
     background-color: aquamarine;
 }
+
+
+.daily-menu.row {
+    .helper {
+        display: none;
+        cursor: pointer;
+    }
+
+    &:hover {
+        .helper {
+            display: inline-block;
+        }
+    }
+}

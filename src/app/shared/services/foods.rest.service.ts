@@ -1,8 +1,11 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
-import {tap} from "rxjs/operators";
+import {Observable} from "rxjs/internal/Observable";
+import {of} from "rxjs/internal/observable/of";
+import {catchError, tap} from "rxjs/operators";
 import {Config} from "../../appConfig";
 import {AbstractService} from "./abstract.service";
+import {NotificationService} from "./notification.service";
 
 function getDate(): string {
     const a = new Date();
@@ -17,11 +20,26 @@ export class FoodsRestService extends AbstractService {
         "user-key": Config.ZOMATO_API_KEY,
     });
 
-    public constructor(http: HttpClient) {
+    public constructor(private readonly notificationService: NotificationService, http: HttpClient) {
         super(http);
     }
 
-    private callZomatoApi(url: string, foodKey: string): Promise<any> {
+    public getZomatoFood(id: string): Observable<any> {
+        const foodKey: string = FoodsRestService.ACTUAL_DATE + "-" + id;
+        const result: string = localStorage.getItem(foodKey);
+        if (result) {
+            try {
+                return of(JSON.parse(result));
+            } catch (e) {
+                this.notificationService.showErrorMessage("Cannot parse stored food data. id: ", id, "foodKey: ", foodKey);
+                console.error();
+            }
+        }
+
+        return this.callZomatoApi(Config.ZOMATO_API_URL + "?res_id=" + id, foodKey);
+    }
+
+    private callZomatoApi(url: string, foodKey: string): Observable<any> {
         return this.http.get(url, {headers: this.headers})
             .pipe(
                 tap((data) => {
@@ -31,22 +49,7 @@ export class FoodsRestService extends AbstractService {
                         localStorage.setItem(foodKey, stringifyData);
                     }
                 }),
-            )
-            .toPromise()
-            .catch(this.handleError);
-    }
-
-    public getZomatoFood(id: string): Promise<any> {
-        const foodKey: string = FoodsRestService.ACTUAL_DATE + "-" + id;
-        const result: string = localStorage.getItem(foodKey);
-        if (result) {
-            try {
-                return Promise.resolve(JSON.parse(result));
-            } catch (e) {
-                console.error("Cannot parse stored food data. id: ", id, "foodKey: ", foodKey);
-            }
-        }
-
-        return this.callZomatoApi(Config.ZOMATO_API_URL + "?res_id=" + id, foodKey);
+                catchError(this.handleError),
+            );
     }
 }

@@ -27,7 +27,9 @@
         <div class="field" style="visibility: hidden">
             <div class="ui mini icon input"
                  [ngClass]="{'inverted': appService.inverted}">
-                <input [(ngModel)]="searchKey" type="text" placeholder="hľadať...">
+                <input [(ngModel)]="searchKey"
+                       placeholder="hľadať..."
+                       type="text">
                 <i class="search icon"></i>
             </div>
         </div>

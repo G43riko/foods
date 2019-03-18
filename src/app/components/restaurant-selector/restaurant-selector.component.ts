@@ -20,7 +20,7 @@ export class RestaurantSelectorComponent implements OnInit {
     public constructor(public readonly appService: AppService) {
     }
 
-    public saveResults(data: string): void {
+    private saveResults(data: string): void {
         const restaurantKeys = data.split(":");
         this.selectedRestaurants.splice(0, this.selectedRestaurants.length);
 
@@ -36,7 +36,7 @@ export class RestaurantSelectorComponent implements OnInit {
         localStorage.setItem("selectedRestaurants", JSON.stringify(restaurantKeys));
     }
 
-    public initSortable(list, sbtn): void {
+    private initSortable(list: string, sbtn: string): void {
         const listObj = document.getElementById(list);
         const sbtnObj = document.getElementById(sbtn);
         const sortable = new DraggableListModel(listObj);
@@ -79,7 +79,6 @@ export class RestaurantSelectorComponent implements OnInit {
                     };
                 }
             }
-
         })("Sortable", () => {
             return DraggableListModel;
         });

@@ -1,7 +1,10 @@
-import * as qs from "querystring";
-import {AbstractService} from "./abstract.service";
-import {Injectable, isDevMode} from "@angular/core";
 import {HttpClient} from "@angular/common/http";
+import {Injectable, isDevMode} from "@angular/core";
+import * as qs from "querystring";
+import {Observable} from "rxjs/internal/Observable";
+import {of} from "rxjs/internal/observable/of";
+import {catchError} from "rxjs/operators";
+import {AbstractService} from "./abstract.service";
 
 const url = "http://g43.clanweb.eu/foods/uploader.php";
 const password = "gabriel";
@@ -19,9 +22,9 @@ export class StatsService extends AbstractService {
         super(http);
     }
 
-    public setVisit(): Promise<any> {
+    public setVisit(): Observable<any> {
         if (isDevMode()) {
-            return Promise.resolve("success");
+            return of("success");
         }
 
         return this.http.post(url, qs.stringify({
@@ -33,12 +36,12 @@ export class StatsService extends AbstractService {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
             },
-        }).toPromise().catch(this.handleError);
+        }).pipe(catchError(this.handleError));
     }
 
-    public storeMenu(menu: any): Promise<any> {
+    public storeMenu(menu: any): Observable<any> {
         if (isDevMode()) {
-            return Promise.resolve("success");
+            return of("success");
         }
 
         return this.http.post(url, qs.stringify({
@@ -50,7 +53,7 @@ export class StatsService extends AbstractService {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
             },
-        }).toPromise().catch(this.handleError);
+        }).pipe(catchError(this.handleError));
     }
 
 }

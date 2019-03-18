@@ -1,4 +1,5 @@
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {Observable} from "rxjs/internal/Observable";
 import {StringMap} from "../utils/string-map";
 
 export abstract class AbstractService<T = any> {
@@ -6,8 +7,9 @@ export abstract class AbstractService<T = any> {
 
     }
 
-    protected handleError(error: any): Promise<any> {
-        return Promise.reject(error.message || error);
+    protected handleError(error: any): Observable<any> {
+        // return of (error.message || error);
+        throw new Error(error.message || error);
     }
 
     private getHeader(): HttpHeaders {

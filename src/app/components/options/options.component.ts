@@ -33,8 +33,9 @@ export class OptionsComponent implements OnInit {
         this.appService.reset();
 
         setTimeout(() => {
-            $(".ui.dropdown").dropdown("set selected", this.appService.selectedColor);
-            $(".ui.dropdown").dropdown("set text", $(".ui.dropdown").dropdown("get item", $(".ui.dropdown").dropdown("get value")).html())
+            const dropDown = $(".ui.dropdown");
+            dropDown.dropdown("set selected", this.appService.selectedColor);
+            dropDown.dropdown("set text", dropDown.dropdown("get item", dropDown.dropdown("get value")).html());
         });
     }
 }
