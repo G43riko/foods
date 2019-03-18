@@ -36,12 +36,6 @@ export class RestaurantFoodsComponent implements OnChanges, OnInit {
     }
 
     public ngOnChanges(changes: SimpleChanges): void {
-        console.log("changes: ", changes);
-        if (changes.dailyMenus) {
-            console.log("teraz sa to meni: ", this.dailyMenus);
-        }
-        // window. = () => this.showImage("grilovanyEncian", "https://www.pizzamarro.sk/images/salad/gril-encian.png");
-
     }
     public ngOnInit(): void {
         /*

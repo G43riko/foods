@@ -1,4 +1,4 @@
-export const foods = [
+export const FoodImages = [
     {
         key: "hraskovaRyza",
         all: [
