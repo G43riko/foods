@@ -8,7 +8,8 @@ import {AuthService} from "../../shared/services/auth.service";
 })
 export class ProfileMenuComponent implements OnInit {
     public menuOpen = false;
-        public constructor(private readonly authService: AuthService) {
+
+    public constructor(public readonly authService: AuthService) {
     }
 
     public ngOnInit(): void {
