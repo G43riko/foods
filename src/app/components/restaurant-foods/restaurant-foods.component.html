@@ -1,35 +1,50 @@
 <div *ngIf="restaurant.visible">
     <h3 class="ui {{appService.selectedColor}} header"
-        [ngClass]="{'inverted': appService.inverted}">{{restaurant.name}}</h3>
+        [ngClass]="{'inverted': appService.inverted}">{{restaurant.name}}
+        <small *ngIf="appService.showDistance && restaurant.coordinates && (getLocationService.coordinates | async) as myCoords" style="font-size: x-small;">
+            {{getLocationService.distance(restaurant.coordinates, myCoords)?.toFixed(3) + " km od vás"}}
+        </small>
+        <i *ngIf="restaurant.coordinates"
+           class="map icon"
+           (click)="showMap(restaurant)"
+           style="display: inline-block; margin-left: 0.2em; cursor: pointer"></i>
+    </h3>
+
+
     <table class="ui celled table {{appService.selectedColor}} foodTable"
            #restaurantTable
            (click)="showImage(restaurantTable.getAttribute('title'), restaurantTable.getAttribute('class'));"
            [ngClass]="{'inverted': appService.inverted}">
         <tbody>
-            <tr *ngIf="!dailyMenus[restaurant.key] || dailyMenus[restaurant.key].length === 0">
-                <td colspan="2">Neboli nájdené žiadne výsledky</td>
-            </tr>
-            <ng-container *ngIf="dailyMenus[restaurant.key] && dailyMenus[restaurant.key].length > 0">
-                <ng-container *ngFor="let dish of dailyMenus[restaurant.key] | searchFoodPipe: searchKey">
-                    <tr *ngIf="dish !== null" [ngClass]="{positive: isHighlighted(dish.name)}">
-                        <td>
-                            <div [ngClass]="{'ui ribbon label': isBold(dish.name)}"
-                                 class="daily-menu row {{appService.inverted || appService.selectedColor}}">
-                                <span #dailyMenu
-                                      [ngClass]="{highlighted: isHighlighted(dish.name)}"
-                                      [innerHTML]="showImages(dish.name)"></span>
-                                <span (click)="openImages(dailyMenu)"
-                                      class="helper"
-                                      title="Obrázok">?</span>
-                            </div>
-                        </td>
-                        <td>{{dish.price}}</td>
-                    </tr>
-                    <tr *ngIf="dish === null">
+        <ng-template [ngIf]="dailyMenus[restaurant.key] && dailyMenus[restaurant.key].length > 0" [ngIfElse]="noMenus">
+            <ng-container *ngFor="let dish of dailyMenus[restaurant.key] | searchFoodPipe: searchKey">
+                <tr *ngIf="dish; else: noDish" [ngClass]="{positive: isHighlighted(dish.name)}">
+                    <td>
+                        <div [ngClass]="{'ui ribbon label': isBold(dish.name)}"
+                             class="daily-menu row {{appService.inverted || appService.selectedColor}}">
+                            <span *ngIf="appService.showWeight && dish.weight" [innerHTML]="dish.weight + ': '"></span>
+                            <span #dailyMenu
+                                  [ngClass]="{highlighted: isHighlighted(dish.name)}"
+                                  [innerHTML]="showImages(dish.name)"></span>
+                            <span (click)="openImages(dailyMenu)"
+                                  class="helper"
+                                  title="Nájsť obrázky cez google">?</span>
+                        </div>
+                    </td>
+                    <td *ngIf="appService.showPrice">{{dish.price}}</td>
+                </tr>
+                <ng-template #noDish>
+                    <tr>
                         <td colspan="2">Filtru nevyhovujú žiadne výsledky</td>
                     </tr>
-                </ng-container>
+                </ng-template>
             </ng-container>
+        </ng-template>
+        <ng-template #noMenus>
+            <tr>
+                <td colspan="2">Neboli nájdené žiadne výsledky</td>
+            </tr>
+        </ng-template>
         </tbody>
     </table>
 

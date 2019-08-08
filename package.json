@@ -19,6 +19,7 @@
         "@angular/common": "^7.2.9",
         "@angular/compiler": "^7.2.9",
         "@angular/core": "^7.2.9",
+        "@angular/fire": "^5.2.1",
         "@angular/forms": "^7.2.9",
         "@angular/http": "^7.2.9",
         "@angular/platform-browser": "^7.2.9",
@@ -26,6 +27,7 @@
         "@angular/router": "^7.2.9",
         "browser-request": "^0.3.3",
         "core-js": "^2.6.5",
+        "firebase": "^6.3.4",
         "querystring": "^0.2.0",
         "rxjs": "^6.4.0",
         "webpack": "4.29.6",
@@ -51,7 +53,7 @@
         "protractor": "~5.4.2",
         "ts-node": "~8.0.3",
         "tslint": "~5.14.0",
-        "typescript": "^3.2.4"
+        "typescript": "<3.3.0"
     },
     "browser": {
         "fs": false,

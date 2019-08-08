@@ -6,22 +6,19 @@ import {OptionsComponent} from "./components/options/options.component";
 import {PageTopNavBarComponent} from "./components/page-top-nav-bar/page-top-nav-bar.component";
 import {RestaurantFoodsComponent} from "./components/restaurant-foods/restaurant-foods.component";
 import {RestaurantSelectorComponent} from "./components/restaurant-selector/restaurant-selector.component";
+import {FirebaseModule} from "./shared/modules/firebase.module";
 import {CoreModule} from "./shared/services/core.module";
-import {FoodsRestService} from "./shared/services/foods.rest.service";
-import {FoodsService} from "./shared/services/foods.service";
-import {ParserService} from "./shared/services/parser.service";
-import {StatsService} from "./shared/services/stats.service";
 import {SharedModule} from "./shared/shared.module";
+import { ProfileMenuComponent } from './components/profile-menu/profile-menu.component';
 
 declare const window: any;
 
-const iframe = document.createElement("iframe");
-if (iframe) {
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
-    window.console = iframe.contentWindow.console;
-}
-
+// const iframe = document.createElement("iframe");
+// if (iframe) {
+//     iframe.style.display = "none";
+//     document.body.appendChild(iframe);
+//     window.console = iframe.contentWindow.console;
+// }
 @NgModule({
     declarations: [
         AppComponent,
@@ -29,18 +26,14 @@ if (iframe) {
         RestaurantFoodsComponent,
         PageTopNavBarComponent,
         OptionsComponent,
+        ProfileMenuComponent,
     ],
     imports: [
+        FirebaseModule,
         BrowserModule,
         FormsModule,
         SharedModule,
         CoreModule,
-    ],
-    providers: [
-        FoodsRestService,
-        FoodsService,
-        StatsService,
-        ParserService,
     ],
     bootstrap: [AppComponent],
 })

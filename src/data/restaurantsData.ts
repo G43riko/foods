@@ -4,11 +4,17 @@ export const RestaurantData = [
         name: "Astra",
         key: "astra",
         visible: true,
+        mapsId: "ChIJax7o5C6JbEcRcD2shzoUn_8",
+        coordinates: {
+            lat: 48.1488502,
+            long: 17.1445794,
+        },
     },
     {
         id: "16508094",
         name: "Delfín",
         key: "delphine",
+        mapsId: "ChIJMfW7ai6JbEcRP3iW_eXDfgo",
         menuLink: "http://restauraciadelfin.sk/aktualne-denne-menu",
         visible: true,
     },
@@ -16,26 +22,42 @@ export const RestaurantData = [
         id: "18481358",
         name: "Lanogi Gurman",
         key: "lanogi",
+        mapsId: "ChIJV0iLXyWJbEcRQfMI9liL3Oc",
         menuLink: "https://www.lanogi.sk/denne-menu/",
         visible: false,
+        coordinates: {
+            lat: 48.146454,
+            long: 17.140112,
+        },
     },
     {
         id: "16508016",
         name: "Journal",
         key: "journal",
+        mapsId: "ChIJDWgUJS-JbEcRHuroJcj6vKY",
         visible: true,
+        coordinates: {
+            lat: 48.1477658,
+            long: 17.1453417,
+        },
     },
     {
         id: "16508259",
         name: "Hamka",
         key: "hamka",
+        mapsId: "ChIJPaExEi-JbEcRIFkHrgpfK7Y",
         visible: true,
     },
     {
         id: "17740573",
         name: "Budies",
         key: "budies",
+        mapsId: "ChIJq2449i-JbEcRn6qhkVrLx_I",
         visible: true,
+        coordinates: {
+            lat: 48.146922,
+            long: 17.139689,
+        },
     },
     {
         id: "16507668",
@@ -53,14 +75,24 @@ export const RestaurantData = [
         id: "16507666",
         name: "Presto",
         key: "presto",
+        mapsId: "ChIJkfYTcy-JbEcREA1kUYLsyHo",
         visible: true,
+        coordinates: {
+            lat: 48.1472978714,
+            long: 17.1427702904,
+        },
     },
     {
         id: "16510021",
         name: "Bigger Smack World",
+        mapsId: "ChIJLwzEkjGJbEcRQDEJvcSU6mI",
         key: "bigger",
         menuLink: "http://bigger.sk/menu/",
         visible: false,
+        coordinates: {
+            lat: 48.150972,
+            long: 17.139479,
+        },
     },
     {
         id: "16508023",
@@ -71,8 +103,21 @@ export const RestaurantData = [
     {
         id: "17937259",
         name: "TT Burgers",
+        mapsId: "ChIJt54wlDqJbEcRaE8yz_2jeN4",
         key: "ttBurger",
         menuLink: "https://restauracie.sme.sk/restauracia/tt-burgers-family-fine-food_8662-ruzinov_2980/denne-menu",
+        visible: false,
+        coordinates: {
+            lat: 48.145503,
+            long: 17.13917,
+        },
+    },
+    {
+        id: "0000000",
+        name: "Foodoo",
+        mapsId: "ChIJJS2bEhaJbEcRiKK8pYec7C8",
+        key: "foodoo",
+        menuLink: "https://restauracie.sme.sk/restauracia/foodoo-prievozska_10461-ruzinov_2980/denne-menu",
         visible: false,
     },
     {
@@ -103,8 +148,24 @@ export const RestaurantData = [
     {
         id: "16508074",
         name: "Veg Life",
+        mapsId: "ChIJHV2Umy-JbEcRDkluN8zRk_o",
         key: "vegLife",
         visible: true,
+        coordinates: {
+            lat: 48.1472276,
+            long: 17.1423744,
+        },
+    },
+    {
+        id: "16510055",
+        name: "Lunch break",
+        mapsId: "ChIJQW01TCWJbEcRwWzhnZJuoPY",
+        key: "lunchBreak",
+        visible: true,
+        coordinates: {
+            lat: 48.1458638889,
+            long: 17.1387805556,
+        },
     },
     {
         id: "16508365",

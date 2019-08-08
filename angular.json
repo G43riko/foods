@@ -13,7 +13,7 @@
                 "build": {
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
-                        "outputPath": "dist/foods",
+                        "outputPath": "dist",
                         "index": "src/index.html",
                         "main": "src/main.ts",
                         "polyfills": "src/polyfills.ts",
@@ -45,7 +45,6 @@
                             "outputHashing": "all",
                             "sourceMap": false,
                             "extractCss": true,
-                            "baseHref": "./",
                             "namedChunks": false,
                             "aot": true,
                             "extractLicenses": true,
@@ -60,9 +59,6 @@
                         "browserTarget": "foods:build"
                     },
                     "configurations": {
-                        "production": {
-                            "browserTarget": "foods:build:production"
-                        },
                         "prod": {
                             "browserTarget": "foods:build:prod"
                         }

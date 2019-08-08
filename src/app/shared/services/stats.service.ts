@@ -10,7 +10,9 @@ const url = "http://g43.clanweb.eu/foods/uploader.php";
 const password = "gabriel";
 const login = "gabriel";
 
-@Injectable()
+@Injectable({
+    providedIn: "root",
+})
 export class StatsService extends AbstractService {
     /*
     private readonly headers = new HttpHeaders({

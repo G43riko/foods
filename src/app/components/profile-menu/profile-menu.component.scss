@@ -1,0 +1,64 @@
+$avatar-size: 32px;
+$border-width: 1px;
+$border-color: rgba(0, 0, 0, 0.4);
+$background-color: white;
+.profile {
+    position: relative;
+    left: 0;
+    display: inline-block;
+
+    img {
+        width: $avatar-size;
+        height: $avatar-size;
+        border-radius: 50%;
+        cursor: pointer;
+        &:hover {
+            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+        }
+    }
+
+    .profile-menu {
+        //display: none;
+        position: absolute;
+        right: -5px;
+        background: $background-color;
+        border: $border-width solid $border-color;
+        border-radius: 3px;
+        padding: 1em;
+        min-width: 200px;
+        min-height: 100px;
+        top: 43px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        &.open {
+            display: flex;
+        }
+
+        &:after, &:before {
+            bottom: 100%;
+            left: 90%;
+            border: solid transparent;
+            content: " ";
+            height: 0;
+            width: 0;
+            position: absolute;
+            pointer-events: none;
+        }
+        &:before {
+            border-color: transparent;
+            border-bottom-color: $border-color;
+            border-width: 11px;
+            margin-left: -11px;
+            //border-right: 20px solid transparent;
+        }
+        &:after {
+            border-color: transparent;
+            border-bottom-color: $background-color;
+            border-width: 10px;
+            margin-left: -10px;
+        }
+    }
+}

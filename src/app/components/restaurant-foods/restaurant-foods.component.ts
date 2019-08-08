@@ -1,7 +1,9 @@
 import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild} from "@angular/core";
+import {Config} from "../../appConfig";
 import {Food} from "../../shared/models/food.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
 import {AppService} from "../../shared/services/app.service";
+import {GeoLocationService} from "../../shared/services/geo-location.service";
 import {FoodUtils} from "../../shared/utils/food-utils";
 import {StringUtils} from "../../shared/utils/StringUtils";
 
@@ -19,7 +21,8 @@ export class RestaurantFoodsComponent implements OnChanges, OnInit {
     @Input() public restaurant: Restaurant = new Restaurant();
     @ViewChild("restaurantTable") public restaurantTable: ElementRef<HTMLTableElement>;
 
-    public constructor(public readonly appService: AppService) {
+    public constructor(public readonly appService: AppService,
+                       public readonly getLocationService: GeoLocationService) {
     }
 
     public isBold(key: string): boolean {
@@ -33,6 +36,13 @@ export class RestaurantFoodsComponent implements OnChanges, OnInit {
 
         return this.highlight.include.some((item) => StringUtils.removeAccentedCharacters(title).toLowerCase().indexOf(item) >= 0) &&
             this.highlight.exclude.every((item) => StringUtils.removeAccentedCharacters(title).toLowerCase().indexOf(item) < 0);
+    }
+
+    public showMap(restaurant: Restaurant): void {
+        const modal = $(".ui.modal.maps");
+        const url = `https://www.google.com/maps/embed/v1/place?&q=${restaurant.coordinates.lat},${restaurant.coordinates.long}&zoom=18&key=${Config.GOOGLE_MAPS_API_EMBED_KEY}`;
+        modal.find("iframe").attr("src", url);
+        modal.modal("show");
     }
 
     public ngOnChanges(changes: SimpleChanges): void {

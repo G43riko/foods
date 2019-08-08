@@ -2,7 +2,7 @@
     <app-restaurant-selector (restaurantsChange)="onRestaurantChanges($event)"></app-restaurant-selector>
 </div>
 <div class="ui sidebar wide vertical menu options">
-    <app-options >Nastavenia</app-options>
+    <app-options>Nastavenia</app-options>
 </div>
 <div class="pusher" style="margin-top: 60px; padding: 40px">
     <h1 class="ui {{appService.selectedColor}} header"
@@ -18,20 +18,34 @@
         <div class="item">
             <app-page-nav-bar #pageNavBar></app-page-nav-bar>
         </div>
+        <div class="right menu">
+            <div class="item">
+                <app-profile-menu></app-profile-menu>
+            </div>
+        </div>
     </div>
-    <div *ngIf="restaurants && restaurants.length > 0" id="foodContent">
+    <div *ngIf="restaurants && restaurants.length > 0; else: noRestaurants" id="foodContent">
         <div *ngFor="let restaurant of restaurants" style="margin-top: 20px;" class="{{counter}}">
             <app-restaurant-foods *ngIf="!restaurant.menuLink"
                                   [dailyMenus]="dailyMenus"
                                   [highlight]="pageNavBar.highlight"
                                   [searchKey]="pageNavBar.searchKey"
                                   [restaurant]="restaurant"></app-restaurant-foods>
-            <div *ngIf="restaurant.menuLink">
-                <h3>{{restaurant.name}}</h3>
-                <iframe id="{{restaurant.key + 'Rest'}}" [src]="restaurant.menuLink | safe"></iframe>
+            <div *ngIf="appService.allowIFrames && restaurant.menuLink">
+                <h3>
+                    {{restaurant.name}}
+                    <small *ngIf="appService.showDistance && restaurant.coordinates" style="font-size: x-small;">
+                        {{(getLocationService.distance(restaurant.coordinates) | async).toFixed(3) + " km od vás"}}
+                    </small>
+                </h3>
+                <iframe class="menu-iframe" id="{{restaurant.key + 'Rest'}}"
+                        [src]="restaurant.menuLink | safe"></iframe>
             </div>
         </div>
     </div>
+    <ng-template #noRestaurants>
+        <h3>Ľutujeme, ale nepodarilo sa získať údaje o žiadnej reštaurácií</h3>
+    </ng-template>
 
     <div class="ui modal foodImage">
         <i class="close icon"></i>
@@ -42,4 +56,11 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="ui modal maps">
+    <iframe frameborder="0"
+            class="map"
+            style="border:0"
+            allowfullscreen></iframe>
 </div>

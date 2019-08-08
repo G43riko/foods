@@ -1,5 +1,5 @@
-import {SearchFoodPipe} from "./search-food.pipe";
 import {Dish} from "../models/dish.model";
+import {SearchFoodPipe} from "./search-food.pipe";
 
 describe("SearchFoodPipe", () => {
     const pipe = new SearchFoodPipe();

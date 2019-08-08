@@ -6,8 +6,10 @@ import {Restaurant} from "../shared/models/restaurant.model";
 import {AppService} from "../shared/services/app.service";
 import {FoodsRestService} from "../shared/services/foods.rest.service";
 import {FoodsService} from "../shared/services/foods.service";
+import {GeoLocationService} from "../shared/services/geo-location.service";
 import {NotificationService} from "../shared/services/notification.service";
 import {ParserService} from "../shared/services/parser.service";
+import {RatingService} from "../shared/services/rating.service";
 import {StatsService} from "../shared/services/stats.service";
 import {StringUtils} from "../shared/utils/StringUtils";
 
@@ -27,9 +29,16 @@ export class AppComponent implements OnInit, OnChanges {
                        private readonly parserService: ParserService,
                        private readonly sanitizer: DomSanitizer,
                        private readonly notificationService: NotificationService,
+                       private readonly getLocationService: GeoLocationService,
                        public readonly appService: AppService,
+                       public readonly ratingService: RatingService,
                        private readonly foodsService: FoodsService,
                        private readonly statsService: StatsService) {
+        ratingService.like({email: "nika"} as any, {name: "rezen"} as any, {key: "test"} as any).then((result) => {
+            console.log("result: ", result);
+        }).catch((error) => {
+            console.error("error: ", error);
+        });
     }
 
     private setAutocomplete(): void {
@@ -88,20 +97,19 @@ export class AppComponent implements OnInit, OnChanges {
             results.forEach((result, index) => {
                 this.dailyMenus[actualRestaurants[index].key] = this.foodsService.processZomatoMenu(result);
             });
-            setTimeout(() => this.setAutocomplete(), 10);
+            // setTimeout(() => this.setAutocomplete(), 10);
             $(".checkbox").checkbox();
-            /*
-            this.parserService.parseDelfinMenus().then((menu) => {
-                this.dailyMenus.delphine = this.foodsService.processDelphineMenu(menu);
-            }).catch((e) => {
-                console.error(e);
-            }).finally(() => {
-                setTimeout(() => this.setAutocomplete(), 10);
-                $(".checkbox").checkbox();
-            });
-            */
 
-            // this.setSlider();
+            // this.parserService.parseDelfinMenus().then((menu) => {
+            //     this.dailyMenus.delphine = this.foodsService.processDelphineMenu(menu);
+            // }).catch((e) => {
+            //     console.error(e);
+            // });
+            // this.parserService.parseFoodooMenu().then((menu) => {
+            //     this.dailyMenus.delphine = this.foodsService.processFoodooMenu(menu);
+            // }).catch((e) => {
+            //     console.error(e);
+            // });
         }), (error) => {
             this.notificationService.showErrorMessage("Error while getting menus from zommato api: ", error);
         });

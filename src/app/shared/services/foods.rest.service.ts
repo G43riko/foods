@@ -13,7 +13,9 @@ function getDate(): string {
     return a.getDate() + "-" + a.getMonth() + "-" + a.getFullYear();
 }
 
-@Injectable()
+@Injectable({
+    providedIn: "root",
+})
 export class FoodsRestService extends AbstractService {
     private static readonly ACTUAL_DATE = getDate();
     private readonly headers = new HttpHeaders({
