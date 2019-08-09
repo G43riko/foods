@@ -1,0 +1,10 @@
+
+<span>+{{ratingService.getLikes(dish, restaurant)}}</span>
+<ng-container *ngIf="authService.user$ | async as user">
+    <i *ngIf="ratingService.isLiked(user, dish, restaurant); else: dislikeIcon"
+       (click)="ratingService.unlike(user, dish, restaurant)"
+       class="thumbs down icon"></i>
+    <ng-template #dislikeIcon>
+        <i (click)="ratingService.like(user, dish, restaurant)" class="thumbs up icon"></i>
+    </ng-template>
+</ng-container>

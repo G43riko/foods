@@ -1,0 +1,11 @@
+
+<div #titleCell [ngClass]="{'ui ribbon label': isBold(dish.name)}"
+     class="daily-menu row {{appService.inverted || appService.selectedColor}}">
+    <span *ngIf="appService.showWeight && dish.weight" [innerHTML]="dish.weight + ': '"></span>
+    <span #dailyMenu
+          [innerHTML]="dish.name"></span>
+
+    <i *ngIf="!titleCell.classList.contains('ribbon')" (click)="openImages(dailyMenu)"
+       class="question circle icon helper"
+       title="Nájsť obrázky cez google"></i>
+</div>
