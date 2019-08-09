@@ -13,22 +13,14 @@ import {StringUtils} from "../../shared/utils/StringUtils";
     templateUrl: "./food-row.component.html",
     styleUrls: ["./food-row.component.scss"],
 })
-export class FoodRowComponent implements OnInit {
+export class FoodRowComponent {
     @Input() public dish: Dish;
-    @Input() public highlight: Food = new Food();
     @Input() public restaurant: Restaurant;
+    @Input() public highlight: Food = new Food();
 
     public constructor(public readonly appService: AppService,
                        public readonly ratingService: RatingService,
                        public readonly authService: AuthService) {
-    }
-
-    public ngOnInit(): void {
-        // empty
-    }
-
-    public isBold(key: string): boolean {
-        return FoodUtils.isBold(key);
     }
 
     public isHighlighted(title: string): boolean {
@@ -38,12 +30,5 @@ export class FoodRowComponent implements OnInit {
 
         return this.highlight.include.some((item) => StringUtils.removeAccentedCharacters(title).toLowerCase().indexOf(item) >= 0) &&
             this.highlight.exclude.every((item) => StringUtils.removeAccentedCharacters(title).toLowerCase().indexOf(item) < 0);
-    }
-    private openImages(elementWrapper: HTMLSpanElement): void {
-        window.open(this.getGoogleImagesLinkFor(elementWrapper.innerText), "_blank");
-    }
-
-    private getGoogleImagesLinkFor(dailyMenu: string): string {
-        return `https://www.google.sk/search?q=${encodeURIComponent(dailyMenu)}&tbm=isch`;
     }
 }

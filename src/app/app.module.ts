@@ -11,6 +11,8 @@ import {CoreModule} from "./shared/services/core.module";
 import {SharedModule} from "./shared/shared.module";
 import { ProfileMenuComponent } from './components/profile-menu/profile-menu.component';
 import { FoodRowComponent } from './components/food-row/food-row.component';
+import { FoodRowLikesComponent } from './components/food-row-likes/food-row-likes.component';
+import { FoodRowNameComponent } from './components/food-row-name/food-row-name.component';
 
 declare const window: any;
 
@@ -29,6 +31,8 @@ declare const window: any;
         OptionsComponent,
         ProfileMenuComponent,
         FoodRowComponent,
+        FoodRowLikesComponent,
+        FoodRowNameComponent,
     ],
     imports: [
         FirebaseModule,

@@ -2,7 +2,6 @@ import {Component} from "@angular/core";
 import {FoodData} from "../../../data/foodData";
 import {Food} from "../../shared/models/food.model";
 import {AppService} from "../../shared/services/app.service";
-import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
     selector: "app-page-nav-bar",

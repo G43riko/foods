@@ -1,28 +1,9 @@
 <tr *ngIf="dish; else: noDish" [ngClass]="{positive: isHighlighted(dish.name)}">
     <td>
-        <div #titleCell [ngClass]="{'ui ribbon label': isBold(dish.name)}"
-             class="daily-menu row {{appService.inverted || appService.selectedColor}}">
-            <span *ngIf="appService.showWeight && dish.weight" [innerHTML]="dish.weight + ': '"></span>
-            <span #dailyMenu
-                  [ngClass]="{highlighted: isHighlighted(dish.name)}"
-                  [innerHTML]="dish.name"></span>
-
-            <i *ngIf="!titleCell.classList.contains('ribbon')" (click)="openImages(dailyMenu)"
-               class="question circle icon helper"
-               title="Nájsť obrázky cez google"></i>
-        </div>
+        <app-food-row-name [dish]="dish" [restaurant]="restaurant"></app-food-row-name>
     </td>
     <td>
-
-        <span>+{{ratingService.getLikes(dish, restaurant)}}</span>
-        <ng-container *ngIf="authService.user$ | async as user">
-            <i *ngIf="ratingService.isLiked(user, dish, restaurant); else: dislikeIcon"
-               (click)="ratingService.unlike(user, dish, restaurant)"
-               class="thumbs down icon"></i>
-            <ng-template #dislikeIcon>
-                <i (click)="ratingService.like(user, dish, restaurant)" class="thumbs up icon"></i>
-            </ng-template>
-        </ng-container>
+        <app-food-row-likes [dish]="dish" [restaurant]="restaurant"></app-food-row-likes>
     </td>
     <td *ngIf="appService.showPrice">{{dish.price}}</td>
 </tr>

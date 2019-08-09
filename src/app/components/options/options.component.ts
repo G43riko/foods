@@ -7,7 +7,7 @@ declare const $;
 @Component({
     selector: "app-options",
     templateUrl: "./options.component.html",
-    styleUrls: ["./options.component.css"],
+    styleUrls: ["./options.component.scss"],
 })
 export class OptionsComponent implements OnInit {
     public readonly allowedColors: string[] = Object.keys(Colors);
