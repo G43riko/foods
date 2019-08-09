@@ -10,6 +10,7 @@ import {FirebaseModule} from "./shared/modules/firebase.module";
 import {CoreModule} from "./shared/services/core.module";
 import {SharedModule} from "./shared/shared.module";
 import { ProfileMenuComponent } from './components/profile-menu/profile-menu.component';
+import { FoodRowComponent } from './components/food-row/food-row.component';
 
 declare const window: any;
 
@@ -27,6 +28,7 @@ declare const window: any;
         PageTopNavBarComponent,
         OptionsComponent,
         ProfileMenuComponent,
+        FoodRowComponent,
     ],
     imports: [
         FirebaseModule,

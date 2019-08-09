@@ -24,22 +24,7 @@ export class RestaurantFoodsComponent implements OnChanges, OnInit {
     // @ViewChild("restaurantTable") public restaurantTable: ElementRef<HTMLTableElement>;
 
     public constructor(public readonly appService: AppService,
-                       public readonly ratingService: RatingService,
-                       public readonly authService: AuthService,
                        public readonly getLocationService: GeoLocationService) {
-    }
-
-    public isBold(key: string): boolean {
-        return FoodUtils.isBold(key);
-    }
-
-    public isHighlighted(title: string): boolean {
-        if (FoodUtils.isBold(title)) {
-            return false;
-        }
-
-        return this.highlight.include.some((item) => StringUtils.removeAccentedCharacters(title).toLowerCase().indexOf(item) >= 0) &&
-            this.highlight.exclude.every((item) => StringUtils.removeAccentedCharacters(title).toLowerCase().indexOf(item) < 0);
     }
 
     public showMap(restaurant: Restaurant): void {
@@ -57,18 +42,6 @@ export class RestaurantFoodsComponent implements OnChanges, OnInit {
             this.showImage(event.target.getAttribute("title"), event.target.getAttribute("class"));
         });
         */
-    }
-
-    public showImages(contentHtml: string): string {
-        return contentHtml.replace(/(guláš)/gi, "<u title='grilovanyEncian' class='https://www.pizzamarro.sk/images/salad/gril-encian.png'>$1</u>");
-    }
-
-    private getGoogleImagesLinkFor(dailyMenu: string): string {
-        return `https://www.google.sk/search?q=${encodeURIComponent(dailyMenu)}&tbm=isch`;
-    }
-
-    private openImages(elementWrapper: HTMLSpanElement): void {
-        window.open(this.getGoogleImagesLinkFor(elementWrapper.innerText), "_blank");
     }
 
     private showImage(name: string, src: string): void {

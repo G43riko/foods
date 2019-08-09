@@ -18,18 +18,21 @@ $background-color: white;
     }
 
     .profile-menu {
-        //display: none;
+        display: none;
         position: absolute;
         right: -5px;
         background: $background-color;
         border: $border-width solid $border-color;
         border-radius: 3px;
         padding: 1em;
-        min-width: 200px;
+            min-width: 200px;
         min-height: 100px;
         top: 43px;
 
-        display: flex;
+        & > *:not(:last-child) {
+            margin-bottom: 1em;
+        }
+        //display: flex;
         flex-direction: column;
         justify-content: space-around;
 

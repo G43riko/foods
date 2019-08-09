@@ -1,7 +1,6 @@
 import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable, of} from "rxjs";
-import {map, switchMap} from "rxjs/operators";
-import {NotificationService} from "./notification.service";
+import {map} from "rxjs/operators";
 
 export interface Coord {
     lat: number;
@@ -54,7 +53,7 @@ export class GeoLocationService {
         }));
     }
 
-    public distance(coordinates: Coord, myCoordinates: Coord): number {
+    public distance(coordinates?: Coord | null, myCoordinates?: Coord | null): number {
         if (!coordinates || !myCoordinates) {
             return 0;
         }

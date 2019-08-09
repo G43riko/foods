@@ -1,0 +1,33 @@
+tr td {
+    border-top: 1px solid rgba(34,36,38,.1) !important;
+}
+
+.highlighted {
+    background-color: aquamarine;
+}
+
+
+.daily-menu.row {
+    .helper {
+        display: inline-block;
+        cursor: pointer;
+        margin-left: 1em;
+    }
+    //&:hover {
+    //    .helper {
+    //        display: inline-block;
+    //    }
+    //}
+
+}
+
+//table {
+//    border-left: 1px solid rgba(34,36,38,.1) !important;
+//    border-right: 1px solid rgba(34,36,38,.1) !important;
+//    border-bottom: 1px solid rgba(34,36,38,.1) !important;
+//    border-bottom: 1px solid transparent;
+//}
+.thumbs.icon {
+    margin: 0 0.5em;
+    cursor: pointer;
+}

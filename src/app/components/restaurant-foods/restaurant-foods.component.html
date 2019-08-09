@@ -18,40 +18,7 @@
         <tbody>
         <ng-template [ngIf]="dailyMenus[restaurant.key] && dailyMenus[restaurant.key].length > 0" [ngIfElse]="noMenus">
             <ng-container *ngFor="let dish of dailyMenus[restaurant.key] | searchFoodPipe: searchKey">
-                <tr *ngIf="dish; else: noDish" [ngClass]="{positive: isHighlighted(dish.name)}">
-                    <td>
-                        <div [ngClass]="{'ui ribbon label': isBold(dish.name)}"
-                             class="daily-menu row {{appService.inverted || appService.selectedColor}}">
-                            <span *ngIf="appService.showWeight && dish.weight" [innerHTML]="dish.weight + ': '"></span>
-                            <span #dailyMenu
-                                  [ngClass]="{highlighted: isHighlighted(dish.name)}"
-                                  [innerHTML]="showImages(dish.name)"></span>
-                            <span (click)="openImages(dailyMenu)"
-                                  class="helper"
-                                  title="Nájsť obrázky cez google">?</span>
-
-
-                        </div>
-                    </td>
-                    <td>
-
-                        <span>+{{ratingService.getLikes(dish, restaurant)}}</span>
-                        <ng-container *ngIf="authService.user$ | async as user">
-                            <i *ngIf="ratingService.isLiked(user, dish, restaurant); else: dislikeIcon"
-                               (click)="ratingService.unlike(user, dish, restaurant)"
-                               class="thumbs down icon"></i>
-                            <ng-template #dislikeIcon>
-                                <i (click)="ratingService.like(user, dish, restaurant)" class="thumbs up icon"></i>
-                            </ng-template>
-                        </ng-container>
-                    </td>
-                    <td *ngIf="appService.showPrice">{{dish.price}}</td>
-                </tr>
-                <ng-template #noDish>
-                    <tr>
-                        <td colspan="2">Filtru nevyhovujú žiadne výsledky</td>
-                    </tr>
-                </ng-template>
+                <app-food-row style="display: contents" [highlight]="highlight" [dish]="dish" [restaurant]="restaurant"></app-food-row>
             </ng-container>
         </ng-template>
         <ng-template #noMenus>

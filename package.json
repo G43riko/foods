@@ -8,6 +8,7 @@
         "serveAot": "ng serve --aot=true --port 4201",
         "start": "node server.js",
         "buildProd": "ng build --configuration=prod",
+        "buildGithub": "ng build --configuration=prod --outputPath=docs",
         "postinstall": "npm run buildProd",
         "test": "ng test",
         "lint": "ng lint",
