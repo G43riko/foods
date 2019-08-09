@@ -8,79 +8,128 @@ import {Restaurant} from "../models/restaurant.model";
     providedIn: "root",
 })
 export class RatingService {
+    private readonly cache: any = {};
 
     public constructor(private readonly afs: AngularFirestore) {
+        this.afs.collection(`restaurants`).get().subscribe((restaurants) => {
+            restaurants.forEach((restaurant) => {
+                this.cache[restaurant.id] = restaurant.data();
+            });
+        });
+    }
+    private setCache(user: User, dish: Dish, restaurant: Restaurant, liked: boolean): void {
+        if (!this.cache[restaurant.key]) {
+            this.cache[restaurant.key] = {};
+        }
+        if (!this.cache[restaurant.key][dish.name]) {
+            if (liked) {
+                this.cache[restaurant.key][dish.name] = [user.email];
+            }
+        }
+        else {
+            if (liked) {
+                this.cache[restaurant.key][dish.name].push(user.email);
+            }
+            else {
+                this.cache[restaurant.key][dish.name].splice(this.cache[restaurant.key][dish.name].indexOf(user.email), 1);
+            }
+        }
     }
 
-    private getDate(): string {
-        return new Date().toISOString().substring(0, 10);
+    private isCached(dish: Dish, restaurant: Restaurant): boolean {
+        if (!this.cache[restaurant.key]) {
+            return false;
+        }
+        if (!this.cache[restaurant.key][dish.name]) {
+            return false;
+        }
+        if (!this.cache[restaurant.key][dish.name]) {
+            return false;
+        }
+
+        return true;
     }
 
-    public like(user: User, dish: Dish, restaurant: Restaurant): Promise<void> {
-        const col = this.afs.firestore.collection(`restaurants`);
-        const query = col.doc(restaurant.key).collection("foods").doc(dish.name);
-        // const doc = this.afs.firestore.doc(`restaurants/${restaurant.key}/foods/${dish.name}}`);
+    private getCache(user: User, dish: Dish, restaurant: Restaurant): boolean {
+        if (!this.isCached(dish, restaurant)) {
+            return false;
+        }
 
-        return new Promise<void>((success, reject) => {
+        return this.cache[restaurant.key][dish.name].includes(user.email);
+    }
+
+    public getLikes(dish: Dish, restaurant: Restaurant): number {
+        if (!this.isCached(dish, restaurant)) {
+            return 0;
+        }
+
+        return this.cache[restaurant.key][dish.name].length;
+    }
+
+    public like(user: User, dish: Dish, restaurant: Restaurant): Promise<boolean> {
+        const query = this.afs.firestore.collection(`restaurants`).doc(restaurant.key);
+        this.setCache(user, dish, restaurant, true);
+
+        return new Promise<boolean>((success, reject) => {
             query.get().then((snapshot) => {
-                // const date = this.getDate();
-                const date = "2019-08-07";
                 if (snapshot.exists) {
                     const data = snapshot.data();
-                    if (Array.isArray(data[date])) {
-                        if (data[date].includes(user.email)) {
-                            success();
+                    if (data[dish.name]) {
+                        if (data[dish.name].includes(user.email)) {
+                            success(false);
 
                             return;
                         }
-                        data[date].push(user.email);
+                        data[dish.name].push(user.email);
 
-                        query.set(data, {merge: true}).then(success).catch(reject);
-                    }
-                    else {
                         query.set({
-                            [date]: [user.email],
-                        }, {merge: true}).then(success).catch(reject);
+                            [dish.name]: data[dish.name],
+                        }, {merge: true}).then(() => success(true)).catch(reject);
+                    } else {
+                        query.set({
+                            [dish.name]: [user.email],
+                        }, {merge: true}).then(() => success(true)).catch(reject);
                     }
-                }
-                else {
+                } else {
                     query.set({
-                        [date]: [user.email],
-                    }).then(success).catch(reject);
+                        [dish.name]: [user.email],
+                    }).then(() => success(true)).catch(reject);
                 }
             });
         });
 
         return null;
-        // const collection = firestore.collection(`ratings/${restaurant.key}/${dish.name}/`);
-        // collection.get().then((snapshot) => {
-        //     snapshot.docs.forEach((doc) => {
-        //         doc.data().
-        //     })
-        // })
-        // return doc.update([user.email]);
-    }
-    public unlike(user: User, dish: Dish, restaurant: Restaurant): Promise<void> {
-        const doc = this.afs.doc(`ratings/${restaurant.key}/${dish.name}/`);
-
-        return doc.update([user.email]);
     }
 
-    // RESTAURANT_KEY / FOODS / DISH_NAME / DATE / [EMAIL]
-    public isLiked(user: User, dish: Dish, restaurant: Restaurant): Promise<boolean> {
-        // const firestore = firebase.firestore();
-        const col = this.afs.firestore.collection(`restaurants`);
-        const query = col.doc(restaurant.key).collection("foods").doc(dish.name); // .where(`${dish.name}.${this.getDate()}`, "array-contains", user.email);
+    public unlike(user: User, dish: Dish, restaurant: Restaurant): Promise<boolean> {
+        const query = this.afs.firestore.collection(`restaurants`).doc(restaurant.key);
+        this.setCache(user, dish, restaurant, false);
 
         return new Promise<boolean>((success, reject) => {
             query.get().then((snapshot) => {
-                const listOfLikes = Object.values(snapshot.data());
-                success(listOfLikes.some((list: string[]) => list.includes(user.email)));
-            }).catch(reject);
+                if (snapshot.exists) {
+                    const data = snapshot.data();
+                    if (data[dish.name]) {
+                        data[dish.name].splice(data[dish.name].indexOf(user.email), 1);
+                        query.set({
+                            [dish.name]: data[dish.name],
+                        }, {merge: true}).then(() => success(true)).catch(reject);
+
+                        return;
+                    }
+                }
+
+                success(false);
+            });
         });
     }
 
-    private getNameFor(dish: Dish, restaurant: Restaurant): string {
-        return restaurant.key + "_" + dish.name;
+    public isLiked(user: User, dish: Dish, restaurant: Restaurant): boolean {
+        if (!user || !dish) {
+            return false;
+        }
+
+        return this.getCache(user, dish, restaurant);
     }
+
 }

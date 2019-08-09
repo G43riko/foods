@@ -6,13 +6,19 @@
 
 .daily-menu.row {
     .helper {
-        display: none;
+        display: inline-block;
         cursor: pointer;
         margin-left: 1em;
     }
-    &:hover {
-        .helper {
-            display: inline-block;
-        }
-    }
+    //&:hover {
+    //    .helper {
+    //        display: inline-block;
+    //    }
+    //}
+
+}
+
+.thumbs.icon {
+    margin: 0 0.5em;
+    cursor: pointer;
 }
