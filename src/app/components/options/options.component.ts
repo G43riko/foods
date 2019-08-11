@@ -17,13 +17,17 @@ export class OptionsComponent implements OnInit {
 
     public ngOnInit(): void {
         const appService = this.appService;
-        setTimeout(() =>
+        setTimeout(() => {
+            $(".checkbox").checkbox();
             $(".ui.dropdown").dropdown({
                 onChange(value, text, $selectedItem): void {
                     console.log(value, text, $selectedItem);
-                    appService.selectedColor = Colors[value] as Colors;
+                    appService.setConfig("selectedColor", Colors[value] as Colors);
+                    // appService.getConfig('selectedColor') = Colors[value] as Colors;
                 },
-            }), 100);
+            });
+        }, 100);
+
     }
 
     public resetRestaurants(): void {
@@ -34,7 +38,7 @@ export class OptionsComponent implements OnInit {
 
         setTimeout(() => {
             const dropDown = $(".ui.dropdown");
-            dropDown.dropdown("set selected", this.appService.selectedColor);
+            dropDown.dropdown("set selected", this.appService.getConfig('selectedColor'));
             dropDown.dropdown("set text", dropDown.dropdown("get item", dropDown.dropdown("get value")).html());
         });
     }

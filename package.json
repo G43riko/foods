@@ -5,11 +5,11 @@
     "scripts": {
         "ng": "ng",
         "serve": "ng serve --port 4201",
-        "serveAot": "ng serve --aot=true --port 4201",
+        "serve:prod": "ng serve --configuration=prod --port 4201",
         "start": "node server.js",
-        "buildProd": "ng build --configuration=prod",
-        "buildGithub": "ng build --configuration=prod --outputPath=docs",
-        "postinstall": "npm run buildProd",
+        "build:prod": "ng build --configuration=prod",
+        "build:github": "ng build --configuration=prod --outputPath=docs",
+        "postinstall": "npm run build:prod",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"
@@ -31,8 +31,6 @@
         "firebase": "^6.3.4",
         "querystring": "^0.2.0",
         "rxjs": "^6.4.0",
-        "webpack": "4.39.1",
-        "webpack-sources": "^1.3.0",
         "zone.js": "^0.10.1"
     },
     "devDependencies": {
@@ -54,6 +52,8 @@
         "protractor": "~5.4.2",
         "ts-node": "~8.3.0",
         "tslint": "~5.18.0",
+        "webpack": "4.39.1",
+        "webpack-sources": "^1.3.0",
         "typescript": "^3.5.3"
     },
     "browser": {

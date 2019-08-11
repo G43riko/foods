@@ -1,0 +1,40 @@
+$transition-speed: 0.3s;
+nav {
+    height: 100%;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    padding-top: 20px;
+    transform: translateX(-100%);
+    transition: all $transition-speed;
+    &.visible {
+        transform: translateX(0);
+    }
+
+    box-shadow: 0 8px 10px -5px rgba(0,0,0,.2), 0 16px 24px 2px rgba(0,0,0,.14), 0 6px 30px 5px rgba(0,0,0,.12);
+}
+
+.backdrop {
+    z-index: 1;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: visibility, opacity $transition-speed;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    &.visible {
+        visibility: visible;
+        opacity: 1;
+    }
+}
+.content {
+    font-size: 38px; /* Increased text to enable scrolling */
+    padding: 0 10px;
+    transition: margin-left, filter $transition-speed;
+}

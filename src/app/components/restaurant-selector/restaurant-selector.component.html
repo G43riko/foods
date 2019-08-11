@@ -1,10 +1,10 @@
 <div class="container">
     <div>
-        <h4 class="ui {{appService.selectedColor}} header"
-            [ngClass]="{'inverted': appService.inverted}">Všetky reštaurácie</h4>
+        <h4 class="ui {{appService.getConfig('selectedColor')}} header"
+            [ngClass]="{'inverted': appService.getConfig('inverted')}">Všetky reštaurácie</h4>
         <div class="field">
             <div class="ui mini icon input"
-                 [ngClass]="{'inverted': appService.inverted}">
+                 [ngClass]="{'inverted': appService.getConfig('inverted')}">
                 <input [(ngModel)]="searchKey" type="text" placeholder="hľadať...">
                 <i class="search icon"></i>
             </div>
@@ -22,11 +22,11 @@
     </div>
 
     <div>
-        <h4 class="ui {{appService.selectedColor}} header"
-            [ngClass]="{'inverted': appService.inverted}">Zvolené reštaurácie</h4>
+        <h4 class="ui {{appService.getConfig('selectedColor')}} header"
+            [ngClass]="{'inverted': appService.getConfig('inverted')}">Zvolené reštaurácie</h4>
         <div class="field" style="visibility: hidden">
             <div class="ui mini icon input"
-                 [ngClass]="{'inverted': appService.inverted}">
+                 [ngClass]="{'inverted': appService.getConfig('inverted')}">
                 <input [(ngModel)]="searchKey"
                        placeholder="hľadať..."
                        type="text">
@@ -41,9 +41,9 @@
             </li>
         </ul>
         <button id="sbtn-2"
-                class="ui button {{appService.selectedColor}}"
+                class="ui button {{appService.getConfig('selectedColor')}}"
                 style="display: block"
-                [ngClass]="{'inverted': appService.inverted}">
+                [ngClass]="{'inverted': appService.getConfig('inverted')}">
             Uložiť
         </button>
 

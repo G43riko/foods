@@ -1,73 +1,118 @@
 import {Injectable} from "@angular/core";
+import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/firestore";
+import {firestore} from "firebase";
+import {of} from "rxjs";
+import {switchMap} from "rxjs/operators";
+import {User} from "../interfaces/user.interface";
 import {Colors} from "../models/colors.enum";
+import {AuthService} from "./auth.service";
+
+export interface AppConfiguration {
+    selectedColor?: Colors;
+    inverted: boolean;
+    allowIFrames: boolean;
+    showDistance: boolean;
+    showPrice: boolean;
+    showWeight: boolean;
+}
 
 @Injectable()
 export class AppService {
-    private selectedColorLocal?: Colors;
-    private invertedLocal = false;
-    private allowIFramesLocal = true;
-    private showDistanceLocal = true;
-    private showPriceLocal = true;
-    private showWeightLocal = true;
+    private configuration = AppService.getDefaultConfiguration();
 
-    public constructor() {
-        this.selectedColorLocal = Colors[localStorage.getItem("color")];
-        this.invertedLocal = localStorage.getItem("inverted") === "true";
-        this.allowIFramesLocal = localStorage.getItem("allowIFrames") !== "false";
-        this.showDistanceLocal = localStorage.getItem("showDistance") !== "false";
-        this.showPriceLocal = localStorage.getItem("showPrice") !== "false";
-        this.showWeightLocal = localStorage.getItem("showWeight") !== "false";
+    private ref: AngularFirestoreDocument<User>;
+
+    public constructor(private readonly afs: AngularFirestore,
+                       private readonly authService: AuthService) {
+        authService.user$.pipe(
+            switchMap((user) => {
+                if (user) {
+                    this.ref = this.afs.doc<User>(`users/${user.uid}`);
+
+                    return this.ref.get();
+                }
+
+                return of(undefined);
+            }),
+        ).subscribe((user: firestore.DocumentSnapshot | undefined) => {
+            if (user) {
+                const userData = user.data();
+                if (userData.config) {
+                    this.configuration = userData.config;
+
+                    return;
+                }
+            }
+            this.configuration = AppService.getDefaultConfiguration();
+
+        });
     }
 
-    public get selectedColor(): Colors {
-        return this.selectedColorLocal;
+    private static getDefaultConfiguration(): AppConfiguration {
+        return {
+            inverted: false,
+            allowIFrames: true,
+            showDistance: true,
+            showPrice: true,
+            showWeight: true,
+        };
     }
 
-    public set selectedColor(color: Colors) {
-        localStorage.setItem("color", color);
-        this.selectedColorLocal = color;
+    public setConfig<T extends keyof AppConfiguration>(key: T, value: AppConfiguration[T]): void {
+        this.configuration[key] = value;
+        (this.ref as any).update({
+            config: {
+                ...this.configuration,
+                [key]: value,
+            },
+        });
     }
 
-    public get inverted(): boolean {
-        return this.invertedLocal;
+    public getConfig<T extends keyof AppConfiguration>(key: T): AppConfiguration[T] {
+        return this.configuration[key];
     }
 
     public set inverted(value: boolean) {
-        localStorage.setItem("inverted", String(value));
-        this.invertedLocal = value;
+        this.setConfig("inverted", value);
     }
-    public get allowIFrames(): boolean {
-        return this.allowIFramesLocal;
+
+    public get inverted(): boolean {
+        return this.getConfig("inverted");
     }
+
     public set allowIFrames(value: boolean) {
-        localStorage.setItem("allowIFrames", String(value));
-        this.allowIFramesLocal = value;
+        this.setConfig("allowIFrames", value);
     }
-    public get showDistance(): boolean {
-        return this.showDistanceLocal;
+
+    public get allowIFrames(): boolean {
+        return this.getConfig("allowIFrames");
     }
+
     public set showDistance(value: boolean) {
-        localStorage.setItem("showDistance", String(value));
-        this.showDistanceLocal = value;
+        this.setConfig("showDistance", value);
+    }
+
+    public get showDistance(): boolean {
+        return this.getConfig("showDistance");
+    }
+
+    public set showPrice(value: boolean) {
+        this.setConfig("showPrice", value);
     }
 
     public get showPrice(): boolean {
-        return this.showPriceLocal;
+        return this.configuration.showPrice;
     }
-    public set showPrice(value: boolean) {
-        localStorage.setItem("showPrice", String(value));
-        this.showPriceLocal = value;
+
+    public set showWeight(value: boolean) {
+        this.setConfig("showWeight", value);
     }
 
     public get showWeight(): boolean {
-        return this.showWeightLocal;
+        return this.configuration.showWeight;
     }
-    public set showWeight(value: boolean) {
-        localStorage.setItem("showWeight", String(value));
-        this.showWeightLocal = value;
-    }
+
     public reset(): void {
-        this.selectedColor = undefined;
-        this.inverted = false;
+        throw new Error("Configuration reset is not implemented");
     }
 }

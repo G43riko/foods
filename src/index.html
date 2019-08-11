@@ -6,8 +6,18 @@
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-R3N17525BN');
+        gtag("js", new Date());
+        gtag("config", "G-R3N17525BN");
+
+        if (window.performance) {
+            const timeSincePageLoad = Math.round(performance.now());
+
+            gtag("event", "timing_complete", {
+                "name": "load",
+                "value": timeSincePageLoad,
+                "event_category": "JS Dependencies"
+            });
+        }
     </script>
 
     <meta charset="utf-8">

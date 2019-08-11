@@ -1,8 +1,8 @@
 import {FirebaseOptions} from "@angular/fire";
 
 export class Config {
-    public static readonly ZOMATO_API_KEY = "cbc11fdb6cb6e160bc12508dcb57b405";
-    // public static readonly ZOMATO_API_KEY = "e9e845908aebec0e95fc72310a1a3b59";
+    // public static readonly ZOMATO_API_KEY = "cbc11fdb6cb6e160bc12508dcb57b405";
+    public static readonly ZOMATO_API_KEY = "e9e845908aebec0e95fc72310a1a3b59";
 
 /*
     public static readonly WEIGHT_REGEXP = /\d+(,|.)?\d+ ?[gl][ \/]?/g;
@@ -23,7 +23,7 @@ export class Config {
         authDomain: "foods-446ab.firebaseapp.com",
         databaseURL: "https://foods-446ab.firebaseio.com",
         projectId: "foods-446ab",
-        storageBucket: "",
+        storageBucket: "foods-446ab.appspot.com",
         messagingSenderId: "359179350673",
         appId: "1:359179350673:web:670d3c0080d80a44",
     };

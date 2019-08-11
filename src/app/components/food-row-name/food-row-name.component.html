@@ -1,7 +1,7 @@
 
 <div #titleCell [ngClass]="{'ui ribbon label': isBold(dish.name)}"
-     class="daily-menu row {{appService.inverted || appService.selectedColor}}">
-    <span *ngIf="appService.showWeight && dish.weight" [innerHTML]="dish.weight + ': '"></span>
+     class="daily-menu row {{appService.getConfig('inverted') || appService.getConfig('selectedColor')}}">
+    <span *ngIf="appService.getConfig('showWeight') && dish.weight" [innerHTML]="dish.weight + ': '"></span>
     <span #dailyMenu
           [innerHTML]="dish.name"></span>
 

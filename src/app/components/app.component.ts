@@ -34,11 +34,7 @@ export class AppComponent implements OnInit, OnChanges {
                        public readonly ratingService: RatingService,
                        private readonly foodsService: FoodsService,
                        private readonly statsService: StatsService) {
-        ratingService.like({email: "nika"} as any, {name: "rezen"} as any, {key: "test"} as any).then((result) => {
-            console.log("result: ", result);
-        }).catch((error) => {
-            console.error("error: ", error);
-        });
+
     }
 
     private setAutocomplete(): void {

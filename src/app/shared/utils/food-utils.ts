@@ -6,6 +6,8 @@ export class FoodUtils {
         return key.startsWith("Polievky") ||
             key.startsWith("Hlavné") ||
             key.startsWith("Šaláty") ||
+            key.startsWith("Denné ponuk") ||
+            key.startsWith("Uvedené ceny platia") ||
             key.startsWith("Špecialita") ||
             key.startsWith("Zeleninové ");
     }

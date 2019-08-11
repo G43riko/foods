@@ -5,10 +5,10 @@
     <app-options>Nastavenia</app-options>
 </div>
 <div class="pusher" style="margin-top: 60px; padding: 40px">
-    <h1 class="ui {{appService.selectedColor}} header"
-        [ngClass]="{'inverted': appService.inverted}">Denné menu</h1>
-    <div class="ui {{appService.selectedColor}} top fixed menu"
-         [ngClass]="{'inverted': appService.inverted}">
+    <h1 class="ui {{appService.getConfig('selectedColor')}} header"
+        [ngClass]="{'inverted': appService.getConfig('inverted')}">Denné menu</h1>
+    <div class="ui {{appService.getConfig('selectedColor')}} top fixed menu"
+         [ngClass]="{'inverted': appService.getConfig('inverted')}">
         <a class="item opener restaurants">
             <i class="bars icon"></i>
         </a>
@@ -31,10 +31,10 @@
                                   [highlight]="pageNavBar.highlight"
                                   [searchKey]="pageNavBar.searchKey"
                                   [restaurant]="restaurant"></app-restaurant-foods>
-            <div *ngIf="appService.allowIFrames && restaurant.menuLink">
+            <div *ngIf="appService.getConfig('allowIFrames') && restaurant.menuLink">
                 <h3>
                     {{restaurant.name}}
-                    <small *ngIf="appService.showDistance && restaurant.coordinates" style="font-size: x-small;">
+                    <small *ngIf="appService.getConfig('showDistance') && restaurant.coordinates" style="font-size: x-small;">
                         {{(getLocationService.distance(restaurant.coordinates))?.toFixed(3) + " km od vás"}}
                     </small>
                 </h3>
@@ -64,3 +64,4 @@
             style="border:0"
             allowfullscreen></iframe>
 </div>
+<!--<app-menu-tester></app-menu-tester>-->

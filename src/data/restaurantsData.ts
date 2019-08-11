@@ -17,6 +17,10 @@ export const RestaurantData = [
         mapsId: "ChIJMfW7ai6JbEcRP3iW_eXDfgo",
         menuLink: "http://restauraciadelfin.sk/aktualne-denne-menu",
         visible: true,
+        coordinates: {
+            lat: 48.1498305556,
+            long: 17.1426194444,
+        },
     },
     {
         id: "18481358",
@@ -47,6 +51,10 @@ export const RestaurantData = [
         key: "hamka",
         mapsId: "ChIJPaExEi-JbEcRIFkHrgpfK7Y",
         visible: true,
+        coordinates: {
+            lat: 48.147451,
+            long: 17.143715,
+        },
     },
     {
         id: "17740573",
@@ -99,6 +107,10 @@ export const RestaurantData = [
         name: "Sole Mio Pizza",
         key: "soleMio",
         visible: true,
+        coordinates: {
+            lat: 48.1443413376,
+            long: 17.1169996262,
+        },
     },
     {
         id: "17937259",
@@ -125,18 +137,47 @@ export const RestaurantData = [
         name: "Rotunda",
         key: "rotunda",
         visible: true,
+        coordinates: {
+            lat: 48.1502112866,
+            long: 17.15051651,
+        },
+    },
+    {
+        id: "00000000",
+        name: "Gastro house",
+        key: "gastroHouse",
+        visible: false,
+        menuLink: "https://gastrohouse.sk/#denne-menu",
+    },
+    {
+        id: "16507664",
+        name: "Bastion",
+        key: "bastion",
+        visible: true,
+        coordinates: {
+            lat: 48.1578944444,
+            long: 17.1268083333,
+        },
     },
     {
         id: "16507731",
         name: "Vivendy",
         key: "vivendy",
         visible: true,
+        coordinates: {
+            lat: 48.1618346676,
+            long: 17.1289086342,
+        },
     },
     {
         id: "16547738",
         name: "Don Quijote",
         key: "donQuijote",
         visible: false,
+        coordinates: {
+            lat: 48.1712833333,
+            long: 17.1271,
+        },
     },
     {
         id: "16508120",
@@ -144,6 +185,10 @@ export const RestaurantData = [
         key: "uZlatehoBazanta",
         menuLink: "http://www.uzlatehobazanta.sk/denne-menu/",
         visible: false,
+        coordinates: {
+            lat: 48.1443699731,
+            long: 17.1141672134,
+        },
     },
     {
         id: "16508074",
@@ -173,6 +218,10 @@ export const RestaurantData = [
         key: "breweria",
         menuLink: "https://restauracie.sme.sk/restauracia/breweria-slimak_7191-bratislava_2983/denne-menu",
         visible: false,
+        coordinates: {
+            lat: 48.169819,
+            long: 17.129387,
+        },
     },
     {
         id: "16507905",
@@ -180,5 +229,9 @@ export const RestaurantData = [
         key: "cantina",
         menuLink: "https://www.cantinacontadina.sk/denne-menu/",
         visible: false,
+        coordinates: {
+            lat: 48.1637336,
+            long: 17.1331772,
+        },
     },
 ];

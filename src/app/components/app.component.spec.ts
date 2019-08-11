@@ -23,11 +23,11 @@ describe("AppComponent", () => {
             ],
             providers: [
                 FoodsRestService,
-                StatsService
+                StatsService,
             ],
             imports: [
                 FormsModule,
-                HttpClientModule
+                HttpClientModule,
             ],
         }).compileComponents();
     }));

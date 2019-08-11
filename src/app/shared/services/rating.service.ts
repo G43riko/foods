@@ -4,11 +4,17 @@ import {User} from "../interfaces/user.interface";
 import {Dish} from "../models/dish.model";
 import {Restaurant} from "../models/restaurant.model";
 
+export interface RestaurantsRatingData {
+    [restaurantKey: string]: {
+        [dishName: string]: string[];
+    };
+}
+
 @Injectable({
     providedIn: "root",
 })
 export class RatingService {
-    private readonly cache: any = {};
+    private readonly cache: RestaurantsRatingData = {};
 
     public constructor(private readonly afs: AngularFirestore) {
         this.afs.collection(`restaurants`).get().subscribe((restaurants) => {
