@@ -1,13 +1,29 @@
- - +Pridať možnosť zoraďovať, zobrazovať a skrývať reštaurácie
- - Vytvoriť BE
-     - Pri prvotnom volaní treba zavolať API zomato a uložiť všetky menu
-     - Pri ďalších volaniach sa preposielajú už uložené dáta
- - Odstrániť
-     - Dni v týždni
-     - Alergény
-     - Poradie menúčok
-
- - zobrazovať či je reštaurácia otvorená alebo nie
- - link na obedové menu pre reštaurácie ktoré sa nedaju parsovať
- - link na zobrazenie reštaurácie na mape
+ - [x] Pridať možnosť zoraďovať, zobrazovať a skrývať reštaurácie
+ - [ ] Vytvoriť BE
+     - [ ] Pri prvotnom volaní treba zavolať API zomato a uložiť všetky menu
+     - [ ] Pri ďalších volaniach sa preposielajú už uložené dáta
+ - [x] meniť poradie a viditelnosť reštaurácie
+ - [x] vyhladávanie jedál
+ - [x] zvýraznovať kategórie
+ - [ ] ~~zvýraznovať aktuálny deň~~
+ - [ ] upraviť názov jedla
+     - [x] vyparsovať cenu
+     - [x] vyparsovať hmotnosť
+     - [ ] Odstrániť
+         - [x] Dni v týždni
+         - [ ] Alergény
+         - [x] Poradie menúčok
+ - [ ] zobrazovať či je reštaurácia otvorená alebo nie
+ - [x] link na obedové menu pre reštaurácie ktoré sa nedaju parsovať
+ - [x] link na zobrazenie reštaurácie na mape
+ - [ ] prerobiť drag and drop list na CDK drag and drop
+ - [x] zobrazovať počet lajkov pre každé jedno aj reštauréciu
+ - [ ] ukladať menu do firebase aby sa iba raz načítal
+ - [ ] zobrazovať koľko ludí má reštauráciu v aktívnych
+ - [ ] pridať zoznam preferovaných jedál
+     - [ ] zvýrazňovať preferované jedné
+     - [ ] upozornenia na email ak označí checkbox pri preferovanom jedlo
+ - [x] zobrazovať obrázok jedla
+ - [x] pridať vzdialenosť od reštaurácie
+     
  

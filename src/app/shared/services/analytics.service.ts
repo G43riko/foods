@@ -17,11 +17,26 @@ export class AnalyticsService {
     }
 
     public highlight(key: string): void {
-        console.log("hladáme: ", key);
+        gtag("event", "highlight", {key});
         gtag("event", "userEvent", {
             event_category: "highlight",
             event_label: key,
         });
-        console.log("Dohladali sme");
     }
+
+    public addRestaurant(key: string): void {
+        gtag("event", "userEvent", {
+            event_category: "addRestaurant",
+            event_label: key,
+        });
+    }
+
+    public removeRestaurant(key: string): void {
+        gtag("event", "userEvent", {
+            event_category: "removeRestaurant",
+            event_label: key,
+        });
+    }
+
+
 }

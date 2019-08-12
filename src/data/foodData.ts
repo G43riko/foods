@@ -1,4 +1,4 @@
-const MEAT = ["kuraci", "hovadz", "bravcov", "telac", "rezen", "krkovick", "maso", "sekana", "cevapcici", "cevabcici", "klobas", "salam", "steak", "morca", "pecienka", "burger", "biftek", "slepac", "kacaci", "gulas", "fasirk", "udenin", "ragu", "prosciutto"];
+const MEAT = ["kuraci", "hovadz", "bravcov", "telac", "rezen", "krkovick", "maso", "sekana", "cevapcici", "cevabcici", "klobas", "salam", "steak", "morca", "pecienka", "burger", "biftek", "slepac", "panenk", "kacaci", "gulas", "fasirk", "udenin", "ragu", "prosciutto"];
 const CHEESES = ["syr", "ostiep", "eidam", "encian", "emental", "hermelin", "bryndz", "masl", "tvaroh", "parmezan", "mozzarel"];
 const SEA_FOOD = ["losos", "ryb", "stuka", "pstruh", "morske", "filet", "krevet", "krab", "homar", "kalmar", "sardink", "ancovick", "mecun", "tuniak", "kapor", "kaviar"];
 const VEGETABLE = ["zelenin", "brokolic", "spenat", "zelenin", "hub", "hrib", "tekvic", "sampino", "uhork", "cicer", "salat", "kapust",
@@ -60,7 +60,7 @@ export const FoodData = [
         visible: true,
         include: [
             "dukatove",
-            "rizovy",
+            "ryzovy",
             "sisky",
             "palacink",
             "sladk",

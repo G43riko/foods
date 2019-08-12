@@ -1,5 +1,4 @@
 import {Component} from "@angular/core";
-import {Angulartics2} from "angulartics2";
 import {FoodData} from "../../../data/foodData";
 import {Food} from "../../shared/models/food.model";
 import {AnalyticsService} from "../../shared/services/analytics.service";
