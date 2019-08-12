@@ -23,6 +23,8 @@ declare const $: any;
 export class AppComponent implements OnInit, OnChanges {
     public restaurants: Restaurant[] = [];
     public counter = 0;
+    public searchKey: string;
+    public openHighlighter = false;
     public dailyMenus: { [key: string]: Dish[] } = {};
 
     public constructor(private readonly foodsRestService: FoodsRestService,

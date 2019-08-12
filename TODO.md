@@ -25,5 +25,7 @@
      - [ ] upozornenia na email ak označí checkbox pri preferovanom jedlo
  - [x] zobrazovať obrázok jedla
  - [x] pridať vzdialenosť od reštaurácie
+ - [ ] zobrazovať najoblúbenejšie jedná a reštaurácuie v ktorých sú
+ - [ ] pridať možnosť hlasovať za reštauráciu
      
  

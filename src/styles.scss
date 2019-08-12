@@ -18,3 +18,107 @@
     -ms-user-select: none;
     user-select: none;
 }
+
+
+// MY MENU
+$breakpoint-tablet: 768px;
+
+$menu-offset: 6px;
+$menu-border-color: rgb(34,36,38);
+$menu-border-width: 1px;
+$menu-background-color: white;
+$menu-border-radius: .3em;
+.g43menu {
+    z-index: 2;
+    position: fixed;
+    display: flex;
+    overflow: auto;
+    background: $menu-background-color;
+
+    max-height: 100%;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    &.animated {
+        transition: width 0.3s, max-width 0.3s, max-height 0.3s, margin 0.3s, border-radius 0.3s;
+    }
+
+    border-radius: $menu-border-radius;
+    box-shadow: 0 1px 2px 0 rgba($menu-border-color,.15);
+    border: $menu-border-width solid rgba($menu-border-color,.15);
+    box-sizing: border-box;
+    &:not(.floating) {
+        border-radius: 0;
+    }
+    &.floating {
+        width: calc(100% - #{$menu-offset * 2});
+        max-height: calc(100% - #{$menu-offset * 2});
+        max-width: calc(100% - #{$menu-offset * 2});
+        margin: $menu-offset;
+    }
+
+    .divider {
+        flex: 1 1 auto;
+        position: relative;
+        padding: 0;
+    }
+    .item {
+        box-sizing: border-box;
+        position: relative;
+        line-height: 1;
+        user-select: none;
+        padding: 1em;
+        text-transform: none;
+        text-align: center;
+        color: rgba(0,0,0,.87);
+        font-weight: 400;
+        white-space: nowrap;
+
+        display: flex;
+        align-items: center;
+    }
+
+    a.item:hover {
+        cursor: pointer;
+        background: rgba(0,0,0,.03);
+        color: rgba(0,0,0,.95);
+    }
+
+    // Horizontal menu
+    &.bottom, &.top {
+        left: 0;
+        &.top {
+            top: 0;
+        }
+        &.bottom {
+            bottom: 0;
+        }
+    }
+
+    // Vertical menu
+    &.right, &.left {
+        flex-direction: column;
+        max-width: 200px;
+        top: 0;
+        height: 100%;
+        &.floating {
+            height: calc(100% - #{$menu-offset * 2});
+        }
+        &.no-full-height {
+            height: auto;
+        }
+
+        &.right {
+            right: 0;
+        }
+
+        &.left {
+            left: 0;
+        }
+
+        .item {
+            width: 100%;
+        }
+    }
+}
+

@@ -17,6 +17,8 @@ import {RestaurantSelectorComponent} from "./components/restaurant-selector/rest
 import {FirebaseModule} from "./shared/modules/firebase.module";
 import {CoreModule} from "./shared/services/core.module";
 import {SharedModule} from "./shared/shared.module";
+import { TopMenuComponent } from './components/top-menu/top-menu.component';
+import { HighlightSelectorComponent } from './components/highlight-selector/highlight-selector.component';
 
 @NgModule({
     declarations: [
@@ -33,6 +35,8 @@ import {SharedModule} from "./shared/shared.module";
         MenuDrawerComponent,
         MenuContainerComponent,
         MenuContentComponent,
+        TopMenuComponent,
+        HighlightSelectorComponent,
     ],
     imports: [
         FirebaseModule,

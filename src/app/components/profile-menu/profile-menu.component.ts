@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, EventEmitter, OnInit, Output} from "@angular/core";
 import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
@@ -8,10 +8,17 @@ import {AuthService} from "../../shared/services/auth.service";
 })
 export class ProfileMenuComponent implements OnInit {
     public menuOpen = false;
-
+    @Output() public readonly onOpen = new EventEmitter();
     public constructor(public readonly authService: AuthService) {
     }
 
+    public open(): void {
+        this.menuOpen = true;
+        this.onOpen.emit();
+    }
+    public close(): void {
+        this.menuOpen = false;
+    }
     public ngOnInit(): void {
     }
 

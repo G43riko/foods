@@ -7,7 +7,7 @@
 <div class="pusher" style="margin-top: 60px; padding: 40px">
     <h1 class="ui {{appService.getConfig('selectedColor')}} header"
         [ngClass]="{'inverted': appService.getConfig('inverted')}">Denné menu</h1>
-    <div class="ui {{appService.getConfig('selectedColor')}} top fixed menu"
+    <!--<div class="ui {{appService.getConfig('selectedColor')}} top fixed menu"
          [ngClass]="{'inverted': appService.getConfig('inverted')}">
         <a class="item opener restaurants">
             <i class="bars icon"></i>
@@ -23,18 +23,47 @@
                 <app-profile-menu></app-profile-menu>
             </div>
         </div>
+    </div>-->
+    <div class="g43menu top" style="overflow: inherit">
+        <a class="item opener restaurants">
+            <i class="bars icon"></i>
+        </a>
+        <a class="item opener options">
+            <i class=" sliders horizontal icon"></i>
+        </a>
+        <div class="item">
+            <div class="ui icon input {{appService.getConfig('selectedColor')}}"
+                 style="max-width: 130px"
+                 [ngClass]="{'inverted': appService.getConfig('inverted')}">
+                <input [(ngModel)]="searchKey" type="text" placeholder="hľadať...">
+                <i class="search icon"></i>
+            </div>
+        </div>
+        <div class="divider"></div>
+        <a class="item" (click)="profileMenu.close(); openHighlighter = !openHighlighter">
+            Kategórie
+        </a>
+        <div class="item">
+            <app-profile-menu #profileMenu (onOpen)="openHighlighter=false"></app-profile-menu>
+        </div>
+    </div>
+    <div class="g43menu right"
+         style="top: 68px; transition: transform 0.3s; transform: translateX(100%)"
+         [ngStyle]="{transform: openHighlighter ? 'none' : 'translateX(100%)'}">
+        <app-highlight-selector #pageNavBar></app-highlight-selector>
     </div>
     <div *ngIf="restaurants && restaurants.length > 0; else: noRestaurants" id="foodContent">
         <div *ngFor="let restaurant of restaurants" style="margin-top: 20px;" class="{{counter}}">
             <app-restaurant-foods *ngIf="!restaurant.menuLink"
                                   [dailyMenus]="dailyMenus"
                                   [highlight]="pageNavBar.highlight"
-                                  [searchKey]="pageNavBar.searchKey"
+                                  [searchKey]="searchKey"
                                   [restaurant]="restaurant"></app-restaurant-foods>
             <div *ngIf="appService.getConfig('allowIFrames') && restaurant.menuLink">
                 <h3>
                     {{restaurant.name}}
-                    <small *ngIf="appService.getConfig('showDistance') && restaurant.coordinates" style="font-size: x-small;">
+                    <small *ngIf="appService.getConfig('showDistance') && restaurant.coordinates"
+                           style="font-size: x-small;">
                         {{(getLocationService.distance(restaurant.coordinates))?.toFixed(3) + " km od vás"}}
                     </small>
                 </h3>
