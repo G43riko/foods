@@ -4,9 +4,10 @@ import {Dish} from "../../shared/models/dish.model";
 import {Food} from "../../shared/models/food.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
 import {AppService} from "../../shared/services/app.service";
+import {FoodsFirebaseService} from "../../shared/services/foods-firebase.service";
 import {FoodsRestService} from "../../shared/services/foods.rest.service";
 import {FoodsService} from "../../shared/services/foods.service";
-import {GeoLocationService} from "../../shared/services/geo-location.service";
+import {Coord, GeoLocationService} from "../../shared/services/geo-location.service";
 import {NotificationService} from "../../shared/services/notification.service";
 import {StatsService} from "../../shared/services/stats.service";
 
@@ -24,7 +25,8 @@ export class ContentComponent implements OnInit {
     @Input() public searchKey: string;
     @Input() public highlight: Food;
 
-    public constructor(private readonly foodsRestService: FoodsRestService,
+    public constructor(private readonly foodsRestService2: FoodsRestService,
+                       private readonly foodsRestService: FoodsFirebaseService,
                        private readonly notificationService: NotificationService,
                        private readonly getLocationService: GeoLocationService,
                        public readonly appService: AppService,
@@ -38,12 +40,25 @@ export class ContentComponent implements OnInit {
         this.loadDailyMenus();
     }
 
+    public getDistance(coordinates: Coord): string {
+        const distance = this.getLocationService.distance(coordinates);
+        if (!distance) {
+            return "Vzdialenosť sa nedá vyrátať";
+        }
+
+        if (distance < 1) {
+            return (distance * 1000) + " metrov od vás";
+        }
+
+        return distance + " km od vás";
+    }
+
     private loadDailyMenus(): void {
         const actualRestaurants = this.restaurants.filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink);
-        const data = actualRestaurants.map((restaurant) => this.foodsRestService.getZomatoFood(restaurant.id));
 
-        forkJoin(data).subscribe(((results) => {
+        this.foodsRestService.getZomatoFoods(actualRestaurants.map((restaurant) => restaurant.id)).subscribe((results) => {
             this.statsService.storeMenu(results);
+            console.log("results: ", results);
             results.forEach((result, index) => {
                 this.dailyMenus[actualRestaurants[index].key] = this.foodsService.processZomatoMenu(result);
             });
@@ -60,7 +75,8 @@ export class ContentComponent implements OnInit {
             // }).catch((e) => {
             //     console.error(e);
             // });
-        }), (error) => {
+        }, (error) => {
+            console.error("error: ", error);
             this.notificationService.showErrorMessage("Error while getting menus from zommato api: ", error);
         });
     }

@@ -53,7 +53,7 @@ import {fakeBackendProvider} from "./shared/tests/fake-backend-interceptor.servi
         CoreModule,
     ],
     providers: [
-        fakeBackendProvider,
+        // fakeBackendProvider,
     ],
     bootstrap: [AppComponent],
 })

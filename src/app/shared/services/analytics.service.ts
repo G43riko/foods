@@ -18,6 +18,8 @@ export class AnalyticsService {
 
     public highlight(key: string): void {
         gtag("event", "highlight", {key});
+
+        // OLD
         gtag("event", "userEvent", {
             event_category: "highlight",
             event_label: key,
@@ -25,6 +27,12 @@ export class AnalyticsService {
     }
 
     public addRestaurant(key: string): void {
+        gtag("event", "restaurantManagement", {
+            event_category: "add",
+            event_label: key,
+        });
+
+        // OLD
         gtag("event", "userEvent", {
             event_category: "addRestaurant",
             event_label: key,
@@ -32,11 +40,16 @@ export class AnalyticsService {
     }
 
     public removeRestaurant(key: string): void {
+        gtag("event", "restaurantManagement", {
+            event_category: "remove",
+            event_label: key,
+        });
+
+        // OLD
         gtag("event", "userEvent", {
             event_category: "removeRestaurant",
             event_label: key,
         });
     }
-
 
 }

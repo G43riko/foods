@@ -28,5 +28,6 @@
  - [ ] zobrazovať najoblúbenejšie jedná a reštaurácuie v ktorých sú
  - [ ] pridať možnosť hlasovať za reštauráciu
  - [ ] pridať rôzne jazykové mutácie
+ - [x] pridať manifest.json
      
  
