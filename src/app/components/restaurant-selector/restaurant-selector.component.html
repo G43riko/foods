@@ -1,9 +1,8 @@
-<h2 style="padding-top: 0.3em; text-align: center">Výber reštaurácií</h2>
-<h5 *ngIf="!(authService.user$ | async)" style="text-align: center">Pre zachovanie výberu je nutné sa prihlásiť</h5>
+<h2 >Výber reštaurácií</h2>
+<h5 *ngIf="!(authService.user$ | async)" >Pre zachovanie výberu je nutné sa prihlásiť</h5>
 <div class="restaurant-selector-wrapper">
     <div class="example-container">
         <h4 class="ui {{appService.getConfig('selectedColor')}} header"
-            style="text-align: center"
             [ngClass]="{'inverted': appService.getConfig('inverted')}">Všetky</h4>
 
         <div class="field">
@@ -27,7 +26,7 @@
                  class="example-box"
                  cdkDrag>
                 {{restaurant.name}}
-                <div style="flex: 1 1 auto"></div>
+                <div class="flex-divider"></div>
                 <i *ngIf="restaurant.menuLink" title="Je k dizpozícií iba iframe" class="frown outline icon"></i>
                 <i *ngIf="restaurant.coordinates" title="K dispozícií sú súradnice" class="map marker icon"></i>
             </div>
@@ -36,7 +35,6 @@
 
     <div class="example-container">
         <h4 class="ui {{appService.getConfig('selectedColor')}} header"
-            style="text-align: center"
             [ngClass]="{'inverted': appService.getConfig('inverted')}">Zvolené</h4>
 
 
@@ -48,14 +46,14 @@
              style="max-height: calc(100vh - 94px);"
              (cdkDropListDropped)="drop($event)">
             <h4 *ngIf="selectedRestaurants.length === 0"></h4>
-            <div *ngIf="selectedRestaurants.length === 0" style="cursor: default; padding: .8em .5em;">Vyberte
+            <div *ngIf="selectedRestaurants.length === 0" style="padding: .8em .5em;">Vyberte
                 reštaurácie zo zoznamu
             </div>
             <div *ngFor="let restaurant of selectedRestaurants"
                  class="example-box"
                  cdkDrag>
                 {{restaurant.name}}
-                <div style="flex: 1 1 auto"></div>
+                <div class="flex-divider"></div>
                 <i *ngIf="restaurant.menuLink" title="Je k dizpozícií iba iframe" class="frown outline icon"></i>
                 <i *ngIf="restaurant.coordinates" title="K dispozícií sú súradnice" class="map marker icon"></i>
             </div>
