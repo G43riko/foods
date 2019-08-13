@@ -27,5 +27,6 @@
  - [x] pridať vzdialenosť od reštaurácie
  - [ ] zobrazovať najoblúbenejšie jedná a reštaurácuie v ktorých sú
  - [ ] pridať možnosť hlasovať za reštauráciu
+ - [ ] pridať rôzne jazykové mutácie
      
  

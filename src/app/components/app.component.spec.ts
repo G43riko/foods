@@ -10,6 +10,7 @@ import {SearchRestaurantPipe} from "../shared/pipes/search-restaurant.pipe";
 import {FoodsRestService} from "../shared/services/foods.rest.service";
 import {StatsService} from "../shared/services/stats.service";
 import {AppComponent} from "./app.component";
+import {ContentComponent} from "./content/content.component";
 import {FoodRowLikesComponent} from "./food-row-likes/food-row-likes.component";
 import {FoodRowNameComponent} from "./food-row-name/food-row-name.component";
 import {FoodRowComponent} from "./food-row/food-row.component";
@@ -19,18 +20,21 @@ import {PageTopNavBarComponent} from "./page-top-nav-bar/page-top-nav-bar.compon
 import {ProfileMenuComponent} from "./profile-menu/profile-menu.component";
 import {RestaurantFoodsComponent} from "./restaurant-foods/restaurant-foods.component";
 import {RestaurantSelectorComponent} from "./restaurant-selector/restaurant-selector.component";
+import {TopMenuComponent} from "./top-menu/top-menu.component";
 
 describe("AppComponent", () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
-                AppComponent,
+                RestaurantSelectorComponent,
+                HighlightSelectorComponent,
                 OptionsComponent,
-                PageTopNavBarComponent,
+                ContentComponent,
+                TopMenuComponent,
+
+                AppComponent,
                 RestaurantFoodsComponent,
                 ProfileMenuComponent,
-                HighlightSelectorComponent,
-                RestaurantSelectorComponent,
                 FoodRowComponent,
                 FoodRowNameComponent,
                 FoodRowLikesComponent,
@@ -52,11 +56,6 @@ describe("AppComponent", () => {
         const fixture = TestBed.createComponent(AppComponent);
         const app = fixture.debugElement.componentInstance;
         expect(app).toBeTruthy();
-    }));
-    it("should have as restaurants array of restaurants", async(() => {
-        const fixture = TestBed.createComponent(AppComponent);
-        const app = fixture.debugElement.componentInstance;
-        expect(app.restaurants).toEqual(jasmine.any(Array));
     }));
     it("should render title in a h1 tag", async(() => {
         const fixture = TestBed.createComponent(AppComponent);

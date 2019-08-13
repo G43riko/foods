@@ -1,0 +1,26 @@
+<h1 class="ui {{appService.getConfig('selectedColor')}} header"
+    [ngClass]="{'inverted': appService.getConfig('inverted')}">Denné menu</h1>
+
+<div *ngIf="restaurants && restaurants.length > 0; else: noRestaurants" id="foodContent">
+    <div *ngFor="let restaurant of restaurants" style="margin-top: 20px;" class="{{counter}}">
+        <app-restaurant-foods *ngIf="!restaurant.menuLink"
+                              [dailyMenus]="dailyMenus"
+                              [highlight]="highlight"
+                              [searchKey]="searchKey"
+                              [restaurant]="restaurant"></app-restaurant-foods>
+        <div *ngIf="appService.getConfig('allowIFrames') && restaurant.menuLink">
+            <h3>
+                {{restaurant.name}}
+                <small *ngIf="appService.getConfig('showDistance') && restaurant.coordinates"
+                       style="font-size: x-small;">
+                    {{(getLocationService.distance(restaurant.coordinates))?.toFixed(3) + " km od vás"}}
+                </small>
+            </h3>
+            <iframe class="menu-iframe" id="{{restaurant.key + 'Rest'}}"
+                    [src]="restaurant.menuLink | safe"></iframe>
+        </div>
+    </div>
+</div>
+<ng-template #noRestaurants>
+    <h3>Ľutujeme, ale nepodarilo sa získať údaje o žiadnej reštaurácií</h3>
+</ng-template>

@@ -15,21 +15,19 @@ export class OptionsComponent implements OnInit {
 
     public constructor(public readonly appService: AppService,
                        public readonly authService: AuthService) {
+        this.authService.user$.subscribe(() => {
+           setTimeout(() => {
+               $(".checkbox").checkbox();
+               $(".ui.dropdown").dropdown({
+                   onChange(value): void {
+                       appService.setConfig("selectedColor", (Colors[value] || "" )as Colors );
+                   },
+               });
+           }, 100);
+        });
     }
 
     public ngOnInit(): void {
-        const appService = this.appService;
-        setTimeout(() => {
-            $(".checkbox").checkbox();
-            $(".ui.dropdown").dropdown({
-                onChange(value, text, $selectedItem): void {
-                    console.log(value, text, $selectedItem);
-                    appService.setConfig("selectedColor", Colors[value] as Colors);
-                    // appService.getConfig('selectedColor') = Colors[value] as Colors;
-                },
-            });
-        }, 100);
-
     }
 
     public resetRestaurants(): void {
@@ -40,7 +38,7 @@ export class OptionsComponent implements OnInit {
 
         setTimeout(() => {
             const dropDown = $(".ui.dropdown");
-            dropDown.dropdown("set selected", this.appService.getConfig('selectedColor'));
+            dropDown.dropdown("set selected", this.appService.getConfig("selectedColor"));
             dropDown.dropdown("set text", dropDown.dropdown("get item", dropDown.dropdown("get value")).html());
         });
     }

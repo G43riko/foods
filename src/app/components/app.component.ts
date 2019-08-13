@@ -1,4 +1,5 @@
-import {Component, OnChanges, OnInit, SimpleChanges} from "@angular/core";
+import {BreakpointObserver} from "@angular/cdk/layout";
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core";
 import {DomSanitizer} from "@angular/platform-browser";
 import {forkJoin} from "rxjs/internal/observable/forkJoin";
 import {Dish} from "../shared/models/dish.model";
@@ -20,100 +21,23 @@ declare const $: any;
     templateUrl: "./app.component.html",
     styleUrls: ["./app.component.scss"],
 })
-export class AppComponent implements OnInit, OnChanges {
-    public restaurants: Restaurant[] = [];
+export class AppComponent implements OnInit {
     public counter = 0;
-    public searchKey: string;
-    public openHighlighter = false;
     public dailyMenus: { [key: string]: Dish[] } = {};
+    public wideNavigation: boolean;
 
-    public constructor(private readonly foodsRestService: FoodsRestService,
-                       private readonly parserService: ParserService,
-                       private readonly sanitizer: DomSanitizer,
-                       private readonly notificationService: NotificationService,
-                       private readonly getLocationService: GeoLocationService,
-                       public readonly appService: AppService,
-                       public readonly ratingService: RatingService,
-                       private readonly foodsService: FoodsService,
-                       private readonly statsService: StatsService) {
-
-    }
-
-    private setAutocomplete(): void {
-        const keywords = ["menu", "ponuka", "astra", "delfin", "extra", "porcia", "with", "baby", "chicken", "cream",
-            "vegetable", "grilled", "stala", "pon", "utor", "stre", "stvrtok", "pia", "spinach", "boiled", "potatoes",
-            "pork", "rice", "baked", "dna"];
-        const aElement = document.getElementById("foodContent");
-
-        const a = !aElement ? [] : aElement.innerText.split(/[ \n\-/,]/g)
-            .filter((e) => e &&
-                e.length > 3 &&
-                isNaN(parseFloat(e)) &&
-                !StringUtils.removeAccentedCharacters(e.toLowerCase()).match(new RegExp("(" + keywords.join("|") + ")")))
-            .map((e) => e.trim());
-
-        const res: {
-            key: string,
-            value: string,
-            count: number,
-        }[] = [];
-        a.forEach((e: string) => {
-            const key: string = StringUtils.removeAccentedCharacters(e.toLowerCase());
-            const found = res.find((item) => item.key === key);
-            if (found) {
-                found.count++;
-            } else {
-                res.push({key, value: e, count: 1});
-            }
+    public constructor(private readonly statsService: StatsService,
+                       private readonly breakpointObserver: BreakpointObserver) {
+        // breakpointObserver.isMatched();
+        breakpointObserver.observe("(min-width: 726px)").subscribe((result) => {
+            this.wideNavigation = result.matches;
         });
-        res.sort((b, c) => c.count - b.count);
-        let innerHtml = "";
-        res.forEach((e) => {
-            innerHtml += `<div class="item" data-value="${e.key}">${e.value + " (" + e.count + ")"}</div>`;
-        });
-        $(".ui.multiple.dropdown").dropdown().find(".menu").append(innerHtml);
-    }
 
-    public onRestaurantChanges(selectedRestaurants: Restaurant[]): void {
-        this.counter++;
-        this.restaurants = selectedRestaurants;
-        this.loadDailyMenus();
     }
 
     public ngOnInit(): void {
         this.statsService.setVisit();
         $(".ui.sidebar.restaurants").sidebar("attach events", ".item.opener.restaurants");
         $(".ui.sidebar.options").sidebar("attach events", ".item.opener.options");
-    }
-
-    private loadDailyMenus(): void {
-        const actualRestaurants = this.restaurants.filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink);
-        const data = actualRestaurants.map((restaurant) => this.foodsRestService.getZomatoFood(restaurant.id));
-
-        forkJoin(data).subscribe(((results) => {
-            this.statsService.storeMenu(results);
-            results.forEach((result, index) => {
-                this.dailyMenus[actualRestaurants[index].key] = this.foodsService.processZomatoMenu(result);
-            });
-            // setTimeout(() => this.setAutocomplete(), 10);
-            $(".checkbox").checkbox();
-
-            // this.parserService.parseDelfinMenus().then((menu) => {
-            //     this.dailyMenus.delphine = this.foodsService.processDelphineMenu(menu);
-            // }).catch((e) => {
-            //     console.error(e);
-            // });
-            // this.parserService.parseFoodooMenu().then((menu) => {
-            //     this.dailyMenus.delphine = this.foodsService.processFoodooMenu(menu);
-            // }).catch((e) => {
-            //     console.error(e);
-            // });
-        }), (error) => {
-            this.notificationService.showErrorMessage("Error while getting menus from zommato api: ", error);
-        });
-    }
-
-    public ngOnChanges(changes: SimpleChanges): void {
-        console.log("changes: ", changes);
     }
 }

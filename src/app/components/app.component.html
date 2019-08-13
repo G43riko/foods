@@ -1,99 +1,25 @@
-
-
-<div class="ui sidebar wide vertical menu restaurants" style="overflow-y: hidden !important;">
-    <app-restaurant-selector (restaurantsChange)="onRestaurantChanges($event)"></app-restaurant-selector>
+<div class="ui sidebar vertical menu restaurants"
+     [class.wide]="wideNavigation"
+     style="overflow-y: hidden !important;">
+    <app-restaurant-selector (restaurantsChange)="appContent.onRestaurantChanges($event)"></app-restaurant-selector>
 </div>
-<div class="ui sidebar wide vertical menu options">
+<div class="ui sidebar vertical menu options"
+     [class.wide]="wideNavigation"
+>
     <app-options>Nastavenia</app-options>
 </div>
 
 <div class="pusher" style="margin-top: 60px; padding: 40px">
-    <h1 class="ui {{appService.getConfig('selectedColor')}} header"
-        [ngClass]="{'inverted': appService.getConfig('inverted')}">Denné menu</h1>
-    <!--<div class="ui {{appService.getConfig('selectedColor')}} top fixed menu"
-         [ngClass]="{'inverted': appService.getConfig('inverted')}">
-        <a class="item opener restaurants">
-            <i class="bars icon"></i>
-        </a>
-        <a class="item opener options">
-            <i class=" sliders horizontal icon"></i>
-        </a>
-        <div class="item">
-            <app-page-nav-bar #pageNavBar></app-page-nav-bar>
-        </div>
-        <div class="right menu">
-            <div class="item">
-                <app-profile-menu></app-profile-menu>
-            </div>
-        </div>
-    </div>-->
-    <div class="g43menu top" style="overflow: inherit">
-        <a class="item opener restaurants">
-            <i class="bars icon"></i>
-        </a>
-        <a class="item opener options">
-            <i class=" sliders horizontal icon"></i>
-        </a>
-        <div class="item">
-            <div class="ui icon input {{appService.getConfig('selectedColor')}}"
-                 style="max-width: 130px"
-                 [ngClass]="{'inverted': appService.getConfig('inverted')}">
-                <input [(ngModel)]="searchKey" type="text" placeholder="hľadať...">
-                <i class="search icon"></i>
-            </div>
-        </div>
-        <div class="divider"></div>
-        <a class="item" (click)="profileMenu.close(); openHighlighter = !openHighlighter">
-            Kategórie
-        </a>
-        <div class="item">
-            <app-profile-menu #profileMenu (onOpen)="openHighlighter=false"></app-profile-menu>
-        </div>
-    </div>
-    <div class="g43menu right"
-         style="top: 68px; transition: transform 0.3s; transform: translateX(100%)"
-         [ngStyle]="{transform: openHighlighter ? 'none' : 'translateX(100%)'}">
-        <app-highlight-selector #pageNavBar></app-highlight-selector>
-    </div>
-    <div *ngIf="restaurants && restaurants.length > 0; else: noRestaurants" id="foodContent">
-        <div *ngFor="let restaurant of restaurants" style="margin-top: 20px;" class="{{counter}}">
-            <app-restaurant-foods *ngIf="!restaurant.menuLink"
-                                  [dailyMenus]="dailyMenus"
-                                  [highlight]="pageNavBar.highlight"
-                                  [searchKey]="searchKey"
-                                  [restaurant]="restaurant"></app-restaurant-foods>
-            <div *ngIf="appService.getConfig('allowIFrames') && restaurant.menuLink">
-                <h3>
-                    {{restaurant.name}}
-                    <small *ngIf="appService.getConfig('showDistance') && restaurant.coordinates"
-                           style="font-size: x-small;">
-                        {{(getLocationService.distance(restaurant.coordinates))?.toFixed(3) + " km od vás"}}
-                    </small>
-                </h3>
-                <iframe class="menu-iframe" id="{{restaurant.key + 'Rest'}}"
-                        [src]="restaurant.menuLink | safe"></iframe>
-            </div>
-        </div>
-    </div>
-    <ng-template #noRestaurants>
-        <h3>Ľutujeme, ale nepodarilo sa získať údaje o žiadnej reštaurácií</h3>
-    </ng-template>
-
-    <div class="ui modal foodImage">
-        <i class="close icon"></i>
-        <div class="header"></div>
-        <div class="image content">
-            <div class="ui medium image">
-                <img alt="" src="">
-            </div>
-        </div>
-    </div>
+    <app-top-menu #topMenu></app-top-menu>
+    <app-highlight-selector #pageNavBar [openHighlighter]="topMenu.openHighlighter"></app-highlight-selector>
+    <app-content #appContent [highlight]="pageNavBar.highlight" [searchKey]="topMenu.searchKey"></app-content>
 </div>
 
 <div class="ui modal maps">
     <iframe frameborder="0"
             class="map"
+            width="100%"
+            height="100%"
             style="border:0"
             allowfullscreen></iframe>
 </div>
-<!--<app-menu-tester></app-menu-tester>-->

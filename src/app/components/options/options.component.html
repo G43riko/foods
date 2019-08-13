@@ -4,7 +4,8 @@
         <select id="appColor"
                 class="ui dropdown">
             <option value="none" class="item">Žiadna farba</option>
-            <option *ngFor="let color of allowedColors" class="item"
+            <option *ngFor="let color of allowedColors"
+                    class="item"
                     selected="{{color === appService.getConfig('selectedColor') ? 'selected' : ''}}"
                     value="{{color}}">
                 <a class="ui {{color}} empty circular label"></a>

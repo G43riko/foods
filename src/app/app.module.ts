@@ -1,8 +1,10 @@
 import {DragDropModule} from "@angular/cdk/drag-drop";
+import {LayoutModule} from "@angular/cdk/layout";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppComponent} from "./components/app.component";
+import { ContentComponent } from "./components/content/content.component";
 import {FoodRowLikesComponent} from "./components/food-row-likes/food-row-likes.component";
 import {FoodRowNameComponent} from "./components/food-row-name/food-row-name.component";
 import {FoodRowComponent} from "./components/food-row/food-row.component";
@@ -16,9 +18,11 @@ import {PageTopNavBarComponent} from "./components/page-top-nav-bar/page-top-nav
 import {ProfileMenuComponent} from "./components/profile-menu/profile-menu.component";
 import {RestaurantFoodsComponent} from "./components/restaurant-foods/restaurant-foods.component";
 import {RestaurantSelectorComponent} from "./components/restaurant-selector/restaurant-selector.component";
+import { TopMenuComponent } from "./components/top-menu/top-menu.component";
 import {FirebaseModule} from "./shared/modules/firebase.module";
 import {CoreModule} from "./shared/services/core.module";
 import {SharedModule} from "./shared/shared.module";
+import {fakeBackendProvider} from "./shared/tests/fake-backend-interceptor.service";
 
 @NgModule({
     declarations: [
@@ -36,14 +40,20 @@ import {SharedModule} from "./shared/shared.module";
         MenuContainerComponent,
         MenuContentComponent,
         HighlightSelectorComponent,
+        TopMenuComponent,
+        ContentComponent,
     ],
     imports: [
         DragDropModule,
+        LayoutModule,
         FirebaseModule,
         BrowserModule,
         FormsModule,
         SharedModule,
         CoreModule,
+    ],
+    providers: [
+        fakeBackendProvider,
     ],
     bootstrap: [AppComponent],
 })

@@ -1,0 +1,23 @@
+<div class="g43menu top" style="overflow: inherit">
+    <a class="item opener restaurants">
+        <i class="bars icon"></i>
+    </a>
+    <a class="item opener options">
+        <i class=" sliders horizontal icon"></i>
+    </a>
+    <div class="item">
+        <div class="ui icon input {{appService.getConfig('selectedColor')}}"
+             style="max-width: 130px"
+             [ngClass]="{'inverted': appService.getConfig('inverted')}">
+            <input [(ngModel)]="searchKey" type="text" placeholder="hľadať...">
+            <i class="search icon"></i>
+        </div>
+    </div>
+    <div class="divider"></div>
+    <a class="item" (click)="profileMenu.close(); openHighlighter = !openHighlighter">
+        Kategórie
+    </a>
+    <div class="item">
+        <app-profile-menu #profileMenu (onOpen)="openHighlighter=false"></app-profile-menu>
+    </div>
+</div>

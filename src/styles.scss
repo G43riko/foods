@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+$breakpoint-tablet: 768px;
 
 .searched {
     font-weight: bold;
@@ -20,9 +21,8 @@
 }
 
 
-// MY MENU
-$breakpoint-tablet: 768px;
 
+// MY MENU
 $menu-offset: 6px;
 $menu-border-color: rgb(34,36,38);
 $menu-border-width: 1px;
@@ -68,6 +68,7 @@ $menu-border-radius: .3em;
         line-height: 1;
         user-select: none;
         padding: 1em;
+
         text-transform: none;
         text-align: center;
         color: rgba(0,0,0,.87);
@@ -118,6 +119,13 @@ $menu-border-radius: .3em;
 
         .item {
             width: 100%;
+        }
+    }
+}
+@media only screen and (max-width: $breakpoint-tablet) {
+    .g43menu {
+        .item {
+            padding: 0.3em;
         }
     }
 }

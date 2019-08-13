@@ -1,15 +1,19 @@
-<label class="item">Zvýrazňovať:</label>
-<div *ngFor="let item of highlightTypes">
-    <div *ngIf="item.visible"
-         class="ui radio checkbox item"
-         [title]="item.description">
-        <input type="radio"
-               name="highlight"
-               id="radio-{{item.value}}"
-               [value]="item"
-               (change)="select(item.key)"
-               [(ngModel)]="highlight"
-               checked="checked">
-        <label for="radio-{{item.value}}">{{item.value}}</label>
+<div class="g43menu right"
+     style="transition: transform 0.3s; transform: translateX(100%)"
+     [ngStyle]="{transform: openHighlighter ? 'none' : 'translateX(100%)', 'top.px': deviceIsTabled ? 68 : 48}">
+    <label class="item">Zvýrazňovať:</label>
+    <div *ngFor="let item of highlightTypes">
+        <div *ngIf="item.visible"
+             class="ui radio checkbox item"
+             [title]="item.description">
+            <input type="radio"
+                   name="highlight"
+                   id="radio-{{item.value}}"
+                   [value]="item"
+                   (change)="select(item.key)"
+                   [(ngModel)]="highlight"
+                   checked="checked">
+            <label for="radio-{{item.value}}">{{item.value}}</label>
+        </div>
     </div>
 </div>

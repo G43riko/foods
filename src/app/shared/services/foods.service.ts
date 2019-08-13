@@ -7,6 +7,9 @@ import {Dish} from "../models/dish.model";
 })
 export class FoodsService {
     public processZomatoMenu(menu: any): Dish[] {
+        if (!menu) {
+            return [];
+        }
         const result: Dish[] = [];
         const dailyMenus = Object.values(menu.daily_menus);
         const dishes = dailyMenus.map((dailyMenu: any) => dailyMenu.daily_menu.dishes).reduce((prev, curr) => [...prev, ...curr], []);
