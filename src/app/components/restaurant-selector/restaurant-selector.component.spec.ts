@@ -1,4 +1,7 @@
+import {DragDropModule} from "@angular/cdk/drag-drop";
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import {TestingModule} from "../../shared/modules/testing/testing.module";
+import {SearchRestaurantPipe} from "../../shared/pipes/search-restaurant.pipe";
 
 import {RestaurantSelectorComponent} from "./restaurant-selector.component";
 
@@ -8,9 +11,15 @@ describe("RestaurantSelectorComponent", () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [RestaurantSelectorComponent],
-        })
-            .compileComponents();
+            declarations: [
+                RestaurantSelectorComponent,
+                SearchRestaurantPipe,
+            ],
+            imports: [
+                DragDropModule,
+                TestingModule,
+            ],
+        }).compileComponents();
     }));
 
     beforeEach(() => {

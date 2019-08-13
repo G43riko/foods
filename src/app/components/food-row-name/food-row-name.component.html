@@ -1,9 +1,9 @@
 
-<div #titleCell [ngClass]="{'ui ribbon label': isBold(dish.name)}"
+<div *ngIf="dish" #titleCell [ngClass]="{'ui ribbon label': isBold(dish.name)}"
      class="daily-menu row {{appService.getConfig('inverted') || appService.getConfig('selectedColor')}}">
     <span *ngIf="appService.getConfig('showWeight') && dish.weight" [innerHTML]="dish.weight + ': '"></span>
     <span #dailyMenu
-          [innerHTML]="dish.name"></span>
+          [innerHTML]="dish?.name"></span>
 
     <i *ngIf="!titleCell.classList.contains('ribbon')" (click)="openImages(dailyMenu)"
        class="question circle icon helper"

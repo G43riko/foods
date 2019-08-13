@@ -14,7 +14,7 @@ export class SearchFoodPipe implements PipeTransform {
         if (!value) {
             return [null];
         }
-        value.forEach((item) => item.name = item.name.replace(regex, ""));
+        value.forEach((item) => item.name && (item.name = item.name.replace(regex, "")));
         if (!key) {
             return value;
         }

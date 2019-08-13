@@ -14,7 +14,7 @@ export class OptionsComponent implements OnInit {
     public readonly allowedColors: string[] = Object.keys(Colors);
 
     public constructor(public readonly appService: AppService,
-                       private readonly authService: AuthService) {
+                       public readonly authService: AuthService) {
     }
 
     public ngOnInit(): void {

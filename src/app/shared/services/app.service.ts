@@ -17,7 +17,9 @@ export interface AppConfiguration {
     selectedRestaurants?: string[];
 }
 
-@Injectable()
+@Injectable({
+    providedIn: "root",
+})
 export class AppService {
     public readonly configuration: BehaviorSubject<AppConfiguration> = new BehaviorSubject<AppConfiguration>(AppService.getDefaultConfiguration());
 

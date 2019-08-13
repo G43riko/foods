@@ -3,6 +3,10 @@ import {StringUtils} from "./StringUtils";
 
 export class FoodUtils {
     public static isBold(key: string): boolean {
+        if (!key) {
+            return false;
+        }
+
         return key.startsWith("Polievky") ||
             key.startsWith("Hlavné") ||
             key.startsWith("Šaláty") ||

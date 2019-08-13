@@ -43,6 +43,9 @@ export class RatingService {
     }
 
     private isCached(dish: Dish, restaurant: Restaurant): boolean {
+        if (!restaurant) {
+            return false;
+        }
         if (!this.cache[restaurant.key]) {
             return false;
         }

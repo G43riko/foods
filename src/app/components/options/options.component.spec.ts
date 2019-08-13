@@ -1,4 +1,5 @@
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import {TestingModule} from "../../shared/modules/testing/testing.module";
 
 import {OptionsComponent} from "./options.component";
 
@@ -8,9 +9,11 @@ describe("OptionsComponent", () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [OptionsComponent]
-        })
-            .compileComponents();
+            declarations: [OptionsComponent],
+            imports: [
+                TestingModule,
+            ],
+        }).compileComponents();
     }));
 
     beforeEach(() => {

@@ -1,33 +1,50 @@
+import {DragDropModule} from "@angular/cdk/drag-drop";
+import {HttpClientModule} from "@angular/common/http";
+import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {async, TestBed} from "@angular/core/testing";
+import {FormsModule} from "@angular/forms";
+import {TestingModule} from "../shared/modules/testing/testing.module";
+import {SafePipe} from "../shared/pipes/safe.pipe";
+import {SearchFoodPipe} from "../shared/pipes/search-food.pipe";
+import {SearchRestaurantPipe} from "../shared/pipes/search-restaurant.pipe";
+import {FoodsRestService} from "../shared/services/foods.rest.service";
+import {StatsService} from "../shared/services/stats.service";
 import {AppComponent} from "./app.component";
+import {FoodRowLikesComponent} from "./food-row-likes/food-row-likes.component";
+import {FoodRowNameComponent} from "./food-row-name/food-row-name.component";
+import {FoodRowComponent} from "./food-row/food-row.component";
+import {HighlightSelectorComponent} from "./highlight-selector/highlight-selector.component";
+import {OptionsComponent} from "./options/options.component";
 import {PageTopNavBarComponent} from "./page-top-nav-bar/page-top-nav-bar.component";
+import {ProfileMenuComponent} from "./profile-menu/profile-menu.component";
 import {RestaurantFoodsComponent} from "./restaurant-foods/restaurant-foods.component";
 import {RestaurantSelectorComponent} from "./restaurant-selector/restaurant-selector.component";
-import {FormsModule} from "@angular/forms";
-import {SearchFoodPipe} from "../shared/pipes/search-food.pipe";
-import {FoodsRestService} from "../shared/services/foods.rest.service";
-import {HttpClientModule} from "@angular/common/http";
-import {StatsService} from "../shared/services/stats.service";
-
-declare const $: any;
 
 describe("AppComponent", () => {
     beforeEach(async(() => {
         TestBed.configureTestingModule({
             declarations: [
                 AppComponent,
+                OptionsComponent,
                 PageTopNavBarComponent,
                 RestaurantFoodsComponent,
+                ProfileMenuComponent,
+                HighlightSelectorComponent,
                 RestaurantSelectorComponent,
+                FoodRowComponent,
+                FoodRowNameComponent,
+                FoodRowLikesComponent,
                 SearchFoodPipe,
+                SearchRestaurantPipe,
+                SafePipe,
             ],
             providers: [
                 FoodsRestService,
                 StatsService,
             ],
             imports: [
-                FormsModule,
-                HttpClientModule,
+                DragDropModule,
+                TestingModule,
             ],
         }).compileComponents();
     }));
