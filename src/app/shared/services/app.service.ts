@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/firestore";
 import {firestore} from "firebase";
-import {of} from "rxjs";
+import {BehaviorSubject, of, Subscription} from "rxjs";
 import {switchMap} from "rxjs/operators";
 import {User} from "../interfaces/user.interface";
 import {Colors} from "../models/colors.enum";
@@ -14,11 +14,12 @@ export interface AppConfiguration {
     showDistance: boolean;
     showPrice: boolean;
     showWeight: boolean;
+    selectedRestaurants?: string[];
 }
 
 @Injectable()
 export class AppService {
-    private configuration = AppService.getDefaultConfiguration();
+    public readonly configuration: BehaviorSubject<AppConfiguration> = new BehaviorSubject<AppConfiguration>(AppService.getDefaultConfiguration());
 
     private ref: AngularFirestoreDocument<User>;
 
@@ -38,40 +39,40 @@ export class AppService {
             if (user) {
                 const userData = user.data();
                 if (userData.config) {
-                    this.configuration = userData.config;
+                    this.configuration.next(userData.config);
 
                     return;
                 }
             }
-            this.configuration = AppService.getDefaultConfiguration();
+            this.configuration.next(AppService.getDefaultConfiguration());
 
         });
     }
 
-    private static getDefaultConfiguration(): AppConfiguration {
+    private static getDefaultConfiguration(selectedRestaurants?: string[]): AppConfiguration {
         return {
             inverted: false,
             allowIFrames: true,
             showDistance: true,
             showPrice: true,
             showWeight: true,
+            selectedRestaurants: selectedRestaurants || [],
         };
     }
 
     public setConfig<T extends keyof AppConfiguration>(key: T, value: AppConfiguration[T]): void {
-        this.configuration[key] = value;
+        console.log("nastavujeme" + key + " na " + value);
         (this.ref as any).update({
             config: {
-                ...this.configuration,
+                ...this.configuration.value,
                 [key]: value,
             },
         });
     }
 
     public getConfig<T extends keyof AppConfiguration>(key: T): AppConfiguration[T] {
-        return this.configuration[key];
+        return this.configuration.value[key];
     }
-
     public set inverted(value: boolean) {
         this.setConfig("inverted", value);
     }
@@ -101,7 +102,7 @@ export class AppService {
     }
 
     public get showPrice(): boolean {
-        return this.configuration.showPrice;
+        return this.getConfig("showPrice");
     }
 
     public set showWeight(value: boolean) {
@@ -109,7 +110,7 @@ export class AppService {
     }
 
     public get showWeight(): boolean {
-        return this.configuration.showWeight;
+        return this.getConfig("showWeight");
     }
 
     public reset(): void {

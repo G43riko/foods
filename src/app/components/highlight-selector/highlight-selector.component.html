@@ -1,0 +1,15 @@
+<label class="item">Zvýrazňovať:</label>
+<div *ngFor="let item of highlightTypes">
+    <div *ngIf="item.visible"
+         class="ui radio checkbox item"
+         [title]="item.description">
+        <input type="radio"
+               name="highlight"
+               id="radio-{{item.value}}"
+               [value]="item"
+               (change)="select(item.key)"
+               [(ngModel)]="highlight"
+               checked="checked">
+        <label for="radio-{{item.value}}">{{item.value}}</label>
+    </div>
+</div>

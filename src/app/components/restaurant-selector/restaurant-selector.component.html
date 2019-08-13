@@ -1,55 +1,64 @@
-<div class="container">
-    <div>
+<h2 style="padding-top: 0.3em; text-align: center">Výber reštaurácií</h2>
+<h5 *ngIf="!(authService.user$ | async)" style="text-align: center">Pre zachovanie výberu je nutné sa prihlásiť</h5>
+<div class="restaurant-selector-wrapper">
+    <div class="example-container">
         <h4 class="ui {{appService.getConfig('selectedColor')}} header"
-            [ngClass]="{'inverted': appService.getConfig('inverted')}">Všetky reštaurácie</h4>
+            style="text-align: center"
+            [ngClass]="{'inverted': appService.getConfig('inverted')}">Všetky</h4>
+
         <div class="field">
             <div class="ui mini icon input"
-                 [ngClass]="{'inverted': appService.getConfig('inverted')}">
-                <input [(ngModel)]="searchKey" type="text" placeholder="hľadať...">
-                <i class="search icon"></i>
-            </div>
-        </div>
-        <ul id="list-1" class="sortable">
-            <ng-container *ngFor="let restaurant of restaurants | searchRestaurantPipe: searchKey">
-                <li *ngIf="!restaurant.visible"
-                    [ngClass]="{'strong': !restaurant.menuLink}"
-                    title="{{restaurant.key}}">
-                    {{restaurant.name}}
-                </li>
-            </ng-container>
-        </ul>
-        <button id="sbtn-1" type="button" style="display: none;">Serialize</button>
-    </div>
-
-    <div>
-        <h4 class="ui {{appService.getConfig('selectedColor')}} header"
-            [ngClass]="{'inverted': appService.getConfig('inverted')}">Zvolené reštaurácie</h4>
-        <div class="field" style="visibility: hidden">
-            <div class="ui mini icon input"
+                 style="width: 100%"
                  [ngClass]="{'inverted': appService.getConfig('inverted')}">
                 <input [(ngModel)]="searchKey"
-                       placeholder="hľadať..."
-                       type="text">
+                       style="height: 42px;"
+                       type="text" placeholder="hľadať...">
                 <i class="search icon"></i>
             </div>
         </div>
-        <ul id="list-2" class="sortable">
-            <li *ngFor="let restaurant of selectedRestaurants"
-                [ngClass]="{'strong': !restaurant.menuLink}"
-                title="{{restaurant.key}}">
+        <div
+            cdkDropList
+            #todoList="cdkDropList"
+            [cdkDropListData]="restaurants"
+            [cdkDropListConnectedTo]="[doneList]"
+            class="example-list"
+            (cdkDropListDropped)="drop($event)">
+            <div *ngFor="let restaurant of restaurants | searchRestaurantPipe: searchKey"
+                 class="example-box"
+                 cdkDrag>
                 {{restaurant.name}}
-            </li>
-        </ul>
-        <button id="sbtn-2"
-                class="ui button {{appService.getConfig('selectedColor')}}"
-                style="display: block"
-                [ngClass]="{'inverted': appService.getConfig('inverted')}">
-            Uložiť
-        </button>
-
-        <small style="display: none;">
-            *Obedové menu reštaurácií ktoré nie sú zvýraznené sa zobrazia len v iframe
-        </small>
+                <div style="flex: 1 1 auto"></div>
+                <i *ngIf="restaurant.menuLink" title="Je k dizpozícií iba iframe" class="frown outline icon"></i>
+                <i *ngIf="restaurant.coordinates" title="K dispozícií sú súradnice" class="map marker icon"></i>
+            </div>
+        </div>
     </div>
 
+    <div class="example-container">
+        <h4 class="ui {{appService.getConfig('selectedColor')}} header"
+            style="text-align: center"
+            [ngClass]="{'inverted': appService.getConfig('inverted')}">Zvolené</h4>
+
+
+        <div cdkDropList
+             #doneList="cdkDropList"
+             [cdkDropListData]="selectedRestaurants"
+             [cdkDropListConnectedTo]="[todoList]"
+             class="example-list"
+             style="max-height: calc(100vh - 94px);"
+             (cdkDropListDropped)="drop($event)">
+            <h4 *ngIf="selectedRestaurants.length === 0"></h4>
+            <div *ngIf="selectedRestaurants.length === 0" style="cursor: default; padding: .8em .5em;">Vyberte
+                reštaurácie zo zoznamu
+            </div>
+            <div *ngFor="let restaurant of selectedRestaurants"
+                 class="example-box"
+                 cdkDrag>
+                {{restaurant.name}}
+                <div style="flex: 1 1 auto"></div>
+                <i *ngIf="restaurant.menuLink" title="Je k dizpozícií iba iframe" class="frown outline icon"></i>
+                <i *ngIf="restaurant.coordinates" title="K dispozícií sú súradnice" class="map marker icon"></i>
+            </div>
+        </div>
+    </div>
 </div>

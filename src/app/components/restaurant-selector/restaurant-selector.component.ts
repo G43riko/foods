@@ -1,10 +1,9 @@
+import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
 import {Component, EventEmitter, OnInit, Output} from "@angular/core";
 import {RestaurantData} from "../../../data/restaurantsData";
-import {DraggableListModel} from "../../shared/models/draggable-list.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
 import {AppService} from "../../shared/services/app.service";
-
-declare const $;
+import {AuthService} from "../../shared/services/auth.service";
 
 @Component({
     selector: "app-restaurant-selector",
@@ -12,78 +11,46 @@ declare const $;
     styleUrls: ["./restaurant-selector.component.scss"],
 })
 export class RestaurantSelectorComponent implements OnInit {
-    public readonly restaurants: Restaurant[] = RestaurantData;
-    @Output("restaurantsChange") public restaurantsChange: EventEmitter<Restaurant[]> = new EventEmitter<Restaurant[]>();
+    @Output("restaurantsChange") public readonly restaurantsChange: EventEmitter<Restaurant[]> = new EventEmitter<Restaurant[]>();
+    public readonly restaurants: Restaurant[] = [];
     public readonly selectedRestaurants: Restaurant[] = [];
     public searchKey: string;
 
-    public constructor(public readonly appService: AppService) {
-    }
-
-    private saveResults(data: string): void {
-        const restaurantKeys = data.split(":");
-        this.selectedRestaurants.splice(0, this.selectedRestaurants.length);
-
-        this.restaurants.forEach((restaurant) => restaurant.visible = false);
-        restaurantKeys.forEach((key) => {
-            const restaurant = this.restaurants.find((actualRestaurant) => actualRestaurant.key === key);
-            if (restaurant) {
-                restaurant.visible = true;
-                this.selectedRestaurants.push(restaurant);
-            }
-        });
-        setTimeout(() => this.restaurantsChange.emit([...this.selectedRestaurants]), 0);
-        localStorage.setItem("selectedRestaurants", JSON.stringify(restaurantKeys));
-    }
-
-    private initSortable(list: string, sbtn: string): void {
-        const listObj = document.getElementById(list);
-        const sbtnObj = document.getElementById(sbtn);
-        const sortable = new DraggableListModel(listObj);
-
-        sbtnObj.addEventListener("click", (e) => {
-            e.preventDefault();
-            this.saveResults(sortable.toString("title"));
-        });
+    public constructor(public readonly appService: AppService,
+                       public readonly authService: AuthService) {
     }
 
     public ngOnInit(): void {
-        const storedData = JSON.parse(localStorage.getItem("selectedRestaurants")) || [];
-        if (storedData.length === 0) {
-            this.selectedRestaurants.push(...this.restaurants.filter((restaurant) => restaurant.visible));
-
-        }
-        else {
-            this.restaurants.forEach((restaurant) => restaurant.visible = false);
-            storedData.forEach((restaurantKey) => {
-                const restaurant = this.restaurants.find((actualRestaurant) => actualRestaurant.key === restaurantKey);
-                restaurant.visible = true;
-                this.selectedRestaurants.push(restaurant);
-            });
-        }
-
-        setTimeout(() => this.restaurantsChange.emit(this.selectedRestaurants), 0);
-
-        this.sorter();
+        this.appService.configuration.subscribe((configuration) => {
+            this.setRestaurants(configuration.selectedRestaurants);
+            this.restaurantsChange.emit(this.selectedRestaurants);
+        });
     }
 
-    private sorter(): void {
-        ((name, factory) => {
-            if (typeof window === "object") {
-                window[name] = factory();
-                if (typeof $ === "object") {
-                    $.fn[name] = function (options): any {
-                        return this.each(function (): void {
-                            new window[name](this, options);
-                        });
-                    };
-                }
+    private setRestaurants(selectedRestaurantsKeys: string[]): void {
+        this.selectedRestaurants.splice(0, this.selectedRestaurants.length);
+        this.restaurants.splice(0, this.restaurants.length);
+        RestaurantData.forEach((restaurant) => {
+            const index = selectedRestaurantsKeys.indexOf(restaurant.key);
+            if (index >= 0) {
+                this.selectedRestaurants[index] = restaurant;
             }
-        })("Sortable", () => {
-            return DraggableListModel;
+            else {
+                this.restaurants.push(restaurant);
+            }
         });
+    }
 
-        this.initSortable("list-1", "sbtn-1");
-        this.initSortable("list-2", "sbtn-2");
+    public drop(event: CdkDragDrop<Restaurant[]>): void {
+        if (event.previousContainer === event.container) {
+            moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
+        } else {
+            transferArrayItem(event.previousContainer.data,
+                event.container.data,
+                event.previousIndex,
+                event.currentIndex);
+        }
+        this.appService.setConfig("selectedRestaurants", this.selectedRestaurants.map((selectedRestaurant) => selectedRestaurant.key));
+        this.restaurantsChange.emit(this.selectedRestaurants);
     }
 }

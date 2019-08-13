@@ -1,3 +1,4 @@
+import {DragDropModule} from "@angular/cdk/drag-drop";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
@@ -5,6 +6,7 @@ import {AppComponent} from "./components/app.component";
 import {FoodRowLikesComponent} from "./components/food-row-likes/food-row-likes.component";
 import {FoodRowNameComponent} from "./components/food-row-name/food-row-name.component";
 import {FoodRowComponent} from "./components/food-row/food-row.component";
+import { HighlightSelectorComponent } from "./components/highlight-selector/highlight-selector.component";
 import { MenuContainerComponent } from "./components/menu-containter/menu-container.component";
 import { MenuContentComponent } from "./components/menu-content/menu-content.component";
 import { MenuDrawerComponent } from "./components/menu-drawer/menu-drawer.component";
@@ -17,8 +19,6 @@ import {RestaurantSelectorComponent} from "./components/restaurant-selector/rest
 import {FirebaseModule} from "./shared/modules/firebase.module";
 import {CoreModule} from "./shared/services/core.module";
 import {SharedModule} from "./shared/shared.module";
-import { TopMenuComponent } from './components/top-menu/top-menu.component';
-import { HighlightSelectorComponent } from './components/highlight-selector/highlight-selector.component';
 
 @NgModule({
     declarations: [
@@ -35,10 +35,10 @@ import { HighlightSelectorComponent } from './components/highlight-selector/high
         MenuDrawerComponent,
         MenuContainerComponent,
         MenuContentComponent,
-        TopMenuComponent,
         HighlightSelectorComponent,
     ],
     imports: [
+        DragDropModule,
         FirebaseModule,
         BrowserModule,
         FormsModule,

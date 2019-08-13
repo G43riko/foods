@@ -1,9 +1,12 @@
-<div class="ui sidebar very wide vertical menu restaurants">
+
+
+<div class="ui sidebar wide vertical menu restaurants" style="overflow-y: hidden !important;">
     <app-restaurant-selector (restaurantsChange)="onRestaurantChanges($event)"></app-restaurant-selector>
 </div>
 <div class="ui sidebar wide vertical menu options">
     <app-options>Nastavenia</app-options>
 </div>
+
 <div class="pusher" style="margin-top: 60px; padding: 40px">
     <h1 class="ui {{appService.getConfig('selectedColor')}} header"
         [ngClass]="{'inverted': appService.getConfig('inverted')}">Denné menu</h1>

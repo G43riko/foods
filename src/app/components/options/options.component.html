@@ -1,4 +1,4 @@
-<div style="padding: 10px;">
+<div *ngIf="authService.user$ | async; else notLoggedIn" style="padding: 10px;">
     <div class="button {{appService.getConfig('selectedColor')}}">
         <label for="appColor" style="font-weight: bolder; font-size: 14px; padding:10px">Farba</label>
         <select id="appColor"
@@ -48,5 +48,8 @@
             Obnoviť nastavenia
         </button>
     </div>
-
 </div>
+
+<ng-template #notLoggedIn>
+    <h4 style="padding: .3em">Pre konfiguráciu stránky musíte byť prihlásený</h4>
+</ng-template>

@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {Colors} from "../../shared/models/colors.enum";
 import {AppService} from "../../shared/services/app.service";
+import {AuthService} from "../../shared/services/auth.service";
 
 declare const $;
 
@@ -12,7 +13,8 @@ declare const $;
 export class OptionsComponent implements OnInit {
     public readonly allowedColors: string[] = Object.keys(Colors);
 
-    public constructor(public readonly appService: AppService) {
+    public constructor(public readonly appService: AppService,
+                       private readonly authService: AuthService) {
     }
 
     public ngOnInit(): void {
