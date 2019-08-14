@@ -23,6 +23,7 @@ export class RatingService {
             });
         });
     }
+
     private setCache(user: User, dish: Dish, restaurant: Restaurant, liked: boolean): void {
         if (!this.cache[restaurant.key]) {
             this.cache[restaurant.key] = {};
@@ -31,12 +32,10 @@ export class RatingService {
             if (liked) {
                 this.cache[restaurant.key][dish.name] = [user.email];
             }
-        }
-        else {
+        } else {
             if (liked) {
                 this.cache[restaurant.key][dish.name].push(user.email);
-            }
-            else {
+            } else {
                 this.cache[restaurant.key][dish.name].splice(this.cache[restaurant.key][dish.name].indexOf(user.email), 1);
             }
         }
@@ -57,6 +56,16 @@ export class RatingService {
         }
 
         return true;
+    }
+
+
+    /**
+     * Return total number of likes
+     *
+     * @param restaurant
+     */
+    public getTotalLikes(restaurant: Restaurant): number {
+        throw new Error("Not implemented");
     }
 
     private getCache(user: User, dish: Dish, restaurant: Restaurant): boolean {

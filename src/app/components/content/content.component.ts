@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {forkJoin} from "rxjs";
+import {finalize} from "rxjs/operators";
 import {Dish} from "../../shared/models/dish.model";
 import {Food} from "../../shared/models/food.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
@@ -55,10 +55,9 @@ export class ContentComponent implements OnInit {
 
     private loadDailyMenus(): void {
         const actualRestaurants = this.restaurants.filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink);
-
-        this.foodsRestService.getZomatoFoods(actualRestaurants.map((restaurant) => restaurant.id)).subscribe((results) => {
+        this.foodsRestService.getZomatoFoods(actualRestaurants.map((restaurant) => restaurant.id))
+                             .subscribe((results) => {
             this.statsService.storeMenu(results);
-            console.log("results: ", results);
             results.forEach((result, index) => {
                 this.dailyMenus[actualRestaurants[index].key] = this.foodsService.processZomatoMenu(result);
             });
@@ -76,7 +75,6 @@ export class ContentComponent implements OnInit {
             //     console.error(e);
             // });
         }, (error) => {
-            console.error("error: ", error);
             this.notificationService.showErrorMessage("Error while getting menus from zommato api: ", error);
         });
     }

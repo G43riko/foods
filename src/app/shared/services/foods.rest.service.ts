@@ -34,7 +34,6 @@ export class FoodsRestService extends AbstractService {
                 return of(JSON.parse(result));
             } catch (e) {
                 this.notificationService.showErrorMessage("Cannot parse stored food data. id: ", id, "foodKey: ", foodKey);
-                console.error();
             }
         }
 
@@ -42,10 +41,9 @@ export class FoodsRestService extends AbstractService {
     }
 
     private callZomatoApi(url: string, foodKey: string): Observable<any> {
-        return this.http.get(url, {headers: this.headers})
-            .pipe(
+        return this.http.get(url, {headers: this.headers}).pipe(
                 tap((data) => {
-                    const loadedData: string = localStorage.getItem(foodKey);
+                    const loadedData = localStorage.getItem(foodKey);
                     const stringifyData = JSON.stringify(data);
                     if (!loadedData || loadedData !== stringifyData) {
                         localStorage.setItem(foodKey, stringifyData);

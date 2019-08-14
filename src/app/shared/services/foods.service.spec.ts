@@ -1,7 +1,7 @@
-import {TestBed, inject} from "@angular/core/testing";
+import {inject, TestBed} from "@angular/core/testing";
 
-import {FoodsRestService} from "./foods.rest.service";
 import {HttpClientModule} from "@angular/common/http";
+import {FoodsRestService} from "./foods.rest.service";
 
 describe("FoodService", () => {
     beforeEach(() => {

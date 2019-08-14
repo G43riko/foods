@@ -1,7 +1,9 @@
 <div *ngIf="restaurant.visible">
     <h3 class="ui {{appService.getConfig('selectedColor')}} header"
         [ngClass]="{'inverted': appService.getConfig('inverted')}">{{restaurant.name}}
-        <small *ngIf="appService.getConfig('showDistance') && restaurant.coordinates && (getLocationService.coordinates | async) as myCoords" style="font-size: x-small;">
+        <small
+            *ngIf="appService.getConfig('showDistance') && restaurant.coordinates && (getLocationService.coordinates | async) as myCoords"
+            style="font-size: x-small;">
             {{getLocationService.distance(restaurant.coordinates, myCoords)?.toFixed(3) + " km od vás"}}
         </small>
         <i *ngIf="restaurant.coordinates"
@@ -18,7 +20,8 @@
         <tbody>
         <ng-template [ngIf]="dailyMenus[restaurant.key] && dailyMenus[restaurant.key].length > 0" [ngIfElse]="noMenus">
             <ng-container *ngFor="let dish of dailyMenus[restaurant.key] | searchFoodPipe: searchKey">
-                <app-food-row style="display: contents" [highlight]="highlight" [dish]="dish" [restaurant]="restaurant"></app-food-row>
+                <app-food-row style="display: contents" [highlight]="highlight" [dish]="dish"
+                              [restaurant]="restaurant"></app-food-row>
             </ng-container>
         </ng-template>
         <ng-template #noMenus>

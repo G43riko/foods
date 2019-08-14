@@ -1,9 +1,12 @@
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
-import {Component, EventEmitter, OnInit, Output} from "@angular/core";
+import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from "@angular/core";
+import {take} from "rxjs/operators";
 import {RestaurantData} from "../../../data/restaurantsData";
 import {Restaurant} from "../../shared/models/restaurant.model";
 import {AppService} from "../../shared/services/app.service";
 import {AuthService} from "../../shared/services/auth.service";
+import {FoodsFirebaseService} from "../../shared/services/foods-firebase.service";
+import {RatingService} from "../../shared/services/rating.service";
 
 @Component({
     selector: "app-restaurant-selector",
@@ -17,10 +20,20 @@ export class RestaurantSelectorComponent implements OnInit {
     public searchKey: string;
 
     public constructor(public readonly appService: AppService,
+                       public readonly foodsFirebaseService: FoodsFirebaseService,
+                       private readonly cd: ChangeDetectorRef,
                        public readonly authService: AuthService) {
     }
 
     public ngOnInit(): void {
+        // RestaurantData.forEach((restaurantItem: Restaurant) => {
+        //     this.foodsFirebaseService.hasMenu(restaurantItem).pipe(take(1)).subscribe((value) => {
+        //         restaurantItem.hasActualMenu = value;
+        //         console.log(restaurantItem.name + " menu " + (value ? "má" : "nemá"));
+        //         this.cd.detectChanges();
+        //     });
+        // });
+
         this.appService.configuration.subscribe((configuration) => {
             this.setRestaurants(configuration.selectedRestaurants);
             this.restaurantsChange.emit(this.selectedRestaurants);
