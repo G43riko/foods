@@ -1,5 +1,5 @@
 
-<div *ngIf="dish" #titleCell [ngClass]="{'ui ribbon label': isBold(dish.name)}"
+<div *ngIf="dish" #titleCell [ngClass]="{'ui ribbon label': foodService.isBold(dish)}"
      class="daily-menu row {{appService.getConfig('inverted') || appService.getConfig('selectedColor')}}">
     <span *ngIf="appService.getConfig('showWeight') && dish.weight" [innerHTML]="dish.weight + ': '"></span>
     <span #dailyMenu

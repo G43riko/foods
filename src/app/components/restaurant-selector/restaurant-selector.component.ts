@@ -21,7 +21,6 @@ export class RestaurantSelectorComponent implements OnInit {
 
     public constructor(public readonly appService: AppService,
                        public readonly foodsFirebaseService: FoodsFirebaseService,
-                       private readonly cd: ChangeDetectorRef,
                        public readonly authService: AuthService) {
     }
 

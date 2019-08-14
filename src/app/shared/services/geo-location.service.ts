@@ -53,6 +53,10 @@ export class GeoLocationService {
         }));
     }
 
+    public distanceFrom(coordinates?: Coord | null): number {
+        return this.distance(coordinates, this.coordinates.value);
+    }
+
     public distance(coordinates?: Coord | null, myCoordinates?: Coord | null): number {
         if (!coordinates || !myCoordinates) {
             return 0;

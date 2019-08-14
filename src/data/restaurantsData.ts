@@ -117,8 +117,8 @@ export const RestaurantData = [
         name: "TT Burgers",
         mapsId: "ChIJt54wlDqJbEcRaE8yz_2jeN4",
         key: "ttBurger",
-        menuLink: "https://restauracie.sme.sk/restauracia/tt-burgers-family-fine-food_8662-ruzinov_2980/denne-menu",
-        visible: false,
+        // menuLink: "https://restauracie.sme.sk/restauracia/tt-burgers-family-fine-food_8662-ruzinov_2980/denne-menu",
+        visible: true,
         coordinates: {
             lat: 48.145503,
             long: 17.13917,
@@ -129,8 +129,8 @@ export const RestaurantData = [
         name: "Foodoo",
         mapsId: "ChIJJS2bEhaJbEcRiKK8pYec7C8",
         key: "foodoo",
-        menuLink: "https://restauracie.sme.sk/restauracia/foodoo-prievozska_10461-ruzinov_2980/denne-menu",
-        visible: false,
+        // menuLink: "https://restauracie.sme.sk/restauracia/foodoo-prievozska_10461-ruzinov_2980/denne-menu",
+        visible: true,
     },
     {
         id: "16507775",

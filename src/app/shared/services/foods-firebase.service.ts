@@ -4,7 +4,7 @@ import {forkJoin, Observable, of} from "rxjs";
 import {catchError, map, switchMap} from "rxjs/operators";
 import {User} from "../interfaces/user.interface";
 import {Restaurant} from "../models/restaurant.model";
-import {FoodsRestService} from "./foods.rest.service";
+import {FoodsExternalService} from "./foods-external.service";
 
 @Injectable({
     providedIn: "root",
@@ -12,7 +12,7 @@ import {FoodsRestService} from "./foods.rest.service";
 export class FoodsFirebaseService {
 
     public constructor(private readonly afs: AngularFirestore,
-                       private readonly foodsRestService: FoodsRestService) {
+                       private readonly foodsExternalService: FoodsExternalService) {
     }
 
     private getDate(): string {
@@ -58,7 +58,7 @@ export class FoodsFirebaseService {
 
                 // create array of requests
                 const missingRequests = missingIds.map((requiredId) => {
-                    return this.foodsRestService.getZomatoFood(requiredId).pipe(
+                    return this.foodsExternalService.getZomatoFoodRaw(requiredId).pipe(
                         switchMap((zomatoData) => {
                             return new Observable((subSubject) => {
                                 const finishUpdatingFirebase = () => {
@@ -93,7 +93,7 @@ export class FoodsFirebaseService {
 
         return new Observable<any>((subject) => {
             const getAndStoreMenu = () => {
-                this.foodsRestService.getZomatoFood(id).subscribe((newDailyMenu) => {
+                this.foodsExternalService.getZomatoFoodRaw(id).subscribe((newDailyMenu) => {
                     if (newDailyMenu) {
                         dailyMenuRef.set(newDailyMenu).then(() => {
                             subject.next(newDailyMenu);

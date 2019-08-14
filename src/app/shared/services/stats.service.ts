@@ -10,6 +10,9 @@ const url = "http://g43.clanweb.eu/foods/uploader.php";
 const password = "gabriel";
 const login = "gabriel";
 
+/**
+ * @deprecated singe google analytics are used
+ */
 @Injectable({
     providedIn: "root",
 })

@@ -1,9 +1,9 @@
-<tr *ngIf="dish; else: noDish" [ngClass]="{positive: isHighlighted(dish.name)}">
+<tr *ngIf="dish; else: noDish"  [ngClass]="{positive: isHighlighted(dish)}">
     <td>
         <app-food-row-name [dish]="dish" [restaurant]="restaurant"></app-food-row-name>
     </td>
     <td>
-        <app-food-row-likes [dish]="dish" [restaurant]="restaurant"></app-food-row-likes>
+        <app-food-row-likes *ngIf="!foodService.isBold(dish)" [dish]="dish" [restaurant]="restaurant"></app-food-row-likes>
     </td>
     <td *ngIf="appService.showPrice">{{dish.price}}</td>
 </tr>

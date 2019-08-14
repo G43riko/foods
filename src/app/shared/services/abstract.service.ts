@@ -1,6 +1,6 @@
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs/internal/Observable";
-import {StringMap} from "../utils/string-map";
+import {StringMap} from "../interfaces/string-map";
 
 export abstract class AbstractService<T = any> {
     protected constructor(protected readonly http: HttpClient) {

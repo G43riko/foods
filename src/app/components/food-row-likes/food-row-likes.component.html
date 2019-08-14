@@ -1,4 +1,3 @@
-
 <span>+{{ratingService.getLikes(dish, restaurant)}}</span>
 <ng-container *ngIf="authService.user$ | async as user">
     <i *ngIf="ratingService.isLiked(user, dish, restaurant); else: dislikeIcon"

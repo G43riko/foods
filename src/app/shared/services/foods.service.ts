@@ -39,7 +39,6 @@ export class FoodsService {
         return splitMenu.map((foodName, i) => {
             return new Dish("", foodName, i === 0 ? undefined : "4.40€");
         });
-
     }
 
     private processZomatoPrice(dish: any): void {
@@ -70,7 +69,24 @@ export class FoodsService {
         }
     }
 
-    public processFoodooMenu(menu: string[]): Dish[] {
-        return [];
+    public processFoodooMenu(menus: string[]): Dish[] {
+        return menus.map((menu) => new Dish("", menu, ""));
+    }
+    public processTTBurgersMenu(menus: string[]): Dish[] {
+        return menus.map((menu) => new Dish("", menu, ""));
+    }
+
+    public isBold(dish: Dish): boolean {
+        if (!dish || !dish.name) {
+            return false;
+        }
+
+        return dish.name.startsWith("Polievky") ||
+            dish.name.startsWith("Hlavné") ||
+            dish.name.startsWith("Šaláty") ||
+            dish.name.startsWith("Denné ponuk") ||
+            dish.name.startsWith("Uvedené ceny platia") ||
+            dish.name.startsWith("Špecialita") ||
+            dish.name.startsWith("Zeleninové ");
     }
 }

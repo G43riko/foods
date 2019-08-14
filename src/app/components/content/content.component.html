@@ -1,7 +1,9 @@
 <h1 class="ui {{appService.getConfig('selectedColor')}} header"
     [ngClass]="{'inverted': appService.getConfig('inverted')}">Denné menu</h1>
 
+
 <ng-container *ngIf="restaurants; else: noRestaurants">
+
     <div *ngIf="restaurants && restaurants.length > 0; else: noSelectedRestaurants" id="foodContent">
         <div *ngFor="let restaurant of restaurants" style="margin-top: 20px;" class="{{counter}}">
             <app-restaurant-foods *ngIf="!restaurant.menuLink"
@@ -14,10 +16,11 @@
                     {{restaurant.name}}
                     <small *ngIf="appService.getConfig('showDistance') && restaurant.coordinates"
                            style="font-size: x-small;">
-                        {{getDistance(restaurant.coordinates)}}
+                        {{restaurantService.getDistance(restaurant.coordinates)}}
                     </small>
                 </h3>
-                <iframe class="menu-iframe" id="{{restaurant.key + 'Rest'}}"
+                <iframe class="menu-iframe"
+                        id="{{restaurant.key + 'Rest'}}"
                         [src]="restaurant.menuLink | safe"></iframe>
             </div>
         </div>

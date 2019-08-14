@@ -1,10 +1,11 @@
 <div *ngIf="restaurant.visible">
     <h3 class="ui {{appService.getConfig('selectedColor')}} header"
+        [attr.restaurant-id]="restaurant.id"
         [ngClass]="{'inverted': appService.getConfig('inverted')}">{{restaurant.name}}
         <small
             *ngIf="appService.getConfig('showDistance') && restaurant.coordinates && (getLocationService.coordinates | async) as myCoords"
             style="font-size: x-small;">
-            {{getLocationService.distance(restaurant.coordinates, myCoords)?.toFixed(3) + " km od vás"}}
+            {{restaurantService.getDistance(restaurant.coordinates)}}
         </small>
         <i *ngIf="restaurant.coordinates"
            class="map icon"

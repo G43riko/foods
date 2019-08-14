@@ -1,5 +1,6 @@
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {LayoutModule} from "@angular/cdk/layout";
+import {HttpClientModule} from "@angular/common/http";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
@@ -20,9 +21,7 @@ import {RestaurantFoodsComponent} from "./components/restaurant-foods/restaurant
 import {RestaurantSelectorComponent} from "./components/restaurant-selector/restaurant-selector.component";
 import { TopMenuComponent } from "./components/top-menu/top-menu.component";
 import {FirebaseModule} from "./shared/modules/firebase.module";
-import {CoreModule} from "./shared/services/core.module";
 import {SharedModule} from "./shared/shared.module";
-import {fakeBackendProvider} from "./shared/tests/fake-backend-interceptor.service";
 
 @NgModule({
     declarations: [
@@ -50,7 +49,7 @@ import {fakeBackendProvider} from "./shared/tests/fake-backend-interceptor.servi
         BrowserModule,
         FormsModule,
         SharedModule,
-        CoreModule,
+        HttpClientModule,
     ],
     providers: [
         // fakeBackendProvider,

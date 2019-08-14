@@ -4,6 +4,7 @@ import {Food} from "../../shared/models/food.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
 import {AppService} from "../../shared/services/app.service";
 import {GeoLocationService} from "../../shared/services/geo-location.service";
+import {RestaurantService} from "../../shared/services/restaurant.service";
 declare const $;
 
 @Component({
@@ -16,9 +17,9 @@ export class RestaurantFoodsComponent implements OnChanges, OnInit {
     @Input() public searchKey: string;
     @Input() public dailyMenus: any;
     @Input() public restaurant: Restaurant = new Restaurant();
-    // @ViewChild("restaurantTable") public restaurantTable: ElementRef<HTMLTableElement>;
 
     public constructor(public readonly appService: AppService,
+                       private readonly restaurantService: RestaurantService,
                        public readonly getLocationService: GeoLocationService) {
     }
 
@@ -32,11 +33,6 @@ export class RestaurantFoodsComponent implements OnChanges, OnInit {
     public ngOnChanges(changes: SimpleChanges): void {
     }
     public ngOnInit(): void {
-        /*
-        $(".foodTable").click((event) => {
-            this.showImage(event.target.getAttribute("title"), event.target.getAttribute("class"));
-        });
-        */
     }
 
     private showImage(name: string, src: string): void {
