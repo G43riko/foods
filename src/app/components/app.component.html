@@ -1,15 +1,15 @@
 <div class="ui sidebar vertical menu very restaurants "
-     [class.wide]="wideNavigation"
+     [class.wide]="biggerThanTablet"
      style="overflow-y: hidden !important;">
     <app-restaurant-selector (restaurantsChange)="appContent.onRestaurantChanges($event)"></app-restaurant-selector>
 </div>
-<div [class.wide]="wideNavigation"
+<div [class.wide]="biggerThanTablet"
      class="ui sidebar vertical very menu options">
     <app-options>Nastavenia</app-options>
 </div>
 
-<div class="pusher" style="margin-top: 60px; padding: 40px">
-    <app-top-menu #topMenu></app-top-menu>
+<div class="pusher">
+    <app-top-menu #topMenu [biggerThanTablet]="biggerThanTablet"></app-top-menu>
     <app-highlight-selector #pageNavBar [openHighlighter]="topMenu.openHighlighter"></app-highlight-selector>
     <app-content #appContent [highlight]="pageNavBar.highlight" [searchKey]="topMenu.searchKey"></app-content>
 </div>
@@ -19,6 +19,5 @@
             class="map"
             width="100%"
             height="100%"
-            style="border:0"
             allowfullscreen></iframe>
 </div>

@@ -4,12 +4,12 @@
 <div class="restaurant-selector-wrapper">
     <div class="example-container">
         <h4 class="ui {{appService.getConfig('selectedColor')}} header"
-            [ngClass]="{'inverted': appService.getConfig('inverted')}">Všetky</h4>
+            [class.inverted]="appService.getConfig('inverted')">Všetky</h4>
 
         <div class="field">
             <div class="ui mini icon input"
                  style="width: 100%"
-                 [ngClass]="{'inverted': appService.getConfig('inverted')}">
+                 [class.inverted]="appService.getConfig('inverted')">
                 <input [(ngModel)]="searchKey"
                        style="height: 42px;"
                        type="text" placeholder="hľadať...">
@@ -41,7 +41,7 @@
 
     <div class="example-container">
         <h4 class="ui {{appService.getConfig('selectedColor')}} header"
-            [ngClass]="{'inverted': appService.getConfig('inverted')}">Zvolené</h4>
+            [class.inverted]="appService.getConfig('inverted')">Zvolené</h4>
 
 
         <div cdkDropList

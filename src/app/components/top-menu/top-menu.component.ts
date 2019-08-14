@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {AppService} from "../../shared/services/app.service";
 
 @Component({
@@ -7,7 +7,7 @@ import {AppService} from "../../shared/services/app.service";
     styleUrls: ["./top-menu.component.scss"],
 })
 export class TopMenuComponent implements OnInit {
-
+    @Input() public biggerThanTablet: boolean;
     public searchKey: string;
     public openHighlighter = false;
 

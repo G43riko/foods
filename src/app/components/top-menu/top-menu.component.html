@@ -7,8 +7,8 @@
     </a>
     <div class="item">
         <div class="ui icon input {{appService.getConfig('selectedColor')}}"
-             style="max-width: 130px"
-             [ngClass]="{'inverted': appService.getConfig('inverted')}">
+             [style.max-width.px]="biggerThanTablet ? 400 : 144"
+             [class.inverted]="appService.getConfig('inverted')">
             <input [(ngModel)]="searchKey" type="text" placeholder="hľadať...">
             <i class="search icon"></i>
         </div>

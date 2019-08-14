@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {AngularFirestore} from "@angular/fire/firestore";
+import {debounceTime, switchMap, throttleTime} from "rxjs/operators";
 import {User} from "../interfaces/user.interface";
 import {Dish} from "../models/dish.model";
 import {Restaurant} from "../models/restaurant.model";
@@ -17,7 +18,11 @@ export class RatingService {
     private readonly cache: RestaurantsRatingData = {};
 
     public constructor(private readonly afs: AngularFirestore) {
-        this.afs.collection(`restaurants`).get().subscribe((restaurants) => {
+        const collection = this.afs.collection(`restaurants`);
+        collection.valueChanges().pipe(
+            throttleTime(10000),
+            switchMap(() => collection.get()),
+        ).subscribe((restaurants) => {
             restaurants.forEach((restaurant) => {
                 this.cache[restaurant.id] = restaurant.data();
             });
@@ -58,14 +63,24 @@ export class RatingService {
         return true;
     }
 
-
-    /**
-     * Return total number of likes
-     *
-     * @param restaurant
-     */
     public getTotalLikes(restaurant: Restaurant): number {
-        throw new Error("Not implemented");
+        if (!this.cache[restaurant.key]) {
+            return 0;
+        }
+        const voters = [];
+        Object.values(this.cache[restaurant.key]).forEach((menu) => voters.push(...menu));
+
+        return voters.length;
+    }
+
+    public getLikedUsers(restaurant: Restaurant): number {
+        if (!this.cache[restaurant.key]) {
+            return 0;
+        }
+        const voters = [];
+        Object.values(this.cache[restaurant.key]).forEach((menu) => voters.push(...menu));
+
+        return new Set(voters).size;
     }
 
     private getCache(user: User, dish: Dish, restaurant: Restaurant): boolean {
@@ -115,8 +130,6 @@ export class RatingService {
                 }
             });
         });
-
-        return null;
     }
 
     public unlike(user: User, dish: Dish, restaurant: Restaurant): Promise<boolean> {

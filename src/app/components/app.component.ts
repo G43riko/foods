@@ -15,13 +15,13 @@ export class AppComponent implements OnInit {
     public counter = 0;
     public dailyMenus: { [key: string]: Dish[] } = {};
 
-    public wideNavigation: boolean;
+    public biggerThanTablet: boolean;
 
     public constructor(private readonly statsService: StatsService,
                        private readonly breakpointObserver: BreakpointObserver) {
         // breakpointObserver.isMatched();
         breakpointObserver.observe("(min-width: 726px)").subscribe((result) => {
-            this.wideNavigation = result.matches;
+            this.biggerThanTablet = result.matches;
         });
     }
 

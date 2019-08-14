@@ -3,7 +3,7 @@
      (click)="isShowingBackdrop && onBackdropClicked()"
      [class.visible]="isShowingBackdrop"></div>
 
-<nav [class.visible]="visible" [ngStyle]="{'width.px': menuWidth}">
+<nav [class.visible]="visible" [style.width.px]="menuWidth">
     <ng-content select="app-menu-drawer"></ng-content>
 </nav>
 <div class="content" [ngStyle]="visible && {'margin-left.px': menuType === 'moving' ? menuWidth : 0, filter: realFilter}">

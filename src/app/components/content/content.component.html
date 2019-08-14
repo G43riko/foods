@@ -1,5 +1,5 @@
 <h1 class="ui {{appService.getConfig('selectedColor')}} header"
-    [ngClass]="{'inverted': appService.getConfig('inverted')}">Denné menu</h1>
+    [class.inverted]="appService.getConfig('inverted')">Denné menu</h1>
 
 
 <ng-container *ngIf="restaurants; else: noRestaurants">

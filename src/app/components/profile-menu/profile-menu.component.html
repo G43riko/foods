@@ -1,7 +1,7 @@
 <div class="profile">
     <div *ngIf="authService.user$ | async as user; else: loginPage" class="login">
         <img (click)="open()" [src]="user.photoURL" alt="Avatar picture">
-        <div class="profile-menu" (mouseleave)="close()" [ngClass]="{open: menuOpen}">
+        <div class="profile-menu" (mouseleave)="close()" [class.open]="menuOpen">
             <strong>{{user.displayName}}</strong>
             <button class="ui primary button" (click)="authService.signOut()">Odhlásiť</button>
         </div>
@@ -9,7 +9,7 @@
 
     <ng-template #loginPage>
         <img (click)="open()" src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png" alt="Avatar picture">
-        <div class="profile-menu" (mouseleave)="close()" [ngClass]="{open: menuOpen}">
+        <div class="profile-menu" (mouseleave)="close()" [class.open]="menuOpen">
 <!--            <button class="ui mini primary button" (click)="authService.facebookSigning()">Prhlásiť cez facebook</button>-->
             <button class="ui primary button" (click)="authService.githubSigning()">Github</button>
             <button class="ui primary button" (click)="authService.googleSigning()">Google</button>

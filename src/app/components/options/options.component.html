@@ -40,12 +40,12 @@
     <div style="padding-top: 10px">
         <button class="ui tiny button {{appService.getConfig('selectedColor')}}"
                 (click)="resetRestaurants()"
-                [ngClass]="{'inverted': appService.getConfig('inverted')}">
+                [class.inverted]="appService.getConfig('inverted')">
             Obnoviť reštaurácie
         </button>
         <button class="ui tiny button {{appService.getConfig('selectedColor')}}"
                 (click)="resetOptions()"
-                [ngClass]="{'inverted': appService.getConfig('inverted')}">
+                [class.inverted]="appService.getConfig('inverted')">
             Obnoviť nastavenia
         </button>
     </div>
