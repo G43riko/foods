@@ -13,10 +13,11 @@
          - [x] Dni v týždni
          - [ ] Alergény
          - [x] Poradie menúčok
+         - [ ] číslo jedla na začiatku názvu
  - [ ] zobrazovať či je reštaurácia otvorená alebo nie
  - [x] link na obedové menu pre reštaurácie ktoré sa nedaju parsovať
  - [x] link na zobrazenie reštaurácie na mape
- - [ ] prerobiť drag and drop list na CDK drag and drop
+ - [x] prerobiť drag and drop list na CDK drag and drop
  - [x] zobrazovať počet lajkov pre každé jedno aj reštauréciu
  - [ ] ukladať menu do firebase aby sa iba raz načítal
  - [ ] zobrazovať koľko ludí má reštauráciu v aktívnych

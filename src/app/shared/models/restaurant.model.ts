@@ -7,6 +7,8 @@ export class Restaurant {
     public id: string;
     public mapsId?: string;
     public menuLink?: string;
+    public homepage?: string;
     public hasActualMenu?: boolean;
+    public smeRestaurantsLink?: string;
     public coordinates?: Coord;
 }

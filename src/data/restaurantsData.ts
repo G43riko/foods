@@ -15,8 +15,9 @@ export const RestaurantData = [
         name: "Delfín",
         key: "delphine",
         mapsId: "ChIJMfW7ai6JbEcRP3iW_eXDfgo",
-        menuLink: "http://restauraciadelfin.sk/aktualne-denne-menu",
+        homepage: "http://restauraciadelfin.sk",
         visible: true,
+        smeRestaurantsLink: "/delfin_717-ruzinov_2980/denne-menu",
         coordinates: {
             lat: 48.1498305556,
             long: 17.1426194444,
@@ -27,8 +28,9 @@ export const RestaurantData = [
         name: "Lanogi Gurman",
         key: "lanogi",
         mapsId: "ChIJV0iLXyWJbEcRQfMI9liL3Oc",
-        menuLink: "https://www.lanogi.sk/denne-menu/",
-        visible: false,
+        homepage: "https://www.lanogi.sk/denne-menu/",
+        smeRestaurantsLink: "/lanogi-gurman_9814-ruzinov_2980/denne-menu",
+        visible: true,
         coordinates: {
             lat: 48.146454,
             long: 17.140112,
@@ -51,6 +53,18 @@ export const RestaurantData = [
         key: "hamka",
         mapsId: "ChIJPaExEi-JbEcRIFkHrgpfK7Y",
         visible: true,
+        smeRestaurantsLink: "/hamka-restaurant-pub_8785-ruzinov_2980/denne-menu",
+        coordinates: {
+            lat: 48.147451,
+            long: 17.143715,
+        },
+    },
+    {
+        id: "000000000",
+        name: "Punjabi dhaba",
+        key: "punjabiDhaba",
+        visible: true,
+        smeRestaurantsLink: "/punjabi-dhaba-indian-restuarant-prievozska_10022-ruzinov_2980/denne-menu",
         coordinates: {
             lat: 48.147451,
             long: 17.143715,
@@ -103,6 +117,17 @@ export const RestaurantData = [
         },
     },
     {
+        id: "16508221",
+        name: "Solo sole",
+        key: "soloSole",
+        smeRestaurantsLink: "/solo-sole_10036-ruzinov_2980/denne-menu",
+        visible: true,
+        coordinates: {
+            lat: 48.146241,
+            long: 17.139621,
+        },
+    },
+    {
         id: "16508023",
         name: "Sole Mio Pizza",
         key: "soleMio",
@@ -117,7 +142,7 @@ export const RestaurantData = [
         name: "TT Burgers",
         mapsId: "ChIJt54wlDqJbEcRaE8yz_2jeN4",
         key: "ttBurger",
-        // menuLink: "https://restauracie.sme.sk/restauracia/tt-burgers-family-fine-food_8662-ruzinov_2980/denne-menu",
+        smeRestaurantsLink: "/tt-burgers-family-fine-food_8662-ruzinov_2980/denne-menu",
         visible: true,
         coordinates: {
             lat: 48.145503,
@@ -129,7 +154,7 @@ export const RestaurantData = [
         name: "Foodoo",
         mapsId: "ChIJJS2bEhaJbEcRiKK8pYec7C8",
         key: "foodoo",
-        // menuLink: "https://restauracie.sme.sk/restauracia/foodoo-prievozska_10461-ruzinov_2980/denne-menu",
+        smeRestaurantsLink: "/foodoo-prievozska_10461-ruzinov_2980/denne-menu",
         visible: true,
     },
     {
@@ -206,6 +231,7 @@ export const RestaurantData = [
         name: "Lunch break",
         mapsId: "ChIJQW01TCWJbEcRwWzhnZJuoPY",
         key: "lunchBreak",
+        smeRestaurantsLink: "/lunch-break-apollo_9822-ruzinov_2980/denne-menu",
         visible: true,
         coordinates: {
             lat: 48.1458638889,
@@ -216,7 +242,7 @@ export const RestaurantData = [
         id: "16508365",
         name: "Breweria",
         key: "breweria",
-        menuLink: "https://restauracie.sme.sk/restauracia/breweria-slimak_7191-bratislava_2983/denne-menu",
+        menuLink: "/breweria-slimak_7191-bratislava_2983/denne-menu",
         visible: false,
         coordinates: {
             lat: 48.169819,

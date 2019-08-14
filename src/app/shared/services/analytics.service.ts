@@ -25,6 +25,25 @@ export class AnalyticsService {
             event_label: key,
         });
     }
+    public showImages(key: string): void {
+        gtag("event", "showImages", {key});
+
+        // OLD
+        gtag("event", "userEvent", {
+            event_category: "showImages",
+            event_label: key,
+        });
+    }
+
+    public openMap(restaurantKey: string): void {
+        gtag("event", "openMap", {restaurantKey});
+
+        // OLD
+        gtag("event", "userEvent", {
+            event_category: "openMap",
+            event_label: restaurantKey,
+        });
+    }
 
     public addRestaurant(key: string): void {
         gtag("event", "restaurantManagement", {

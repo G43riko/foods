@@ -40,27 +40,25 @@ export class ContentComponent implements OnInit {
     }
 
     private loadDailyMenus(): void {
-        const actualRestaurants = this.restaurants.filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink);
-        this.foodsFirebaseService.getZomatoFoods(actualRestaurants.map((restaurant) => restaurant.id))
-            .subscribe((results) => {
-                this.statsService.storeMenu(results);
-                results.forEach((result, index) => {
-                    this.dailyMenus[actualRestaurants[index].key] = this.foodsService.processZomatoMenu(result);
-                });
-
-                this.foodsExternalService.getFoodooMenuRaw().subscribe((menuRaw) => {
-                    this.dailyMenus.foodoo = this.foodsService.processFoodooMenu(menuRaw);
-                });
-
-                this.foodsExternalService.getTTBurgersMenuRaw().subscribe((menuRaw) => {
-                    this.dailyMenus.ttBurger = this.foodsService.processTTBurgersMenu(menuRaw);
-                });
-                // setTimeout(() => this.setAutocomplete(), 10);
-                $(".checkbox").checkbox();
-
-            }, (error) => {
-                this.notificationService.showErrorMessage("Error while getting menus from zommato api: ", error);
+        const actualRestaurants = this.restaurants.filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink && !restaurant.smeRestaurantsLink);
+        this.foodsFirebaseService.getZomatoFoods(actualRestaurants).subscribe((results) => {
+            this.statsService.storeMenu(results);
+            results.forEach((result, index) => {
+                this.dailyMenus[actualRestaurants[index].key] = this.foodsService.processZomatoMenu(result);
             });
+            $(".checkbox").checkbox();
+
+        }, (error) => {
+            this.notificationService.showErrorMessage("Error while getting menus from zommato api: ", error);
+        });
+
+        this.restaurants.filter((restaurant) => restaurant.smeRestaurantsLink).forEach((restaurant) => {
+            this.foodsExternalService.getMenuFromSmeRestaurant(restaurant.smeRestaurantsLink).subscribe((menuRaw) => {
+                this.dailyMenus[restaurant.key] = this.foodsService.processSmeRestaurantMenu(menuRaw);
+            }, (error) => {
+                this.notificationService.showErrorMessage(`Error while getting menus from smerRestaurant for ${restaurant.name}: `, error);
+            });
+        });
     }
 
     public ngOnInit(): void {

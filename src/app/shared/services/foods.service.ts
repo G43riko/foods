@@ -31,6 +31,8 @@ export class FoodsService {
     }
 
     public processDelphineMenu(menu: string): Dish[] {
+    // public processDelphineMenu(menus: string[]): Dish[] {
+        // return menus.map((menu) => new Dish("", menu, ""));
         if (!menu) {
             return [];
         }
@@ -62,18 +64,19 @@ export class FoodsService {
             if (dish.weight.match(/^\d*\.?\d*l$/)) {
                 dish.weight = dish.weight.replace("l", " l");
             }
-            if (dish.weight) {
-                dish.weight = `<strong>${dish.weight}</strong>`;
-            }
             dish.name = dish.name.replace(Config.WEIGHT_REGEXP, " ").replace(Config.REGEXP, " ");
         }
     }
 
-    public processFoodooMenu(menus: string[]): Dish[] {
+    public processSmeRestaurantMenu(menus: string[]): Dish[] {
         return menus.map((menu) => new Dish("", menu, ""));
-    }
-    public processTTBurgersMenu(menus: string[]): Dish[] {
-        return menus.map((menu) => new Dish("", menu, ""));
+        // return menus.map((menu) => {
+        //     const dish = new Dish("", menu, "");
+        //     this.processZomatoPrice(dish);
+        //     this.processZomatoWeight(dish);
+        //
+        //     return dish;
+        // });
     }
 
     public isBold(dish: Dish): boolean {

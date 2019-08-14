@@ -64,26 +64,15 @@ export class FoodsExternalService extends AbstractService {
 
     private callZomatoApi(url: string, foodKey: string): Observable<any> {
         return this.http.get(url, {headers: this.headers}).pipe(
-                tap((data) => {
-                    const loadedData = localStorage.getItem(foodKey);
-                    const stringifyData = JSON.stringify(data);
-                    if (!loadedData || loadedData !== stringifyData) {
-                        localStorage.setItem(foodKey, stringifyData);
-                    }
-                }),
-                catchError(this.handleError),
-            );
-    }
-
-    public getFoodooMenuRaw(): Observable<any> {
-        return this.getContentAndCall("https://restauracie.sme.sk/restauracia/foodoo-prievozska_10461-ruzinov_2980/denne-menu", this.parseFoodMenu);
-    }
-    public getDeplhineFoodRaw(): Observable<any> {
-        return this.getContentAndCall("https://www.restauraciadelfin.sk/aktualne-denne-menu", this.parseDelphineMenu);
-    }
-
-    public getTTBurgersMenuRaw(): Observable<any> {
-        return this.getContentAndCall("https://restauracie.sme.sk/restauracia/tt-burgers-family-fine-food_8662-ruzinov_2980/denne-menu", this.parseFoodMenu);
+            tap((data) => {
+                const loadedData = localStorage.getItem(foodKey);
+                const stringifyData = JSON.stringify(data);
+                if (!loadedData || loadedData !== stringifyData) {
+                    localStorage.setItem(foodKey, stringifyData);
+                }
+            }),
+            catchError(this.handleError),
+        );
     }
 
     private getContentAndCall(url: string, callBack: (body: string) => any): Observable<any> {
@@ -99,7 +88,19 @@ export class FoodsExternalService extends AbstractService {
         });
     }
 
-    private parseFoodMenu(rawHtml: string): string[] {
+    public getMenuFromSmeRestaurant(urlPostfix: string): Observable<string[]> {
+        if (!urlPostfix.startsWith("/")) {
+            throw new Error("postfix must starts with '/'");
+        }
+
+        if (!urlPostfix.endsWith("/denne-menu")) {
+            throw new Error("postfix must ends with '/denne-menu'");
+        }
+
+        return this.getContentAndCall("https://restauracie.sme.sk/restauracia" + urlPostfix, this.parseSmeRestaurant);
+    }
+
+    private parseSmeRestaurant(rawHtml: string): string[] {
         const environment = new HtmlSimulator(rawHtml);
         const subResult = environment.find(".dnesne_menu");
         environment.cleanUp();
@@ -112,16 +113,5 @@ export class FoodsExternalService extends AbstractService {
         });
 
         return result;
-    }
-
-    private parseDelphineMenu(rawHtml: string): string {
-        const environment = new HtmlSimulator(rawHtml);
-        const subResult = environment.find(".col-sm-8.col-sm-offset-2.text-center");
-        environment.cleanUp();
-        if (!subResult) {
-            return null;
-        }
-
-        return subResult.innerText.split("\n\n").filter((e) => Config.DAYS.some((day) => e.startsWith(day.toUpperCase())))[new Date().getDay() - 1];
     }
 }

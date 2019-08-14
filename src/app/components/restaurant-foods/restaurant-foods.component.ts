@@ -2,6 +2,7 @@ import {Component, Input, OnChanges, OnInit, SimpleChanges} from "@angular/core"
 import {Config} from "../../appConfig";
 import {Food} from "../../shared/models/food.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
+import {AnalyticsService} from "../../shared/services/analytics.service";
 import {AppService} from "../../shared/services/app.service";
 import {GeoLocationService} from "../../shared/services/geo-location.service";
 import {RestaurantService} from "../../shared/services/restaurant.service";
@@ -20,6 +21,7 @@ export class RestaurantFoodsComponent implements OnChanges, OnInit {
 
     public constructor(public readonly appService: AppService,
                        private readonly restaurantService: RestaurantService,
+                       private readonly analyticsService: AnalyticsService,
                        public readonly getLocationService: GeoLocationService) {
     }
 
@@ -27,6 +29,7 @@ export class RestaurantFoodsComponent implements OnChanges, OnInit {
         const modal = $(".ui.modal.maps");
         const url = `https://www.google.com/maps/embed/v1/place?&q=${restaurant.coordinates.lat},${restaurant.coordinates.long}&zoom=18&key=${Config.GOOGLE_MAPS_API_EMBED_KEY}`;
         modal.find("iframe").attr("src", url);
+        this.analyticsService.openMap(restaurant.key);
         modal.modal("show");
     }
 

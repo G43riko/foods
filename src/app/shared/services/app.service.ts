@@ -63,7 +63,6 @@ export class AppService {
     }
 
     public setConfig<T extends keyof AppConfiguration>(key: T, value: AppConfiguration[T]): void {
-        console.log("nastavujeme" + key + " na " + value);
         (this.ref as any).update({
             config: {
                 ...this.configuration.value,
