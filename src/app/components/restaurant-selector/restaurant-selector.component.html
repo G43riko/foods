@@ -1,10 +1,3 @@
-<ng-template #restaurantRow let-restaurant="restaurant">
-    {{restaurant.name}}
-    <div class="flex-divider"></div>
-<!--    <i *ngIf="!restaurant.hasActualMenu" title="Menu nie momentálne k dispozícií" class="exclamation icon"></i>-->
-    <i *ngIf="restaurant.menuLink" title="Je k dizpozícií iba iframe" class="frown outline icon"></i>
-    <i *ngIf="restaurant.coordinates" title="K dispozícií sú súradnice" class="map marker icon"></i>
-</ng-template>
 
 <h2>Výber reštaurácií</h2>
 <h5 *ngIf="!(authService.user$ | async)">Pre zachovanie výberu je nutné sa prihlásiť</h5>
@@ -27,13 +20,21 @@
             cdkDropList
             #todoList="cdkDropList"
             [cdkDropListData]="restaurants"
+            cdkDropListSortingDisabled
             [cdkDropListConnectedTo]="[doneList]"
             class="example-list"
             (cdkDropListDropped)="drop($event)">
             <div *ngFor="let restaurant of restaurants | searchRestaurantPipe: searchKey"
                  class="example-box"
-                 cdkDrag>
-                <ng-container *ngTemplateOutlet="restaurantRow; context: {restaurant: restaurant}"></ng-container>
+                 cdkDrag
+                 cdkDragBoundary=".restaurant-selector-wrapper">
+
+                <i cdkDragHandle class="arrows alternate icon" style="cursor: move; margin-right: .6em;"></i>
+                {{restaurant.name}}
+                <div class="flex-divider"></div>
+                <!--    <i *ngIf="!restaurant.hasActualMenu" title="Menu nie momentálne k dispozícií" class="exclamation icon"></i>-->
+                <i *ngIf="restaurant.menuLink" class="frown outline icon" title="Je k dizpozícií iba iframe"></i>
+                <i *ngIf="restaurant.coordinates" class="map icon" title="K dispozícií sú súradnice"></i>
             </div>
         </div>
     </div>
@@ -55,8 +56,14 @@
             </div>
             <div *ngFor="let restaurant of selectedRestaurants"
                  class="example-box"
-                 cdkDrag>
-                <ng-container *ngTemplateOutlet="restaurantRow; context: {restaurant: restaurant}"></ng-container>
+                 cdkDrag
+                 cdkDragBoundary=".restaurant-selector-wrapper">
+                <i cdkDragHandle class="arrows alternate icon" style="cursor: move; margin-right: .6em;"></i>
+                {{restaurant.name}}
+                <div class="flex-divider"></div>
+                <!--    <i *ngIf="!restaurant.hasActualMenu" title="Menu nie momentálne k dispozícií" class="exclamation icon"></i>-->
+                <i *ngIf="restaurant.menuLink" class="frown outline icon" title="Je k dizpozícií iba iframe"></i>
+                <i *ngIf="restaurant.coordinates" class="map icon" title="K dispozícií sú súradnice"></i>
             </div>
         </div>
     </div>

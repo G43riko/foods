@@ -1,11 +1,10 @@
-<div class="ui sidebar vertical menu restaurants"
+<div class="ui sidebar vertical menu very restaurants "
      [class.wide]="wideNavigation"
      style="overflow-y: hidden !important;">
     <app-restaurant-selector (restaurantsChange)="appContent.onRestaurantChanges($event)"></app-restaurant-selector>
 </div>
-<div class="ui sidebar vertical menu options"
-     [class.wide]="wideNavigation"
->
+<div [class.wide]="wideNavigation"
+     class="ui sidebar vertical very menu options">
     <app-options>Nastavenia</app-options>
 </div>
 

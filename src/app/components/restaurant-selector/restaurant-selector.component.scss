@@ -48,7 +48,7 @@ h4, h2, h5 {
                 align-items: center;
                 justify-content: space-between;
                 box-sizing: border-box;
-                cursor: move;
+                //cursor: move;
                 background: white;
                 font-size: 14px;
 
@@ -74,7 +74,7 @@ h4, h2, h5 {
 }
 
 .cdk-drag-placeholder {
-    opacity: 0;
+    opacity: 0.2;
 }
 
 .cdk-drag-animating {
