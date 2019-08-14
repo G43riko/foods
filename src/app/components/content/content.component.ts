@@ -52,13 +52,19 @@ export class ContentComponent implements OnInit {
             this.notificationService.showErrorMessage("Error while getting menus from zommato api: ", error);
         });
 
-        this.restaurants.filter((restaurant) => restaurant.smeRestaurantsLink).forEach((restaurant) => {
-            this.foodsExternalService.getMenuFromSmeRestaurant(restaurant.smeRestaurantsLink).subscribe((menuRaw) => {
-                this.dailyMenus[restaurant.key] = this.foodsService.processSmeRestaurantMenu(menuRaw);
-            }, (error) => {
-                this.notificationService.showErrorMessage(`Error while getting menus from smerRestaurant for ${restaurant.name}: `, error);
-            });
-        });
+        // Because on github is HTTPS protocol so you cant call host using HTTP
+        // this.restaurants.filter((restaurant) => restaurant.smeRestaurantsLink).forEach((restaurant) => {
+        //     this.foodsExternalService.getMenuFromSmeRestaurant(restaurant.smeRestaurantsLink).subscribe((menuRaw) => {
+        //         if (!menuRaw) {
+        //             this.notificationService.showErrorMessage(`Error while getting menus from smerRestaurant for ${restaurant.name}: `);;
+        //
+        //             return;
+        //         }
+        //         this.dailyMenus[restaurant.key] = this.foodsService.processSmeRestaurantMenu(menuRaw);
+        //     }, (error) => {
+        //         this.notificationService.showErrorMessage(`Error while getting menus from smerRestaurant for ${restaurant.name}: `, error);
+        //     });
+        // });
     }
 
     public ngOnInit(): void {
