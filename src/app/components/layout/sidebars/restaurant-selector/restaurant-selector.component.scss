@@ -6,6 +6,7 @@
 h2 {
     padding-top: 0.3em;
 }
+
 h4, h2, h5 {
     text-align: center
 }
@@ -28,6 +29,7 @@ h4, h2, h5 {
         padding-bottom: 20px;
         max-width: 50%;
         min-width: 48%;
+
         .example-list {
             border: solid 1px #ccc;
             min-height: 50px;
@@ -64,6 +66,7 @@ h4, h2, h5 {
     }
 
 }
+
 .cdk-drag-preview {
     box-sizing: border-box;
     border-radius: 4px;

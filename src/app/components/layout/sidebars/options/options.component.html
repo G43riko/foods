@@ -1,9 +1,9 @@
 <div *ngIf="authService.user$ | async; else notLoggedIn" style="padding: 10px;">
     <div class="button {{appService.getConfig('selectedColor')}}">
         <label for="appColor" style="font-weight: bolder; font-size: 14px; padding:10px">Farba</label>
-        <select id="appColor"
-                class="ui dropdown">
-            <option value="none" class="item">Žiadna farba</option>
+        <select class="ui dropdown selected-color"
+                id="appColor">
+            <option class="item" value="none">Žiadna farba</option>
             <option *ngFor="let color of allowedColors"
                     class="item"
                     selected="{{color === appService.getConfig('selectedColor') ? 'selected' : ''}}"
@@ -14,38 +14,38 @@
         </select>
     </div>
     <div class="ui {{appService.getConfig('inverted') && 'checked'}} checkbox" style="padding-top: 10px;">
-        <input type="checkbox" checked="" [(ngModel)]="appService.inverted">
+        <input [(ngModel)]="appService.inverted" checked="" type="checkbox">
         <label>Invertovať farby</label>
     </div>
     <br>
     <div class="ui {{appService.getConfig('allowIFrames') && 'checked'}} checkbox" style="padding-top: 10px;">
-        <input type="checkbox" checked="" [(ngModel)]="appService.allowIFrames">
+        <input [(ngModel)]="appService.allowIFrames" checked="" type="checkbox">
         <label>Povoliť IFramy</label>
     </div>
     <br>
     <div class="ui {{appService.getConfig('showDistance') && 'checked'}} checkbox" style="padding-top: 10px;">
-        <input type="checkbox" checked="" [(ngModel)]="appService.showDistance">
+        <input [(ngModel)]="appService.showDistance" checked="" type="checkbox">
         <label>Zobrazovať vzdialenosť</label>
     </div>
     <br>
     <div class="ui {{appService.showPrice && 'checked'}} checkbox" style="padding-top: 10px;">
-        <input type="checkbox" checked="" [(ngModel)]="appService.showPrice">
+        <input [(ngModel)]="appService.showPrice" checked="" type="checkbox">
         <label>Zobrazovať ceny</label>
     </div>
     <br>
     <div class="ui {{appService.getConfig('showWeight') && 'checked'}} checkbox" style="padding-top: 10px;">
-        <input type="checkbox" checked="" [(ngModel)]="appService.showWeight">
+        <input [(ngModel)]="appService.showWeight" checked="" type="checkbox">
         <label>Zobrazovať hmotnosti</label>
     </div>
     <div style="padding-top: 10px">
-        <button class="ui tiny button {{appService.getConfig('selectedColor')}}"
-                (click)="resetRestaurants()"
-                [class.inverted]="appService.getConfig('inverted')">
+        <button (click)="resetRestaurants()"
+                [class.inverted]="appService.getConfig('inverted')"
+                class="ui tiny button {{appService.getConfig('selectedColor')}}">
             Obnoviť reštaurácie
         </button>
-        <button class="ui tiny button {{appService.getConfig('selectedColor')}}"
-                (click)="resetOptions()"
-                [class.inverted]="appService.getConfig('inverted')">
+        <button (click)="resetOptions()"
+                [class.inverted]="appService.getConfig('inverted')"
+                class="ui tiny button {{appService.getConfig('selectedColor')}}">
             Obnoviť nastavenia
         </button>
     </div>

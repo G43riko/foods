@@ -10,7 +10,7 @@ import {FoodsService} from "../../../shared/services/foods.service";
     templateUrl: "./food-row-name.component.html",
     styleUrls: ["./food-row-name.component.scss"],
 })
-export class FoodRowNameComponent{
+export class FoodRowNameComponent {
     @Input() public dish: Dish;
     @Input() public restaurant: Restaurant;
 

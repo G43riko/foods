@@ -16,7 +16,7 @@ const login = "gabriel";
 @Injectable({
     providedIn: "root",
 })
-export class StatsService extends AbstractService {
+export class    StatsService extends AbstractService {
     /*
     private readonly headers = new HttpHeaders({
         "Content-Type": "application/x-www-form-urlencoded",

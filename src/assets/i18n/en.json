@@ -1,0 +1,37 @@
+{
+    "dailyMenus": "Daily menu",
+    "fromYou": "from you",
+    "categories": "Categories",
+    "selectRestaurants": "Select the restaurant for which you want to display the daily menu",
+    "noRestaurants": "Sorry, we could not get any restaurant data",
+    "distanceCannotBeCalc": "Distance cannot be calculated",
+    "restaurantSelection": {
+        "title": "Restaurant selection",
+        "all": "All",
+        "selected": "Selected",
+        "onlyIframe": "Only iframe is available",
+        "chooseRestaurants": "Choose restaurants from the list",
+        "hasCoordinates": "Coordinates are available",
+        "needLoginForPersistence": "Login required to maintain selection"
+    },
+    "searchImages": "Search images on Google",
+    "showMap": "Show map",
+    "search": "Search ...",
+    "logout": "Logout",
+    "highlight": {
+        "title": "Highlight",
+        "category": {
+            "none": "None",
+            "meat": "Meat",
+            "pizza": "Pizza",
+            "vegetable": "Vegetable",
+            "pasta": "Pasta",
+            "sweet": "Sweet",
+            "asia": "Asia",
+            "vegetarian": "Vegetarian",
+            "vegan": "Vegan",
+            "seafood": "See foods",
+            "arab": "Arab"
+        }
+    }
+}

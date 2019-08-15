@@ -1,7 +1,8 @@
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {Component, OnInit} from "@angular/core";
+import {TranslateService} from "@ngx-translate/core";
 import {Dish} from "../shared/models/dish.model";
-import {FoodsExternalService} from "../shared/services/foods-external.service";
+import {AppService} from "../shared/services/app.service";
 import {StatsService} from "../shared/services/stats.service";
 
 declare const $: any;
@@ -18,8 +19,9 @@ export class AppComponent implements OnInit {
     public biggerThanTablet: boolean;
 
     public constructor(private readonly statsService: StatsService,
+                       translateService: TranslateService,
+                       private readonly appService: AppService,
                        private readonly breakpointObserver: BreakpointObserver) {
-        // breakpointObserver.isMatched();
         breakpointObserver.observe("(min-width: 726px)").subscribe((result) => {
             this.biggerThanTablet = result.matches;
         });

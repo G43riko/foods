@@ -39,6 +39,10 @@ export class ContentComponent implements OnInit {
         this.loadDailyMenus();
     }
 
+    public ngOnInit(): void {
+        // empty
+    }
+
     private loadDailyMenus(): void {
         const actualRestaurants = this.restaurants.filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink /*&& !restaurant.smeRestaurantsLink*/);
         this.foodsFirebaseService.getZomatoFoods(actualRestaurants).subscribe((results) => {
@@ -65,10 +69,6 @@ export class ContentComponent implements OnInit {
         //         this.notificationService.showErrorMessage(`Error while getting menus from smerRestaurant for ${restaurant.name}: `, error);
         //     });
         // });
-    }
-
-    public ngOnInit(): void {
-        // empty
     }
 
 }

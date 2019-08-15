@@ -12,12 +12,6 @@ export abstract class AbstractService<T = any> {
         throw new Error(error.message || error);
     }
 
-    private getHeader(): HttpHeaders {
-        const headers = new HttpHeaders();
-
-        return headers;
-    }
-
     protected getParameters(parameters: StringMap): HttpParams {
         let httpParams = new HttpParams();
         if (parameters) {
@@ -29,5 +23,11 @@ export abstract class AbstractService<T = any> {
         }
 
         return httpParams;
+    }
+
+    private getHeader(): HttpHeaders {
+        const headers = new HttpHeaders();
+
+        return headers;
     }
 }

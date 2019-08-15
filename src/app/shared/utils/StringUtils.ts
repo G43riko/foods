@@ -1,11 +1,11 @@
 import {StringMap} from "../interfaces/string-map";
 
 const accentedLowerCharacters = "ąàáäâãåæăćčĉęèéëêĝĥìíïîĵłľńňòóöőôõðøśșşšŝťțţŭùúüűûñÿýçżźž";
-const normalLowerCharacters   = "aaaaaaaaaccceeeeeghiiiijllnnoooooooossssstttuuuuuunyyczzz";
-const accentedCharacters      = accentedLowerCharacters + accentedLowerCharacters.toUpperCase();
-const normalCharacters        = normalLowerCharacters + normalLowerCharacters.toUpperCase();
+const normalLowerCharacters = "aaaaaaaaaccceeeeeghiiiijllnnoooooooossssstttuuuuuunyyczzz";
+const accentedCharacters = accentedLowerCharacters + accentedLowerCharacters.toUpperCase();
+const normalCharacters = normalLowerCharacters + normalLowerCharacters.toUpperCase();
 
-const validEmailRegex       = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
+const validEmailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/i;
 const validPhoneNumberRegex = /^([+]|00)?[(]?[0-9]{3,4}[)]?[-\s.]?[0-9]{2,3}[-\s.]?[0-9]{2,6}([-\s.]?[0-9]{3})?$/im;
 
 /* TODO:
@@ -79,16 +79,16 @@ export class StringUtils {
 
     // TODO: need to be fixed
     public static template(text: string, values: StringMap, start = "{{", end = "}}"): string {
-        start         = start.replace(/[-[\]()*\s]/g, "\\$&")
-                             .replace(/\$/g, "\\$");
-        end           = end.replace(/[-[\]()*\s]/g, "\\$&")
-                           .replace(/\$/g, "\\$");
-        const regexp  = new RegExp(`${start}(.+?)'${end}`, "g");
+        start = start.replace(/[-[\]()*\s]/g, "\\$&")
+            .replace(/\$/g, "\\$");
+        end = end.replace(/[-[\]()*\s]/g, "\\$&")
+            .replace(/\$/g, "\\$");
+        const regexp = new RegExp(`${start}(.+?)'${end}`, "g");
         const matches = text.match(regexp) || [];
 
         matches.forEach((match) => {
-            const key   = match.substring(start.length, match.length - end.length)
-                               .trim();
+            const key = match.substring(start.length, match.length - end.length)
+                .trim();
             const value = values[key];
             if (value) {
                 text = text.replace(match, value);
@@ -104,7 +104,7 @@ export class StringUtils {
 
     public static between(text: string, key1: string, key2: string): string {
         const startPos = text.indexOf(key1);
-        const endPos   = text.indexOf(key2);
+        const endPos = text.indexOf(key2);
         if (startPos < 0 && endPos >= 0) {
             return text.substring(0, endPos);
         } else if (endPos < 0 && startPos >= 0) {
@@ -124,7 +124,7 @@ export class StringUtils {
 
     public static capitalize(text: string): string {
         return text.toLowerCase()
-                   .replace(/^./, (char) => char.toUpperCase());
+            .replace(/^./, (char) => char.toUpperCase());
     }
 
     public static isEmpty(thisArg: string): boolean {
@@ -141,7 +141,7 @@ export class StringUtils {
 
     public static transformToBasicFormat(text: string): string {
         return StringUtils.collapseWhitespace(StringUtils.removeAccentedCharacters(text)
-                                                         .toLowerCase()).trim();
+            .toLowerCase()).trim();
     }
 
     public static isValidEmail(email: string): boolean {
@@ -175,7 +175,7 @@ export class StringUtils {
 
     public static contains(text: string, substring: string): boolean {
         return !!text && StringUtils.removeAccentedCharacters(text.toLowerCase())
-                                    .indexOf(substring) >= 0;
+            .indexOf(substring) >= 0;
     }
 
     public static joinSingle(prefix: string, divider: string, postfix: string): string {
@@ -207,16 +207,16 @@ export class StringUtils {
 }
 
 function fuzzy_match_simple(pattern: string, str: string): boolean {
-    let patternIdx      = 0;
-    let strIdx          = 0;
+    let patternIdx = 0;
+    let strIdx = 0;
     const patternLength = pattern.length;
-    const strLength     = str.length;
+    const strLength = str.length;
 
     while (patternIdx !== patternLength && strIdx !== strLength) {
         const patternChar = pattern.charAt(patternIdx)
-                                   .toLowerCase();
-        const strChar     = str.charAt(strIdx)
-                               .toLowerCase();
+            .toLowerCase();
+        const strChar = str.charAt(strIdx)
+            .toLowerCase();
         if (patternChar === strChar) {
             ++patternIdx;
         }

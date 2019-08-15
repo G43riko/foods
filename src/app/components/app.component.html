@@ -1,5 +1,5 @@
-<div class="ui sidebar vertical menu very restaurants "
-     [class.wide]="biggerThanTablet"
+<div [class.wide]="biggerThanTablet"
+     class="ui sidebar vertical menu very restaurants "
      style="overflow-y: hidden !important;">
     <app-restaurant-selector (restaurantsChange)="appContent.onRestaurantChanges($event)"></app-restaurant-selector>
 </div>
@@ -14,9 +14,9 @@
 </div>
 
 <div class="ui modal maps">
-    <iframe frameborder="0"
+    <iframe allowfullscreen
             class="map"
-            width="100%"
+            frameborder="0"
             height="100%"
-            allowfullscreen></iframe>
+            width="100%"></iframe>
 </div>

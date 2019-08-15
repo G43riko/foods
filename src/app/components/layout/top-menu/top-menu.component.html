@@ -6,17 +6,32 @@
         <i class=" sliders horizontal icon"></i>
     </a>
     <div class="item">
-        <div class="ui icon input {{appService.getConfig('selectedColor')}}"
-             [style.max-width.px]="biggerThanTablet ? 400 : 144"
-             [class.inverted]="appService.getConfig('inverted')">
-            <input [(ngModel)]="searchKey" type="text" placeholder="hľadať...">
+        <div [class.inverted]="appService.getConfig('inverted')"
+             class="ui icon input {{appService.getConfig('selectedColor')}}">
+            <input [(ngModel)]="searchKey" placeholder="{{'search' | translate}}" type="text">
             <i class="search icon"></i>
         </div>
     </div>
     <div class="divider"></div>
-    <a class="item" (click)="profileMenu.close(); openHighlighter = !openHighlighter">
-        Kategórie
+    <a (click)="profileMenu.close(); openHighlighter = !openHighlighter" class="item">
+        {{'categories' | translate}}
     </a>
+    <div class="item">
+        <div class="field">
+            <div class="ui fluid selection dropdown language">
+                <input #languageInput
+                       type="hidden"
+                       name="country"
+                       [value]="translateService.currentLang"
+                       (change)="setLanguage(languageInput.value)">
+                <div class="default text"></div>
+                <div class="menu">
+                    <div class="item" data-value="sk"><i class="sk flag"></i></div>
+                    <div class="item" data-value="en"><i class="us flag"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="item">
         <app-profile-menu #profileMenu (onOpen)="openHighlighter=false"></app-profile-menu>
     </div>

@@ -25,6 +25,7 @@ export class RestaurantTitleComponent implements OnInit {
     }
 
     public ngOnInit(): void {
+        // empty
     }
 
     public showMap(restaurant: Restaurant): void {

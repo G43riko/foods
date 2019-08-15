@@ -1,11 +1,11 @@
-<div *ngIf="dish"
-     #titleCell
+<div #titleCell
+     *ngIf="dish"
      [ngClass]="{'ui ribbon label': foodService.isBold(dish)}"
      class="daily-menu row {{appService.getConfig('inverted') || appService.getConfig('selectedColor')}}">
     <strong *ngIf="appService.getConfig('showWeight') && dish.weight">{{dish.weight + ': '}}</strong>
     <span #dailyMenu>{{dish?.name}}</span>
-    <i *ngIf="!titleCell.matches('.ui.ribbon.label')"
-       (click)="openImages(dailyMenu)"
+    <i (click)="openImages(dailyMenu)"
+       *ngIf="!titleCell.matches('.ui.ribbon.label')"
        class="question circle icon helper"
-       title="Nájsť obrázky cez google"></i>
+       title="{{'searchImages' | translate}}"></i>
 </div>

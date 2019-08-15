@@ -1,4 +1,4 @@
-import { FirebaseModule } from "./firebase.module";
+import {FirebaseModule} from "./firebase.module";
 
 describe("FirebaseModule", () => {
     let firebaseModuleModule: FirebaseModule;

@@ -25,6 +25,7 @@ export class AnalyticsService {
             event_label: key,
         });
     }
+
     public showImages(key: string): void {
         gtag("event", "showImages", {key});
 

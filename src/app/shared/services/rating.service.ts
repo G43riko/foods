@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {AngularFirestore} from "@angular/fire/firestore";
-import {debounceTime, switchMap, throttleTime} from "rxjs/operators";
+import {switchMap, throttleTime} from "rxjs/operators";
 import {User} from "../interfaces/user.interface";
 import {Dish} from "../models/dish.model";
 import {Restaurant} from "../models/restaurant.model";
@@ -29,40 +29,6 @@ export class RatingService {
         });
     }
 
-    private setCache(user: User, dish: Dish, restaurant: Restaurant, liked: boolean): void {
-        if (!this.cache[restaurant.key]) {
-            this.cache[restaurant.key] = {};
-        }
-        if (!this.cache[restaurant.key][dish.name]) {
-            if (liked) {
-                this.cache[restaurant.key][dish.name] = [user.email];
-            }
-        } else {
-            if (liked) {
-                this.cache[restaurant.key][dish.name].push(user.email);
-            } else {
-                this.cache[restaurant.key][dish.name].splice(this.cache[restaurant.key][dish.name].indexOf(user.email), 1);
-            }
-        }
-    }
-
-    private isCached(dish: Dish, restaurant: Restaurant): boolean {
-        if (!restaurant) {
-            return false;
-        }
-        if (!this.cache[restaurant.key]) {
-            return false;
-        }
-        if (!this.cache[restaurant.key][dish.name]) {
-            return false;
-        }
-        if (!this.cache[restaurant.key][dish.name]) {
-            return false;
-        }
-
-        return true;
-    }
-
     public getTotalLikes(restaurant: Restaurant): number {
         if (!this.cache[restaurant.key]) {
             return 0;
@@ -81,14 +47,6 @@ export class RatingService {
         Object.values(this.cache[restaurant.key]).forEach((menu) => voters.push(...menu));
 
         return new Set(voters).size;
-    }
-
-    private getCache(user: User, dish: Dish, restaurant: Restaurant): boolean {
-        if (!this.isCached(dish, restaurant)) {
-            return false;
-        }
-
-        return this.cache[restaurant.key][dish.name].includes(user.email);
     }
 
     public getLikes(dish: Dish, restaurant: Restaurant): number {
@@ -161,6 +119,48 @@ export class RatingService {
         }
 
         return this.getCache(user, dish, restaurant);
+    }
+
+    private setCache(user: User, dish: Dish, restaurant: Restaurant, liked: boolean): void {
+        if (!this.cache[restaurant.key]) {
+            this.cache[restaurant.key] = {};
+        }
+        if (!this.cache[restaurant.key][dish.name]) {
+            if (liked) {
+                this.cache[restaurant.key][dish.name] = [user.email];
+            }
+        } else {
+            if (liked) {
+                this.cache[restaurant.key][dish.name].push(user.email);
+            } else {
+                this.cache[restaurant.key][dish.name].splice(this.cache[restaurant.key][dish.name].indexOf(user.email), 1);
+            }
+        }
+    }
+
+    private isCached(dish: Dish, restaurant: Restaurant): boolean {
+        if (!restaurant) {
+            return false;
+        }
+        if (!this.cache[restaurant.key]) {
+            return false;
+        }
+        if (!this.cache[restaurant.key][dish.name]) {
+            return false;
+        }
+        if (!this.cache[restaurant.key][dish.name]) {
+            return false;
+        }
+
+        return true;
+    }
+
+    private getCache(user: User, dish: Dish, restaurant: Restaurant): boolean {
+        if (!this.isCached(dish, restaurant)) {
+            return false;
+        }
+
+        return this.cache[restaurant.key][dish.name].includes(user.email);
     }
 
 }

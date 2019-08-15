@@ -60,6 +60,18 @@ export class FoodsExternalService extends AbstractService {
         return this.callZomatoApi(Config.ZOMATO_API_URL + "?res_id=" + id, foodKey);
     }
 
+    public getMenuFromSmeRestaurant(urlPostfix: string): Observable<string[]> {
+        if (!urlPostfix.startsWith("/")) {
+            throw new Error("postfix must starts with '/'");
+        }
+
+        if (!urlPostfix.endsWith("/denne-menu")) {
+            throw new Error("postfix must ends with '/denne-menu'");
+        }
+
+        return this.getContentAndCall("https://restauracie.sme.sk/restauracia" + urlPostfix, this.parseSmeRestaurant);
+    }
+
     private callZomatoApi(url: string, foodKey: string): Observable<any> {
         return this.http.get(url, {headers: this.headers}).pipe(
             tap((data) => {
@@ -87,18 +99,6 @@ export class FoodsExternalService extends AbstractService {
                 }
             });
         });
-    }
-
-    public getMenuFromSmeRestaurant(urlPostfix: string): Observable<string[]> {
-        if (!urlPostfix.startsWith("/")) {
-            throw new Error("postfix must starts with '/'");
-        }
-
-        if (!urlPostfix.endsWith("/denne-menu")) {
-            throw new Error("postfix must ends with '/denne-menu'");
-        }
-
-        return this.getContentAndCall("https://restauracie.sme.sk/restauracia" + urlPostfix, this.parseSmeRestaurant);
     }
 
     private parseSmeRestaurant(rawHtml: string): string[] {

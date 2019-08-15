@@ -1,12 +1,10 @@
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
-import {ChangeDetectorRef, Component, EventEmitter, OnInit, Output} from "@angular/core";
-import {take} from "rxjs/operators";
+import {Component, EventEmitter, OnInit, Output} from "@angular/core";
 import {RestaurantData} from "../../../../../data/restaurantsData";
 import {Restaurant} from "../../../../shared/models/restaurant.model";
 import {AppService} from "../../../../shared/services/app.service";
 import {AuthService} from "../../../../shared/services/auth.service";
 import {FoodsFirebaseService} from "../../../../shared/services/foods-firebase.service";
-import {RatingService} from "../../../../shared/services/rating.service";
 
 @Component({
     selector: "app-restaurant-selector",
@@ -39,20 +37,6 @@ export class RestaurantSelectorComponent implements OnInit {
         });
     }
 
-    private setRestaurants(selectedRestaurantsKeys: string[]): void {
-        this.selectedRestaurants.splice(0, this.selectedRestaurants.length);
-        this.restaurants.splice(0, this.restaurants.length);
-        RestaurantData.forEach((restaurant) => {
-            const index = selectedRestaurantsKeys.indexOf(restaurant.key);
-            if (index >= 0) {
-                this.selectedRestaurants[index] = restaurant;
-            }
-            else {
-                this.restaurants.push(restaurant);
-            }
-        });
-    }
-
     public drop(event: CdkDragDrop<Restaurant[]>): void {
         if (event.previousContainer === event.container) {
             moveItemInArray(event.container.data, event.previousIndex, event.currentIndex);
@@ -64,5 +48,18 @@ export class RestaurantSelectorComponent implements OnInit {
         }
         this.appService.setConfig("selectedRestaurants", this.selectedRestaurants.map((selectedRestaurant) => selectedRestaurant.key));
         this.restaurantsChange.emit(this.selectedRestaurants);
+    }
+
+    private setRestaurants(selectedRestaurantsKeys: string[]): void {
+        this.selectedRestaurants.splice(0, this.selectedRestaurants.length);
+        this.restaurants.splice(0, this.restaurants.length);
+        RestaurantData.forEach((restaurant) => {
+            const index = selectedRestaurantsKeys.indexOf(restaurant.key);
+            if (index >= 0) {
+                this.selectedRestaurants[index] = restaurant;
+            } else {
+                this.restaurants.push(restaurant);
+            }
+        });
     }
 }

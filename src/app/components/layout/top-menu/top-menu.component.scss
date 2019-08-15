@@ -1,0 +1,36 @@
+$breakpoint-mobile: 460px;
+
+.ui.icon.input {
+    max-width: 400px;
+}
+
+.ui.fluid.selection.dropdown {
+    padding-right: 1em;
+    padding-left: 1em;
+    text-align: center;
+    i {
+        margin: 0!important;;
+    }
+    .item {
+        padding-right: 1em !important;
+        padding-left: 1em !important;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: $breakpoint-mobile) {
+    .ui.icon.input {
+        max-width: 110px;
+    }
+
+    .ui.fluid.selection.dropdown {
+        padding-right: 0.4em;
+        padding-left: 0.4em;
+
+        .item {
+            padding-right: 0.4em !important;
+            padding-left: 0.4em !important;
+        }
+    }
+
+}

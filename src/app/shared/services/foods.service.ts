@@ -31,7 +31,7 @@ export class FoodsService {
     }
 
     public processDelphineMenu(menu: string): Dish[] {
-    // public processDelphineMenu(menus: string[]): Dish[] {
+        // public processDelphineMenu(menus: string[]): Dish[] {
         // return menus.map((menu) => new Dish("", menu, ""));
         if (!menu) {
             return [];
@@ -41,31 +41,6 @@ export class FoodsService {
         return splitMenu.map((foodName, i) => {
             return new Dish("", foodName, i === 0 ? undefined : "4.40€");
         });
-    }
-
-    private processZomatoPrice(dish: any): void {
-        const priceResult = dish.name.match(Config.PRICE_REGEXP);
-        if (priceResult) {
-            dish.price = priceResult[0] + " €";
-            dish.name = dish.name.replace(Config.PRICE_REGEXP, " ");
-        }
-    }
-
-    private processZomatoWeight(dish: any): void {
-        const weightResult = dish.name.match(Config.WEIGHT_REGEXP);
-        if (weightResult) {
-            dish.weight = weightResult[0].replace(/(\/)/g, "")
-                .replace(",", ".")
-                .trim();
-
-            if (dish.weight.match(/^\d+g$/)) {
-                dish.weight = dish.weight.replace("g", " g");
-            }
-            if (dish.weight.match(/^\d*\.?\d*l$/)) {
-                dish.weight = dish.weight.replace("l", " l");
-            }
-            dish.name = dish.name.replace(Config.WEIGHT_REGEXP, " ").replace(Config.REGEXP, " ");
-        }
     }
 
     public processSmeRestaurantMenu(menus: string[]): Dish[] {
@@ -91,5 +66,30 @@ export class FoodsService {
             dish.name.startsWith("Uvedené ceny platia") ||
             dish.name.startsWith("Špecialita") ||
             dish.name.startsWith("Zeleninové ");
+    }
+
+    private processZomatoPrice(dish: any): void {
+        const priceResult = dish.name.match(Config.PRICE_REGEXP);
+        if (priceResult) {
+            dish.price = priceResult[0] + " €";
+            dish.name = dish.name.replace(Config.PRICE_REGEXP, " ");
+        }
+    }
+
+    private processZomatoWeight(dish: any): void {
+        const weightResult = dish.name.match(Config.WEIGHT_REGEXP);
+        if (weightResult) {
+            dish.weight = weightResult[0].replace(/(\/)/g, "")
+                .replace(",", ".")
+                .trim();
+
+            if (dish.weight.match(/^\d+g$/)) {
+                dish.weight = dish.weight.replace("g", " g");
+            }
+            if (dish.weight.match(/^\d*\.?\d*l$/)) {
+                dish.weight = dish.weight.replace("l", " l");
+            }
+            dish.name = dish.name.replace(Config.WEIGHT_REGEXP, " ").replace(Config.REGEXP, " ");
+        }
     }
 }

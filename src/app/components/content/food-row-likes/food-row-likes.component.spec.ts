@@ -1,29 +1,29 @@
-import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 import {TestingModule} from "../../../shared/modules/testing.module";
 
-import { FoodRowLikesComponent } from "./food-row-likes.component";
+import {FoodRowLikesComponent} from "./food-row-likes.component";
 
 describe("FoodRowLikesComponent", () => {
-  let component: FoodRowLikesComponent;
-  let fixture: ComponentFixture<FoodRowLikesComponent>;
+    let component: FoodRowLikesComponent;
+    let fixture: ComponentFixture<FoodRowLikesComponent>;
 
-  beforeEach(async(() => {
-    TestBed.configureTestingModule({
-      declarations: [ FoodRowLikesComponent ],
-        imports: [
-          TestingModule,
-      ],
-    })
-    .compileComponents();
-  }));
+    beforeEach(async(() => {
+        TestBed.configureTestingModule({
+            declarations: [FoodRowLikesComponent],
+            imports: [
+                TestingModule,
+            ],
+        })
+            .compileComponents();
+    }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(FoodRowLikesComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    beforeEach(() => {
+        fixture = TestBed.createComponent(FoodRowLikesComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+    });
 
-  it("should create", () => {
-    expect(component).toBeTruthy();
-  });
+    it("should create", () => {
+        expect(component).toBeTruthy();
+    });
 });

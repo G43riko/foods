@@ -1,14 +1,14 @@
 <div *ngIf="restaurant.visible">
     <app-restaurant-title [restaurant]="restaurant"></app-restaurant-title>
-    <table class="ui celled table {{appService.getConfig('selectedColor')}} foodTable"
-           #restaurantTable
+    <table #restaurantTable
            (click)="showImage(restaurantTable.getAttribute('title'), restaurantTable.getAttribute('class'));"
-           [class.inverted]="appService.getConfig('inverted')">
+           [class.inverted]="appService.getConfig('inverted')"
+           class="ui celled table {{appService.getConfig('selectedColor')}} foodTable">
         <tbody>
-        <ng-template [ngIf]="dailyMenus[restaurant.key] && dailyMenus[restaurant.key].length > 0" [ngIfElse]="noMenus">
+        <ng-template [ngIfElse]="noMenus" [ngIf]="dailyMenus[restaurant.key] && dailyMenus[restaurant.key].length > 0">
             <ng-container *ngFor="let dish of dailyMenus[restaurant.key] | searchFoodPipe: searchKey">
-                <app-food-row style="display: contents" [highlight]="highlight" [dish]="dish"
-                              [restaurant]="restaurant"></app-food-row>
+                <app-food-row [dish]="dish" [highlight]="highlight" [restaurant]="restaurant"
+                              style="display: contents"></app-food-row>
             </ng-container>
         </ng-template>
         <ng-template #noMenus>

@@ -9,6 +9,7 @@ import {AuthService} from "../../../shared/services/auth.service";
 export class ProfileMenuComponent implements OnInit {
     public menuOpen = false;
     @Output() public readonly onOpen = new EventEmitter();
+
     public constructor(public readonly authService: AuthService) {
     }
 
@@ -16,10 +17,13 @@ export class ProfileMenuComponent implements OnInit {
         this.menuOpen = true;
         this.onOpen.emit();
     }
+
     public close(): void {
         this.menuOpen = false;
     }
+
     public ngOnInit(): void {
+        // empty
     }
 
 }

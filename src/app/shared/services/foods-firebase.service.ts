@@ -80,20 +80,6 @@ export class FoodsFirebaseService {
         });
     }
 
-    private processNewZomatoMenu(newDailyMenu: any, dailyMenuRef: AngularFirestoreDocument<any>, subject: Subscriber<any>, restaurant: Restaurant): void {
-        if (newDailyMenu) {
-            const finishUpdatingFirebase = () => {
-                subject.next(newDailyMenu);
-                subject.complete();
-            };
-            dailyMenuRef.set(newDailyMenu, {merge: true})
-                .then(finishUpdatingFirebase)
-                .catch(finishUpdatingFirebase);
-        } else {
-            subject.error("Cannot get zomato menu for restaurant " + restaurant.name);
-        }
-    }
-
     public getZomatoFood(restaurant: Restaurant): Observable<any> {
         const dailyMenuRef: AngularFirestoreDocument<any> = this.afs.doc(`menus/${this.appService.getDate()}/zomatoMenus/${restaurant.key}`);
 
@@ -114,5 +100,19 @@ export class FoodsFirebaseService {
                 }
             }, () => getAndStoreMenu());
         });
+    }
+
+    private processNewZomatoMenu(newDailyMenu: any, dailyMenuRef: AngularFirestoreDocument<any>, subject: Subscriber<any>, restaurant: Restaurant): void {
+        if (newDailyMenu) {
+            const finishUpdatingFirebase = () => {
+                subject.next(newDailyMenu);
+                subject.complete();
+            };
+            dailyMenuRef.set(newDailyMenu, {merge: true})
+                .then(finishUpdatingFirebase)
+                .catch(finishUpdatingFirebase);
+        } else {
+            subject.error("Cannot get zomato menu for restaurant " + restaurant.name);
+        }
     }
 }

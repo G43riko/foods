@@ -1,0 +1,37 @@
+{
+    "dailyMenus": "Denné menu",
+    "fromYou": "od vás",
+    "categories": "Kategórie",
+    "selectRestaurants": "Zvolte v menu reštaurácie pre ktoré chcete zobrazovať denné menu",
+    "noRestaurants": "Ľutujeme, ale nepodarilo sa získať údaje o žiadnej reštaurácií",
+    "distanceCannotBeCalc": "Vzdialenosť sa nedá vyrátať",
+    "restaurantSelection": {
+        "title": "Výber reštaurácií",
+        "all": "Všetky",
+        "selected":"Zvolené",
+        "onlyIframe": "Je k dizpozícií iba iframe",
+        "chooseRestaurants": "Vyberte reštaurácie zo zoznamu",
+        "hasCoordinates": "K dispozícií sú súradnice",
+        "needLoginForPersistence": "Pre zachovanie výberu je nutné sa prihlásiť"
+    },
+    "searchImages": "Nájsť obrázky cez google",
+    "showMap": "Zobraziť mapu",
+    "search": "Hladať...",
+    "logout": "Odhlásiť",
+    "highlight": {
+        "title": "Zvýraznovať",
+        "category": {
+            "none": "Nič",
+            "meat": "Mäso",
+            "pizza": "Pizza",
+            "vegetable": "Zelenina",
+            "pasta": "Cestoviny",
+            "sweet": "Sladké",
+            "asia": "Ázia",
+            "vegetarian": "Vegetariánske",
+            "vegan": "Veganske",
+            "seafood": "Plody mora",
+            "arab": "Arabské"
+        }
+    }
+}

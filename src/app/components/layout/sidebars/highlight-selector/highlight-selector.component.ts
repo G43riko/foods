@@ -29,6 +29,7 @@ export class HighlightSelectorComponent implements OnInit {
     }
 
     public ngOnInit(): void {
+        // empty
     }
 
 }

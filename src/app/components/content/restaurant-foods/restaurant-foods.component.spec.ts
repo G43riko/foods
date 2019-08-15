@@ -5,6 +5,7 @@ import {SearchFoodPipe} from "../../../shared/pipes/search-food.pipe";
 import {FoodRowLikesComponent} from "../food-row-likes/food-row-likes.component";
 import {FoodRowNameComponent} from "../food-row-name/food-row-name.component";
 import {FoodRowComponent} from "../food-row/food-row.component";
+import {RestaurantTitleComponent} from "../restaurant-title/restaurant-title.component";
 import {RestaurantFoodsComponent} from "./restaurant-foods.component";
 
 describe("RestaurantFoodsComponent", () => {
@@ -19,6 +20,7 @@ describe("RestaurantFoodsComponent", () => {
                 FoodRowNameComponent,
                 FoodRowLikesComponent,
                 FoodRowComponent,
+                RestaurantTitleComponent,
             ],
             imports: [
                 TestingModule,

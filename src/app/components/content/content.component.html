@@ -1,16 +1,16 @@
-<h1 class="ui {{appService.getConfig('selectedColor')}} header"
-    [class.inverted]="appService.getConfig('inverted')">Denné menu</h1>
+<h1 [class.inverted]="appService.getConfig('inverted')"
+    class="ui {{appService.getConfig('selectedColor')}} header">{{'dailyMenus' | translate}}</h1>
 
 
 <ng-container *ngIf="restaurants; else: noRestaurants">
 
     <div *ngIf="restaurants && restaurants.length > 0; else: noSelectedRestaurants" id="foodContent">
-        <div *ngFor="let restaurant of restaurants" style="margin-top: 20px;" class="{{counter}}">
+        <div *ngFor="let restaurant of restaurants" class="{{counter}}" style="margin-top: 20px;">
             <app-restaurant-foods *ngIf="!restaurant.menuLink"
                                   [dailyMenus]="dailyMenus"
                                   [highlight]="highlight"
-                                  [searchKey]="searchKey"
-                                  [restaurant]="restaurant"></app-restaurant-foods>
+                                  [restaurant]="restaurant"
+                                  [searchKey]="searchKey"></app-restaurant-foods>
             <div *ngIf="appService.getConfig('allowIFrames') && restaurant.menuLink">
                 <h3>
                     {{restaurant.name}}
@@ -19,17 +19,17 @@
                         {{restaurantService.getDistance(restaurant.coordinates)}}
                     </small>
                 </h3>
-                <iframe class="menu-iframe"
-                        id="{{restaurant.key + 'Rest'}}"
-                        [src]="restaurant.menuLink | safe"></iframe>
+                <iframe [src]="restaurant.menuLink | safe"
+                        class="menu-iframe"
+                        id="{{restaurant.key + 'Rest'}}"></iframe>
             </div>
         </div>
     </div>
     <ng-template #noSelectedRestaurants>
-        <h3>Zvolte v menu reštaurácie pre ktoré chcete zobrazovať denné menu</h3>
+        <h3>{{'selectRestaurants' | translate}}</h3>
     </ng-template>
 </ng-container>
 
 <ng-template #noRestaurants>
-    <h3>Ľutujeme, ale nepodarilo sa získať údaje o žiadnej reštaurácií</h3>
+    <h3>{{'noRestaurants' | translate}}</h3>
 </ng-template>

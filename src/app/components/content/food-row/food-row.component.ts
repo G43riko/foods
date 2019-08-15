@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from "@angular/core";
+import {Component, Input} from "@angular/core";
 import {Dish} from "../../../shared/models/dish.model";
 import {Food} from "../../../shared/models/food.model";
 import {Restaurant} from "../../../shared/models/restaurant.model";

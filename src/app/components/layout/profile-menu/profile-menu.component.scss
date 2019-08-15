@@ -12,6 +12,7 @@ $background-color: white;
         height: $avatar-size;
         border-radius: 50%;
         cursor: pointer;
+
         &:hover {
             box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
         }
@@ -25,13 +26,14 @@ $background-color: white;
         border: $border-width solid $border-color;
         border-radius: 3px;
         padding: 1em;
-            min-width: 200px;
+        min-width: 200px;
         min-height: 100px;
         top: 43px;
 
         & > *:not(:last-child) {
             margin-bottom: 1em;
         }
+
         //display: flex;
         flex-direction: column;
         justify-content: space-around;
@@ -50,6 +52,7 @@ $background-color: white;
             position: absolute;
             pointer-events: none;
         }
+
         &:before {
             border-color: transparent;
             border-bottom-color: $border-color;
@@ -57,6 +60,7 @@ $background-color: white;
             margin-left: -11px;
             //border-right: 20px solid transparent;
         }
+
         &:after {
             border-color: transparent;
             border-bottom-color: $background-color;

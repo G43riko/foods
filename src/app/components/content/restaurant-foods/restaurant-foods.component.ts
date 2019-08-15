@@ -20,8 +20,11 @@ export class RestaurantFoodsComponent implements OnChanges, OnInit {
     }
 
     public ngOnChanges(changes: SimpleChanges): void {
+        // empty
     }
+
     public ngOnInit(): void {
+        // empty
     }
 
     private showImage(name: string, src: string): void {
