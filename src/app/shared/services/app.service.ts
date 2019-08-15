@@ -51,6 +51,12 @@ export class AppService {
         });
     }
 
+    public getDate(): string {
+        const a = new Date();
+
+        return a.getDate() + "-" + a.getMonth() + "-" + a.getFullYear();
+    }
+
     private static getDefaultConfiguration(selectedRestaurants?: string[]): AppConfiguration {
         return {
             inverted: false,

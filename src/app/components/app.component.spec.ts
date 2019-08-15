@@ -1,6 +1,6 @@
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {async, TestBed} from "@angular/core/testing";
-import {TestingModule} from "../shared/modules/testing/testing.module";
+import {TestingModule} from "../shared/modules/testing.module";
 import {SafePipe} from "../shared/pipes/safe.pipe";
 import {SearchFoodPipe} from "../shared/pipes/search-food.pipe";
 import {SearchRestaurantPipe} from "../shared/pipes/search-restaurant.pipe";
@@ -8,15 +8,15 @@ import {FoodsExternalService} from "../shared/services/foods-external.service";
 import {StatsService} from "../shared/services/stats.service";
 import {AppComponent} from "./app.component";
 import {ContentComponent} from "./content/content.component";
-import {FoodRowLikesComponent} from "./food-row-likes/food-row-likes.component";
-import {FoodRowNameComponent} from "./food-row-name/food-row-name.component";
-import {FoodRowComponent} from "./food-row/food-row.component";
-import {HighlightSelectorComponent} from "./highlight-selector/highlight-selector.component";
-import {OptionsComponent} from "./options/options.component";
-import {ProfileMenuComponent} from "./profile-menu/profile-menu.component";
-import {RestaurantFoodsComponent} from "./restaurant-foods/restaurant-foods.component";
-import {RestaurantSelectorComponent} from "./restaurant-selector/restaurant-selector.component";
-import {TopMenuComponent} from "./top-menu/top-menu.component";
+import {FoodRowLikesComponent} from "./content/food-row-likes/food-row-likes.component";
+import {FoodRowNameComponent} from "./content/food-row-name/food-row-name.component";
+import {FoodRowComponent} from "./content/food-row/food-row.component";
+import {HighlightSelectorComponent} from "./layout/sidebars/highlight-selector/highlight-selector.component";
+import {OptionsComponent} from "./layout/sidebars/options/options.component";
+import {ProfileMenuComponent} from "./layout/profile-menu/profile-menu.component";
+import {RestaurantFoodsComponent} from "./content/restaurant-foods/restaurant-foods.component";
+import {RestaurantSelectorComponent} from "./layout/sidebars/restaurant-selector/restaurant-selector.component";
+import {TopMenuComponent} from "./layout/top-menu/top-menu.component";
 
 describe("AppComponent", () => {
     beforeEach(async(() => {

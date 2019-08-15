@@ -19,7 +19,7 @@
  - [x] link na zobrazenie reštaurácie na mape
  - [x] prerobiť drag and drop list na CDK drag and drop
  - [x] zobrazovať počet lajkov pre každé jedno aj reštauréciu
- - [ ] ukladať menu do firebase aby sa iba raz načítal
+ - [x] ukladať menu do firebase aby sa iba raz načítal
  - [ ] zobrazovať koľko ludí má reštauráciu v aktívnych
  - [ ] pridať zoznam preferovaných jedál
      - [ ] zvýrazňovať preferované jedné

@@ -4,6 +4,7 @@ import {forkJoin, Observable, of, Subscriber} from "rxjs";
 import {catchError, map, switchMap} from "rxjs/operators";
 import {User} from "../interfaces/user.interface";
 import {Restaurant} from "../models/restaurant.model";
+import {AppService} from "./app.service";
 import {FoodsExternalService} from "./foods-external.service";
 
 @Injectable({
@@ -11,15 +12,12 @@ import {FoodsExternalService} from "./foods-external.service";
 })
 export class FoodsFirebaseService {
     public constructor(private readonly afs: AngularFirestore,
+                       private readonly appService: AppService,
                        private readonly foodsExternalService: FoodsExternalService) {
     }
 
-    private getDate(): string {
-        return new Date().toISOString().substring(0, 10);
-    }
-
     public hasZomatoMenu(restaurant: Restaurant): Observable<boolean> {
-        const dailyMenuRef: AngularFirestoreDocument<User> = this.afs.doc(`menus/${this.getDate()}/zomatoMenus/${restaurant.key}`);
+        const dailyMenuRef: AngularFirestoreDocument<User> = this.afs.doc(`menus/${this.appService.getDate()}/zomatoMenus/${restaurant.key}`);
 
         return dailyMenuRef.get().pipe(map((data) => {
             const realData = data.data();
@@ -29,7 +27,7 @@ export class FoodsFirebaseService {
     }
 
     public getZomatoFoods(restaurants: Restaurant[]): Observable<any> {
-        const path = `menus/${this.getDate()}/zomatoMenus`;
+        const path = `menus/${this.appService.getDate()}/zomatoMenus`;
         const foodsRef: AngularFirestoreCollection<any> = this.afs.collection(path);
 
         return new Observable<any>((subject) => {
@@ -97,7 +95,7 @@ export class FoodsFirebaseService {
     }
 
     public getZomatoFood(restaurant: Restaurant): Observable<any> {
-        const dailyMenuRef: AngularFirestoreDocument<any> = this.afs.doc(`menus/${this.getDate()}/zomatoMenus/${restaurant.key}`);
+        const dailyMenuRef: AngularFirestoreDocument<any> = this.afs.doc(`menus/${this.appService.getDate()}/zomatoMenus/${restaurant.key}`);
 
         return new Observable<any>((subject) => {
             const getAndStoreMenu = () => {

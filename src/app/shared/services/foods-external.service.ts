@@ -6,6 +6,7 @@ import {of} from "rxjs/internal/observable/of";
 import {catchError, tap} from "rxjs/operators";
 import {Config} from "../../appConfig";
 import {AbstractService} from "./abstract.service";
+import {AppService} from "./app.service";
 import {NotificationService} from "./notification.service";
 
 const prefix = "http://g43.clanweb.eu/proxy.php?url=";
@@ -29,33 +30,30 @@ class HtmlSimulator {
     }
 }
 
-function getDate(): string {
-    const a = new Date();
-
-    return a.getDate() + "-" + a.getMonth() + "-" + a.getFullYear();
-}
-
 @Injectable({
     providedIn: "root",
 })
 export class FoodsExternalService extends AbstractService {
-    private static readonly ACTUAL_DATE = getDate();
     private readonly headers = new HttpHeaders({
         "user-key": Config.ZOMATO_API_KEY,
     });
 
-    public constructor(private readonly notificationService: NotificationService, http: HttpClient) {
+    public constructor(private readonly notificationService: NotificationService,
+                       private readonly appService: AppService,
+                       http: HttpClient) {
         super(http);
     }
 
     public getZomatoFoodRaw(id: string): Observable<any> {
-        const foodKey: string = FoodsExternalService.ACTUAL_DATE + "-" + id;
-        const result: string = localStorage.getItem(foodKey);
-        if (result) {
-            try {
-                return of(JSON.parse(result));
-            } catch (e) {
-                this.notificationService.showErrorMessage("Cannot parse stored food data. id: ", id, "foodKey: ", foodKey);
+        const foodKey: string = this.appService.getDate() + "-" + id;
+        if (Config.USE_LOCAL_STORAGE_CACHE) {
+            const result: string = localStorage.getItem(foodKey);
+            if (result) {
+                try {
+                    return of(JSON.parse(result));
+                } catch (e) {
+                    this.notificationService.showErrorMessage("Cannot parse stored food data. id: ", id, "foodKey: ", foodKey);
+                }
             }
         }
 
@@ -65,6 +63,9 @@ export class FoodsExternalService extends AbstractService {
     private callZomatoApi(url: string, foodKey: string): Observable<any> {
         return this.http.get(url, {headers: this.headers}).pipe(
             tap((data) => {
+                if (!Config.USE_LOCAL_STORAGE_CACHE) {
+                    return;
+                }
                 const loadedData = localStorage.getItem(foodKey);
                 const stringifyData = JSON.stringify(data);
                 if (!loadedData || loadedData !== stringifyData) {

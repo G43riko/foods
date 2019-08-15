@@ -40,7 +40,7 @@ export class ContentComponent implements OnInit {
     }
 
     private loadDailyMenus(): void {
-        const actualRestaurants = this.restaurants.filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink && !restaurant.smeRestaurantsLink);
+        const actualRestaurants = this.restaurants.filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink /*&& !restaurant.smeRestaurantsLink*/);
         this.foodsFirebaseService.getZomatoFoods(actualRestaurants).subscribe((results) => {
             this.statsService.storeMenu(results);
             results.forEach((result, index) => {

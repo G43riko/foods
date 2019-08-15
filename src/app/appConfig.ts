@@ -8,6 +8,8 @@ export class Config {
     public static readonly WEIGHT_REGEXP = /\d+(,|.)?\d+ ?[gl][ \/]?/g;
     public static readonly PRICE_REGEXP = /\d+(,|.)\d+ ?(,|.)-/g;
 */
+    public static readonly USE_LOCAL_STORAGE_CACHE = false;
+
     public static readonly WEIGHT_REGEXP = /\d+[,.]?\d+ ?[gl][ \/]?/g;
     public static readonly PRICE_REGEXP = /[0-9]+[,.][0-9]+ ?[,.]-/g;
 

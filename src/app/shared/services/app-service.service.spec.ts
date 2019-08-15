@@ -1,5 +1,5 @@
 import {inject, TestBed} from "@angular/core/testing";
-import {TestingModule} from "../modules/testing/testing.module";
+import {TestingModule} from "../modules/testing.module";
 
 import {AppService} from "./app.service";
 

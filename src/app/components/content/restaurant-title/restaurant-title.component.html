@@ -1,0 +1,16 @@
+<h3 class="ui {{appService.getConfig('selectedColor')}} header"
+    [attr.restaurant-id]="restaurant.id"
+    [class.inverted]="appService.getConfig('inverted')">{{restaurant.name}}
+    <small
+        *ngIf="appService.getConfig('showDistance') && restaurant.coordinates && (getLocationService.coordinates | async) as myCoords"
+        style="font-size: x-small;">
+        {{restaurantService.getDistance(restaurant.coordinates)}},
+        celkovo {{ratingService.getTotalLikes(restaurant)}} lajkov ({{restaurantService.getLikedPersons(restaurant)}})
+    </small>
+    <i *ngIf="restaurant.coordinates"
+       class="map icon"
+       (click)="showMap(restaurant)"
+       style="display: inline-block; margin-left: 0.2em; cursor: pointer"></i>
+
+</h3>
+
