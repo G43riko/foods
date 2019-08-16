@@ -16,7 +16,7 @@
                     {{restaurant.name}}
                     <small *ngIf="appService.getConfig('showDistance') && restaurant.coordinates"
                            style="font-size: x-small;">
-                        {{restaurantService.getDistance(restaurant.coordinates)}}
+                        {{restaurantService.getDistance(restaurant.coordinates) + ('fromYou' | translate)}}
                     </small>
                 </h3>
                 <iframe [src]="restaurant.menuLink | safe"

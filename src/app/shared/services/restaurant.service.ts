@@ -20,14 +20,11 @@ export class RestaurantService {
             return this.translateService.instant("distanceCannotBeCalc");
         }
 
-        const meters = this.translateService.instant("meters");
-        const kilometers = this.translateService.instant("kilometers");
-        const fromYou = this.translateService.instant("from you");
         if (distance < 1) {
-            return (distance * 1000).toFixed(0) + " " + meters + " " + fromYou;
+            return (distance * 1000).toFixed(0) + " m ";
         }
 
-        return distance.toFixed(2) + " " + kilometers + " " + fromYou;
+        return distance.toFixed(2) + " km ";
     }
 
     public getLikedPersons(restaurant: Restaurant): string {

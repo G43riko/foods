@@ -14,16 +14,10 @@ export class TopMenuComponent implements OnInit {
     public searchKey: string;
     public openHighlighter = false;
 
-    public constructor(public readonly appService: AppService,
-                       public readonly translateService: TranslateService) {
+    public constructor(public readonly appService: AppService) {
     }
 
     public ngOnInit(): void {
-        setTimeout(() => $(".ui.dropdown.language").dropdown(), 100);
         // empty
-    }
-
-    public setLanguage(language: string): void {
-        this.appService.setConfig("language", language);
     }
 }

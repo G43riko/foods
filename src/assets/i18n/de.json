@@ -1,0 +1,55 @@
+{
+    "dailyMenus": "Tagesmenü",
+    "fromYou": "von dir",
+    "categories": "Categories",
+    "selectRestaurants": "Wählen Sie das Restaurant aus, für das Sie das Tagesmenü anzeigen möchten",
+    "noRestaurants": "Es konnten leider keine Restaurantdaten abgerufen werden",
+    "distanceCannotBeCalc": "Entfernung kann nicht berechnet werden",
+    "restaurantSelection": {
+        "title": "Restaurantauswahl",
+        "all": "alles",
+        "selected": "ausgewählt",
+        "onlyIframe": "Nur iframe verfügbar",
+        "chooseRestaurants": "Restaurants aus der Liste auswählen",
+        "hasCoordinates": "Koordinaten sind verfügbar",
+        "needLoginForPersistence": "Login zur Aufrechterhaltung der Auswahl erforderlich"
+    },
+    "searchImages": "Bilder bei Google suchen",
+    "showMap": "Karte anzeigen",
+    "search": "Hladať...",
+    "totallyLikes": "totally {{likes}} likes",
+    "logout": "Abmelden",
+    "options": {
+        "color": "Farbe",
+        "noColor": "Keine Farbe",
+        "invertColors": "Farben invertieren",
+        "allowIframes": "IFrames zulassen",
+        "showDistance": "Entfernungen anzeigen",
+        "showPrice": "Show prices",
+        "showWeight": "Gewichte anzeigen",
+        "resetRestaurants": "Restaurants zurücksetzen",
+        "resetSettings": "Einstellungen zurücksetzen",
+        "loginNotification": "Sie müssen angemeldet sein, um auf die Einstellungen zugreifen zu können."
+    },
+    "noPublicMenu": "Mittagsmenü wurde noch nicht veröffentlicht",
+    "like": {
+        "add": "Add like",
+        "remove": "entfernen wie"
+    },
+    "highlight": {
+        "title": "Highlight",
+        "category": {
+            "none": "None",
+            "meat": "Fleisch",
+            "Pizza": "Pizza",
+            "vegetable": "Gemüse",
+            "pasta": "Pasta",
+            "sweet": "süß",
+            "asia": "Asien",
+            "vegetarian": "Vegetarier",
+            "vegan": "vegan",
+            "seafood": "Siehe Lebensmittel",
+            "arab": "arab"
+        }
+    }
+}

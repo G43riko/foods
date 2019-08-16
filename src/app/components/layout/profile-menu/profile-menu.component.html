@@ -1,8 +1,26 @@
+<ng-template #languageSelection>
+    <div class="ui fluid selection dropdown language profile">
+        <input type="hidden"
+               [value]="appService.getConfig('language')"
+               name="country">
+        <div class="default text"></div>
+        <div class="menu">
+            <div *ngFor="let language of languages"
+                    class="item"
+                    [attr.data-value]="language.key">
+                <i class="{{language.icon}} flag"></i>
+                {{language.name}}
+            </div>
+        </div>
+    </div>
+</ng-template>
+
 <div class="profile">
     <div *ngIf="authService.user$ | async as user; else: loginPage" class="login">
         <img (click)="open()" [src]="user.photoURL" alt="Avatar picture">
         <div (mouseleave)="close()" [class.open]="menuOpen" class="profile-menu">
             <strong>{{user.displayName}}</strong>
+            <ng-content *ngTemplateOutlet="languageSelection"></ng-content>
             <button (click)="authService.signOut()" class="ui primary button">{{'logout' | translate}}</button>
         </div>
     </div>
@@ -12,6 +30,7 @@
              src="https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png">
         <div (mouseleave)="close()" [class.open]="menuOpen" class="profile-menu">
             <!--            <button class="ui mini primary button" (click)="authService.facebookSigning()">Prhlásiť cez facebook</button>-->
+            <ng-content *ngTemplateOutlet="languageSelection"></ng-content>
             <button (click)="authService.githubSigning()" class="ui primary button">Github</button>
             <button (click)="authService.googleSigning()" class="ui primary button">Google</button>
         </div>

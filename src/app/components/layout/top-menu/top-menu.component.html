@@ -17,22 +17,6 @@
         {{'categories' | translate}}
     </a>
     <div class="item">
-        <div class="field">
-            <div class="ui fluid selection dropdown language">
-                <input #languageInput
-                       type="hidden"
-                       name="country"
-                       [value]="translateService.currentLang"
-                       (change)="setLanguage(languageInput.value)">
-                <div class="default text"></div>
-                <div class="menu">
-                    <div class="item" data-value="sk"><i class="sk flag"></i></div>
-                    <div class="item" data-value="en"><i class="us flag"></i></div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="item">
         <app-profile-menu #profileMenu (onOpen)="openHighlighter=false"></app-profile-menu>
     </div>
 </div>

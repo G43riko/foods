@@ -5,8 +5,9 @@
     <small
         *ngIf="appService.getConfig('showDistance') && restaurant.coordinates && (getLocationService.coordinates | async) as myCoords"
         style="font-size: x-small;">
-        {{restaurantService.getDistance(restaurant.coordinates)}},
-        celkovo {{ratingService.getTotalLikes(restaurant)}} lajkov ({{restaurantService.getLikedPersons(restaurant)}})
+        {{restaurantService.getDistance(restaurant.coordinates) + ('fromYou' | translate)}},
+        {{('totallyLikes' | translate:{likes:ratingService.getTotalLikes(restaurant)})}}
+        ({{restaurantService.getLikedPersons(restaurant)}})
     </small>
     <i (click)="showMap(restaurant)"
        *ngIf="restaurant.coordinates"
