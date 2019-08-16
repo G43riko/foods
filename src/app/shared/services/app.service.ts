@@ -24,7 +24,7 @@ export interface AppConfiguration {
 })
 export class AppService {
     public readonly configuration: BehaviorSubject<AppConfiguration> = new BehaviorSubject<AppConfiguration>(this.getDefaultConfiguration());
-
+    private isLoggedIn = false;
     private ref: AngularFirestoreDocument<User>;
 
     public constructor(private readonly afs: AngularFirestore,
@@ -35,6 +35,7 @@ export class AppService {
 
         authService.user$.pipe(
             switchMap((user) => {
+                this.isLoggedIn = Boolean(user);
                 if (user) {
                     this.ref = this.afs.doc<User>(`users/${user.uid}`);
 
@@ -121,7 +122,9 @@ export class AppService {
     }
 
     public setConfig<T extends keyof AppConfiguration>(key: T, value: AppConfiguration[T]): void {
-        console.log("nastavujeme " + key + " na " + value);
+        if (!this.isLoggedIn) {
+            return;
+        }
         (this.ref as any).update({
             config: {
                 ...this.configuration.value,
