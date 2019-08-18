@@ -37,6 +37,7 @@
         "add": "Pridať hlas",
         "remove": "Odstrániť hlas"
     },
+    "noFilterResults": "Filtru nevyhovujú žiadne výsledky",
     "highlight": {
         "title": "Zvýraznovať",
         "category": {

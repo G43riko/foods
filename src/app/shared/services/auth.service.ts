@@ -3,7 +3,7 @@ import {AngularFireAuth} from "@angular/fire/auth";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/firestore";
 import {auth} from "firebase/app";
 import {Observable, of} from "rxjs";
-import {finalize, switchMap, take, tap} from "rxjs/operators";
+import {switchMap, tap} from "rxjs/operators";
 import {User} from "../interfaces/user.interface";
 import {AnalyticsService} from "./analytics.service";
 
@@ -13,6 +13,7 @@ import {AnalyticsService} from "./analytics.service";
 export class AuthService {
     public readonly user$: Observable<User | undefined>;
     public isLoading = true;
+
     public constructor(public readonly afAuth: AngularFireAuth,
                        private readonly analyticsService: AnalyticsService,
                        private readonly afs: AngularFirestore) {

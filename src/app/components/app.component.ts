@@ -1,6 +1,5 @@
 import {BreakpointObserver} from "@angular/cdk/layout";
 import {Component, OnInit} from "@angular/core";
-import {TranslateService} from "@ngx-translate/core";
 import {delay} from "rxjs/operators";
 import {Dish} from "../shared/models/dish.model";
 import {AppService} from "../shared/services/app.service";
@@ -28,6 +27,7 @@ export class AppComponent implements OnInit {
             this.biggerThanTablet = result.matches;
         });
     }
+
     public ngOnInit(): void {
         this.authService.user$.pipe(delay(10)).subscribe(() => {
             $(".ui.sidebar.options").sidebar("attach events", ".item.opener.options");

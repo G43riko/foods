@@ -4,10 +4,10 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {NgModule} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
-import { ServiceWorkerModule } from "@angular/service-worker";
+import {ServiceWorkerModule} from "@angular/service-worker";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-import { environment } from "../environments/environment";
+import {environment} from "../environments/environment";
 import {AppComponent} from "./components/app.component";
 import {ContentComponent} from "./components/content/content.component";
 import {FoodRowLikesComponent} from "./components/content/food-row-likes/food-row-likes.component";
@@ -57,7 +57,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
                 deps: [HttpClient],
             },
         }),
-        ServiceWorkerModule.register("ngsw-worker.js", { enabled: environment.production }),
+        ServiceWorkerModule.register("ngsw-worker.js", {enabled: environment.production}),
     ],
     providers: [
         // fakeBackendProvider,

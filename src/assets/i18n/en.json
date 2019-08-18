@@ -37,6 +37,7 @@
         "add": "Add like",
         "remove": "Remove like"
     },
+    "noFilterResults": "No results for filter",
     "highlight": {
         "title": "Highlight",
         "category": {

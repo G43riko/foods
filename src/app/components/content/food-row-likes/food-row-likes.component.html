@@ -2,13 +2,13 @@
 <ng-container *ngIf="authService.user$ | async as user">
     <i (click)="ratingService.unlike(user, dish, restaurant)"
        *ngIf="ratingService.isLiked(user, dish, restaurant); else: dislikeIcon"
-       title="{{'like.add' | translate}}"
+       class="thumbs down icon"
        style="cursor: pointer"
-       class="thumbs down icon"></i>
+       title="{{'like.add' | translate}}"></i>
     <ng-template #dislikeIcon>
         <i (click)="ratingService.like(user, dish, restaurant)"
+           class="thumbs up icon"
            style="cursor: pointer"
-           title="{{'like.remove' | translate}}"
-           class="thumbs up icon"></i>
+           title="{{'like.remove' | translate}}"></i>
     </ng-template>
 </ng-container>

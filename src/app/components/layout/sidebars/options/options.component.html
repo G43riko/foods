@@ -1,6 +1,7 @@
 <div *ngIf="authService.user$ | async; else notLoggedIn" style="padding: 10px;">
     <div class="button {{appService.getConfig('selectedColor')}}">
-        <label for="appColor" style="font-weight: bolder; font-size: 14px; padding:10px">{{'options.color' | translate}}</label>
+        <label for="appColor"
+               style="font-weight: bolder; font-size: 14px; padding:10px">{{'options.color' | translate}}</label>
         <select class="ui dropdown selected-color"
                 id="appColor">
             <option class="item" value="none">{{'options.noColor' | translate}}</option>
@@ -14,28 +15,28 @@
         </select>
     </div>
     <div class="ui {{appService.getConfig('inverted') && 'checked'}} checkbox" style="padding-top: 10px;">
-        <input [(ngModel)]="appService.inverted" checked="" type="checkbox">
-        <label>{{'options.invertColors' | translate}}</label>
+        <input id="optionInverted" [(ngModel)]="appService.inverted" checked="" type="checkbox">
+        <label for="optionInverted">{{'options.invertColors' | translate}}</label>
     </div>
     <br>
     <div class="ui {{appService.getConfig('allowIFrames') && 'checked'}} checkbox" style="padding-top: 10px;">
-        <input [(ngModel)]="appService.allowIFrames" checked="" type="checkbox">
-        <label>{{'options.allowIframes' | translate}}</label>
+        <input id="optionAllowIFrames" [(ngModel)]="appService.allowIFrames" checked="" type="checkbox">
+        <label for="optionAllowIFrames">{{'options.allowIFrames' | translate}}</label>
     </div>
     <br>
     <div class="ui {{appService.getConfig('showDistance') && 'checked'}} checkbox" style="padding-top: 10px;">
-        <input [(ngModel)]="appService.showDistance" checked="" type="checkbox">
-        <label>{{'options.showDistance' | translate}}</label>
+        <input id="optionShowDistance" [(ngModel)]="appService.showDistance" checked="" type="checkbox">
+        <label for="optionShowDistance">{{'options.showDistance' | translate}}</label>
     </div>
     <br>
     <div class="ui {{appService.showPrice && 'checked'}} checkbox" style="padding-top: 10px;">
-        <input [(ngModel)]="appService.showPrice" checked="" type="checkbox">
-        <label>{{'options.showPrice' | translate}}</label>
+        <input id="optionShowPrice"[(ngModel)]="appService.showPrice" checked="" type="checkbox">
+        <label for="optionShowPrice">{{'options.showPrice' | translate}}</label>
     </div>
     <br>
     <div class="ui {{appService.getConfig('showWeight') && 'checked'}} checkbox" style="padding-top: 10px;">
-        <input [(ngModel)]="appService.showWeight" checked="" type="checkbox">
-        <label>{{'options.showWeight' | translate}}</label>
+        <input id="optionShowWeight" [(ngModel)]="appService.showWeight" checked="" type="checkbox">
+        <label for="optionShowWeight">{{'options.showWeight' | translate}}</label>
     </div>
     <div style="padding-top: 10px">
         <button (click)="resetRestaurants()"

@@ -1,5 +1,4 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {forkJoin} from "rxjs";
 import {Dish} from "../../shared/models/dish.model";
 import {Food} from "../../shared/models/food.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
@@ -62,7 +61,7 @@ export class ContentComponent implements OnInit {
         //     $(".checkbox").checkbox();
         //
         // }, (error) => {
-        //     this.notificationService.showErrorMessage("Error while getting menus from zommato api: ", error);
+        //     this.notificationService.showErrorMessage("Error while getting menus from zomato api: ", error);
         // });
 
         // Because on github is HTTPS protocol so you cant call host using HTTP

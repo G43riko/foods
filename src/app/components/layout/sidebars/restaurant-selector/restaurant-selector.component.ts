@@ -25,14 +25,6 @@ export class RestaurantSelectorComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        // RestaurantData.forEach((restaurantItem: Restaurant) => {
-        //     this.foodsFirebaseService.hasMenu(restaurantItem).pipe(take(1)).subscribe((value) => {
-        //         restaurantItem.hasActualMenu = value;
-        //         console.log(restaurantItem.name + " menu " + (value ? "má" : "nemá"));
-        //         this.cd.detectChanges();
-        //     });
-        // });
-
         this.appService.configuration.subscribe((configuration) => {
             this.setRestaurants(configuration.selectedRestaurants);
             this.restaurantsChange.emit(this.selectedRestaurants);

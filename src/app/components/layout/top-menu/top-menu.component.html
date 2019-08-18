@@ -6,22 +6,24 @@
         <i class=" sliders horizontal icon"></i>
     </a>
     <div class="item">
-        <div [class.inverted]="appService.getConfig('inverted')"
-             class="ui icon input {{appService.getConfig('selectedColor')}}">
-            <input [(ngModel)]="searchKey" placeholder="{{'search' | translate}}" type="text">
-            <i class="search icon"></i>
-        </div>
+        <label>
+            <div [class.inverted]="appService.getConfig('inverted')"
+                 class="ui icon input {{appService.getConfig('selectedColor')}}">
+                <input [(ngModel)]="searchKey" placeholder="{{'search' | translate}}" type="text">
+                <i class="search icon"></i>
+            </div>
+        </label>
     </div>
     <div class="divider"></div>
-    <a *ngIf="!authService.isLoading"
-       (click)="profileMenu.close(); openHighlighter = !openHighlighter"
+    <a (click)="profileMenu.close(); openHighlighter = !openHighlighter"
+       *ngIf="!authService.isLoading"
        class="item">
         {{'categories' | translate}}
     </a>
     <div class="item">
         <div *ngIf="authService.isLoading" class="ui active centered inline loader"></div>
         <fds-profile-menu #profileMenu
-                          [class.hidden]="authService.isLoading"
-                          (onOpen)="openHighlighter=false"></fds-profile-menu>
+                          (onOpen)="openHighlighter=false"
+                          [class.hidden]="authService.isLoading"></fds-profile-menu>
     </div>
 </div>

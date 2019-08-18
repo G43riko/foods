@@ -6,20 +6,20 @@
         *ngIf="appService.getConfig('showDistance') && restaurant.coordinates && (getLocationService.coordinates | async) as myCoords"
         style="font-size: x-small;">
         {{restaurantService.getDistance(restaurant.coordinates) + ('fromYou' | translate)}},
-        {{('totallyLikes' | translate:{likes:ratingService.getTotalLikes(restaurant)})}}
+        {{('totallyLikes' | translate:{likes: ratingService.getTotalLikes(restaurant)})}}
         ({{restaurantService.getLikedPersons(restaurant)}})
     </small>
     <i (click)="showMap(restaurant)"
        *ngIf="restaurant.coordinates"
        class="mini map icon"
-       title="{{'showMap' | translate}}"
-       style="display: inline-block; margin-left: 0.2em; cursor: pointer"></i>
-
-    <i *ngIf="restaurant.homepage"
-       (click)="openHomepage(restaurant)"
        style="display: inline-block; margin-left: 0.2em; cursor: pointer"
-       title="{{'showHomepage' | translate}}"
-       class="mini home icon">
+       title="{{'showMap' | translate}}"></i>
+
+    <i (click)="openHomepage(restaurant)"
+       *ngIf="restaurant.homepage"
+       class="mini home icon"
+       style="display: inline-block; margin-left: 0.2em; cursor: pointer"
+       title="{{'showHomepage' | translate}}">
     </i>
 
 </h3>

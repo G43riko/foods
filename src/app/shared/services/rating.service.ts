@@ -17,7 +17,8 @@ export interface RestaurantsRatingData {
 })
 export class RatingService {
     private readonly cache: RestaurantsRatingData = {};
-    private favourite: {[key: string]: number} = {};
+    private favourite: { [key: string]: number } = {};
+
     public constructor(private readonly afs: AngularFirestore) {
         const collection = this.afs.collection(`restaurants`);
         collection.valueChanges().pipe(
@@ -35,27 +36,6 @@ export class RatingService {
 
     public getLikesFor(restaurant: Restaurant): number {
         return this.favourite[restaurant.key] || 0;
-    }
-
-    private getNumberOfFavorites(): Observable<{[key: string]: number}> {
-        return new Observable((subject) => {
-            this.afs.collection("users").valueChanges().subscribe((data) => {
-                const result = {};
-                data.forEach((doc: any) => {
-                    const likeRestaurants = doc && doc.config && doc.config.selectedRestaurants || [];
-                    likeRestaurants.forEach((restaurant) => {
-                        if (restaurant in result) {
-                            result[restaurant]++;
-                        }
-                        else {
-                            result[restaurant] = 1;
-                        }
-                    });
-                });
-                subject.next(result);
-                // subject.complete();
-            });
-        });
     }
 
     public getTotalLikes(restaurant: Restaurant): number {
@@ -150,6 +130,26 @@ export class RatingService {
         return this.getCache(user, dish, restaurant);
     }
 
+    private getNumberOfFavorites(): Observable<{ [key: string]: number }> {
+        return new Observable((subject) => {
+            this.afs.collection("users").valueChanges().subscribe((data) => {
+                const result = {};
+                data.forEach((doc: any) => {
+                    const likeRestaurants = doc && doc.config && doc.config.selectedRestaurants || [];
+                    likeRestaurants.forEach((restaurant) => {
+                        if (restaurant in result) {
+                            result[restaurant]++;
+                        } else {
+                            result[restaurant] = 1;
+                        }
+                    });
+                });
+                subject.next(result);
+                // subject.complete();
+            });
+        });
+    }
+
     private setCache(user: User, dish: Dish, restaurant: Restaurant, liked: boolean): void {
         if (!this.cache[restaurant.key]) {
             this.cache[restaurant.key] = {};
@@ -174,14 +174,8 @@ export class RatingService {
         if (!this.cache[restaurant.key]) {
             return false;
         }
-        if (!this.cache[restaurant.key][dish.name]) {
-            return false;
-        }
-        if (!this.cache[restaurant.key][dish.name]) {
-            return false;
-        }
 
-        return true;
+        return !!this.cache[restaurant.key][dish.name];
     }
 
     private getCache(user: User, dish: Dish, restaurant: Restaurant): boolean {

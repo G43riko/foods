@@ -16,6 +16,7 @@ export class TranslateMockService {
     public setDefaultLang(lang: string): void {
         // empty;
     }
+
     public use(lang: string): void {
         // empty;
     }

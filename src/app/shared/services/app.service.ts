@@ -102,18 +102,6 @@ export class AppService {
         this.setConfig("showWeight", value);
     }
 
-    private getDefaultConfiguration(selectedRestaurants?: string[]): AppConfiguration {
-        return {
-            inverted: false,
-            allowIFrames: true,
-            showDistance: true,
-            showPrice: true,
-            showWeight: true,
-            language: "en",
-            selectedRestaurants: selectedRestaurants || [],
-        };
-    }
-
     public getDate(): string {
         const a = new Date();
 
@@ -138,5 +126,17 @@ export class AppService {
 
     public reset(): void {
         throw new Error("Configuration reset is not implemented");
+    }
+
+    private getDefaultConfiguration(selectedRestaurants?: string[]): AppConfiguration {
+        return {
+            inverted: false,
+            allowIFrames: true,
+            showDistance: true,
+            showPrice: true,
+            showWeight: true,
+            language: "en",
+            selectedRestaurants: selectedRestaurants || [],
+        };
     }
 }
