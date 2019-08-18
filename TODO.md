@@ -20,6 +20,7 @@
  - [x] prerobiť drag and drop list na CDK drag and drop
  - [x] zobrazovať počet lajkov pre každé jedno aj reštauréciu
  - [x] ukladať menu do firebase aby sa iba raz načítal
+ - [x] Pridať admin page pre správu reštaurácií a používatelov
  - [ ] zobrazovať koľko ludí má reštauráciu v aktívnych
  - [ ] pridať zoznam preferovaných jedál
      - [ ] zvýrazňovať preferované jedné
