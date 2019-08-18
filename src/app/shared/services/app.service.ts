@@ -49,7 +49,7 @@ export class AppService {
                 const userData = user.data();
                 if (userData.config) {
                     userData.config.language = userData.config.language || "sk";
-
+                    userData.config.selectedRestaurants = userData.config.selectedRestaurants || [];
                     this.translateService.use(userData.config.language);
                     this.configuration.next(userData.config);
 

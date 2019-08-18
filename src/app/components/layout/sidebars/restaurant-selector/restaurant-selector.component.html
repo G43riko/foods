@@ -35,6 +35,8 @@
                 <!--    <i *ngIf="!restaurant.hasActualMenu" title="Menu nie momentálne k dispozícií" class="exclamation icon"></i>-->
                 <i *ngIf="restaurant.menuLink" style="cursor:help" class="frown outline icon" title="{{'restaurantSelection.onlyIframe' | translate}}"></i>
                 <i *ngIf="restaurant.coordinates" style="cursor:help" class="map icon" title="{{'restaurantSelection.hasCoordinates' | translate}}"></i>
+<!--                {{ratingService.getLikesFor(restaurant)}}<i style="cursor:help" class="heart icon" ></i>-->
+
             </div>
         </div>
     </div>

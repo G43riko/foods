@@ -1,8 +1,8 @@
-<div class="g43menu top" style="overflow: inherit">
+<div class="g43menu top" style="overflow: inherit; z-index: 3;">
     <a class="item opener restaurants">
         <i class="bars icon"></i>
     </a>
-    <a class="item opener options">
+    <a *ngIf="authService.user$ | async" class="item opener options">
         <i class=" sliders horizontal icon"></i>
     </a>
     <div class="item">
@@ -13,10 +13,15 @@
         </div>
     </div>
     <div class="divider"></div>
-    <a (click)="profileMenu.close(); openHighlighter = !openHighlighter" class="item">
+    <a *ngIf="!authService.isLoading"
+       (click)="profileMenu.close(); openHighlighter = !openHighlighter"
+       class="item">
         {{'categories' | translate}}
     </a>
     <div class="item">
-        <app-profile-menu #profileMenu (onOpen)="openHighlighter=false"></app-profile-menu>
+        <div *ngIf="authService.isLoading" class="ui active centered inline loader"></div>
+        <fds-profile-menu #profileMenu
+                          [class.hidden]="authService.isLoading"
+                          (onOpen)="openHighlighter=false"></fds-profile-menu>
     </div>
 </div>

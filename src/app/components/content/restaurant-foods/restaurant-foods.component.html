@@ -1,20 +1,30 @@
 <div *ngIf="restaurant.visible">
-    <app-restaurant-title [restaurant]="restaurant"></app-restaurant-title>
+    <fds-restaurant-title [restaurant]="restaurant"></fds-restaurant-title>
     <table #restaurantTable
            (click)="showImage(restaurantTable.getAttribute('title'), restaurantTable.getAttribute('class'));"
            [class.inverted]="appService.getConfig('inverted')"
            class="ui celled table {{appService.getConfig('selectedColor')}} foodTable">
         <tbody>
-        <ng-template [ngIfElse]="noMenus" [ngIf]="dailyMenus[restaurant.key] && dailyMenus[restaurant.key].length > 0">
-            <ng-container *ngFor="let dish of dailyMenus[restaurant.key] | searchFoodPipe: searchKey">
-                <app-food-row [dish]="dish" [highlight]="highlight" [restaurant]="restaurant"
-                              style="display: contents"></app-food-row>
-            </ng-container>
-        </ng-template>
-        <ng-template #noMenus>
+
+        <ng-container *ngIf="!dailyMenus[restaurant.key]; else: isLoaded">
             <tr>
-                <td colspan="2">{{'noPublicMenu' | translate}}</td>
+                <td>
+                    <div class="ui active centered inline text loader">Loading</div>
+                </td>
             </tr>
+        </ng-container>
+        <ng-template #isLoaded>
+            <ng-template [ngIfElse]="noMenus" [ngIf]="dailyMenus[restaurant.key].length > 0">
+                <ng-container *ngFor="let dish of dailyMenus[restaurant.key] | searchFoodPipe: searchKey">
+                    <fds-food-row [dish]="dish" [highlight]="highlight" [restaurant]="restaurant"
+                                  style="display: contents"></fds-food-row>
+                </ng-container>
+            </ng-template>
+            <ng-template #noMenus>
+                <tr>
+                    <td colspan="2">{{'noPublicMenu' | translate}}</td>
+                </tr>
+            </ng-template>
         </ng-template>
         </tbody>
     </table>

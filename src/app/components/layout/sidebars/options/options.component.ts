@@ -6,7 +6,7 @@ import {AuthService} from "../../../../shared/services/auth.service";
 declare const $;
 
 @Component({
-    selector: "app-options",
+    selector: "fds-options",
     templateUrl: "./options.component.html",
     styleUrls: ["./options.component.scss"],
 })

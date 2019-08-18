@@ -5,7 +5,11 @@
     <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-R3N17525BN"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+
         gtag("js", new Date());
         gtag("config", "G-R3N17525BN");
 
@@ -40,13 +44,57 @@
     <link rel="apple-touch-icon" sizes="192x192" href="assets/icons/icon-192x192.png">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <link rel="manifest" href="manifest.webmanifest">
-  <meta name="theme-color" content="#1976d2">
+    <link rel="manifest" href="manifest.webmanifest">
+    <meta name="theme-color" content="#1976d2">
+    <style>
+        #loader, #loader:before, #loader:after {
+            display: block;
+            position: absolute
+        }
+
+        #loader {
+            width: 100%;
+            height: 100%
+        }
+
+        #loader:before, #loader:after {
+            top: 50%;
+            left: 50%;
+            content: "";
+            border-radius: 50%;
+            border: 4px solid #a3a3a3;
+            border-top-color: #88001b;
+            box-shadow: 0 0 2px rgba(0, 0, 0, 0.5), inset 0 0 7px rgba(0, 0, 0, 0.5);
+        }
+
+        #loader:before {
+            width: 200px;
+            height: 200px;
+            animation: loading 5s linear infinite
+        }
+
+        #loader:after {
+            width: 150px;
+            height: 150px;
+            animation: loading 5s linear infinite reverse
+        }
+
+        @keyframes loading {
+            from {
+                transform: translate(-50%, -50%) rotate(0deg)
+            }
+            to {
+                transform: translate(-50%, -50%) rotate(360deg)
+            }
+        }
+    </style>
 </head>
 <body>
-    <noscript>
-        <h2>Sorry, the application needs javascript enabled to work properly</h2>
-    </noscript>
-    <app-root></app-root>
+<noscript>
+    <h2>Sorry, the application needs javascript enabled to work properly</h2>
+</noscript>
+<fds-root>
+    <div id="loader"></div>
+</fds-root>
 </body>
 </html>

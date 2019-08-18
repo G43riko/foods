@@ -59,13 +59,14 @@ export class FoodsService {
             return false;
         }
 
-        return dish.name.startsWith("Polievky") ||
-            dish.name.startsWith("Hlavné") ||
-            dish.name.startsWith("Šaláty") ||
-            dish.name.startsWith("Denné ponuk") ||
-            dish.name.startsWith("Uvedené ceny platia") ||
-            dish.name.startsWith("Špecialita") ||
-            dish.name.startsWith("Zeleninové ");
+        return dish.name.toLowerCase().startsWith("polievky") ||
+            dish.name.toLowerCase().startsWith("hlavné") ||
+            dish.name.toLowerCase().startsWith("šaláty") ||
+            dish.name.toLowerCase().startsWith("víkendové") ||
+            dish.name.toLowerCase().startsWith("denné ponuk") ||
+            dish.name.toLowerCase().startsWith("uvedené ceny platia") ||
+            dish.name.toLowerCase().startsWith("špecialita") ||
+            dish.name.toLowerCase().startsWith("zeleninové ");
     }
 
     private processZomatoPrice(dish: any): void {

@@ -26,6 +26,7 @@
      - [ ] zvýrazňovať preferované jedné
      - [ ] upozornenia na email ak označí checkbox pri preferovanom jedlo
  - [x] zobrazovať obrázok jedla
+ - [ ] pridať notifikácie https://developer.mozilla.org/en-US/docs/Web/API/notification
  - [ ] hide options if user is not logged in
  - [x] pridať vzdialenosť od reštaurácie
  - [ ] pridať formulár na feedback

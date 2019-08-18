@@ -5,7 +5,7 @@ import {AuthService} from "../../../shared/services/auth.service";
 import {RatingService} from "../../../shared/services/rating.service";
 
 @Component({
-    selector: "app-food-row-likes",
+    selector: "fds-food-row-likes",
     templateUrl: "./food-row-likes.component.html",
     styleUrls: ["./food-row-likes.component.scss"],
 })

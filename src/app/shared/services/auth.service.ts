@@ -3,7 +3,7 @@ import {AngularFireAuth} from "@angular/fire/auth";
 import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/firestore";
 import {auth} from "firebase/app";
 import {Observable, of} from "rxjs";
-import {switchMap} from "rxjs/operators";
+import {finalize, switchMap, take, tap} from "rxjs/operators";
 import {User} from "../interfaces/user.interface";
 import {AnalyticsService} from "./analytics.service";
 
@@ -12,11 +12,12 @@ import {AnalyticsService} from "./analytics.service";
 })
 export class AuthService {
     public readonly user$: Observable<User | undefined>;
-
+    public isLoading = true;
     public constructor(public readonly afAuth: AngularFireAuth,
                        private readonly analyticsService: AnalyticsService,
                        private readonly afs: AngularFirestore) {
         this.user$ = this.afAuth.authState.pipe(
+            tap(() => this.isLoading = true),
             switchMap((user) => {
                 if (user) {
                     return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
@@ -24,7 +25,9 @@ export class AuthService {
 
                 return of(undefined);
             }),
+            tap(() => this.isLoading = false),
         );
+
     }
 
     public async googleSigning(): Promise<void> {

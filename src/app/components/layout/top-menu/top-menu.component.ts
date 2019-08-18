@@ -1,11 +1,9 @@
 import {Component, Input, OnInit} from "@angular/core";
-import {TranslateService} from "@ngx-translate/core";
 import {AppService} from "../../../shared/services/app.service";
-
-declare const $: any;
+import {AuthService} from "../../../shared/services/auth.service";
 
 @Component({
-    selector: "app-top-menu",
+    selector: "fds-top-menu",
     templateUrl: "./top-menu.component.html",
     styleUrls: ["./top-menu.component.scss"],
 })
@@ -14,7 +12,8 @@ export class TopMenuComponent implements OnInit {
     public searchKey: string;
     public openHighlighter = false;
 
-    public constructor(public readonly appService: AppService) {
+    public constructor(public readonly appService: AppService,
+                       public readonly authService: AuthService) {
     }
 
     public ngOnInit(): void {

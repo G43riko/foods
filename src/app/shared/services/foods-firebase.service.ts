@@ -92,7 +92,7 @@ export class FoodsFirebaseService {
 
             dailyMenuRef.get().subscribe((dailyMenu) => {
                 const data = dailyMenu.data();
-                if (Array.isArray(data.daily_menus) && data.daily_menus.length > 0) {
+                if (data && Array.isArray(data.daily_menus) && data.daily_menus.length > 0) {
                     subject.next(data);
                     subject.complete();
                 } else {

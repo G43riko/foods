@@ -6,7 +6,7 @@ import {AppService} from "../../../shared/services/app.service";
 declare const $;
 
 @Component({
-    selector: "app-restaurant-foods",
+    selector: "fds-restaurant-foods",
     templateUrl: "./restaurant-foods.component.html",
     styleUrls: ["./restaurant-foods.component.scss"],
 })

@@ -4,6 +4,7 @@ export const RestaurantData = [
         name: "Astra",
         key: "astra",
         visible: true,
+        homepage: "http://www.astrapub.sk/",
         mapsId: "ChIJax7o5C6JbEcRcD2shzoUn_8",
         coordinates: {
             lat: 48.1488502,
@@ -41,6 +42,7 @@ export const RestaurantData = [
         name: "Journal",
         key: "journal",
         mapsId: "ChIJDWgUJS-JbEcRHuroJcj6vKY",
+        homepage: "http://www.journalrestaurant.sk",
         visible: true,
         coordinates: {
             lat: 48.1477658,
@@ -74,6 +76,7 @@ export const RestaurantData = [
         id: "17740573",
         name: "Budies",
         key: "budies",
+        homepage: "http://buddies.sk/",
         mapsId: "ChIJq2449i-JbEcRn6qhkVrLx_I",
         visible: true,
         coordinates: {
@@ -98,6 +101,7 @@ export const RestaurantData = [
         name: "Presto",
         key: "presto",
         mapsId: "ChIJkfYTcy-JbEcREA1kUYLsyHo",
+        homepage: "https://www.restaurantpresto.sk/sk/menu/presto-bbc-i/",
         visible: true,
         coordinates: {
             lat: 48.1472978714,
@@ -220,6 +224,7 @@ export const RestaurantData = [
         name: "Veg Life",
         mapsId: "ChIJHV2Umy-JbEcRDkluN8zRk_o",
         key: "vegLife",
+        homepage: "http://www.veglife.sk/sk/",
         visible: true,
         coordinates: {
             lat: 48.1472276,

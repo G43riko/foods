@@ -11,9 +11,16 @@
     </small>
     <i (click)="showMap(restaurant)"
        *ngIf="restaurant.coordinates"
-       class="map icon"
+       class="mini map icon"
        title="{{'showMap' | translate}}"
        style="display: inline-block; margin-left: 0.2em; cursor: pointer"></i>
+
+    <i *ngIf="restaurant.homepage"
+       (click)="openHomepage(restaurant)"
+       style="display: inline-block; margin-left: 0.2em; cursor: pointer"
+       title="{{'showHomepage' | translate}}"
+       class="mini home icon">
+    </i>
 
 </h3>
 

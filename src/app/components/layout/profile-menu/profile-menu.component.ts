@@ -5,7 +5,7 @@ import {AuthService} from "../../../shared/services/auth.service";
 declare const $: any;
 
 @Component({
-    selector: "app-profile-menu",
+    selector: "fds-profile-menu",
     templateUrl: "./profile-menu.component.html",
     styleUrls: ["./profile-menu.component.scss"],
 })

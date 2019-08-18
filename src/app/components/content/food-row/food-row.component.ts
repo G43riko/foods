@@ -9,7 +9,7 @@ import {RatingService} from "../../../shared/services/rating.service";
 import {StringUtils} from "../../../shared/utils/StringUtils";
 
 @Component({
-    selector: "app-food-row",
+    selector: "fds-food-row",
     templateUrl: "./food-row.component.html",
     styleUrls: ["./food-row.component.scss"],
 })

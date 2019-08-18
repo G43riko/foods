@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "variables";
+@import "common";
 
 .searched {
     font-weight: bold;
@@ -20,10 +21,9 @@
 }
 
 
-
 // MY MENU
 $menu-offset: 6px;
-$menu-border-color: rgb(34,36,38);
+$menu-border-color: rgb(34, 36, 38);
 $menu-border-width: 1px;
 $menu-background-color: white;
 $menu-border-radius: .3em;
@@ -38,17 +38,20 @@ $menu-border-radius: .3em;
     max-width: 100%;
     width: 100%;
     margin: 0;
+
     &.animated {
         transition: width 0.3s, max-width 0.3s, max-height 0.3s, margin 0.3s, border-radius 0.3s;
     }
 
     border-radius: $menu-border-radius;
-    box-shadow: 0 1px 2px 0 rgba($menu-border-color,.15);
-    border: $menu-border-width solid rgba($menu-border-color,.15);
+    box-shadow: 0 1px 2px 0 rgba($menu-border-color, .15);
+    border: $menu-border-width solid rgba($menu-border-color, .15);
     box-sizing: border-box;
+
     &:not(.floating) {
         border-radius: 0;
     }
+
     &.floating {
         width: calc(100% - #{$menu-offset * 2});
         max-height: calc(100% - #{$menu-offset * 2});
@@ -61,6 +64,7 @@ $menu-border-radius: .3em;
         position: relative;
         padding: 0;
     }
+
     .item {
         box-sizing: border-box;
         position: relative;
@@ -70,7 +74,7 @@ $menu-border-radius: .3em;
 
         text-transform: none;
         text-align: center;
-        color: rgba(0,0,0,.87);
+        color: rgba(0, 0, 0, .87);
         font-weight: 400;
         white-space: nowrap;
 
@@ -80,16 +84,18 @@ $menu-border-radius: .3em;
 
     a.item:hover {
         cursor: pointer;
-        background: rgba(0,0,0,.03);
-        color: rgba(0,0,0,.95);
+        background: rgba(0, 0, 0, .03);
+        color: rgba(0, 0, 0, .95);
     }
 
     // Horizontal menu
     &.bottom, &.top {
         left: 0;
+
         &.top {
             top: 0;
         }
+
         &.bottom {
             bottom: 0;
         }
@@ -101,9 +107,11 @@ $menu-border-radius: .3em;
         max-width: 200px;
         top: 0;
         height: 100%;
+
         &.floating {
             height: calc(100% - #{$menu-offset * 2});
         }
+
         &.no-full-height {
             height: auto;
         }
@@ -121,6 +129,7 @@ $menu-border-radius: .3em;
         }
     }
 }
+
 @media only screen and (max-width: $breakpoint-tablet) {
     .g43menu {
         .item {
@@ -128,4 +137,3 @@ $menu-border-radius: .3em;
         }
     }
 }
-

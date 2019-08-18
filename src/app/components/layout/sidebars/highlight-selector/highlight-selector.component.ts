@@ -6,7 +6,7 @@ import {AnalyticsService} from "../../../../shared/services/analytics.service";
 import {AppService} from "../../../../shared/services/app.service";
 
 @Component({
-    selector: "app-highlight-selector",
+    selector: "fds-highlight-selector",
     templateUrl: "./highlight-selector.component.html",
     styleUrls: ["./highlight-selector.component.scss"],
 })

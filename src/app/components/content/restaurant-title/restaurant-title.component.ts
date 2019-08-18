@@ -10,7 +10,7 @@ import {RestaurantService} from "../../../shared/services/restaurant.service";
 declare const $;
 
 @Component({
-    selector: "app-restaurant-title",
+    selector: "fds-restaurant-title",
     templateUrl: "./restaurant-title.component.html",
     styleUrls: ["./restaurant-title.component.scss"],
 })
@@ -34,5 +34,9 @@ export class RestaurantTitleComponent implements OnInit {
         modal.find("iframe").attr("src", url);
         this.analyticsService.openMap(restaurant.key);
         modal.modal("show");
+    }
+
+    public openHomepage(restaurant: Restaurant): void {
+        window.open(restaurant.homepage, "__blank");
     }
 }

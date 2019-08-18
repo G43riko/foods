@@ -1,16 +1,16 @@
 <div [class.wide]="biggerThanTablet"
      class="ui sidebar vertical menu very restaurants "
      style="overflow-y: hidden !important;">
-    <app-restaurant-selector (restaurantsChange)="appContent.onRestaurantChanges($event)"></app-restaurant-selector>
+    <fds-restaurant-selector (restaurantsChange)="appContent.onRestaurantChanges($event)"></fds-restaurant-selector>
 </div>
 <div [class.wide]="biggerThanTablet" class="ui sidebar vertical very menu options">
-    <app-options>Nastavenia</app-options>
+    <fds-options></fds-options>
 </div>
 
 <div class="pusher">
-    <app-top-menu #topMenu [biggerThanTablet]="biggerThanTablet"></app-top-menu>
-    <app-highlight-selector #pageNavBar [openHighlighter]="topMenu.openHighlighter"></app-highlight-selector>
-    <app-content #appContent [highlight]="pageNavBar.highlight" [searchKey]="topMenu.searchKey"></app-content>
+    <fds-top-menu #topMenu [biggerThanTablet]="biggerThanTablet"></fds-top-menu>
+    <fds-highlight-selector #pageNavBar [openHighlighter]="topMenu.openHighlighter"></fds-highlight-selector>
+    <fds-content #appContent [highlight]="pageNavBar.highlight" [searchKey]="topMenu.searchKey"></fds-content>
 </div>
 
 <div class="ui modal maps">

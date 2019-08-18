@@ -6,7 +6,7 @@ import {AppService} from "../../../shared/services/app.service";
 import {FoodsService} from "../../../shared/services/foods.service";
 
 @Component({
-    selector: "app-food-row-name",
+    selector: "fds-food-row-name",
     templateUrl: "./food-row-name.component.html",
     styleUrls: ["./food-row-name.component.scss"],
 })

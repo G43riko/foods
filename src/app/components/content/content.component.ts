@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
+import {forkJoin} from "rxjs";
 import {Dish} from "../../shared/models/dish.model";
 import {Food} from "../../shared/models/food.model";
 import {Restaurant} from "../../shared/models/restaurant.model";
@@ -13,7 +14,7 @@ import {StatsService} from "../../shared/services/stats.service";
 declare const $: any;
 
 @Component({
-    selector: "app-content",
+    selector: "fds-content",
     templateUrl: "./content.component.html",
     styleUrls: ["./content.component.scss"],
 })
@@ -45,16 +46,24 @@ export class ContentComponent implements OnInit {
 
     private loadDailyMenus(): void {
         const actualRestaurants = this.restaurants.filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink /*&& !restaurant.smeRestaurantsLink*/);
-        this.foodsFirebaseService.getZomatoFoods(actualRestaurants).subscribe((results) => {
-            this.statsService.storeMenu(results);
-            results.forEach((result, index) => {
-                this.dailyMenus[actualRestaurants[index].key] = this.foodsService.processZomatoMenu(result);
+        actualRestaurants.forEach((restaurant) => {
+            this.foodsFirebaseService.getZomatoFood(restaurant).subscribe((result) => {
+                this.dailyMenus[restaurant.key] = this.foodsService.processZomatoMenu(result);
+            }, (error) => {
+                this.notificationService.showErrorMessage("Error while getting menus from zommato api: ", error);
             });
-            $(".checkbox").checkbox();
-
-        }, (error) => {
-            this.notificationService.showErrorMessage("Error while getting menus from zommato api: ", error);
         });
+        // this.foodsFirebaseService.getZomatoFoods(actualRestaurants).subscribe((results) => {
+        //     this.statsService.storeMenu(results);
+        //     console.log(results);
+        //     results.forEach((result, index) => {
+        //         this.dailyMenus[actualRestaurants[index].key] = this.foodsService.processZomatoMenu(result);
+        //     });
+        //     $(".checkbox").checkbox();
+        //
+        // }, (error) => {
+        //     this.notificationService.showErrorMessage("Error while getting menus from zommato api: ", error);
+        // });
 
         // Because on github is HTTPS protocol so you cant call host using HTTP
         // this.restaurants.filter((restaurant) => restaurant.smeRestaurantsLink).forEach((restaurant) => {

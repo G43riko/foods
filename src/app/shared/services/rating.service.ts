@@ -1,5 +1,6 @@
 import {Injectable} from "@angular/core";
 import {AngularFirestore} from "@angular/fire/firestore";
+import {Observable} from "rxjs";
 import {switchMap, throttleTime} from "rxjs/operators";
 import {User} from "../interfaces/user.interface";
 import {Dish} from "../models/dish.model";
@@ -16,7 +17,7 @@ export interface RestaurantsRatingData {
 })
 export class RatingService {
     private readonly cache: RestaurantsRatingData = {};
-
+    private favourite: {[key: string]: number} = {};
     public constructor(private readonly afs: AngularFirestore) {
         const collection = this.afs.collection(`restaurants`);
         collection.valueChanges().pipe(
@@ -25,6 +26,34 @@ export class RatingService {
         ).subscribe((restaurants) => {
             restaurants.forEach((restaurant) => {
                 this.cache[restaurant.id] = restaurant.data();
+            });
+        });
+        this.getNumberOfFavorites().subscribe((data) => {
+            this.favourite = data;
+        });
+    }
+
+    public getLikesFor(restaurant: Restaurant): number {
+        return this.favourite[restaurant.key] || 0;
+    }
+
+    private getNumberOfFavorites(): Observable<{[key: string]: number}> {
+        return new Observable((subject) => {
+            this.afs.collection("users").valueChanges().subscribe((data) => {
+                const result = {};
+                data.forEach((doc: any) => {
+                    const likeRestaurants = doc && doc.config && doc.config.selectedRestaurants || [];
+                    likeRestaurants.forEach((restaurant) => {
+                        if (restaurant in result) {
+                            result[restaurant]++;
+                        }
+                        else {
+                            result[restaurant] = 1;
+                        }
+                    });
+                });
+                subject.next(result);
+                // subject.complete();
             });
         });
     }

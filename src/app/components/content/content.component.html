@@ -3,14 +3,13 @@
 
 
 <ng-container *ngIf="restaurants; else: noRestaurants">
-
     <div *ngIf="restaurants && restaurants.length > 0; else: noSelectedRestaurants" id="foodContent">
         <div *ngFor="let restaurant of restaurants" class="{{counter}}" style="margin-top: 20px;">
-            <app-restaurant-foods *ngIf="!restaurant.menuLink"
+            <fds-restaurant-foods *ngIf="!restaurant.menuLink"
                                   [dailyMenus]="dailyMenus"
                                   [highlight]="highlight"
                                   [restaurant]="restaurant"
-                                  [searchKey]="searchKey"></app-restaurant-foods>
+                                  [searchKey]="searchKey"></fds-restaurant-foods>
             <div *ngIf="appService.getConfig('allowIFrames') && restaurant.menuLink">
                 <h3>
                     {{restaurant.name}}

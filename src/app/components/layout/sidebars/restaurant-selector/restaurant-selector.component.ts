@@ -5,9 +5,10 @@ import {Restaurant} from "../../../../shared/models/restaurant.model";
 import {AppService} from "../../../../shared/services/app.service";
 import {AuthService} from "../../../../shared/services/auth.service";
 import {FoodsFirebaseService} from "../../../../shared/services/foods-firebase.service";
+import {RatingService} from "../../../../shared/services/rating.service";
 
 @Component({
-    selector: "app-restaurant-selector",
+    selector: "fds-restaurant-selector",
     templateUrl: "./restaurant-selector.component.html",
     styleUrls: ["./restaurant-selector.component.scss"],
 })
@@ -19,6 +20,7 @@ export class RestaurantSelectorComponent implements OnInit {
 
     public constructor(public readonly appService: AppService,
                        public readonly foodsFirebaseService: FoodsFirebaseService,
+                       public readonly ratingService: RatingService,
                        public readonly authService: AuthService) {
     }
 
