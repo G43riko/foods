@@ -4,8 +4,8 @@
   "theme_color": "#b92b27",
   "background_color": "#ffffff",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/foods",
+  "scope": "/foods/",
+  "start_url": "/foods/",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
