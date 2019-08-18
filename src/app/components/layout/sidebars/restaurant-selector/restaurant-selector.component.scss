@@ -1,7 +1,4 @@
-* {
-    padding: 0;
-    margin: 0;
-}
+@import "common";
 
 h2 {
     padding-top: 0.3em;
@@ -11,9 +8,6 @@ h4, h2, h5 {
     text-align: center
 }
 
-.flex-divider {
-    flex: 1 1 auto;
-}
 
 .restaurant-selector-wrapper {
     display: flex;

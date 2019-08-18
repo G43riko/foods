@@ -47,7 +47,6 @@ export class AppService {
         ).subscribe((user: firestore.DocumentSnapshot | undefined) => {
             if (user) {
                 const userData = user.data();
-                console.log(JSON.stringify(user.data()));
                 if (userData.config) {
                     userData.config.language = userData.config.language || "sk";
 

@@ -25,7 +25,10 @@
      - [ ] zvýrazňovať preferované jedné
      - [ ] upozornenia na email ak označí checkbox pri preferovanom jedlo
  - [x] zobrazovať obrázok jedla
+ - [ ] hide options if user is not logged in
  - [x] pridať vzdialenosť od reštaurácie
+ - [ ] pridať formulár na feedback
+ - [ ] pridať možnosť požiadať o pridanie reštaurácie
  - [ ] zobrazovať najoblúbenejšie jedná a reštaurácuie v ktorých sú
  - [ ] pridať možnosť hlasovať za reštauráciu
  - [ ] pridať rôzne jazykové mutácie

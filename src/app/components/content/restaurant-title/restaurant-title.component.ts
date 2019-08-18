@@ -12,7 +12,7 @@ declare const $;
 @Component({
     selector: "app-restaurant-title",
     templateUrl: "./restaurant-title.component.html",
-    styleUrls: ["./restaurant-title.component.css"],
+    styleUrls: ["./restaurant-title.component.scss"],
 })
 export class RestaurantTitleComponent implements OnInit {
     @Input() public restaurant: Restaurant;
