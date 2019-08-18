@@ -5,7 +5,7 @@
   "background_color": "#ffffff",
   "display": "standalone",
   "scope": "/",
-  "start_url": "/",
+  "start_url": "/foods",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
