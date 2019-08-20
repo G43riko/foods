@@ -79,6 +79,9 @@
                 "test": {
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
+                        "stylePreprocessorOptions": {
+                            "includePaths": ["src/assets/styles"]
+                        },
                         "main": "src/test.ts",
                         "polyfills": "src/polyfills.ts",
                         "tsConfig": "src/tsconfig.spec.json",
