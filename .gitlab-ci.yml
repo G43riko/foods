@@ -1,0 +1,9 @@
+image: alekzonder/puppeteer:latest
+cache:
+    paths:
+        - node_modules/
+# The pipeline which should run our unit tests on every commit
+unit_tests:
+    script:
+        - npm install
+        - npm run test
