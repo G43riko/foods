@@ -1,23 +1,21 @@
 import {Injectable} from "@angular/core";
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from "@angular/fire/firestore";
+import {AngularFirestoreCollection, AngularFirestoreDocument} from "@angular/fire/firestore";
 import {forkJoin, Observable, of, Subscriber} from "rxjs";
 import {catchError, map, switchMap} from "rxjs/operators";
-import {User} from "../interfaces/user.interface";
 import {Restaurant} from "../models/restaurant.model";
-import {AppService} from "./app.service";
+import {FirebaseDailyMenuData, FirebaseService} from "./firebase.service";
 import {FoodsExternalService} from "./foods-external.service";
 
 @Injectable({
     providedIn: "root",
 })
 export class FoodsFirebaseService {
-    public constructor(private readonly afs: AngularFirestore,
-                       private readonly appService: AppService,
+    public constructor(private readonly firebaseService: FirebaseService,
                        private readonly foodsExternalService: FoodsExternalService) {
     }
 
     public hasZomatoMenu(restaurant: Restaurant): Observable<boolean> {
-        const dailyMenuRef: AngularFirestoreDocument<User> = this.afs.doc(`menus/${this.appService.getDate()}/zomatoMenus/${restaurant.key}`);
+        const dailyMenuRef: AngularFirestoreDocument<FirebaseDailyMenuData> = this.firebaseService.getZomatoMenu(restaurant);
 
         return dailyMenuRef.get().pipe(map((data) => {
             const realData = data.data();
@@ -27,8 +25,7 @@ export class FoodsFirebaseService {
     }
 
     public getZomatoFoods(restaurants: Restaurant[]): Observable<any> {
-        const path = `menus/${this.appService.getDate()}/zomatoMenus`;
-        const foodsRef: AngularFirestoreCollection<any> = this.afs.collection(path);
+        const foodsRef: AngularFirestoreCollection<any> = this.firebaseService.getZomatoMenus();
 
         return new Observable<any>((subject) => {
             foodsRef.get().subscribe((data) => {
@@ -59,7 +56,7 @@ export class FoodsFirebaseService {
                         switchMap((newDailyMenu) => {
                             return new Observable((subSubject) => this.processNewZomatoMenu(
                                 newDailyMenu,
-                                this.afs.doc(path + "/" + restaurant.key),
+                                this.firebaseService.getZomatoMenu(restaurant),
                                 subSubject,
                                 restaurant,
                             ));
@@ -81,11 +78,17 @@ export class FoodsFirebaseService {
     }
 
     public getZomatoFood(restaurant: Restaurant): Observable<any> {
-        const dailyMenuRef: AngularFirestoreDocument<any> = this.afs.doc(`menus/${this.appService.getDate()}/zomatoMenus/${restaurant.key}`);
+        const dailyMenuRef: AngularFirestoreDocument<any> = this.firebaseService.getZomatoMenu(restaurant);
 
         return new Observable<any>((subject) => {
             const getAndStoreMenu = () => {
                 this.foodsExternalService.getZomatoFoodRaw(restaurant.id).subscribe((newDailyMenu) => {
+                    if (typeof newDailyMenu === "number") {
+                        subject.next(newDailyMenu);
+                        subject.complete();
+
+                        return;
+                    }
                     this.processNewZomatoMenu(newDailyMenu, dailyMenuRef, subject, restaurant);
                 }, subject.error);
             };
@@ -99,7 +102,10 @@ export class FoodsFirebaseService {
                     getAndStoreMenu();
                 }
             }, () => getAndStoreMenu());
-        });
+        }).pipe(catchError((error) => {
+            console.log("error: ", error);
+            return of(error);
+        }));
     }
 
     private processNewZomatoMenu(newDailyMenu: any, dailyMenuRef: AngularFirestoreDocument<any>, subject: Subscriber<any>, restaurant: Restaurant): void {

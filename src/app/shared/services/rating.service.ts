@@ -1,26 +1,20 @@
 import {Injectable} from "@angular/core";
-import {AngularFirestore} from "@angular/fire/firestore";
 import {Observable} from "rxjs";
 import {switchMap, throttleTime} from "rxjs/operators";
 import {User} from "../interfaces/user.interface";
 import {Dish} from "../models/dish.model";
 import {Restaurant} from "../models/restaurant.model";
-
-export interface RestaurantsRatingData {
-    [restaurantKey: string]: {
-        [dishName: string]: string[];
-    };
-}
+import {FirebaseRestaurantsData, FirebaseService} from "./firebase.service";
 
 @Injectable({
     providedIn: "root",
 })
 export class RatingService {
-    private readonly cache: RestaurantsRatingData = {};
+    private readonly cache: FirebaseRestaurantsData = {};
     private favourite: { [key: string]: number } = {};
 
-    public constructor(private readonly afs: AngularFirestore) {
-        const collection = this.afs.collection(`restaurants`);
+    public constructor(private readonly firebaseService: FirebaseService) {
+        const collection = firebaseService.getRestaurants();
         collection.valueChanges().pipe(
             throttleTime(10000),
             switchMap(() => collection.get()),
@@ -67,11 +61,11 @@ export class RatingService {
     }
 
     public like(user: User, dish: Dish, restaurant: Restaurant): Promise<boolean> {
-        const query = this.afs.firestore.collection(`restaurants`).doc(restaurant.key);
+        const query = this.firebaseService.getRestaurant(restaurant);
         this.setCache(user, dish, restaurant, true);
 
         return new Promise<boolean>((success, reject) => {
-            query.get().then((snapshot) => {
+            query.get().subscribe((snapshot) => {
                 if (snapshot.exists) {
                     const data = snapshot.data();
                     if (data[dish.name]) {
@@ -100,11 +94,11 @@ export class RatingService {
     }
 
     public unlike(user: User, dish: Dish, restaurant: Restaurant): Promise<boolean> {
-        const query = this.afs.firestore.collection(`restaurants`).doc(restaurant.key);
+        const query = this.firebaseService.getRestaurant(restaurant);
         this.setCache(user, dish, restaurant, false);
 
         return new Promise<boolean>((success, reject) => {
-            query.get().then((snapshot) => {
+            query.get().subscribe((snapshot) => {
                 if (snapshot.exists) {
                     const data = snapshot.data();
                     if (data[dish.name]) {
@@ -118,7 +112,7 @@ export class RatingService {
                 }
 
                 success(false);
-            });
+            }, reject);
         });
     }
 
@@ -132,7 +126,7 @@ export class RatingService {
 
     private getNumberOfFavorites(): Observable<{ [key: string]: number }> {
         return new Observable((subject) => {
-            this.afs.collection("users").valueChanges().subscribe((data) => {
+            this.firebaseService.getUsers().valueChanges().subscribe((data) => {
                 const result = {};
                 data.forEach((doc: any) => {
                     const likeRestaurants = doc && doc.config && doc.config.selectedRestaurants || [];

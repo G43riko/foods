@@ -16,7 +16,9 @@
         <ng-template #isLoaded>
             <ng-template [ngIfElse]="noMenus" [ngIf]="dailyMenus[restaurant.key].length > 0">
                 <ng-container *ngFor="let dish of dailyMenus[restaurant.key] | searchFoodPipe: searchKey">
-                    <fds-food-row [dish]="dish" [highlight]="highlight" [restaurant]="restaurant"
+                    <fds-food-row [dish]="dish"
+                                  [highlight]="highlight"
+                                  [restaurant]="restaurant"
                                   style="display: contents"></fds-food-row>
                 </ng-container>
             </ng-template>

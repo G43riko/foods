@@ -6,6 +6,7 @@ export class Restaurant {
     public key: string;
     public id: string;
     public mapsId?: string;
+    public forceIFrame?: boolean;
     public menuLink?: string;
     public homepage?: string;
     public hasActualMenu?: boolean;

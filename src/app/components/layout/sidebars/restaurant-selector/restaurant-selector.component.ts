@@ -1,5 +1,6 @@
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from "@angular/cdk/drag-drop";
-import {Component, EventEmitter, OnInit, Output} from "@angular/core";
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from "@angular/core";
+import {Subscription} from "rxjs";
 import {RestaurantData} from "../../../../../data/restaurantsData";
 import {Restaurant} from "../../../../shared/models/restaurant.model";
 import {AppService} from "../../../../shared/services/app.service";
@@ -12,11 +13,12 @@ import {RatingService} from "../../../../shared/services/rating.service";
     templateUrl: "./restaurant-selector.component.html",
     styleUrls: ["./restaurant-selector.component.scss"],
 })
-export class RestaurantSelectorComponent implements OnInit {
+export class RestaurantSelectorComponent implements OnInit, OnDestroy {
     @Output("restaurantsChange") public readonly restaurantsChange: EventEmitter<Restaurant[]> = new EventEmitter<Restaurant[]>();
     public readonly restaurants: Restaurant[] = [];
     public readonly selectedRestaurants: Restaurant[] = [];
     public searchKey: string;
+    private configurationSubscription: Subscription;
 
     public constructor(public readonly appService: AppService,
                        public readonly foodsFirebaseService: FoodsFirebaseService,
@@ -25,7 +27,7 @@ export class RestaurantSelectorComponent implements OnInit {
     }
 
     public ngOnInit(): void {
-        this.appService.configuration.subscribe((configuration) => {
+        this.configurationSubscription = this.appService.configuration.subscribe((configuration) => {
             this.setRestaurants(configuration.selectedRestaurants);
             this.restaurantsChange.emit(this.selectedRestaurants);
         });
@@ -47,7 +49,7 @@ export class RestaurantSelectorComponent implements OnInit {
     private setRestaurants(selectedRestaurantsKeys: string[]): void {
         this.selectedRestaurants.splice(0, this.selectedRestaurants.length);
         this.restaurants.splice(0, this.restaurants.length);
-        RestaurantData.forEach((restaurant) => {
+        RestaurantData.forEach((restaurant: Restaurant) => {
             const index = selectedRestaurantsKeys.indexOf(restaurant.key);
             if (index >= 0) {
                 this.selectedRestaurants[index] = restaurant;
@@ -55,5 +57,9 @@ export class RestaurantSelectorComponent implements OnInit {
                 this.restaurants.push(restaurant);
             }
         });
+    }
+
+    public ngOnDestroy(): void {
+        this.configurationSubscription.unsubscribe();
     }
 }

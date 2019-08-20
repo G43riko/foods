@@ -16,6 +16,9 @@ declare const $: any;
     selector: "fds-content",
     templateUrl: "./content.component.html",
     styleUrls: ["./content.component.scss"],
+    providers: [
+        RestaurantService,
+    ],
 })
 export class ContentComponent implements OnInit {
     public counter = 0;
@@ -47,6 +50,21 @@ export class ContentComponent implements OnInit {
         const actualRestaurants = this.restaurants.filter((restaurant) => !this.dailyMenus[restaurant.key] && !restaurant.menuLink /*&& !restaurant.smeRestaurantsLink*/);
         actualRestaurants.forEach((restaurant) => {
             this.foodsFirebaseService.getZomatoFood(restaurant).subscribe((result) => {
+                // If menu is not available on zomato
+                if (result === 400) {
+                    restaurant.forceIFrame = true;
+                    this.dailyMenus[restaurant.key] = [];
+
+                    return;
+                }
+
+                // if menu is empty array;
+                if (result && (!Array.isArray(result.daily_menus) || result.daily_menus.length === 0)) {
+                    restaurant.forceIFrame = true;
+                    this.dailyMenus[restaurant.key] = [];
+
+                    return;
+                }
                 this.dailyMenus[restaurant.key] = this.foodsService.processZomatoMenu(result);
             }, (error) => {
                 this.notificationService.showErrorMessage("Error while getting menus from zommato api: ", error);
@@ -79,4 +97,11 @@ export class ContentComponent implements OnInit {
         // });
     }
 
+    public getLinkFor(restaurant: Restaurant): string {
+        if (restaurant.menuLink) {
+            return restaurant.menuLink;
+        }
+
+        return `https://restauracie.sme.sk/restauracia${restaurant.smeRestaurantsLink}`;
+    }
 }

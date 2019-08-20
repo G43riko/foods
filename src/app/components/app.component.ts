@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
 
     public constructor(private readonly statsService: StatsService,
                        private readonly appService: AppService,
-                       private readonly authService: AuthService,
+                       public readonly authService: AuthService,
                        private readonly breakpointObserver: BreakpointObserver) {
         breakpointObserver.observe("(min-width: 726px)").subscribe((result) => {
             this.biggerThanTablet = result.matches;

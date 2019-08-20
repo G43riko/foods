@@ -4,9 +4,7 @@ import {Restaurant} from "../models/restaurant.model";
 import {Coord, GeoLocationService} from "./geo-location.service";
 import {RatingService} from "./rating.service";
 
-@Injectable({
-    providedIn: "root",
-})
+@Injectable()
 export class RestaurantService {
 
     public constructor(private readonly geoLocationService: GeoLocationService,

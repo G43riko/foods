@@ -1,12 +1,14 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import * as browserRequest from "browser-request";
+import {throwError} from "rxjs";
 import {Observable} from "rxjs/internal/Observable";
 import {of} from "rxjs/internal/observable/of";
 import {catchError, tap} from "rxjs/operators";
 import {Config} from "../../appConfig";
 import {AbstractService} from "./abstract.service";
 import {AppService} from "./app.service";
+import {CoreService} from "./core.service";
 import {NotificationService} from "./notification.service";
 
 const prefix = "http://g43.clanweb.eu/proxy.php?url=";
@@ -39,13 +41,13 @@ export class FoodsExternalService extends AbstractService {
     });
 
     public constructor(private readonly notificationService: NotificationService,
-                       private readonly appService: AppService,
+                       private readonly coreService: CoreService,
                        http: HttpClient) {
         super(http);
     }
 
     public getZomatoFoodRaw(id: string): Observable<any> {
-        const foodKey: string = this.appService.getDate() + "-" + id;
+        const foodKey: string = this.coreService.getDate() + "-" + id;
         if (Config.USE_LOCAL_STORAGE_CACHE) {
             const result: string = localStorage.getItem(foodKey);
             if (result) {
@@ -84,7 +86,13 @@ export class FoodsExternalService extends AbstractService {
                     localStorage.setItem(foodKey, stringifyData);
                 }
             }),
-            catchError(this.handleError),
+            catchError((error) => {
+                if (error && error.status === 400) {
+                    return of(400);
+                }
+
+                return this.handleError(error);
+            }),
         );
     }
 

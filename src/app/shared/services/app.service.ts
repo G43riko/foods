@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {AngularFirestore, AngularFirestoreDocument} from "@angular/fire/firestore";
+import {AngularFirestoreDocument} from "@angular/fire/firestore";
 import {TranslateService} from "@ngx-translate/core";
 import {firestore} from "firebase";
 import {BehaviorSubject, of} from "rxjs";
@@ -7,6 +7,7 @@ import {switchMap} from "rxjs/operators";
 import {User} from "../interfaces/user.interface";
 import {Colors} from "../models/colors.enum";
 import {AuthService} from "./auth.service";
+import {FirebaseService} from "./firebase.service";
 
 export interface AppConfiguration {
     selectedColor?: Colors;
@@ -27,8 +28,8 @@ export class AppService {
     private isLoggedIn = false;
     private ref: AngularFirestoreDocument<User>;
 
-    public constructor(private readonly afs: AngularFirestore,
-                       private readonly translateService: TranslateService,
+    public constructor(private readonly translateService: TranslateService,
+                       private readonly firebaseService: FirebaseService,
                        private readonly authService: AuthService) {
         translateService.setDefaultLang("en");
         translateService.use(translateService.getBrowserLang());
@@ -37,7 +38,7 @@ export class AppService {
             switchMap((user) => {
                 this.isLoggedIn = Boolean(user);
                 if (user) {
-                    this.ref = this.afs.doc<User>(`users/${user.uid}`);
+                    this.ref = this.firebaseService.getUser(user.uid);
 
                     return this.ref.get();
                 }
@@ -100,12 +101,6 @@ export class AppService {
 
     public set showWeight(value: boolean) {
         this.setConfig("showWeight", value);
-    }
-
-    public getDate(): string {
-        const a = new Date();
-
-        return a.getDate() + "-" + a.getMonth() + "-" + a.getFullYear();
     }
 
     public setConfig<T extends keyof AppConfiguration>(key: T, value: AppConfiguration[T]): void {

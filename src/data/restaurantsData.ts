@@ -1,4 +1,6 @@
-export const RestaurantData = [
+import {Restaurant} from "../app/shared/models/restaurant.model";
+
+export const RestaurantData: Restaurant[] = [
     {
         id: "16508164",
         name: "Astra",
@@ -6,6 +8,7 @@ export const RestaurantData = [
         visible: true,
         homepage: "http://www.astrapub.sk/",
         mapsId: "ChIJax7o5C6JbEcRcD2shzoUn_8",
+        smeRestaurantsLink: "/astra_153-ruzinov_2980/denne-menu",
         coordinates: {
             lat: 48.1488502,
             long: 17.1445794,
@@ -17,8 +20,8 @@ export const RestaurantData = [
         key: "delphine",
         mapsId: "ChIJMfW7ai6JbEcRP3iW_eXDfgo",
         homepage: "http://restauraciadelfin.sk",
-        visible: true,
         smeRestaurantsLink: "/delfin_717-ruzinov_2980/denne-menu",
+        visible: true,
         coordinates: {
             lat: 48.1498305556,
             long: 17.1426194444,
@@ -29,7 +32,7 @@ export const RestaurantData = [
         name: "Lanogi Gurman",
         key: "lanogi",
         mapsId: "ChIJV0iLXyWJbEcRQfMI9liL3Oc",
-        homepage: "https://www.lanogi.sk/denne-menu/",
+        homepage: "https://www.lanogi.sk/denne-menu",
         smeRestaurantsLink: "/lanogi-gurman_9814-ruzinov_2980/denne-menu",
         visible: true,
         coordinates: {
@@ -43,6 +46,7 @@ export const RestaurantData = [
         key: "journal",
         mapsId: "ChIJDWgUJS-JbEcRHuroJcj6vKY",
         homepage: "http://www.journalrestaurant.sk",
+        smeRestaurantsLink: "/journal-restaurant_5618-ruzinov_2980/denne-menu",
         visible: true,
         coordinates: {
             lat: 48.1477658,
@@ -54,6 +58,7 @@ export const RestaurantData = [
         name: "Hamka",
         key: "hamka",
         mapsId: "ChIJPaExEi-JbEcRIFkHrgpfK7Y",
+        homepage: "http://hamka.sk/menu-prievozska/",
         visible: true,
         smeRestaurantsLink: "/hamka-restaurant-pub_8785-ruzinov_2980/denne-menu",
         coordinates: {
@@ -62,7 +67,7 @@ export const RestaurantData = [
         },
     },
     {
-        id: "000000000",
+        id: "",
         name: "Punjabi dhaba",
         key: "punjabiDhaba",
         visible: true,
@@ -78,6 +83,7 @@ export const RestaurantData = [
         key: "budies",
         homepage: "http://buddies.sk/",
         mapsId: "ChIJq2449i-JbEcRn6qhkVrLx_I",
+        smeRestaurantsLink: "/buddies_7319-ruzinov_2980/denne-menu",
         visible: true,
         coordinates: {
             lat: 48.146922,
@@ -102,6 +108,7 @@ export const RestaurantData = [
         key: "presto",
         mapsId: "ChIJkfYTcy-JbEcREA1kUYLsyHo",
         homepage: "https://www.restaurantpresto.sk/sk/menu/presto-bbc-i/",
+        smeRestaurantsLink: "/presto-bbc-i_2406-ruzinov_2980/denne-menu",
         visible: true,
         coordinates: {
             lat: 48.1472978714,
@@ -111,9 +118,10 @@ export const RestaurantData = [
     {
         id: "16510021",
         name: "Bigger Smack World",
-        mapsId: "ChIJLwzEkjGJbEcRQDEJvcSU6mI",
         key: "bigger",
+        mapsId: "ChIJLwzEkjGJbEcRQDEJvcSU6mI",
         menuLink: "http://bigger.sk/menu/",
+        smeRestaurantsLink: "/bigger-snack-world_7049-ruzinov_2980/denne-menu",
         visible: false,
         coordinates: {
             lat: 48.150972,
@@ -144,8 +152,8 @@ export const RestaurantData = [
     {
         id: "17937259",
         name: "TT Burgers",
-        mapsId: "ChIJt54wlDqJbEcRaE8yz_2jeN4",
         key: "ttBurger",
+        mapsId: "ChIJt54wlDqJbEcRaE8yz_2jeN4",
         smeRestaurantsLink: "/tt-burgers-family-fine-food_8662-ruzinov_2980/denne-menu",
         visible: true,
         coordinates: {
@@ -154,12 +162,16 @@ export const RestaurantData = [
         },
     },
     {
-        id: "0000000",
+        id: "",
         name: "Foodoo",
         mapsId: "ChIJJS2bEhaJbEcRiKK8pYec7C8",
         key: "foodoo",
         smeRestaurantsLink: "/foodoo-prievozska_10461-ruzinov_2980/denne-menu",
         visible: true,
+        coordinates: {
+            lat: 48.1474266,
+            long: 17.1417926,
+        },
     },
     {
         id: "16507775",
@@ -172,11 +184,23 @@ export const RestaurantData = [
         },
     },
     {
-        id: "00000000",
+        id: "16516299",
+        mapsId: "ChIJyVJB4SiJbEcRRRcDZpTS9RQ",
+        visible: true,
+        key: "mlyn",
+        name: "Mlyn",
+        smeRestaurantsLink: "/mlyn-restaurant_1745-ruzinov_2980/denne-menu",
+        coordinates: {
+            lat: 48.147495,
+            long: 17.148525,
+        },
+    },
+    {
+        id: "",
         name: "Gastro house",
         key: "gastroHouse",
         visible: false,
-        menuLink: "https://gastrohouse.sk/#denne-menu",
+        homepage: "https://gastrohouse.sk/",
     },
     {
         id: "16507664",
@@ -212,7 +236,7 @@ export const RestaurantData = [
         id: "16508120",
         name: "U Zlatého Bažanta",
         key: "uZlatehoBazanta",
-        menuLink: "http://www.uzlatehobazanta.sk/denne-menu/",
+        menuLink: "http://www.uzlatehobazanta.sk/denne-menu",
         visible: false,
         coordinates: {
             lat: 48.1443699731,
@@ -258,7 +282,7 @@ export const RestaurantData = [
         id: "16507905",
         name: "La Cantina Contadina",
         key: "cantina",
-        menuLink: "https://www.cantinacontadina.sk/denne-menu/",
+        menuLink: "https://www.cantinacontadina.sk/denne-menu",
         visible: false,
         coordinates: {
             lat: 48.1637336,
