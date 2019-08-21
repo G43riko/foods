@@ -1,5 +1,22 @@
 # Foods
 
+- **Restaurants**
+    - astra
+        - **Likes**
+            - 23-2-2019
+                - steak: [juro@gmail.com, gabo@gmail.com, erik@gmail.com]
+        - **ZomatoMenus**
+            - 23-2-2019:
+                - daily_menus: [...],
+                - status: "success"
+        - zomatoId: "123"
+        - googleMapsId: 321
+        - restauracieSmeLink: "https://restauracie.sme.com/restauracia/denne-menu"
+        - homepage: "https://restauracia.sk"
+        - address
+            - latitude: 48.123
+            - longitude: 17.132
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.8.
 
 ## Development server

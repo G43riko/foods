@@ -33,7 +33,8 @@
  - [ ] pridať možnosť požiadať o pridanie reštaurácie
  - [ ] zobrazovať najoblúbenejšie jedná a reštaurácuie v ktorých sú
  - [ ] pridať možnosť hlasovať za reštauráciu
- - [ ] pridať rôzne jazykové mutácie
+ - [x] pridať rôzne jazykové mutácie
+ - [ ] pridať prehlad reštaurácií
  - [x] pridať manifest.json
      
  

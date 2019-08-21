@@ -16,14 +16,13 @@
                 <i class="search icon"></i>
             </div>
         </div>
-        <div
-            #todoList="cdkDropList"
-            (cdkDropListDropped)="drop($event)"
-            [cdkDropListConnectedTo]="[doneList]"
-            [cdkDropListData]="restaurants"
-            cdkDropList
-            cdkDropListSortingDisabled
-            class="example-list">
+        <div #todoList="cdkDropList"
+             (cdkDropListDropped)="drop($event)"
+             [cdkDropListConnectedTo]="[doneList]"
+             [cdkDropListData]="restaurants | searchRestaurantPipe: searchKey"
+             cdkDropList
+             cdkDropListSortingDisabled
+             class="example-list">
             <div *ngFor="let restaurant of restaurants | searchRestaurantPipe: searchKey"
                  cdkDrag
                  cdkDragBoundary=".restaurant-selector-wrapper"

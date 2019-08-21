@@ -1,0 +1,328 @@
+[
+    {
+        "googleMapsId": "ChIJax7o5C6JbEcRcD2shzoUn_8",
+        "zomatoId": "16508164",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/astra_153-ruzinov_2980/denne-menu",
+        "key": "astra",
+        "_id": "",
+        "homepage": "http://www.astrapub.sk/",
+        "zomatoName": "Astra",
+        "address": {
+            "latitude": 48.1488502,
+            "longitude": 17.1445794
+        },
+        "visible": true
+    },
+    {
+        "googleMapsId": "ChIJMfW7ai6JbEcRP3iW_eXDfgo",
+        "zomatoId": "16508094",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/delfin_717-ruzinov_2980/denne-menu",
+        "key": "delphine",
+        "_id": "",
+        "homepage": "http://restauraciadelfin.sk",
+        "zomatoName": "Delfín",
+        "address": {
+            "latitude": 48.1498305556,
+            "longitude": 17.1426194444
+        },
+        "visible": true
+    },
+    {
+        "googleMapsId": "ChIJV0iLXyWJbEcRQfMI9liL3Oc",
+        "zomatoId": "18481358",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/lanogi-gurman_9814-ruzinov_2980/denne-menu",
+        "key": "lanogi",
+        "_id": "",
+        "homepage": "https://www.lanogi.sk/denne-menu",
+        "zomatoName": "Lanogi Gurman",
+        "address": {
+            "latitude": 48.146454,
+            "longitude": 17.140112
+        },
+        "visible": true
+    },
+    {
+        "googleMapsId": "ChIJDWgUJS-JbEcRHuroJcj6vKY",
+        "zomatoId": "16508016",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/journal-restaurant_5618-ruzinov_2980/denne-menu",
+        "key": "journal",
+        "_id": "",
+        "homepage": "http://www.journalrestaurant.sk",
+        "zomatoName": "Journal",
+        "address": {
+            "latitude": 48.1477658,
+            "longitude": 17.1453417
+        },
+        "visible": true
+    },
+    {
+        "googleMapsId": "ChIJPaExEi-JbEcRIFkHrgpfK7Y",
+        "zomatoId": "16508259",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/hamka-restaurant-pub_8785-ruzinov_2980/denne-menu",
+        "key": "hamka",
+        "_id": "",
+        "homepage": "http://hamka.sk/menu-prievozska/",
+        "zomatoName": "Hamka",
+        "address": {
+            "latitude": 48.147451,
+            "longitude": 17.143715
+        },
+        "visible": true
+    },
+    {
+        "zomatoId": "",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/punjabi-dhaba-indian-restuarant-prievozska_10022-ruzinov_2980/denne-menu",
+        "key": "punjabiDhaba",
+        "_id": "",
+        "zomatoName": "Punjabi dhaba",
+        "address": {
+            "latitude": 48.147451,
+            "longitude": 17.143715
+        },
+        "visible": true
+    },
+    {
+        "googleMapsId": "ChIJq2449i-JbEcRn6qhkVrLx_I",
+        "zomatoId": "17740573",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/buddies_7319-ruzinov_2980/denne-menu",
+        "key": "budies",
+        "_id": "",
+        "homepage": "http://buddies.sk/",
+        "zomatoName": "Budies",
+        "address": {
+            "latitude": 48.146922,
+            "longitude": 17.139689
+        },
+        "visible": true
+    },
+    {
+        "zomatoId": "16507668",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauraciaundefined",
+        "key": "pastaAndSchnitzel",
+        "_id": "",
+        "zomatoName": "Past & Schnitzel - Teta",
+        "visible": true
+    },
+    {
+        "zomatoId": "16508194",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauraciaundefined",
+        "key": "umami",
+        "_id": "",
+        "zomatoName": "UMAMI",
+        "visible": true
+    },
+    {
+        "googleMapsId": "ChIJkfYTcy-JbEcREA1kUYLsyHo",
+        "zomatoId": "16507666",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/presto-bbc-i_2406-ruzinov_2980/denne-menu",
+        "key": "presto",
+        "_id": "",
+        "homepage": "https://www.restaurantpresto.sk/sk/menu/presto-bbc-i/",
+        "zomatoName": "Presto",
+        "address": {
+            "latitude": 48.1472978714,
+            "longitude": 17.1427702904
+        },
+        "visible": true
+    },
+    {
+        "googleMapsId": "ChIJLwzEkjGJbEcRQDEJvcSU6mI",
+        "zomatoId": "16510021",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/bigger-snack-world_7049-ruzinov_2980/denne-menu",
+        "key": "bigger",
+        "menuLink": "http://bigger.sk/menu/",
+        "_id": "",
+        "zomatoName": "Bigger Smack World",
+        "address": {
+            "latitude": 48.150972,
+            "longitude": 17.139479
+        },
+        "visible": false
+    },
+    {
+        "zomatoId": "16508221",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/solo-sole_10036-ruzinov_2980/denne-menu",
+        "key": "soloSole",
+        "_id": "",
+        "zomatoName": "Solo sole",
+        "address": {
+            "latitude": 48.146241,
+            "longitude": 17.139621
+        },
+        "visible": true
+    },
+    {
+        "zomatoId": "16508023",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauraciaundefined",
+        "key": "soleMio",
+        "_id": "",
+        "zomatoName": "Sole Mio Pizza",
+        "address": {
+            "latitude": 48.1443413376,
+            "longitude": 17.1169996262
+        },
+        "visible": true
+    },
+    {
+        "googleMapsId": "ChIJt54wlDqJbEcRaE8yz_2jeN4",
+        "zomatoId": "17937259",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/tt-burgers-family-fine-food_8662-ruzinov_2980/denne-menu",
+        "key": "ttBurger",
+        "_id": "",
+        "zomatoName": "TT Burgers",
+        "address": {
+            "latitude": 48.145503,
+            "longitude": 17.13917
+        },
+        "visible": true
+    },
+    {
+        "googleMapsId": "ChIJJS2bEhaJbEcRiKK8pYec7C8",
+        "zomatoId": "",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/foodoo-prievozska_10461-ruzinov_2980/denne-menu",
+        "key": "foodoo",
+        "_id": "",
+        "zomatoName": "Foodoo",
+        "address": {
+            "latitude": 48.1474266,
+            "longitude": 17.1417926
+        },
+        "visible": true
+    },
+    {
+        "zomatoId": "16507775",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauraciaundefined",
+        "key": "rotunda",
+        "_id": "",
+        "zomatoName": "Rotunda",
+        "address": {
+            "latitude": 48.1502112866,
+            "longitude": 17.15051651
+        },
+        "visible": true
+    },
+    {
+        "googleMapsId": "ChIJyVJB4SiJbEcRRRcDZpTS9RQ",
+        "zomatoId": "16516299",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/mlyn-restaurant_1745-ruzinov_2980/denne-menu",
+        "key": "mlyn",
+        "_id": "",
+        "zomatoName": "Mlyn",
+        "address": {
+            "latitude": 48.147495,
+            "longitude": 17.148525
+        },
+        "visible": true
+    },
+    {
+        "zomatoId": "",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauraciaundefined",
+        "key": "gastroHouse",
+        "_id": "",
+        "homepage": "https://gastrohouse.sk/",
+        "zomatoName": "Gastro house",
+        "visible": false
+    },
+    {
+        "zomatoId": "16507664",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauraciaundefined",
+        "key": "bastion",
+        "_id": "",
+        "zomatoName": "Bastion",
+        "address": {
+            "latitude": 48.1578944444,
+            "longitude": 17.1268083333
+        },
+        "visible": true
+    },
+    {
+        "zomatoId": "16507731",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauraciaundefined",
+        "key": "vivendy",
+        "_id": "",
+        "zomatoName": "Vivendy",
+        "address": {
+            "latitude": 48.1618346676,
+            "longitude": 17.1289086342
+        },
+        "visible": true
+    },
+    {
+        "zomatoId": "16547738",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauraciaundefined",
+        "key": "donQuijote",
+        "_id": "",
+        "zomatoName": "Don Quijote",
+        "address": {
+            "latitude": 48.1712833333,
+            "longitude": 17.1271
+        },
+        "visible": false
+    },
+    {
+        "zomatoId": "16508120",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauraciaundefined",
+        "key": "uZlatehoBazanta",
+        "menuLink": "http://www.uzlatehobazanta.sk/denne-menu",
+        "_id": "",
+        "zomatoName": "U Zlatého Bažanta",
+        "address": {
+            "latitude": 48.1443699731,
+            "longitude": 17.1141672134
+        },
+        "visible": false
+    },
+    {
+        "googleMapsId": "ChIJHV2Umy-JbEcRDkluN8zRk_o",
+        "zomatoId": "16508074",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauraciaundefined",
+        "key": "vegLife",
+        "_id": "",
+        "homepage": "http://www.veglife.sk/sk/",
+        "zomatoName": "Veg Life",
+        "address": {
+            "latitude": 48.1472276,
+            "longitude": 17.1423744
+        },
+        "visible": true
+    },
+    {
+        "googleMapsId": "ChIJQW01TCWJbEcRwWzhnZJuoPY",
+        "zomatoId": "16510055",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauracia/lunch-break-apollo_9822-ruzinov_2980/denne-menu",
+        "key": "lunchBreak",
+        "_id": "",
+        "zomatoName": "Lunch break",
+        "address": {
+            "latitude": 48.1458638889,
+            "longitude": 17.1387805556
+        },
+        "visible": true
+    },
+    {
+        "zomatoId": "16508365",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauraciaundefined",
+        "key": "breweria",
+        "menuLink": "/breweria-slimak_7191-bratislava_2983/denne-menu",
+        "_id": "",
+        "zomatoName": "Breweria",
+        "address": {
+            "latitude": 48.169819,
+            "longitude": 17.129387
+        },
+        "visible": false
+    },
+    {
+        "zomatoId": "16507905",
+        "restauracieSmeLink": "https://restauracie.sme.sk/restauraciaundefined",
+        "key": "cantina",
+        "menuLink": "https://www.cantinacontadina.sk/denne-menu",
+        "_id": "",
+        "zomatoName": "La Cantina Contadina",
+        "address": {
+            "latitude": 48.1637336,
+            "longitude": 17.1331772
+        },
+        "visible": false
+    }
+]
