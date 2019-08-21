@@ -1,8 +1,8 @@
 {
   "name": "Foods",
   "short_name": "foods",
-  "theme_color": "#b92b27",
-  "background_color": "#ffffff",
+  "theme_color": "#F17B15",
+  "background_color": "#F17B15",
   "display": "standalone",
   "scope": "/foods/",
   "start_url": "/foods/",
