@@ -13,7 +13,7 @@ import {SearchFoodPipe} from "./pipes/search-food.pipe";
 @NgModule({
     declarations: [
         RestaurantFoodsComponent,
-        ContentComponent,
+        ContentModule.rootComponent,
         FoodRowComponent,
         FoodRowLikesComponent,
         FoodRowNameComponent,
@@ -25,9 +25,13 @@ import {SearchFoodPipe} from "./pipes/search-food.pipe";
         TranslateModule,
         CommonModule,
     ],
+    entryComponents: [
+        ContentModule.rootComponent,
+    ],
     exports: [
-        ContentComponent,
+        ContentModule.rootComponent,
     ],
 })
 export class ContentModule {
+    public static readonly rootComponent = ContentComponent;
 }

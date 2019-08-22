@@ -1,6 +1,6 @@
 import {LayoutModule} from "@angular/cdk/layout";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
-import {NgModule} from "@angular/core";
+import {NgModule, NgModuleFactoryLoader, SystemJsNgModuleLoader} from "@angular/core";
 import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {ServiceWorkerModule} from "@angular/service-worker";
@@ -14,6 +14,7 @@ import {PreferenceModule} from "./components/preference/preference.module";
 import {RestaurantSelectorModule} from "./components/restaurant-selector/restaurant-selector.module";
 import {ProfileMenuComponent} from "./layout/profile-menu/profile-menu.component";
 import {TopMenuComponent} from "./layout/top-menu/top-menu.component";
+import {LoadModuleDirective} from "./load-module.directive";
 import {FirebaseModule} from "./shared/modules/firebase.module";
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -25,6 +26,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         AppComponent,
         ProfileMenuComponent,
         TopMenuComponent,
+        LoadModuleDirective,
     ],
     imports: [
         // MY MODULES
@@ -51,6 +53,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     ],
     providers: [
         // fakeBackendProvider,
+        {provide: NgModuleFactoryLoader, useClass: SystemJsNgModuleLoader},
     ],
     bootstrap: [AppComponent],
 })

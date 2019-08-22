@@ -14,8 +14,16 @@
                     "builder": "@angular-devkit/build-angular:browser",
                     "options": {
                         "stylePreprocessorOptions": {
-                            "includePaths": ["src/assets/styles"]
+                            "includePaths": [
+                                "src/assets/styles"
+                            ]
                         },
+                        "lazyModules": [
+                            "src/app/components/content/content.module",
+                            "src/app/components/options/options.module",
+                            "src/app/components/preference/preference.module",
+                            "src/app/components/restaurant-selector/restaurant-selector.module"
+                        ],
                         "outputPath": "dist",
                         "index": "src/index.html",
                         "main": "src/main.ts",
@@ -80,7 +88,9 @@
                     "builder": "@angular-devkit/build-angular:karma",
                     "options": {
                         "stylePreprocessorOptions": {
-                            "includePaths": ["src/assets/styles"]
+                            "includePaths": [
+                                "src/assets/styles"
+                            ]
                         },
                         "main": "src/test.ts",
                         "polyfills": "src/polyfills.ts",

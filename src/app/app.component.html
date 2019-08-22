@@ -4,13 +4,16 @@
     <fds-restaurant-selector (restaurantsChange)="appContent.onRestaurantChanges($event)"></fds-restaurant-selector>
 </div>
 <div *ngIf="authService.user$ | async" [class.wide]="biggerThanTablet" class="ui sidebar vertical very menu options">
-    <fds-options></fds-options>
+<!--    <fds-options></fds-options>-->
+    <ng-container loadModule="options"></ng-container>
 </div>
 
 <div class="pusher">
     <fds-top-menu #topMenu [biggerThanTablet]="biggerThanTablet"></fds-top-menu>
     <fds-highlight-selector #pageNavBar [openHighlighter]="topMenu.openHighlighter"></fds-highlight-selector>
+
     <fds-content #appContent [highlight]="pageNavBar.highlight" [searchKey]="topMenu.searchKey"></fds-content>
+<!--    <ng-container loadModule="content"></ng-container>-->
 </div>
 
 <div class="ui modal maps">
