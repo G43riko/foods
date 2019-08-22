@@ -6,6 +6,7 @@
  - [x] vyhladávanie jedál
  - [x] zvýraznovať kategórie
  - [ ] ~~zvýraznovať aktuálny deň~~
+ - [ ] pridať možnosť pozrieť si aj ďalšie dni v týždni
  - [ ] upraviť názov jedla
      - [x] vyparsovať cenu
      - [x] vyparsovať hmotnosť
@@ -27,7 +28,7 @@
      - [ ] upozornenia na email ak označí checkbox pri preferovanom jedlo
  - [x] zobrazovať obrázok jedla
  - [ ] pridať notifikácie https://developer.mozilla.org/en-US/docs/Web/API/notification
- - [ ] hide options if user is not logged in
+ - [x] hide options if user is not logged in
  - [x] pridať vzdialenosť od reštaurácie
  - [ ] pridať formulár na feedback
  - [ ] pridať možnosť požiadať o pridanie reštaurácie
@@ -36,5 +37,7 @@
  - [x] pridať rôzne jazykové mutácie
  - [ ] pridať prehlad reštaurácií
  - [x] pridať manifest.json
+ - [ ] načítavať informácie o reštauráciách z github súboru
+ - [ ] načítavať informácie o jedlách z github súboru 
      
  
