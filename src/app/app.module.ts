@@ -1,4 +1,3 @@
-import {DragDropModule} from "@angular/cdk/drag-drop";
 import {LayoutModule} from "@angular/cdk/layout";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {NgModule} from "@angular/core";
@@ -8,20 +7,14 @@ import {ServiceWorkerModule} from "@angular/service-worker";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {environment} from "../environments/environment";
-import {AppComponent} from "./components/app.component";
-import {ContentComponent} from "./components/content/content.component";
-import {FoodRowLikesComponent} from "./components/content/food-row-likes/food-row-likes.component";
-import {FoodRowNameComponent} from "./components/content/food-row-name/food-row-name.component";
-import {FoodRowComponent} from "./components/content/food-row/food-row.component";
-import {RestaurantFoodsComponent} from "./components/content/restaurant-foods/restaurant-foods.component";
-import {RestaurantTitleComponent} from "./components/content/restaurant-title/restaurant-title.component";
-import {ProfileMenuComponent} from "./components/layout/profile-menu/profile-menu.component";
-import {HighlightSelectorComponent} from "./components/layout/sidebars/highlight-selector/highlight-selector.component";
-import {OptionsComponent} from "./components/layout/sidebars/options/options.component";
-import {RestaurantSelectorComponent} from "./components/layout/sidebars/restaurant-selector/restaurant-selector.component";
-import {TopMenuComponent} from "./components/layout/top-menu/top-menu.component";
+import {AppComponent} from "./app.component";
+import {ContentModule} from "./components/content/content.module";
+import {OptionsModule} from "./components/options/options.module";
+import {PreferenceModule} from "./components/preference/preference.module";
+import {RestaurantSelectorModule} from "./components/restaurant-selector/restaurant-selector.module";
+import {ProfileMenuComponent} from "./layout/profile-menu/profile-menu.component";
+import {TopMenuComponent} from "./layout/top-menu/top-menu.component";
 import {FirebaseModule} from "./shared/modules/firebase.module";
-import {SharedModule} from "./shared/shared.module";
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -30,25 +23,22 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
 @NgModule({
     declarations: [
         AppComponent,
-        RestaurantSelectorComponent,
-        RestaurantFoodsComponent,
-        OptionsComponent,
         ProfileMenuComponent,
-        FoodRowComponent,
-        FoodRowLikesComponent,
-        FoodRowNameComponent,
-        HighlightSelectorComponent,
         TopMenuComponent,
-        ContentComponent,
-        RestaurantTitleComponent,
     ],
     imports: [
-        DragDropModule,
+        // MY MODULES
+        RestaurantSelectorModule,
+        ContentModule,
+        OptionsModule,
+        PreferenceModule,
+
+        // CDK
         LayoutModule,
+
         FirebaseModule,
         BrowserModule,
         FormsModule,
-        SharedModule,
         HttpClientModule,
         TranslateModule.forRoot({
             loader: {

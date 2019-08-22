@@ -1,0 +1,12 @@
+<div class="example-box">
+
+    <i cdkDragHandle class="arrows alternate icon" style="cursor: move; margin-right: .6em;"></i>
+    {{restaurant.name}}
+    <div class="flex-divider"></div>
+    <!--    <i *ngIf="!restaurant.hasActualMenu" title="Menu nie momentálne k dispozícií" class="exclamation icon"></i>-->
+    <i *ngIf="!restaurant.id" class="frown outline icon" style="cursor:help"
+       title="{{'restaurantSelection.onlyIframe' | translate}}"></i>
+    <i *ngIf="restaurant.coordinates" class="map icon" style="cursor:help"
+       title="{{'restaurantSelection.hasCoordinates' | translate}}"></i>
+    <!--                {{ratingService.getLikesFor(restaurant)}}<i style="cursor:help" class="heart icon" ></i>-->
+</div>

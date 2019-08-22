@@ -1,0 +1,19 @@
+
+.example-box {
+    padding: .8em .5em;
+    border-bottom: solid 1px #ccc;
+    color: rgba(0, 0, 0, 0.87);
+    display: flex;
+    user-select: none;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    //cursor: move;
+    background: white;
+    font-size: 14px;
+
+    &:not(.cdk-drag-placeholder) {
+        transition: transform 250ms cubic-bezier(0, 0, 0.2, 1);
+    }
+}
