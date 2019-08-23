@@ -33,7 +33,7 @@ export class RestaurantTitleComponent implements OnInit {
 
     public showMap(restaurant: Restaurant): void {
         const modal = $(".ui.modal.maps");
-        const url = `https://www.google.com/maps/embed/v1/place?&q=${restaurant.coordinates.lat},${restaurant.coordinates.long}&zoom=18&key=${Config.GOOGLE_MAPS_API_EMBED_KEY}`;
+        const url = `https://www.google.com/maps/embed/v1/place?&q=${restaurant.address.latitude},${restaurant.address.longitude}&zoom=18&key=${Config.GOOGLE_MAPS_API_EMBED_KEY}`;
         modal.find("iframe").attr("src", url);
         this.analyticsService.openMap(restaurant.key);
         modal.modal("show");

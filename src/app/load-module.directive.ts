@@ -28,7 +28,6 @@ export class LoadModuleDirective implements OnDestroy {
                 const factory = this.moduleRef.componentFactoryResolver.resolveComponentFactory(
                     rootComponent,
                 );
-                factory.inputs = {}
                 console.log("factory: ", factory);
                 const result = this.vcr.createComponent(factory);
                 console.log("result: ", result);

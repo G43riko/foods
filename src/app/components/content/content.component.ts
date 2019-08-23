@@ -96,12 +96,4 @@ export class ContentComponent implements OnInit {
         //     });
         // });
     }
-
-    public getLinkFor(restaurant: Restaurant): string {
-        if (restaurant.menuLink) {
-            return restaurant.menuLink;
-        }
-
-        return `https://restauracie.sme.sk/restauracia${restaurant.smeRestaurantsLink}`;
-    }
 }

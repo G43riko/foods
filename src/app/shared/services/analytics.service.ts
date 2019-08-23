@@ -46,6 +46,16 @@ export class AnalyticsService {
         });
     }
 
+    public openHomepage(restaurantKey: string): void {
+        gtag("event", "openHomepage", {restaurantKey});
+
+        // OLD
+        gtag("event", "userEvent", {
+            event_category: "openHomepage",
+            event_label: restaurantKey,
+        });
+    }
+
     public addRestaurant(key: string): void {
         gtag("event", "restaurantManagement", {
             event_category: "add",

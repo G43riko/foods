@@ -1,7 +1,7 @@
 import {Injectable} from "@angular/core";
 import {TranslateService} from "@ngx-translate/core";
 import {Restaurant} from "../models/restaurant.model";
-import {Coord, GeoLocationService} from "./geo-location.service";
+import {Address, GeoLocationService} from "./geo-location.service";
 import {RatingService} from "./rating.service";
 
 @Injectable()
@@ -12,7 +12,7 @@ export class RestaurantService {
                        private readonly translateService: TranslateService) {
     }
 
-    public getDistance(coordinates: Coord): string {
+    public getDistance(coordinates: Address): string {
         const distance = this.geoLocationService.distanceFrom(coordinates);
         if (!distance) {
             return this.translateService.instant("distanceCannotBeCalc");

@@ -9,6 +9,7 @@ import {RestaurantTitleComponent} from "./components/restaurant-title/restaurant
 import {ContentComponent} from "./content.component";
 import {SafePipe} from "./pipes/safe.pipe";
 import {SearchFoodPipe} from "./pipes/search-food.pipe";
+import { RestaurantIframeComponent } from './components/restaurant-iframe/restaurant-iframe.component';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import {SearchFoodPipe} from "./pipes/search-food.pipe";
         RestaurantTitleComponent,
         SearchFoodPipe,
         SafePipe,
+        RestaurantIframeComponent,
     ],
     imports: [
         TranslateModule,

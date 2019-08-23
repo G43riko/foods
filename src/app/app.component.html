@@ -4,8 +4,8 @@
     <fds-restaurant-selector (restaurantsChange)="appContent.onRestaurantChanges($event)"></fds-restaurant-selector>
 </div>
 <div *ngIf="authService.user$ | async" [class.wide]="biggerThanTablet" class="ui sidebar vertical very menu options">
-<!--    <fds-options></fds-options>-->
-    <ng-container loadModule="options"></ng-container>
+    <fds-options></fds-options>
+<!--    <ng-container loadModule="options"></ng-container>-->
 </div>
 
 <div class="pusher">

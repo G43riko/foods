@@ -2,24 +2,24 @@ import {Injectable} from "@angular/core";
 import {BehaviorSubject, Observable, of} from "rxjs";
 import {map} from "rxjs/operators";
 
-export interface Coord {
-    lat: number;
-    long: number;
+export interface Address {
+    latitude: number;
+    longitude: number;
 }
 
 @Injectable({
     providedIn: "root",
 })
 export class GeoLocationService {
-    public readonly coordinates: BehaviorSubject<Coord> = new BehaviorSubject<Coord>(null);
+    public readonly coordinates: BehaviorSubject<Address> = new BehaviorSubject<Address>(null);
     private readonly id: number;
 
     public constructor() {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition((position: Position) => {
                 this.coordinates.next({
-                    lat: position.coords.latitude,
-                    long: position.coords.longitude,
+                    latitude: position.coords.latitude,
+                    longitude: position.coords.longitude,
                 });
             }, (error: PositionError) => this.coordinates.error(error));
             // this.id = navigator.geolocation.watchPosition((position: Position) => {
@@ -39,30 +39,30 @@ export class GeoLocationService {
         }
     }
 
-    public distanceAsync(coordinates: Coord): Observable<number> {
+    public distanceAsync(coordinates: Address): Observable<number> {
         if (!coordinates) {
             return of(0);
         }
 
-        return this.coordinates.pipe(map<Coord, number>((myCoordinates: Coord) => {
+        return this.coordinates.pipe(map<Address, number>((myCoordinates: Address) => {
             if (!myCoordinates) {
                 return 0;
             }
 
-            return this.calcCrow(myCoordinates.lat, myCoordinates.long, coordinates.lat, coordinates.long);
+            return this.calcCrow(myCoordinates.latitude, myCoordinates.longitude, coordinates.latitude, coordinates.longitude);
         }));
     }
 
-    public distanceFrom(coordinates?: Coord | null): number {
+    public distanceFrom(coordinates?: Address | null): number {
         return this.distance(coordinates, this.coordinates.value);
     }
 
-    public distance(coordinates?: Coord | null, myCoordinates?: Coord | null): number {
+    public distance(coordinates?: Address | null, myCoordinates?: Address | null): number {
         if (!coordinates || !myCoordinates) {
             return 0;
         }
 
-        return this.calcCrow(myCoordinates.lat, myCoordinates.long, coordinates.lat, coordinates.long);
+        return this.calcCrow(myCoordinates.latitude, myCoordinates.longitude, coordinates.latitude, coordinates.longitude);
     }
 
     private calcCrow(lat1: number, lon1: number, lat2: number, lon2: number): number {

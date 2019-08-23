@@ -5,21 +5,13 @@
 <ng-container *ngIf="restaurants; else: noRestaurants">
     <div *ngIf="restaurants && restaurants.length > 0; else: noSelectedRestaurants" id="foodContent">
         <div *ngFor="let restaurant of restaurants" class="{{counter}}" style="margin-top: 20px;">
-            <fds-restaurant-foods *ngIf="restaurant.id && !restaurant.forceIFrame; else showIframe"
+            <fds-restaurant-foods *ngIf="restaurant.zomatoName && !restaurant.forceIFrame; else showIframe"
                                   [dailyMenus]="dailyMenus"
                                   [highlight]="highlight"
                                   [restaurant]="restaurant"
                                   [searchKey]="searchKey"></fds-restaurant-foods>
             <ng-template #showIframe>
-                <ng-container *ngIf="appService.getConfig('allowIFrames')">
-                    <fds-restaurant-title [restaurant]="restaurant"></fds-restaurant-title>
-                    <div #loader class="ui active centered inline text loader">Loading</div>
-                    <iframe #frame
-                            [src]="getLinkFor(restaurant) | safe"
-                            class="menu-iframe hidden"
-                            (load)="loader.classList.add('hidden'); frame.classList.remove('hidden')"
-                            id="{{restaurant.key + 'Rest'}}"></iframe>
-                </ng-container>
+                <fds-restaurant-iframe [restaurant]="restaurant"></fds-restaurant-iframe>
             </ng-template>
         </div>
     </div>
