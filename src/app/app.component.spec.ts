@@ -1,24 +1,23 @@
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {async, TestBed} from "@angular/core/testing";
-import {TestingModule} from "./shared/modules/testing.module";
-import {SafePipe} from "./components/content/pipes/safe.pipe";
-import {SearchFoodPipe} from "./components/content/pipes/search-food.pipe";
-import {SearchRestaurantPipe} from "./components/restaurant-selector/search-restaurant.pipe";
-import {FoodsExternalService} from "./shared/services/foods-external.service";
-import {StatsService} from "./shared/services/stats.service";
 import {AppComponent} from "./app.component";
-import {ContentComponent} from "./components/content/content.component";
 import {FoodRowLikesComponent} from "./components/content/components/food-row-likes/food-row-likes.component";
 import {FoodRowNameComponent} from "./components/content/components/food-row-name/food-row-name.component";
 import {FoodRowComponent} from "./components/content/components/food-row/food-row.component";
 import {RestaurantFoodsComponent} from "./components/content/components/restaurant-foods/restaurant-foods.component";
 import {RestaurantTitleComponent} from "./components/content/components/restaurant-title/restaurant-title.component";
-import {ProfileMenuComponent} from "./layout/profile-menu/profile-menu.component";
-import {HighlightSelectorComponent} from "./components/preference/highlight-selector/highlight-selector.component";
+import {ContentComponent} from "./components/content/content.component";
+import {SafePipe} from "./components/content/pipes/safe.pipe";
+import {SearchFoodPipe} from "./components/content/pipes/search-food.pipe";
 import {OptionsComponent} from "./components/options/options.component";
-import {RestaurantSelectorComponent} from "./components/restaurant-selector/restaurant-selector.component";
+import {HighlightSelectorComponent} from "./components/preference/highlight-selector/highlight-selector.component";
 import {RestaurantSelectorModule} from "./components/restaurant-selector/restaurant-selector.module";
+import {SearchRestaurantPipe} from "./components/restaurant-selector/search-restaurant.pipe";
+import {ProfileMenuComponent} from "./layout/profile-menu/profile-menu.component";
 import {TopMenuComponent} from "./layout/top-menu/top-menu.component";
+import {TestingModule} from "./shared/modules/testing.module";
+import {FoodsExternalService} from "./shared/services/foods-external.service";
+import {StatsService} from "./shared/services/stats.service";
 
 describe("AppComponent", () => {
     beforeEach(async(() => {
