@@ -1,13 +1,11 @@
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import * as browserRequest from "browser-request";
-import {throwError} from "rxjs";
 import {Observable} from "rxjs/internal/Observable";
 import {of} from "rxjs/internal/observable/of";
 import {catchError, tap} from "rxjs/operators";
 import {Config} from "../../appConfig";
 import {AbstractService} from "./abstract.service";
-import {AppService} from "./app.service";
 import {CoreService} from "./core.service";
 import {NotificationService} from "./notification.service";
 

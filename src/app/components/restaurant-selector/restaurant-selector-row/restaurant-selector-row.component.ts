@@ -10,6 +10,7 @@ export class RestaurantSelectorRowComponent implements OnInit {
     @Input() public restaurant: Restaurant;
 
     public ngOnInit(): void {
+        // empty
     }
 
 }

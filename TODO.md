@@ -36,6 +36,9 @@
  - [ ] pridať možnosť hlasovať za reštauráciu
  - [x] pridať rôzne jazykové mutácie
  - [ ] pridať prehlad reštaurácií
+ - [ ] shared components
+    - [ ] button
+    - [ ] input
  - [x] pridať manifest.json
  - [ ] načítavať informácie o reštauráciách z github súboru
  - [ ] načítavať informácie o jedlách z github súboru 

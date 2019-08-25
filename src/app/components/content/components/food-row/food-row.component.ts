@@ -12,6 +12,9 @@ import {StringUtils} from "../../../../shared/utils/StringUtils";
     selector: "fds-food-row",
     templateUrl: "./food-row.component.html",
     styleUrls: ["./food-row.component.scss"],
+    host: {
+        style: "display: contents",
+    },
 })
 export class FoodRowComponent {
     @Input() public dish: Dish;

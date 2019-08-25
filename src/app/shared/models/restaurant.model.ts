@@ -4,7 +4,7 @@ export class Restaurant {
     public visible: boolean;
     public name: string;
     public key: string;
-    public zomatoName: string;
+    public zomatoId: string;
     public googleMapsId?: string;
     public forceIFrame?: boolean;
     public menuLink?: string;

@@ -1,17 +1,19 @@
 <h1 [class.inverted]="appService.getConfig('inverted')"
-    class="ui {{appService.getConfig('selectedColor')}} header">{{'dailyMenus' | translate}}</h1>
+    class="ui {{appService.getConfig('selectedColor')}} header">
+    {{'dailyMenus' | translate}}
+</h1>
 
 
 <ng-container *ngIf="restaurants; else: noRestaurants">
     <div *ngIf="restaurants && restaurants.length > 0; else: noSelectedRestaurants" id="foodContent">
-        <div *ngFor="let restaurant of restaurants" class="{{counter}}" style="margin-top: 20px;">
-            <fds-restaurant-foods *ngIf="restaurant.zomatoName && !restaurant.forceIFrame; else showIframe"
+        <div *ngFor="let restaurant of restaurants" class="{{counter}} mt-20">
+            <fds-restaurant-foods *ngIf="restaurant.zomatoId && !restaurant.forceIFrame; else showIframe"
                                   [dailyMenus]="dailyMenus"
                                   [highlight]="highlight"
                                   [restaurant]="restaurant"
                                   [searchKey]="searchKey"></fds-restaurant-foods>
             <ng-template #showIframe>
-                <fds-restaurant-iframe [restaurant]="restaurant"></fds-restaurant-iframe>
+                <!--                <fds-restaurant-iframe [restaurant]="restaurant"></fds-restaurant-iframe>-->
             </ng-template>
         </div>
     </div>

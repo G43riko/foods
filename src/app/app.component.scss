@@ -1,4 +1,3 @@
-@import "variables";
 
 .boldFont {
     font-weight: bold;
@@ -11,13 +10,4 @@
 
 frame {
     border: 0;
-}
-
-.pusher {
-    padding: 40px;
-    margin-top: 60px;
-    @media only screen and (max-width: $breakpoint-tablet) {
-        padding: 18px;
-        margin-top: 40px;
-    }
 }

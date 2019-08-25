@@ -3,7 +3,7 @@ import {RestaurantData} from "./src/data/restaurantsData";
 
 fs.writeFileSync("restRes.json", RestaurantData.map((restaurant) => ({
     googleMapsId: restaurant.googleMapsId,
-    zomatoId: restaurant.zomatoName,
+    zomatoId: restaurant.zomatoId,
     restauracieSmeLink: `https://restauracie.sme.sk/restauracia${restaurant.restauracieSmeLink}`,
     key: restaurant.key,
     menuLink: restaurant.menuLink,

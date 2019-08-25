@@ -1,5 +1,6 @@
 import {Component, OnDestroy, OnInit} from "@angular/core";
 import {Subscription} from "rxjs";
+import {delay} from "rxjs/operators";
 import {Colors} from "../../shared/models/colors.enum";
 import {AppService} from "../../shared/services/app.service";
 import {AuthService} from "../../shared/services/auth.service";
@@ -14,17 +15,16 @@ declare const $;
 export class OptionsComponent implements OnInit, OnDestroy {
     public readonly allowedColors: string[] = Object.keys(Colors);
     private readonly userSubscription: Subscription;
+
     public constructor(public readonly appService: AppService,
                        public readonly authService: AuthService) {
-        this.userSubscription = this.authService.user$.subscribe(() => {
-            setTimeout(() => {
-                $(".checkbox").checkbox();
-                $(".ui.dropdown.selected-color").dropdown({
-                    onChange(value): void {
-                        appService.setConfig("selectedColor", (Colors[value] || "") as Colors);
-                    },
-                });
-            }, 100);
+        this.userSubscription = this.authService.user$.pipe(delay(100)).subscribe(() => {
+            $(".checkbox").checkbox();
+            $(".ui.dropdown.selected-color").dropdown({
+                onChange(value): void {
+                    appService.setConfig("selectedColor", (Colors[value] || "") as Colors);
+                },
+            });
         });
     }
 

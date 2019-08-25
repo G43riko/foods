@@ -9,12 +9,13 @@ describe("FoodRowLikesComponent", () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [FoodRowLikesComponent],
+            declarations: [
+                FoodRowLikesComponent,
+            ],
             imports: [
                 TestingModule,
             ],
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {

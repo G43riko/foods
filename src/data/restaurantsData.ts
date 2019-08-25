@@ -2,7 +2,7 @@ import {Restaurant} from "../app/shared/models/restaurant.model";
 
 export const RestaurantData: Restaurant[] = [
     {
-        zomatoName: "16508164",
+        zomatoId: "16508164",
         name: "Astra",
         key: "astra",
         visible: true,
@@ -15,7 +15,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16508094",
+        zomatoId: "16508094",
         name: "Delfín",
         key: "delphine",
         googleMapsId: "ChIJMfW7ai6JbEcRP3iW_eXDfgo",
@@ -28,7 +28,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "18481358",
+        zomatoId: "18481358",
         name: "Lanogi Gurman",
         key: "lanogi",
         googleMapsId: "ChIJV0iLXyWJbEcRQfMI9liL3Oc",
@@ -41,7 +41,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16508016",
+        zomatoId: "16508016",
         name: "Journal",
         key: "journal",
         googleMapsId: "ChIJDWgUJS-JbEcRHuroJcj6vKY",
@@ -54,7 +54,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16508259",
+        zomatoId: "16508259",
         name: "Hamka",
         key: "hamka",
         googleMapsId: "ChIJPaExEi-JbEcRIFkHrgpfK7Y",
@@ -67,7 +67,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "",
+        zomatoId: "",
         name: "Punjabi dhaba",
         key: "punjabiDhaba",
         visible: true,
@@ -78,7 +78,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "17740573",
+        zomatoId: "17740573",
         name: "Budies",
         key: "budies",
         homepage: "http://buddies.sk/",
@@ -91,19 +91,19 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16507668",
+        zomatoId: "16507668",
         name: "Past & Schnitzel - Teta",
         key: "pastaAndSchnitzel",
         visible: true,
     },
     {
-        zomatoName: "16508194",
+        zomatoId: "16508194",
         name: "UMAMI",
         key: "umami",
         visible: true,
     },
     {
-        zomatoName: "16507666",
+        zomatoId: "16507666",
         name: "Presto",
         key: "presto",
         googleMapsId: "ChIJkfYTcy-JbEcREA1kUYLsyHo",
@@ -116,7 +116,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16510021",
+        zomatoId: "16510021",
         name: "Bigger Smack World",
         key: "bigger",
         googleMapsId: "ChIJLwzEkjGJbEcRQDEJvcSU6mI",
@@ -129,7 +129,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16508221",
+        zomatoId: "16508221",
         name: "Solo sole",
         key: "soloSole",
         restauracieSmeLink: "/solo-sole_10036-ruzinov_2980/denne-menu",
@@ -140,7 +140,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16508023",
+        zomatoId: "16508023",
         name: "Sole Mio Pizza",
         key: "soleMio",
         visible: true,
@@ -150,7 +150,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "17937259",
+        zomatoId: "17937259",
         name: "TT Burgers",
         key: "ttBurger",
         googleMapsId: "ChIJt54wlDqJbEcRaE8yz_2jeN4",
@@ -162,7 +162,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "",
+        zomatoId: "",
         name: "Foodoo",
         googleMapsId: "ChIJJS2bEhaJbEcRiKK8pYec7C8",
         key: "foodoo",
@@ -174,7 +174,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16507775",
+        zomatoId: "16507775",
         name: "Rotunda",
         key: "rotunda",
         visible: true,
@@ -184,7 +184,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16516299",
+        zomatoId: "16516299",
         googleMapsId: "ChIJyVJB4SiJbEcRRRcDZpTS9RQ",
         visible: true,
         key: "mlyn",
@@ -196,14 +196,14 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "",
+        zomatoId: "",
         name: "Gastro house",
         key: "gastroHouse",
         visible: false,
         homepage: "https://gastrohouse.sk/",
     },
     {
-        zomatoName: "16507664",
+        zomatoId: "16507664",
         name: "Bastion",
         key: "bastion",
         visible: true,
@@ -213,7 +213,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16507731",
+        zomatoId: "16507731",
         name: "Vivendy",
         key: "vivendy",
         visible: true,
@@ -223,7 +223,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16547738",
+        zomatoId: "16547738",
         name: "Don Quijote",
         key: "donQuijote",
         visible: false,
@@ -233,7 +233,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16508120",
+        zomatoId: "16508120",
         name: "U Zlatého Bažanta",
         key: "uZlatehoBazanta",
         menuLink: "http://www.uzlatehobazanta.sk/denne-menu",
@@ -244,7 +244,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16508074",
+        zomatoId: "16508074",
         name: "Veg Life",
         googleMapsId: "ChIJHV2Umy-JbEcRDkluN8zRk_o",
         key: "vegLife",
@@ -256,7 +256,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16510055",
+        zomatoId: "16510055",
         name: "Lunch break",
         googleMapsId: "ChIJQW01TCWJbEcRwWzhnZJuoPY",
         key: "lunchBreak",
@@ -268,7 +268,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16508365",
+        zomatoId: "16508365",
         name: "Breweria",
         key: "breweria",
         menuLink: "/breweria-slimak_7191-bratislava_2983/denne-menu",
@@ -279,7 +279,7 @@ export const RestaurantData: Restaurant[] = [
         },
     },
     {
-        zomatoName: "16507905",
+        zomatoId: "16507905",
         name: "La Cantina Contadina",
         key: "cantina",
         menuLink: "https://www.cantinacontadina.sk/denne-menu",

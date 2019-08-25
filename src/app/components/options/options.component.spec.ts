@@ -1,5 +1,6 @@
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 import {TestingModule} from "../../shared/modules/testing.module";
+import {OptionCheckboxComponent} from "./option-checkbox/option-checkbox.component";
 
 import {OptionsComponent} from "./options.component";
 
@@ -9,7 +10,10 @@ describe("OptionsComponent", () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [OptionsComponent],
+            declarations: [
+                OptionsComponent,
+                OptionCheckboxComponent,
+            ],
             imports: [
                 TestingModule,
             ],

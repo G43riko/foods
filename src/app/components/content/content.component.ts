@@ -8,9 +8,6 @@ import {FoodsFirebaseService} from "../../shared/services/foods-firebase.service
 import {FoodsService} from "../../shared/services/foods.service";
 import {NotificationService} from "../../shared/services/notification.service";
 import {RestaurantService} from "../../shared/services/restaurant.service";
-import {StatsService} from "../../shared/services/stats.service";
-
-declare const $: any;
 
 @Component({
     selector: "fds-content",
@@ -32,8 +29,7 @@ export class ContentComponent implements OnInit {
                        private readonly restaurantService: RestaurantService,
                        public readonly appService: AppService,
                        private readonly foodsExternalService: FoodsExternalService,
-                       private readonly foodsService: FoodsService,
-                       private readonly statsService: StatsService) {
+                       private readonly foodsService: FoodsService) {
     }
 
     public onRestaurantChanges(selectedRestaurants: Restaurant[]): void {

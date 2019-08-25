@@ -1,4 +1,4 @@
-$breakpoint-mobile: 460px;
+@import "variables";
 
 .ui.icon.input {
     max-width: 400px;
@@ -35,4 +35,9 @@ $breakpoint-mobile: 460px;
         }
     }
 
+}
+
+.g43menu.top {
+    overflow: inherit;
+    z-index: 3;
 }

@@ -1,0 +1,19 @@
+<table>
+    <thead>
+    <tr>
+        <th>Názov</th>
+        <th>Vzdialenosť</th>
+        <th>Adresa</th>
+        <th>Homepage</th>
+        <th>Restauracie sme</th>
+        <th>Zomato ID</th>
+        <th>Visible</th>
+        <th>Menu link</th>
+        <th>Likes</th>
+    </tr>
+    </thead>
+    <tbody>
+    <fds-restaurant-list-row *ngFor="let restaurant of restaurants$ | async"
+                             [restaurant]="restaurant"></fds-restaurant-list-row>
+    </tbody>
+</table>

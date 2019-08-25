@@ -8,25 +8,27 @@
 
         <div class="field">
             <div [class.inverted]="appService.getConfig('inverted')"
-                 class="ui mini icon input"
-                 style="width: 100%">
-                <input [(ngModel)]="searchKey"
+                 class="ui mini icon input full-width">
+                <input #searchModel="ngModel"
+                       class="search-input"
+                       ngModel
                        placeholder="{{'search' | translate}}"
-                       style="height: 42px;" type="text">
+                       type="text">
                 <i class="search icon"></i>
             </div>
         </div>
         <div #todoList="cdkDropList"
              (cdkDropListDropped)="drop($event)"
              [cdkDropListConnectedTo]="[doneList]"
-             [cdkDropListData]="restaurants | searchRestaurantPipe: searchKey"
+             [cdkDropListData]="restaurants | searchRestaurantPipe: searchModel.value"
              cdkDropList
              cdkDropListSortingDisabled
              class="example-list">
-            <fds-restaurant-selector-row *ngFor="let restaurant of restaurants | searchRestaurantPipe: searchKey"
-                                         cdkDrag
-                                         cdkDragBoundary=".restaurant-selector-wrapper"
-                                         [restaurant]="restaurant"></fds-restaurant-selector-row>
+            <fds-restaurant-selector-row
+                *ngFor="let restaurant of restaurants | searchRestaurantPipe: searchModel.value"
+                [restaurant]="restaurant"
+                cdkDrag
+                cdkDragBoundary=".restaurant-selector-wrapper"></fds-restaurant-selector-row>
         </div>
     </div>
 
@@ -46,9 +48,9 @@
                 {{'restaurantSelection.chooseRestaurants' | translate}}
             </div>
             <fds-restaurant-selector-row *ngFor="let restaurant of selectedRestaurants"
+                                         [restaurant]="restaurant"
                                          cdkDrag
-                                         cdkDragBoundary=".restaurant-selector-wrapper"
-                                         [restaurant]="restaurant"></fds-restaurant-selector-row>
+                                         cdkDragBoundary=".restaurant-selector-wrapper"></fds-restaurant-selector-row>
         </div>
     </div>
 </div>

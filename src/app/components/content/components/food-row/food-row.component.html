@@ -3,7 +3,8 @@
         <fds-food-row-name [dish]="dish" [restaurant]="restaurant"></fds-food-row-name>
     </td>
     <td class="right aligned">
-        <fds-food-row-likes *ngIf="!foodService.isBold(dish)" [dish]="dish"
+        <fds-food-row-likes *ngIf="!foodService.isBold(dish)"
+                            [dish]="dish"
                             [restaurant]="restaurant"></fds-food-row-likes>
     </td>
     <td *ngIf="appService.showPrice" class="right aligned">{{dish.price}}</td>

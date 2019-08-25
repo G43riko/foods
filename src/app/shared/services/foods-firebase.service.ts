@@ -52,7 +52,7 @@ export class FoodsFirebaseService {
 
                 // create array of requests
                 const missingRequests = missingRestaurants.map((restaurant) => {
-                    return this.foodsExternalService.getZomatoFoodRaw(restaurant.zomatoName).pipe(
+                    return this.foodsExternalService.getZomatoFoodRaw(restaurant.zomatoId).pipe(
                         switchMap((newDailyMenu) => {
                             return new Observable((subSubject) => this.processNewZomatoMenu(
                                 newDailyMenu,
@@ -82,7 +82,7 @@ export class FoodsFirebaseService {
 
         return new Observable<any>((subject) => {
             const getAndStoreMenu = () => {
-                this.foodsExternalService.getZomatoFoodRaw(restaurant.zomatoName).subscribe((newDailyMenu) => {
+                this.foodsExternalService.getZomatoFoodRaw(restaurant.zomatoId).subscribe((newDailyMenu) => {
                     if (typeof newDailyMenu === "number") {
                         subject.next(newDailyMenu);
                         subject.complete();

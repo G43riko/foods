@@ -9,7 +9,9 @@ describe("FoodRowNameComponent", () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [FoodRowNameComponent],
+            declarations: [
+                FoodRowNameComponent,
+            ],
             imports: [
                 TestingModule,
             ],

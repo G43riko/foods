@@ -1,9 +1,11 @@
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 import {TestingModule} from "../../shared/modules/testing.module";
-import {SearchRestaurantPipe} from "./search-restaurant.pipe";
+import {RestaurantService} from "../../shared/services/restaurant.service";
+import {RestaurantSelectorRowComponent} from "./restaurant-selector-row/restaurant-selector-row.component";
 
 import {RestaurantSelectorComponent} from "./restaurant-selector.component";
+import {SearchRestaurantPipe} from "./search-restaurant.pipe";
 
 describe("RestaurantSelectorComponent", () => {
     let component: RestaurantSelectorComponent;
@@ -14,6 +16,10 @@ describe("RestaurantSelectorComponent", () => {
             declarations: [
                 RestaurantSelectorComponent,
                 SearchRestaurantPipe,
+                RestaurantSelectorRowComponent,
+            ],
+            providers: [
+                RestaurantService,
             ],
             imports: [
                 DragDropModule,

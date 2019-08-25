@@ -1,4 +1,15 @@
-import {Directive, Inject, Injector, Input, NgModuleFactory, NgModuleFactoryLoader, NgModuleRef, OnDestroy, Type, ViewContainerRef} from "@angular/core";
+import {
+    Directive,
+    Inject,
+    Injector,
+    Input,
+    NgModuleFactory,
+    NgModuleFactoryLoader,
+    NgModuleRef,
+    OnDestroy,
+    Type,
+    ViewContainerRef,
+} from "@angular/core";
 import {LAZY_MODULES_MAP, LazyModules} from "./lazy.factory";
 
 type ModuleWithRoot = Type<any> & { rootComponent: Type<any> };

@@ -1,8 +1,6 @@
 <div *ngIf="restaurant.visible">
     <fds-restaurant-title [restaurant]="restaurant"></fds-restaurant-title>
-    <table #restaurantTable
-           (click)="showImage(restaurantTable.getAttribute('title'), restaurantTable.getAttribute('class'));"
-           [class.inverted]="appService.getConfig('inverted')"
+    <table [class.inverted]="appService.getConfig('inverted')"
            class="ui celled table {{appService.getConfig('selectedColor')}} foodTable">
         <tbody>
 
@@ -18,8 +16,7 @@
                 <ng-container *ngFor="let dish of dailyMenus[restaurant.key] | searchFoodPipe: searchKey">
                     <fds-food-row [dish]="dish"
                                   [highlight]="highlight"
-                                  [restaurant]="restaurant"
-                                  style="display: contents"></fds-food-row>
+                                  [restaurant]="restaurant"></fds-food-row>
                 </ng-container>
             </ng-template>
             <ng-template #noMenus>
@@ -30,5 +27,4 @@
         </ng-template>
         </tbody>
     </table>
-
 </div>

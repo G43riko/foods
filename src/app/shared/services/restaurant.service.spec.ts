@@ -10,6 +10,9 @@ describe("RestaurantService", () => {
             FirebaseModule,
             TestingModule,
         ],
+        providers: [
+            RestaurantService,
+        ],
     }));
 
     it("should be created", () => {

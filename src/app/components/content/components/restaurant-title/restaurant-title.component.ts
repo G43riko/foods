@@ -21,8 +21,8 @@ export class RestaurantTitleComponent implements OnInit {
     @Input() public restaurant: Restaurant;
 
     public constructor(public readonly appService: AppService,
-                       private readonly restaurantService: RestaurantService,
-                       private readonly ratingService: RatingService,
+                       public readonly restaurantService: RestaurantService,
+                       public readonly ratingService: RatingService,
                        public readonly getLocationService: GeoLocationService,
                        private readonly analyticsService: AnalyticsService) {
     }
@@ -37,9 +37,5 @@ export class RestaurantTitleComponent implements OnInit {
         modal.find("iframe").attr("src", url);
         this.analyticsService.openMap(restaurant.key);
         modal.modal("show");
-    }
-
-    public openHomepage(restaurant: Restaurant): void {
-        window.open(restaurant.homepage, "__blank");
     }
 }

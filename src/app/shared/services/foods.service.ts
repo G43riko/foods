@@ -1,11 +1,15 @@
 import {Injectable} from "@angular/core";
 import {Config} from "../../appConfig";
 import {Dish} from "../models/dish.model";
+import {AnalyticsService} from "./analytics.service";
 
 @Injectable({
     providedIn: "root",
 })
 export class FoodsService {
+    public constructor(private readonly analyticsService: AnalyticsService) {
+    }
+
     public processZomatoMenu(menu: any): Dish[] {
         if (!menu) {
             return [];
@@ -92,5 +96,14 @@ export class FoodsService {
             }
             dish.name = dish.name.replace(Config.WEIGHT_REGEXP, " ").replace(Config.REGEXP, " ");
         }
+    }
+
+    public openFoodImages(text: string): void {
+        this.analyticsService.showImages(text);
+        window.open(this.getGoogleImagesLinkFor(text), "_blank");
+    }
+
+    private getGoogleImagesLinkFor(dailyMenu: string): string {
+        return `https://www.google.sk/search?q=${encodeURIComponent(dailyMenu)}&tbm=isch`;
     }
 }

@@ -1,8 +1,8 @@
-<div [ngStyle]="{transform: openHighlighter ? 'none' : 'translateX(100%)', 'padding-top.px': deviceIsTabled ? 68 : 48}"
-     class="g43menu right"
-     style="transition: transform 0.3s; transform: translateX(100%)">
+<div [style.transform]="openHighlighter ? 'none' : 'translateX(100%)'"
+     [style.padding-top.px]="deviceIsTabled ? 68 : 48"
+     class="g43menu right">
     <label class="item">{{'highlight.title' | translate}}:</label>
-    <div *ngFor="let item of highlightTypes">
+    <ng-container *ngFor="let item of highlightTypes">
         <div *ngIf="item.visible"
              [title]="item.description"
              class="ui radio checkbox item">
@@ -15,5 +15,5 @@
                    type="radio">
             <label for="radio-{{item.value}}">{{'highlight.category.' + item.key | translate}}</label>
         </div>
-    </div>
+    </ng-container>
 </div>

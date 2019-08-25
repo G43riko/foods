@@ -1,4 +1,4 @@
-<div class="g43menu top" style="overflow: inherit; z-index: 3;">
+<div class="g43menu top">
     <a class="item opener restaurants">
         <i class="bars icon"></i>
     </a>
@@ -6,17 +6,15 @@
         <i class=" sliders horizontal icon"></i>
     </a>
     <div class="item">
-        <label>
-            <div [class.inverted]="appService.getConfig('inverted')"
-                 class="ui icon input {{appService.getConfig('selectedColor')}}">
-                <input [(ngModel)]="searchKey" placeholder="{{'search' | translate}}" type="text">
-                <i class="search icon"></i>
-            </div>
-        </label>
+        <div [class.inverted]="appService.getConfig('inverted')"
+             class="ui icon input {{appService.getConfig('selectedColor')}}">
+            <input [(ngModel)]="searchKey" placeholder="{{'search' | translate}}" type="text">
+            <i class="search icon"></i>
+        </div>
     </div>
     <div class="divider"></div>
-    <a (click)="profileMenu.close(); openHighlighter = !openHighlighter"
-       *ngIf="!authService.isLoading"
+    <a *ngIf="!authService.isLoading"
+       (click)="profileMenu.close(); openHighlighter = !openHighlighter"
        class="item">
         {{'categories' | translate}}
     </a>

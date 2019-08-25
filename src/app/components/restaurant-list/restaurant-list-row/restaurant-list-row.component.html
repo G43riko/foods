@@ -1,0 +1,11 @@
+<tr *ngIf="restaurant">
+    <td>{{restaurant.name}}</td>
+    <td>{{restaurantService.getDistance(restaurant.address)}}</td>
+    <td>{{restaurant.address | json}}</td>
+    <td>{{restaurant.homepage}}</td>
+    <td>{{restaurant.restauracieSmeLink}}</td>
+    <td>{{restaurant.zomatoId}}</td>
+    <td>{{restaurant.visible}}</td>
+    <td>{{restaurant.menuLink}}</td>
+    <td>{{ratingService.getLikesFor(restaurant)}}</td>
+</tr>
