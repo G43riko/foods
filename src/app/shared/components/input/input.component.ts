@@ -6,6 +6,9 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
     templateUrl: "./input.component.html",
     styleUrls: ["./input.component.scss"],
     changeDetection: ChangeDetectionStrategy.OnPush,
+    host: {
+        style: "position: relative;",
+    },
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
@@ -19,6 +22,11 @@ export class InputComponent implements OnInit, ControlValueAccessor {
     @ViewChild("inputElement", {static: true}) private readonly inputElement: ElementRef<HTMLInputElement>;
     @Input() public placeholder: string;
     @Input() public label: string;
+    @Input() public fullWidth: boolean;
+
+    public iconWidth = 30;
+    @Input() public icon: string;
+    @Input() public iconAlign: "left" | "right" = "left";
     public id = "input-" + InputComponent.idCounter++;
     @Input()
     public set disabled(isDisabled: boolean) {
@@ -50,6 +58,9 @@ export class InputComponent implements OnInit, ControlValueAccessor {
     }
 
     public writeValue(obj: any): void {
+        if (!obj) {
+            obj = "";
+        }
         this.inputElement.nativeElement.value = obj;
     }
 }

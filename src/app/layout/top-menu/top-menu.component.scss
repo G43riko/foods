@@ -1,6 +1,6 @@
 @import "variables";
 
-.ui.icon.input {
+.search-input {
     max-width: 400px;
 }
 
@@ -21,7 +21,7 @@
 }
 
 @media only screen and (max-width: $breakpoint-mobile) {
-    .ui.icon.input {
+    .search-input {
         max-width: 110px;
     }
 

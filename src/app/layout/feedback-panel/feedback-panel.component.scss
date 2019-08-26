@@ -6,7 +6,6 @@ $background-color: white;
     position: relative;
     left: 0;
     display: inline-block;
-
     label {
         text-align: left;
         cursor: pointer;
@@ -23,15 +22,17 @@ $background-color: white;
     }
 
     .feedback-panel {
+        max-height: calc(100vh - 50px);
         display: flex;
+        overflow-y: auto;
         position: fixed;
         right: 0;
         background: $background-color;
         border: $border-width solid $border-color;
         border-radius: 3px;
         padding: 1em;
-        min-width: 200px;
-        min-height: 100px;
+        min-width: 300px;
+        min-height: 200px;
         bottom: 0;
         transform: translateX(100%);
 
@@ -41,7 +42,7 @@ $background-color: white;
 
         //display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: end;
         transition: all 0.3s;
         &.open {
             transform: translateX(0);

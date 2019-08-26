@@ -10,13 +10,15 @@
         </i>
     </a>
     <div class="item">
-        <div [class.inverted]="appService.getConfig('inverted')"
-             class="ui icon input {{appService.getConfig('selectedColor')}}">
-            <input [(ngModel)]="searchKey" placeholder="{{'search' | translate}}" type="text">
-            <i class="search icon"></i>
-        </div>
+        <fds-input [(ngModel)]="searchKey"
+                   [class.inverted]="appService.getConfig('inverted')"
+                   [placeholder]="'search' | translate"
+                   icon="search"
+                   class="search-input"
+                   iconAlign="right"></fds-input>
     </div>
     <div class="divider"></div>
+
     <a *ngIf="!authService.isLoading"
        (click)="profileMenu.close(); openHighlighter = !openHighlighter"
        class="item">
@@ -25,17 +27,19 @@
         </i>
         {{'categories' | translate}}
     </a>
+
     <a *ngIf="authService.user$ | async as user" class="item" [class.hidden]="false">
         <i class="material-icons">
             feedback
         </i>
-        <div (click)="feedbackPanelComponent.toggle()" style="position: absolute; width: 100%; height: 100%"></div>
+        <div (click)="feedbackPanelComponent.toggle(); profileMenu.close(); openHighlighter=false;" style="position: absolute; width: 100%; height: 100%"></div>
         <fds-feedback-panel #feedbackPanelComponent [user]="user"></fds-feedback-panel>
     </a>
+
     <div class="item">
         <div *ngIf="authService.isLoading" class="ui active centered inline loader"></div>
         <fds-profile-menu #profileMenu
-                          (onOpen)="openHighlighter=false"
+                          (onOpen)="openHighlighter=false;"
                           [class.hidden]="authService.isLoading"></fds-profile-menu>
     </div>
 </div>

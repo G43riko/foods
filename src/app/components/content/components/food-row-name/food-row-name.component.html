@@ -3,7 +3,7 @@
      [ngClass]="{'ui ribbon label': foodService.isBold(dish)}"
      class="daily-menu row {{appService.getConfig('inverted') || appService.getConfig('selectedColor')}}">
     <strong *ngIf="appService.getConfig('showWeight') && dish.weight">{{dish.weight + ': '}}</strong>
-    <span>{{dish.name}}</span>
+    <span [innerHTML]="dish.name"></span>
     <i *ngIf="!titleCell.classList.contains('ribbon')"
        (click)="foodService.openFoodImages(dish.name)"
        class="question circle icon helper"

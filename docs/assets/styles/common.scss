@@ -24,3 +24,8 @@
 .full-width {
     width: 100%;
 }
+
+.row-space-between {
+    display: flex;
+    justify-content: space-between;
+}
