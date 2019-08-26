@@ -36,6 +36,7 @@
  - [ ] pridať možnosť hlasovať za reštauráciu
  - [x] pridať rôzne jazykové mutácie
  - [ ] pridať prehlad reštaurácií
+ - [ ] pridať validáciu do feedback panelu
  - [ ] kliknutie na riadok tabulky s jedlom
     - [ ] zobrazí obrázok jedla
     - [ ] umožní pridať jedlo medzy oblúbené

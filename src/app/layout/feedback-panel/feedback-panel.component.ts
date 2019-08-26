@@ -71,10 +71,11 @@ export class FeedbackPanelComponent implements OnInit {
         const reviewObject = {
             restaurantName: this.restaurantName.value,
             review: this.review.value,
+            user: this.user.email,
             restaurantHomepage: this.restaurantHomepage.value,
             restaurantMenu: this.restaurantMenu.value,
         };
-        this.firebaseService.sendFeedback(reviewObject).subscribe((data) => {
+        this.firebaseService.sendFeedback(reviewObject).subscribe(() => {
             this.close();
             this.loading = false;
         });
