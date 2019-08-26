@@ -1,9 +1,13 @@
 <div class="g43menu top">
     <a class="item opener restaurants">
-        <i class="bars icon"></i>
+        <i class="material-icons">
+            menu
+        </i>
     </a>
     <a *ngIf="authService.user$ | async" class="item opener options">
-        <i class=" sliders horizontal icon"></i>
+        <i class="material-icons">
+            settings_applications
+        </i>
     </a>
     <div class="item">
         <div [class.inverted]="appService.getConfig('inverted')"
@@ -16,7 +20,17 @@
     <a *ngIf="!authService.isLoading"
        (click)="profileMenu.close(); openHighlighter = !openHighlighter"
        class="item">
+        <i *ngIf="highlight.key !== 'none'" class="material-icons" title="Je zvýraznená kategória jedla">
+            warning
+        </i>
         {{'categories' | translate}}
+    </a>
+    <a *ngIf="authService.user$ | async as user" class="item" [class.hidden]="false">
+        <i class="material-icons">
+            feedback
+        </i>
+        <div (click)="feedbackPanelComponent.toggle()" style="position: absolute; width: 100%; height: 100%"></div>
+        <fds-feedback-panel #feedbackPanelComponent [user]="user"></fds-feedback-panel>
     </a>
     <div class="item">
         <div *ngIf="authService.isLoading" class="ui active centered inline loader"></div>

@@ -36,9 +36,13 @@
  - [ ] pridať možnosť hlasovať za reštauráciu
  - [x] pridať rôzne jazykové mutácie
  - [ ] pridať prehlad reštaurácií
+ - [ ] kliknutie na riadok tabulky s jedlom
+    - [ ] zobrazí obrázok jedla
+    - [ ] umožní pridať jedlo medzy oblúbené
  - [ ] shared components
     - [ ] button
     - [ ] input
+ - [ ] hover na riadok tabulky
  - [x] pridať manifest.json
  - [ ] načítavať informácie o reštauráciách z github súboru
  - [ ] načítavať informácie o jedlách z github súboru 

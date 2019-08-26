@@ -7,7 +7,7 @@
 </div>
 
 <div class="pusher">
-    <fds-top-menu #topMenu [biggerThanTablet]="biggerThanTablet"></fds-top-menu>
+    <fds-top-menu #topMenu [biggerThanTablet]="biggerThanTablet" [highlight]="pageNavBar.highlight"></fds-top-menu>
     <fds-highlight-selector #pageNavBar [openHighlighter]="topMenu.openHighlighter"></fds-highlight-selector>
 
     <fds-content #appContent [highlight]="pageNavBar.highlight" [searchKey]="topMenu.searchKey"></fds-content>

@@ -12,3 +12,13 @@
 .ui.sidebar.vertical {
     overflow-y: hidden !important;
 }
+
+
+
+iframe {
+    &.map {
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+}

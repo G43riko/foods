@@ -1,0 +1,47 @@
+@import "variables";
+label {
+    cursor: pointer;
+}
+input {
+    margin: 0;
+    max-width: 100%;
+    flex: 1 0 auto;
+    outline: 0;
+    text-align: left;
+    line-height: 1.21428571em;
+    font-family: Lato,'Helvetica Neue',Arial,Helvetica,sans-serif;
+    padding: .67857143em 1em;
+    background: #fff;
+    border: 1px solid rgba($primary-color,.15);
+    color: rgba(0,0,0,.87);
+    border-radius: .28571429rem;
+    transition: box-shadow .1s ease,border-color .1s ease;
+    box-shadow: none;
+
+    &:active {
+        border-color: rgba(0,0,0,.3);
+        background: #fafafa;
+        color: rgba(0,0,0,.87);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    &:focus {
+        border-color: $primary-color;
+        background: #fff;
+        color: rgba(0,0,0,.8);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+    }
+
+    &:disabled {
+        opacity: .45;
+    }
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    text-align: left;
+    padding: .3em;
+}

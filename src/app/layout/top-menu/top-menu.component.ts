@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from "@angular/core";
+import {Food} from "../../shared/models/food.model";
 import {AppService} from "../../shared/services/app.service";
 import {AuthService} from "../../shared/services/auth.service";
 
@@ -9,6 +10,7 @@ import {AuthService} from "../../shared/services/auth.service";
 })
 export class TopMenuComponent implements OnInit {
     @Input() public biggerThanTablet: boolean;
+    @Input() public highlight: Food;
     public searchKey: string;
     public openHighlighter = false;
 

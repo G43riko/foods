@@ -1,7 +1,7 @@
 <div *ngIf="restaurant.visible">
     <fds-restaurant-title [restaurant]="restaurant"></fds-restaurant-title>
     <table [class.inverted]="appService.getConfig('inverted')"
-           class="ui celled table {{appService.getConfig('selectedColor')}} foodTable">
+           class="ui celled selectable table {{appService.getConfig('selectedColor')}} foodTable">
         <tbody>
 
         <ng-container *ngIf="!dailyMenus[restaurant.key]; else: isLoaded">

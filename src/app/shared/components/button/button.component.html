@@ -1,0 +1,6 @@
+<button (click)="onClick()" [disabled]="loading" [class.loading]="loading">
+    <div [style.visibility]="loading ? 'hidden' : 'visible'">
+        <span>{{value}}</span>
+        <i *ngIf="icon" class="material-icons">{{icon}}</i>
+    </div>
+</button>

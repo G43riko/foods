@@ -1,0 +1,6 @@
+    <label *ngIf="label" for="{{id}}">{{label}}</label>
+<input #inputElement
+       id="{{id}}"
+       type="text"
+       [placeholder]="placeholder || label"
+       (change)="onChange(inputElement.value)">

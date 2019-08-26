@@ -14,7 +14,8 @@ export class RestaurantIframeComponent implements OnInit {
     public constructor(public readonly appService: AppService) {
     }
 
-    public ngOnInit() {
+    public ngOnInit(): void {
+        // empty
     }
 
     public getLinkFor(restaurant: Restaurant): string {

@@ -1,5 +1,7 @@
 import {Injectable} from "@angular/core";
-import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument} from "@angular/fire/firestore";
+import {AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument, DocumentReference} from "@angular/fire/firestore";
+import {Observable} from "rxjs";
+import {fromPromise} from "rxjs/internal-compatibility";
 import {User} from "../interfaces/user.interface";
 import {Restaurant} from "../models/restaurant.model";
 import {CoreService} from "./core.service";
@@ -20,6 +22,9 @@ export interface FirebaseDailyMenusData {
     [restaurantKey: string]: FirebaseDailyMenuData;
 }
 
+export interface FirebaseFeedbackData {
+    [key: string]: string;
+}
 @Injectable({
     providedIn: "root",
 })
@@ -35,6 +40,9 @@ export class FirebaseService {
 
     public getUsers(): AngularFirestoreCollection<User> {
         return this.afs.collection("users");
+    }
+    public sendFeedback(feedback: FirebaseFeedbackData): Observable<DocumentReference> {
+        return fromPromise(this.afs.collection("feedback").add(feedback));
     }
 
     public getRestaurant(restaurant: Restaurant): AngularFirestoreDocument<FirebaseRestaurantDishesData> {

@@ -1,5 +1,5 @@
 <br>
-<div class="ui pt-10 {{appService.getConfig(key) && 'checked'}} checkbox">
+<div class="ui p-10 {{appService.getConfig(key) && 'checked'}} checkbox">
     <input [(ngModel)]="appService[key]" checked="" id="option-{{key}}" type="checkbox">
     <label for="option-{{key}}">{{'options.' + key | translate}}</label>
 </div>

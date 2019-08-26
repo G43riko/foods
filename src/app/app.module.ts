@@ -14,10 +14,12 @@ import {FoodsComponent} from "./components/foods.component";
 import {OptionsModule} from "./components/options/options.module";
 import {PreferenceModule} from "./components/preference/preference.module";
 import {RestaurantSelectorModule} from "./components/restaurant-selector/restaurant-selector.module";
+import { FeedbackPanelComponent } from "./layout/feedback-panel/feedback-panel.component";
 import {ProfileMenuComponent} from "./layout/profile-menu/profile-menu.component";
 import {TopMenuComponent} from "./layout/top-menu/top-menu.component";
 import {LoadModuleDirective} from "./load-module.directive";
 import {fdsRoutes} from "./routes";
+import {SharedComponentsModule} from "./shared/components/shared-components.module";
 import {FirebaseModule} from "./shared/modules/firebase.module";
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
@@ -31,6 +33,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         TopMenuComponent,
         LoadModuleDirective,
         FoodsComponent,
+        FeedbackPanelComponent,
     ],
     imports: [
         // MY MODULES
@@ -39,6 +42,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         OptionsModule,
         PreferenceModule,
 
+        SharedComponentsModule,
         // CDK
         LayoutModule,
 

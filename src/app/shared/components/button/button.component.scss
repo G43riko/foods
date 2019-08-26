@@ -1,0 +1,72 @@
+@import "variables";
+
+button {
+    padding: 14px 24px;
+    border: 0 none;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    position: relative;
+    background: $primary-color;
+    color: #ffffff;
+    border-radius: .28571429rem;
+
+    width: 100%;
+    justify-content:  center;
+    display: flex;
+    align-items: center;
+
+    &:disabled {
+        opacity: .45;
+    }
+
+    &.loading {
+        &:before {
+            position: absolute;
+            content: '';
+            top: 50%;
+            left: 50%;
+            margin: -.64285714em 0 0 -.64285714em;
+            width: 1.28571429em;
+            height: 1.28571429em;
+            border-radius: 500rem;
+            border: .2em solid rgba(0, 0, 0, .15);
+        }
+
+        &:after {
+            position: absolute;
+            content: '';
+            top: 50%;
+            left: 50%;
+            margin: -.64285714em 0 0 -.64285714em;
+            width: 1.28571429em;
+            height: 1.28571429em;
+            -webkit-animation: button-spin .6s linear;
+            animation: button-spin .6s linear;
+            -webkit-animation-iteration-count: infinite;
+            animation-iteration-count: infinite;
+            border-radius: 500rem;
+            border-color: #fff transparent transparent;
+            border-style: solid;
+            border-width: .2em;
+            -webkit-box-shadow: 0 0 0 1px transparent;
+            box-shadow: 0 0 0 1px transparent;
+        }
+    }
+
+    &:not(.loading) {
+        &:focus, &:active:focus {
+            outline: 0 none;
+        }
+
+        &:hover, &:focus {
+            background: $primary-color-hover;
+        }
+
+        &:active {
+            background: $primary-color-active;
+            box-shadow: none;
+        }
+    }
+}
+

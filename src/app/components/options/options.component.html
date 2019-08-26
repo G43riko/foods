@@ -1,4 +1,4 @@
-<div *ngIf="authService.user$ | async; else notLoggedIn" class="pt-10">
+<div *ngIf="authService.user$ | async; else notLoggedIn" class="p-10">
     <div class="button {{appService.getConfig('selectedColor')}}">
         <label class="select-box-label p-10"
                for="appColor">{{'options.color' | translate}}</label>

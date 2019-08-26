@@ -1,0 +1,24 @@
+<div class="feedback">
+    <div [class.open]="open" class="feedback-panel">
+        <label for="feedbackType"><strong>Typ spätnej väzby</strong></label>
+        <select name="" id="feedbackType" #feedbackType="ngModel" ngModel>
+            <option value="" disabled>Vyberte</option>
+            <option value="text">Recenzia</option>
+            <option value="newRestaurant">Nová reštaurácia</option>
+        </select>
+
+        <ng-container *ngIf="feedbackType.value === 'text'">
+            <label for="review"><strong style="text-align: left">Recenzia</strong> </label>
+
+            <textarea id="review" #textAreaElement [formControl]="review" cols="20" rows="10" style="resize: none"></textarea>
+        </ng-container>
+        <ng-container *ngIf="feedbackType.value === 'newRestaurant'">
+            <fds-input label="Názov reštaurácie" [formControl]="restaurantName"></fds-input>
+            <fds-input label="Link na stránku reštaurácie" [formControl]="restaurantHomepage"></fds-input>
+            <fds-input label="Link na menu reštaurácie" [formControl]="restaurantMenu"></fds-input>
+
+        </ng-container>
+        <fds-button *ngIf="feedbackType.value"
+                    value="Odoslať" [loading]="loading" (click)="sendFeedback()"></fds-button>
+    </div>
+</div>
