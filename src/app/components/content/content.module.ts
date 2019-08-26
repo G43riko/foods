@@ -5,7 +5,7 @@ import {FoodRowLikesComponent} from "./components/food-row-likes/food-row-likes.
 import {FoodRowNameComponent} from "./components/food-row-name/food-row-name.component";
 import {FoodRowComponent} from "./components/food-row/food-row.component";
 import {RestaurantFoodsComponent} from "./components/restaurant-foods/restaurant-foods.component";
-// import {RestaurantIframeComponent} from "./components/restaurant-iframe/restaurant-iframe.component";
+import {RestaurantIframeComponent} from "./components/restaurant-iframe/restaurant-iframe.component";
 import {RestaurantTitleComponent} from "./components/restaurant-title/restaurant-title.component";
 import {ContentComponent} from "./content.component";
 import {SafePipe} from "./pipes/safe.pipe";
@@ -21,7 +21,7 @@ import {SearchFoodPipe} from "./pipes/search-food.pipe";
         RestaurantTitleComponent,
         SearchFoodPipe,
         SafePipe,
-        // RestaurantIframeComponent,
+        RestaurantIframeComponent,
     ],
     imports: [
         TranslateModule,

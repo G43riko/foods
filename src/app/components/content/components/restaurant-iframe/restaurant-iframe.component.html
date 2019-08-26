@@ -1,0 +1,9 @@
+<ng-container *ngIf="appService.getConfig('allowIFrames')">
+    <fds-restaurant-title [restaurant]="restaurant"></fds-restaurant-title>
+    <div #loader class="ui active centered inline text loader">Loading</div>
+    <iframe #frame
+            [src]="getLinkFor(restaurant) | safe"
+            class="menu-iframe hidden"
+            (load)="loader.classList.add('hidden'); frame.classList.remove('hidden')"
+            id="{{restaurant.key + 'Rest'}}"></iframe>
+</ng-container>

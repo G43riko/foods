@@ -6,7 +6,7 @@
         "visible": true,
         "homepage": "http://www.astrapub.sk/",
         "mapsId": "ChIJax7o5C6JbEcRcD2shzoUn_8",
-        "smeRestaurantsLink": "/astra_153-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/astra_153-ruzinov_2980/denne-menu",
         "address": {
             "lat": 48.1488502,
             "long": 17.1445794
@@ -18,7 +18,7 @@
         "key": "delphine",
         "mapsId": "ChIJMfW7ai6JbEcRP3iW_eXDfgo",
         "homepage": "http://restauraciadelfin.sk",
-        "smeRestaurantsLink": "/delfin_717-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/delfin_717-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
             "lat": 48.1498305556,
@@ -31,7 +31,7 @@
         "key": "lanogi",
         "mapsId": "ChIJV0iLXyWJbEcRQfMI9liL3Oc",
         "homepage": "https://www.lanogi.sk/denne-menu",
-        "smeRestaurantsLink": "/lanogi-gurman_9814-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/lanogi-gurman_9814-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
             "lat": 48.146454,
@@ -44,7 +44,7 @@
         "key": "journal",
         "mapsId": "ChIJDWgUJS-JbEcRHuroJcj6vKY",
         "homepage": "http://www.journalrestaurant.sk",
-        "smeRestaurantsLink": "/journal-restaurant_5618-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/journal-restaurant_5618-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
             "lat": 48.1477658,
@@ -58,7 +58,7 @@
         "mapsId": "ChIJPaExEi-JbEcRIFkHrgpfK7Y",
         "homepage": "http://hamka.sk/menu-prievozska/",
         "visible": true,
-        "smeRestaurantsLink": "/hamka-restaurant-pub_8785-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/hamka-restaurant-pub_8785-ruzinov_2980/denne-menu",
         "address": {
             "lat": 48.147451,
             "long": 17.143715
@@ -69,7 +69,7 @@
         "name": "Punjabi dhaba",
         "key": "punjabiDhaba",
         "visible": true,
-        "smeRestaurantsLink": "/punjabi-dhaba-indian-restuarant-prievozska_10022-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/punjabi-dhaba-indian-restuarant-prievozska_10022-ruzinov_2980/denne-menu",
         "address": {
             "lat": 48.147451,
             "long": 17.143715
@@ -81,7 +81,7 @@
         "key": "budies",
         "homepage": "http://buddies.sk/",
         "mapsId": "ChIJq2449i-JbEcRn6qhkVrLx_I",
-        "smeRestaurantsLink": "/buddies_7319-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/buddies_7319-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
             "lat": 48.146922,
@@ -106,7 +106,7 @@
         "key": "presto",
         "mapsId": "ChIJkfYTcy-JbEcREA1kUYLsyHo",
         "homepage": "https://www.restaurantpresto.sk/sk/menu/presto-bbc-i/",
-        "smeRestaurantsLink": "/presto-bbc-i_2406-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/presto-bbc-i_2406-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
             "lat": 48.1472978714,
@@ -119,7 +119,7 @@
         "key": "bigger",
         "mapsId": "ChIJLwzEkjGJbEcRQDEJvcSU6mI",
         "menuLink": "http://bigger.sk/menu/",
-        "smeRestaurantsLink": "/bigger-snack-world_7049-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/bigger-snack-world_7049-ruzinov_2980/denne-menu",
         "visible": false,
         "address": {
             "lat": 48.150972,
@@ -130,7 +130,7 @@
         "zomatoId": "16508221",
         "name": "Solo sole",
         "key": "soloSole",
-        "smeRestaurantsLink": "/solo-sole_10036-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/solo-sole_10036-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
             "lat": 48.146241,
@@ -152,7 +152,7 @@
         "name": "TT Burgers",
         "key": "ttBurger",
         "mapsId": "ChIJt54wlDqJbEcRaE8yz_2jeN4",
-        "smeRestaurantsLink": "/tt-burgers-family-fine-food_8662-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/tt-burgers-family-fine-food_8662-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
             "lat": 48.145503,
@@ -164,7 +164,7 @@
         "name": "Foodoo",
         "mapsId": "ChIJJS2bEhaJbEcRiKK8pYec7C8",
         "key": "foodoo",
-        "smeRestaurantsLink": "/foodoo-prievozska_10461-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/foodoo-prievozska_10461-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
             "lat": 48.1474266,
@@ -187,7 +187,7 @@
         "visible": true,
         "key": "mlyn",
         "name": "Mlyn",
-        "smeRestaurantsLink": "/mlyn-restaurant_1745-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/mlyn-restaurant_1745-ruzinov_2980/denne-menu",
         "address": {
             "lat": 48.147495,
             "long": 17.148525
@@ -258,7 +258,7 @@
         "name": "Lunch break",
         "mapsId": "ChIJQW01TCWJbEcRwWzhnZJuoPY",
         "key": "lunchBreak",
-        "smeRestaurantsLink": "/lunch-break-apollo_9822-ruzinov_2980/denne-menu",
+        "restauracieSmeLink": "/lunch-break-apollo_9822-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
             "lat": 48.1458638889,

@@ -28,9 +28,8 @@ export class RestaurantSelectorComponent implements OnInit, OnDestroy {
     }
 
     public ngOnInit(): void {
-        this.subscription = this.appService
-            .configuration
-            .pipe(switchMap((conf) => this.restaurantService.getRestaurantData().pipe(map((rest) => [conf, rest]))))
+        this.subscription = this.restaurantService.getRestaurantData()
+            .pipe(switchMap((rest) => this.appService.configuration.pipe(map((conf) => [conf, rest]))))
             .subscribe(([configuration, restaurants]: [AppConfiguration, Restaurant[]]) => {
                 this.setRestaurants(configuration.selectedRestaurants, restaurants);
                 this.restaurantsChange.emit(this.selectedRestaurants);
