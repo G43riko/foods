@@ -1,6 +1,7 @@
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 import {TestingModule} from "../../shared/modules/testing.module";
 import {RestaurantService} from "../../shared/services/restaurant.service";
+import {OptionCheckboxComponent} from "../options/option-checkbox/option-checkbox.component";
 import {OptionsComponent} from "../options/options.component";
 import {RestaurantListRowComponent} from "./restaurant-list-row/restaurant-list-row.component";
 
@@ -15,6 +16,7 @@ describe("RestaurantListComponent", () => {
             declarations: [
                 RestaurantListComponent,
                 RestaurantListRowComponent,
+                OptionCheckboxComponent,
                 OptionsComponent,
             ],
             imports: [

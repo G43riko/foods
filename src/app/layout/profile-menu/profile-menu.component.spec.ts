@@ -1,4 +1,5 @@
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import {SharedComponentsModule} from "../../shared/components/shared-components.module";
 import {TestingModule} from "../../shared/modules/testing.module";
 
 import {ProfileMenuComponent} from "./profile-menu.component";
@@ -12,9 +13,9 @@ describe("ProfileMenuComponent", () => {
             declarations: [ProfileMenuComponent],
             imports: [
                 TestingModule,
+                SharedComponentsModule,
             ],
-        })
-            .compileComponents();
+        }).compileComponents();
     }));
 
     beforeEach(() => {

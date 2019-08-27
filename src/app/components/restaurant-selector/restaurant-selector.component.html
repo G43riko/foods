@@ -6,17 +6,13 @@
         <h4 [class.inverted]="appService.getConfig('inverted')"
             class="ui {{appService.getConfig('selectedColor')}} header">{{'restaurantSelection.all' | translate}}</h4>
 
-        <div class="field">
-            <div [class.inverted]="appService.getConfig('inverted')"
-                 class="ui mini icon input full-width">
-                <input #searchModel="ngModel"
-                       class="search-input"
-                       ngModel
-                       placeholder="{{'search' | translate}}"
-                       type="text">
-                <i class="search icon"></i>
-            </div>
-        </div>
+        <fds-input #searchModel="ngModel"
+                   class="search-input"
+                   fullWidth="true"
+                   [placeholder]="'search' | translate"
+                   icon="search"
+                   iconAlign="right"
+                   ngModel></fds-input>
         <div #todoList="cdkDropList"
              (cdkDropListDropped)="drop($event)"
              [cdkDropListConnectedTo]="[doneList]"
@@ -28,7 +24,9 @@
                 *ngFor="let restaurant of restaurants | searchRestaurantPipe: searchModel.value"
                 [restaurant]="restaurant"
                 cdkDrag
-                cdkDragBoundary=".restaurant-selector-wrapper"></fds-restaurant-selector-row>
+                cdkDragBoundary=".restaurant-selector-wrapper">
+                <i cdkDragHandle class="arrows alternate icon"></i>
+            </fds-restaurant-selector-row>
         </div>
     </div>
 
@@ -50,7 +48,9 @@
             <fds-restaurant-selector-row *ngFor="let restaurant of selectedRestaurants"
                                          [restaurant]="restaurant"
                                          cdkDrag
-                                         cdkDragBoundary=".restaurant-selector-wrapper"></fds-restaurant-selector-row>
+                                         cdkDragBoundary=".restaurant-selector-wrapper">
+                <i cdkDragHandle class="arrows alternate icon"></i>
+            </fds-restaurant-selector-row>
         </div>
     </div>
 </div>

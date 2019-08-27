@@ -1,4 +1,4 @@
-<ng-container *ngIf="appService.getConfig('allowIFrames')">
+<ng-container *ngIf="restaurant && appService.getConfig('allowIFrames')">
     <fds-restaurant-title [restaurant]="restaurant"></fds-restaurant-title>
     <div #loader class="ui active centered inline text loader">Loading</div>
     <iframe #frame

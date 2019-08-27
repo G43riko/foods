@@ -1,5 +1,6 @@
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import {SharedComponentsModule} from "../../shared/components/shared-components.module";
 import {TestingModule} from "../../shared/modules/testing.module";
 import {RestaurantService} from "../../shared/services/restaurant.service";
 import {RestaurantSelectorRowComponent} from "./restaurant-selector-row/restaurant-selector-row.component";
@@ -23,6 +24,7 @@ describe("RestaurantSelectorComponent", () => {
             ],
             imports: [
                 DragDropModule,
+                SharedComponentsModule,
                 TestingModule,
             ],
         }).compileComponents();

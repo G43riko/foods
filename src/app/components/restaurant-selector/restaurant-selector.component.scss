@@ -8,9 +8,6 @@ h4, h2, h5 {
     text-align: center
 }
 
-.search-input {
-    height: 42px;
-}
 
 
 .restaurant-selector-wrapper {
@@ -47,7 +44,6 @@ h4, h2, h5 {
             transition: border .1s;
         }
     }
-
 }
 
 .cdk-drag-preview {
@@ -70,3 +66,7 @@ h4, h2, h5 {
     border: 2px dashed black !important;
 }
 
+.cdk-drag-handle {
+    cursor: move;
+    margin-right: .6em;
+}

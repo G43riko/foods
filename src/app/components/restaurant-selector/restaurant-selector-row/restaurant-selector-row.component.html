@@ -1,5 +1,5 @@
 <div *ngIf="restaurant" class="example-box">
-    <i cdkDragHandle class="arrows alternate icon"></i>
+    <ng-content></ng-content>
     {{restaurant.name}}
     <div class="flex-divider"></div>
     <!--    <i *ngIf="!restaurant.hasActualMenu" title="Menu nie momentálne k dispozícií" class="exclamation icon"></i>-->
