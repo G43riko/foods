@@ -5,6 +5,7 @@ import {FormsModule} from "@angular/forms";
 import {BrowserModule} from "@angular/platform-browser";
 import {RouterModule} from "@angular/router";
 import {ServiceWorkerModule} from "@angular/service-worker";
+import {MenuModule} from "@g43/menu";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {environment} from "../environments/environment";
@@ -21,6 +22,10 @@ import {LoadModuleDirective} from "./load-module.directive";
 import {fdsRoutes} from "./routes";
 import {SharedComponentsModule} from "./shared/components/shared-components.module";
 import {FirebaseModule} from "./shared/modules/firebase.module";
+import { MainComponent } from './components/main/main.component';
+import { TopNavComponent } from './components/main/top-nav/top-nav.component';
+import { ProfilePanelComponent } from './layout/profile-panel/profile-panel.component';
+import { ProfileIconComponent } from './components/main/profile-icon/profile-icon.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -34,8 +39,14 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         LoadModuleDirective,
         FoodsComponent,
         FeedbackPanelComponent,
+        MainComponent,
+        TopNavComponent,
+        ProfilePanelComponent,
+        ProfileIconComponent,
     ],
     imports: [
+        MenuModule,
+
         // MY MODULES
         RestaurantSelectorModule,
         ContentModule,

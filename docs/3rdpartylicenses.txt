@@ -299,6 +299,10 @@ Apache-2.0
 @firebase/webchannel-wrapper
 Apache-2.0
 
+@g43/common
+
+@g43/menu
+
 @ngx-translate/core
 MIT
 

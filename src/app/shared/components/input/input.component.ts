@@ -20,29 +20,30 @@ import {ControlValueAccessor, NG_VALUE_ACCESSOR} from "@angular/forms";
 export class InputComponent implements OnInit, ControlValueAccessor {
     private static idCounter = 1;
     @ViewChild("inputElement", {static: true}) private readonly inputElement: ElementRef<HTMLInputElement>;
+
+    public id = "fds-input-" + InputComponent.idCounter++;
+    public iconWidth = 30;
+
     @Input() public placeholder: string;
     @Input() public label: string;
     @Input() public fullWidth: boolean;
-
-    public iconWidth = 30;
     @Input() public icon: string;
     @Input() public iconAlign: "left" | "right" = "left";
-    public id = "input-" + InputComponent.idCounter++;
+
     @Input()
     public set disabled(isDisabled: boolean) {
         this.inputElement.nativeElement.disabled = isDisabled;
     }
-
-    public constructor() {
-    }
-
     public ngOnInit(): void {
+        // empty
     }
 
     public onChange(value: any): void {
+        // empty
     }
 
     public onTouched(value: any): void {
+        // empty
     }
 
     public registerOnChange(fn: any): void {
@@ -58,9 +59,6 @@ export class InputComponent implements OnInit, ControlValueAccessor {
     }
 
     public writeValue(obj: any): void {
-        if (!obj) {
-            obj = "";
-        }
-        this.inputElement.nativeElement.value = obj;
+        this.inputElement.nativeElement.value = obj || "";
     }
 }

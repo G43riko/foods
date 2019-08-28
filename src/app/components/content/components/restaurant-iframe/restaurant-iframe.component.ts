@@ -8,7 +8,6 @@ import {AppService} from "../../../../shared/services/app.service";
     styleUrls: ["./restaurant-iframe.component.scss"],
 })
 export class RestaurantIframeComponent implements OnInit {
-
     @Input() public restaurant: Restaurant;
 
     public constructor(public readonly appService: AppService) {

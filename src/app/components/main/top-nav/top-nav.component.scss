@@ -1,0 +1,11 @@
+@import "variables";
+
+.search-input {
+    max-width: 400px;
+}
+
+@media only screen and (max-width: $breakpoint-mobile) {
+    .search-input {
+        max-width: 110px;
+    }
+}

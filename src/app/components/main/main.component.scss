@@ -1,0 +1,24 @@
+@import "variables";
+
+.pusher {
+    padding: 40px;
+    margin-top: 60px;
+@media only screen and (max-width: $breakpoint-tablet) {
+    padding: 18px;
+    margin-top: 40px;
+}
+}
+
+.ui.sidebar.vertical {
+    overflow-y: hidden !important;
+}
+
+
+
+iframe {
+&.map {
+     position: relative;
+     height: 100%;
+     width: 100%;
+ }
+}

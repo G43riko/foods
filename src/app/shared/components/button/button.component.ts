@@ -18,6 +18,7 @@ export class ButtonComponent implements OnInit {
     @Input() public loading: boolean;
 
     public ngOnInit(): void {
+        // empty
     }
 
     public onClick(): void {

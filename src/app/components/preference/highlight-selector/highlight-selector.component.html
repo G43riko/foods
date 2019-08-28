@@ -1,19 +1,15 @@
-<div [style.transform]="openHighlighter ? 'none' : 'translateX(100%)'"
-     [style.padding-top.px]="deviceIsTabled ? 68 : 48"
-     class="g43menu right">
-    <label class="item">{{'highlight.title' | translate}}:</label>
-    <ng-container *ngFor="let item of highlightTypes">
-        <div *ngIf="item.visible"
-             [title]="item.description"
-             class="ui radio checkbox item">
-            <input (change)="select(item.key)"
-                   [(ngModel)]="highlight"
-                   [value]="item"
-                   checked="checked"
-                   id="radio-{{item.value}}"
-                   name="highlight"
-                   type="radio">
-            <label for="radio-{{item.value}}">{{'highlight.category.' + item.key | translate}}</label>
-        </div>
-    </ng-container>
-</div>
+<label class="item">{{'highlight.title' | translate}}:</label>
+<ng-container *ngFor="let item of highlightTypes">
+    <div *ngIf="item.visible"
+         [title]="item.description"
+         class="ui radio checkbox item">
+        <input (change)="select(item.key)"
+               [(ngModel)]="highlight"
+               [value]="item"
+               checked="checked"
+               id="radio-{{item.value}}"
+               name="highlight"
+               type="radio">
+        <label for="radio-{{item.value}}">{{'highlight.category.' + item.key | translate}}</label>
+    </div>
+</ng-container>

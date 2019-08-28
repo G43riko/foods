@@ -8,8 +8,8 @@
         "mapsId": "ChIJax7o5C6JbEcRcD2shzoUn_8",
         "restauracieSmeLink": "/astra_153-ruzinov_2980/denne-menu",
         "address": {
-            "lat": 48.1488502,
-            "long": 17.1445794
+            "latitude": 48.1488502,
+            "longitude": 17.1445794
         }
     },
     {
@@ -21,8 +21,8 @@
         "restauracieSmeLink": "/delfin_717-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
-            "lat": 48.1498305556,
-            "long": 17.1426194444
+            "latitude": 48.1498305556,
+            "longitude": 17.1426194444
         }
     },
     {
@@ -34,8 +34,8 @@
         "restauracieSmeLink": "/lanogi-gurman_9814-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
-            "lat": 48.146454,
-            "long": 17.140112
+            "latitude": 48.146454,
+            "longitude": 17.140112
         }
     },
     {
@@ -47,8 +47,8 @@
         "restauracieSmeLink": "/journal-restaurant_5618-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
-            "lat": 48.1477658,
-            "long": 17.1453417
+            "latitude": 48.1477658,
+            "longitude": 17.1453417
         }
     },
     {
@@ -60,8 +60,8 @@
         "visible": true,
         "restauracieSmeLink": "/hamka-restaurant-pub_8785-ruzinov_2980/denne-menu",
         "address": {
-            "lat": 48.147451,
-            "long": 17.143715
+            "latitude": 48.147451,
+            "longitude": 17.143715
         }
     },
     {
@@ -71,8 +71,8 @@
         "visible": true,
         "restauracieSmeLink": "/punjabi-dhaba-indian-restuarant-prievozska_10022-ruzinov_2980/denne-menu",
         "address": {
-            "lat": 48.147451,
-            "long": 17.143715
+            "latitude": 48.147451,
+            "longitude": 17.143715
         }
     },
     {
@@ -84,8 +84,8 @@
         "restauracieSmeLink": "/buddies_7319-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
-            "lat": 48.146922,
-            "long": 17.139689
+            "latitude": 48.146922,
+            "longitude": 17.139689
         }
     },
     {
@@ -109,8 +109,8 @@
         "restauracieSmeLink": "/presto-bbc-i_2406-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
-            "lat": 48.1472978714,
-            "long": 17.1427702904
+            "latitude": 48.1472978714,
+            "longitude": 17.1427702904
         }
     },
     {
@@ -122,8 +122,8 @@
         "restauracieSmeLink": "/bigger-snack-world_7049-ruzinov_2980/denne-menu",
         "visible": false,
         "address": {
-            "lat": 48.150972,
-            "long": 17.139479
+            "latitude": 48.150972,
+            "longitude": 17.139479
         }
     },
     {
@@ -133,8 +133,8 @@
         "restauracieSmeLink": "/solo-sole_10036-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
-            "lat": 48.146241,
-            "long": 17.139621
+            "latitude": 48.146241,
+            "longitude": 17.139621
         }
     },
     {
@@ -143,8 +143,8 @@
         "key": "soleMio",
         "visible": true,
         "address": {
-            "lat": 48.1443413376,
-            "long": 17.1169996262
+            "latitude": 48.1443413376,
+            "longitude": 17.1169996262
         }
     },
     {
@@ -155,8 +155,8 @@
         "restauracieSmeLink": "/tt-burgers-family-fine-food_8662-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
-            "lat": 48.145503,
-            "long": 17.13917
+            "latitude": 48.145503,
+            "longitude": 17.13917
         }
     },
     {
@@ -167,8 +167,8 @@
         "restauracieSmeLink": "/foodoo-prievozska_10461-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
-            "lat": 48.1474266,
-            "long": 17.1417926
+            "latitude": 48.1474266,
+            "longitude": 17.1417926
         }
     },
     {
@@ -177,8 +177,8 @@
         "key": "rotunda",
         "visible": true,
         "address": {
-            "lat": 48.1502112866,
-            "long": 17.15051651
+            "latitude": 48.1502112866,
+            "longitude": 17.15051651
         }
     },
     {
@@ -189,8 +189,8 @@
         "name": "Mlyn",
         "restauracieSmeLink": "/mlyn-restaurant_1745-ruzinov_2980/denne-menu",
         "address": {
-            "lat": 48.147495,
-            "long": 17.148525
+            "latitude": 48.147495,
+            "longitude": 17.148525
         }
     },
     {
@@ -206,8 +206,8 @@
         "key": "bastion",
         "visible": true,
         "address": {
-            "lat": 48.1578944444,
-            "long": 17.1268083333
+            "latitude": 48.1578944444,
+            "longitude": 17.1268083333
         }
     },
     {
@@ -216,8 +216,8 @@
         "key": "vivendy",
         "visible": true,
         "address": {
-            "lat": 48.1618346676,
-            "long": 17.1289086342
+            "latitude": 48.1618346676,
+            "longitude": 17.1289086342
         }
     },
     {
@@ -226,19 +226,19 @@
         "key": "donQuijote",
         "visible": false,
         "address": {
-            "lat": 48.1712833333,
-            "long": 17.1271
+            "latitude": 48.1712833333,
+            "longitude": 17.1271
         }
     },
     {
         "zomatoId": "16508120",
-        "name": "U Zlatého Bažanta",
-        "key": "uZlatehoBazanta",
-        "menuLink": "http://www.uzlatehobazanta.sk/denne-menu",
+        "name": "U Zlatitudeého Bažanta",
+        "key": "uZlatitudeehoBazanta",
+        "menuLink": "http://www.uzlatitudeehobazanta.sk/denne-menu",
         "visible": false,
         "address": {
-            "lat": 48.1443699731,
-            "long": 17.1141672134
+            "latitude": 48.1443699731,
+            "longitude": 17.1141672134
         }
     },
     {
@@ -249,8 +249,8 @@
         "homepage": "http://www.veglife.sk/sk/",
         "visible": true,
         "address": {
-            "lat": 48.1472276,
-            "long": 17.1423744
+            "latitude": 48.1472276,
+            "longitude": 17.1423744
         }
     },
     {
@@ -261,8 +261,8 @@
         "restauracieSmeLink": "/lunch-break-apollo_9822-ruzinov_2980/denne-menu",
         "visible": true,
         "address": {
-            "lat": 48.1458638889,
-            "long": 17.1387805556
+            "latitude": 48.1458638889,
+            "longitude": 17.1387805556
         }
     },
     {
@@ -272,8 +272,8 @@
         "menuLink": "/breweria-slimak_7191-bratislava_2983/denne-menu",
         "visible": false,
         "address": {
-            "lat": 48.169819,
-            "long": 17.129387
+            "latitude": 48.169819,
+            "longitude": 17.129387
         }
     },
     {
@@ -283,8 +283,8 @@
         "menuLink": "https://www.cantinacontadina.sk/denne-menu",
         "visible": false,
         "address": {
-            "lat": 48.1637336,
-            "long": 17.1331772
+            "latitude": 48.1637336,
+            "longitude": 17.1331772
         }
     }
 ]

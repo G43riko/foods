@@ -1,0 +1,65 @@
+<g43-menu-container>
+    <g43-menu-top>
+        <g43-menu-item (click)="restaurantSelector.toggle();">
+            <i class="material-icons">
+                menu
+            </i>
+        </g43-menu-item>
+
+        <g43-menu-item (click)="options.toggle();">
+            <i class="material-icons">
+                settings_applications
+            </i>
+        </g43-menu-item>
+
+        <g43-menu-item>
+            <fds-input #searchKey="ngModel"
+                       ngModel
+                       [class.inverted]="appService.getConfig('inverted')"
+                       [placeholder]="'search' | translate"
+                       icon="search"
+                       class="search-input"
+                       iconAlign="right"></fds-input>
+        </g43-menu-item>
+
+        <div class="flex-divider"></div>
+
+        <g43-menu-item (click)="highlightSelector.toggle();">
+            Restaurants
+        </g43-menu-item>
+
+        <g43-menu-item (click)="feedbackDrawer.toggle();">
+            <i class="material-icons">
+                feedback
+            </i>
+        </g43-menu-item>
+
+        <g43-menu-item (click)="loginDrawer.toggle()">
+            <fds-profile-icon></fds-profile-icon>
+        </g43-menu-item>
+    </g43-menu-top>
+
+    <g43-menu-drawer #loginDrawer align="right">
+        <fds-profile-panel></fds-profile-panel>
+    </g43-menu-drawer>
+
+    <g43-menu-drawer #feedbackDrawer align="right">
+        <fds-feedback-panel></fds-feedback-panel>
+    </g43-menu-drawer>
+
+    <g43-menu-drawer #highlightSelector align="right">
+        <fds-highlight-selector #pageNavBar></fds-highlight-selector>
+    </g43-menu-drawer>
+
+    <g43-menu-drawer #restaurantSelector width="400">
+        <fds-restaurant-selector (restaurantsChange)="appContent.onRestaurantChanges($event)"></fds-restaurant-selector>
+    </g43-menu-drawer>
+
+    <g43-menu-drawer #options width="220">
+        <fds-options></fds-options>
+    </g43-menu-drawer>
+
+    <g43-menu-content>
+        <fds-content #appContent [highlight]="pageNavBar.highlight" [searchKey]="searchKey.value"></fds-content>
+    </g43-menu-content>
+</g43-menu-container>

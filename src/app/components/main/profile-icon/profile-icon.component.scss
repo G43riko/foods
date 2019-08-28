@@ -1,0 +1,12 @@
+$avatar-size: 32px;
+
+img {
+    width: $avatar-size;
+    height: $avatar-size;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
+    }
+}

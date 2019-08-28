@@ -8,7 +8,7 @@
 
 <div class="pusher">
     <fds-top-menu #topMenu [biggerThanTablet]="biggerThanTablet" [highlight]="pageNavBar.highlight"></fds-top-menu>
-    <fds-highlight-selector #pageNavBar [openHighlighter]="topMenu.openHighlighter"></fds-highlight-selector>
+    <fds-preference-wrapper #pageNavBar [openHighlighter]="topMenu.openHighlighter"></fds-preference-wrapper>
 
     <fds-content #appContent [highlight]="pageNavBar.highlight" [searchKey]="topMenu.searchKey"></fds-content>
     <!--    <ng-container loadModule="content"></ng-container>-->
