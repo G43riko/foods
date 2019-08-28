@@ -2,6 +2,7 @@ import {CommonModule} from "@angular/common";
 import {HttpClientTestingModule} from "@angular/common/http/testing";
 import {NgModule} from "@angular/core";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {RouterTestingModule} from "@angular/router/testing";
 import {TranslateModule, TranslateService} from "@ngx-translate/core";
 import {TranslateMockService} from "../tests/translate-mock.service";
 import {FirebaseModule} from "./firebase.module";
@@ -20,6 +21,7 @@ import {FirebaseModule} from "./firebase.module";
         FormsModule,
         ReactiveFormsModule,
         FirebaseModule,
+        RouterTestingModule,
         HttpClientTestingModule,
     ],
 })

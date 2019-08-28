@@ -20,6 +20,7 @@ import {FoodsComponent} from "./foods.component";
 import {OptionCheckboxComponent} from "./options/option-checkbox/option-checkbox.component";
 import {OptionsComponent} from "./options/options.component";
 import {HighlightSelectorComponent} from "./preference/highlight-selector/highlight-selector.component";
+import {PreferenceWrapperComponent} from "./preference/preference-wrapper/preference-wrapper.component";
 import {RestaurantSelectorRowComponent} from "./restaurant-selector/restaurant-selector-row/restaurant-selector-row.component";
 import {RestaurantSelectorComponent} from "./restaurant-selector/restaurant-selector.component";
 import {SearchRestaurantPipe} from "./restaurant-selector/search-restaurant.pipe";
@@ -35,6 +36,7 @@ describe("FoodsComponent", () => {
                 RestaurantSelectorComponent,
                 OptionCheckboxComponent,
                 OptionsComponent,
+                PreferenceWrapperComponent,
                 TopMenuComponent,
                 RestaurantIframeComponent,
                 FeedbackPanelComponent,
