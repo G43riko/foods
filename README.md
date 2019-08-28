@@ -1,8 +1,9 @@
 # Foods
-
+## https://g43riko.github.io/foods
 ![dependencies](https://img.shields.io/david/g43riko/foods?style=flat-square)
 ![code size](https://img.shields.io/github/languages/code-size/g43riko/foods)
 ![reposistory size](https://img.shields.io/github/repo-size/g43riko/foods)
+![website status](https://img.shields.io/website/https/g43riko.github.io/foods)
 - **Restaurants**
     - astra
         - **Likes**
