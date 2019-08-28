@@ -1,5 +1,8 @@
 # Foods
 
+![dependencies](https://img.shields.io/david/g43riko/foods?style=flat-square)
+![code size](https://img.shields.io/github/languages/code-size/g43riko/foods)
+![reposistory size](https://img.shields.io/github/repo-size/g43riko/foods)
 - **Restaurants**
     - astra
         - **Likes**
