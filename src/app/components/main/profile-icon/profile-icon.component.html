@@ -4,7 +4,7 @@
 <img *ngIf="authService.user$ |async as user; else loginPage"
      [class.hidden]="authService.isLoading"
      [src]="user.photoURL" alt="Avatar picture">
-<ng-template #loginPage>
+<ng-template *ngIf="authService.isLoading" #loginPage>
     <i class="material-icons">
         account_circle
     </i>

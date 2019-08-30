@@ -12,20 +12,21 @@ import {environment} from "../environments/environment";
 import {AppComponent} from "./app.component";
 import {ContentModule} from "./components/content/content.module";
 import {FoodsComponent} from "./components/foods.component";
+import { MainComponent } from "./components/main/main.component";
+import { ProfileIconComponent } from "./components/main/profile-icon/profile-icon.component";
+import { TopNavComponent } from "./components/main/top-nav/top-nav.component";
 import {OptionsModule} from "./components/options/options.module";
 import {PreferenceModule} from "./components/preference/preference.module";
 import {RestaurantSelectorModule} from "./components/restaurant-selector/restaurant-selector.module";
+import {FeedbackContentComponent} from "./layout/feedback-content/feedback-content.component";
 import { FeedbackPanelComponent } from "./layout/feedback-panel/feedback-panel.component";
 import {ProfileMenuComponent} from "./layout/profile-menu/profile-menu.component";
+import { ProfilePanelComponent } from "./layout/profile-panel/profile-panel.component";
 import {TopMenuComponent} from "./layout/top-menu/top-menu.component";
 import {LoadModuleDirective} from "./load-module.directive";
 import {fdsRoutes} from "./routes";
 import {SharedComponentsModule} from "./shared/components/shared-components.module";
 import {FirebaseModule} from "./shared/modules/firebase.module";
-import { MainComponent } from './components/main/main.component';
-import { TopNavComponent } from './components/main/top-nav/top-nav.component';
-import { ProfilePanelComponent } from './layout/profile-panel/profile-panel.component';
-import { ProfileIconComponent } from './components/main/profile-icon/profile-icon.component';
 
 export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
     return new TranslateHttpLoader(http, "./assets/i18n/", ".json");
@@ -43,6 +44,7 @@ export function HttpLoaderFactory(http: HttpClient): TranslateHttpLoader {
         TopNavComponent,
         ProfilePanelComponent,
         ProfileIconComponent,
+        FeedbackContentComponent,
     ],
     imports: [
         MenuModule,

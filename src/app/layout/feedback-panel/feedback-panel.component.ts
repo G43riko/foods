@@ -4,8 +4,8 @@ import {Observable, of} from "rxjs";
 import {delay, tap} from "rxjs/operators";
 import {User} from "../../shared/interfaces/user.interface";
 import {FirebaseService} from "../../shared/services/firebase.service";
+import {FeedbackContentComponent} from "../feedback-content/feedback-content.component";
 
-declare const $: any;
 
 @Component({
     selector: "fds-feedback-panel",
@@ -15,26 +15,14 @@ declare const $: any;
 export class FeedbackPanelComponent implements OnInit {
     public open = false;
     public closing = false;
-    public readonly restaurantName = new FormControl();
-    public readonly restaurantHomepage = new FormControl();
-    public readonly restaurantMenu = new FormControl();
-    public readonly review = new FormControl();
-    public reviewType = "";
+
     @Output() public readonly onOpen = new EventEmitter();
     @Input() public user: User;
     @ViewChild("textAreaElement", {static: false}) private readonly textAreaElement: ElementRef<HTMLTextAreaElement>;
-    public loading = false;
+    @ViewChild(FeedbackContentComponent, {static: false}) private readonly content: FeedbackContentComponent;
 
-    public constructor(private readonly firebaseService: FirebaseService) {
-
-    }
 
     public ngOnInit(): void {
-        $(".ui.dropdown.language.review-type").dropdown({
-            onChange: (value) => {
-                this.reviewType = value;
-            },
-        });
     }
 
     public toggle(): void {
@@ -54,30 +42,8 @@ export class FeedbackPanelComponent implements OnInit {
         this.open = false;
 
         of("").pipe(delay(333)).subscribe(() => {
-            this.reviewType = "";
+            this.content.reset();
             this.closing = false;
-            this.restaurantName.reset();
-            this.review.reset();
-            this.restaurantHomepage.reset();
-            this.restaurantMenu.reset();
-        });
-    }
-
-    public sendFeedback(): void {
-        if (this.loading) {
-            return;
-        }
-        this.loading = true;
-        const reviewObject = {
-            restaurantName: this.restaurantName.value,
-            review: this.review.value,
-            user: this.user.email,
-            restaurantHomepage: this.restaurantHomepage.value,
-            restaurantMenu: this.restaurantMenu.value,
-        };
-        this.firebaseService.sendFeedback(reviewObject).subscribe(() => {
-            this.close();
-            this.loading = false;
         });
     }
 }

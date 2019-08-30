@@ -6,20 +6,6 @@ $background-color: white;
     position: relative;
     left: 0;
     display: inline-block;
-    label {
-        text-align: left;
-        cursor: pointer;
-    }
-    img {
-        width: $avatar-size;
-        height: $avatar-size;
-        border-radius: 50%;
-        cursor: pointer;
-
-        &:hover {
-            box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.1);
-        }
-    }
 
     .feedback-panel {
         max-height: calc(100vh - 50px);
@@ -36,13 +22,7 @@ $background-color: white;
         bottom: 0;
         transform: translateX(100%);
 
-        & > *:not(:last-child) {
-            margin-bottom: 1em;
-        }
 
-        //display: flex;
-        flex-direction: column;
-        justify-content: end;
         transition: all 0.3s;
         &.open {
             transform: translateX(0);

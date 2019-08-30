@@ -25,7 +25,10 @@
         <div class="flex-divider"></div>
 
         <g43-menu-item (click)="highlightSelector.toggle();">
-            Restaurants
+<!--            Restaurants-->
+            <i class="material-icons">
+                category
+            </i>
         </g43-menu-item>
 
         <g43-menu-item (click)="feedbackDrawer.toggle();">
@@ -39,12 +42,12 @@
         </g43-menu-item>
     </g43-menu-top>
 
-    <g43-menu-drawer #loginDrawer align="right">
+    <g43-menu-drawer #loginDrawer align="right" style="padding: 1rem">
         <fds-profile-panel></fds-profile-panel>
     </g43-menu-drawer>
 
-    <g43-menu-drawer #feedbackDrawer align="right">
-        <fds-feedback-panel></fds-feedback-panel>
+    <g43-menu-drawer #feedbackDrawer align="right" width="250" style="padding: 1rem">
+        <fds-feedback-content *ngIf="authService.user$ | async as user" [user]="user" (close)="feedbackDrawer.close()"></fds-feedback-content>
     </g43-menu-drawer>
 
     <g43-menu-drawer #highlightSelector align="right">

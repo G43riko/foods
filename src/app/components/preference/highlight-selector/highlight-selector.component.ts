@@ -8,6 +8,9 @@ import {AppService} from "../../../shared/services/app.service";
     selector: "fds-highlight-selector",
     templateUrl: "./highlight-selector.component.html",
     styleUrls: ["./highlight-selector.component.scss"],
+    host: {
+        style: "display: flex;flex-direction: column;",
+    },
 })
 export class HighlightSelectorComponent implements OnInit {
     public highlightTypes: Food[] = FoodData;

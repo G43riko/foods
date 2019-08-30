@@ -2,6 +2,8 @@ import {Component, OnInit} from "@angular/core";
 import {AppService} from "../../shared/services/app.service";
 import {AuthService} from "../../shared/services/auth.service";
 
+declare const $: any;
+
 @Component({
     selector: "fds-profile-panel",
     templateUrl: "./profile-panel.component.html",
@@ -30,6 +32,11 @@ export class ProfilePanelComponent implements OnInit {
     }
 
     public ngOnInit() {
+        setTimeout(() => $(".ui.dropdown.language.profile").dropdown({
+            onChange: (language) => {
+                this.appService.setConfig("language", language);
+            },
+        }), 1000);
     }
 
 }

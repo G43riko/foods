@@ -1,0 +1,36 @@
+
+<label for="feedbackType"><strong>Typ spätnej väzby</strong></label>
+<div class="ui fluid selection dropdown language review-type">
+    <input value=""
+           id="feedbackType"
+           name="country"
+           type="hidden">
+    <div class="default text disabled">Vyberte</div>
+    <div class="menu">
+        <div data-value="text" class="item">Recenzia</div>
+        <div data-value="newRestaurant" class="item">Nová reštaurácia</div>
+    </div>
+</div>
+
+<div *ngIf="reviewType === 'text'" class="area-wrapper">
+    <label for="review"><strong style="text-align: left">Recenzia</strong> </label>
+
+    <textarea id="review" #textAreaElement [formControl]="review" cols="20" rows="10"
+              style="resize: none"></textarea>
+</div>
+<ng-container *ngIf="reviewType === 'newRestaurant'">
+    <fds-input label="Názov reštaurácie" fullWidth="true" [formControl]="restaurantName"></fds-input>
+    <fds-input label="Link na stránku reštaurácie" fullWidth="true" [formControl]="restaurantHomepage"></fds-input>
+    <fds-input label="Link na menu reštaurácie" fullWidth="true" [formControl]="restaurantMenu"></fds-input>
+</ng-container>
+
+<div class="row-space-between">
+    <fds-button value="Zavrieť"
+                inline="true"
+                (click)="close.emit()"></fds-button>
+    <fds-button *ngIf="reviewType"
+                value="Odoslať"
+                inline="true"
+                [loading]="loading"
+                (click)="sendFeedback()"></fds-button>
+</div>
