@@ -29,7 +29,7 @@
         "@angular/pwa": "^0.802.2",
         "@angular/router": "^8.2.2",
         "@g43/common": "0.0.7",
-        "@g43/menu": "0.0.10",
+        "@g43/menu": "0.0.11",
         "@ngx-translate/core": "^11.0.1",
         "@ngx-translate/http-loader": "^4.0.0",
         "browser-request": "^0.3.3",
