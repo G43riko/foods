@@ -26,9 +26,11 @@
     <!--            account_circle-->
     <!--        </i>-->
     <fds-button (click)="authService.githubSigning()"
+                id="profile-panel-login-github"
                 [class.inverted]="appService.getConfig('inverted')"
                 value="Github"></fds-button>
     <fds-button (click)="authService.googleSigning()"
+                id="profile-panel-login-google"
                 [class.inverted]="appService.getConfig('inverted')"
                 value="Google"></fds-button>
 </ng-template>

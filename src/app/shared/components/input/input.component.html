@@ -5,7 +5,7 @@
        [placeholder]="placeholder || label"
        [style.padding-left.px]="icon && iconAlign === 'left' ? iconWidth : 10"
        [style.padding-right.px]="icon && iconAlign === 'right' ? iconWidth : 10"
-       [style.width]="fullWidth ?'100%' : 'auto'"
+       [style.width]="fullWidth ? '100%' : 'auto'"
        (input)="onChange(inputElement.value)">
 
 <i *ngIf="icon"

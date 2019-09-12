@@ -19,7 +19,7 @@
              [cdkDropListData]="restaurants | searchRestaurantPipe: searchModel.value"
              cdkDropList
              cdkDropListSortingDisabled
-             class="example-list">
+             class="all-restaurants">
             <fds-restaurant-selector-row
                 *ngFor="let restaurant of restaurants | searchRestaurantPipe: searchModel.value"
                 [restaurant]="restaurant"
@@ -40,7 +40,7 @@
              [cdkDropListConnectedTo]="[todoList]"
              [cdkDropListData]="selectedRestaurants"
              cdkDropList
-             class="example-list"
+             class="selected-restaurants"
              style="max-height: calc(100vh - 94px);">
             <div *ngIf="selectedRestaurants.length === 0" style="padding: .8em .5em;">
                 {{'restaurantSelection.chooseRestaurants' | translate}}

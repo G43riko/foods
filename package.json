@@ -10,6 +10,7 @@
         "build:prod": "ng build --configuration=prod",
         "build:github": "ng build --configuration=prod --outputPath=docs",
         "postinstall": "npm run build:prod",
+        "cypress:open": "cypress open",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"
@@ -34,6 +35,7 @@
         "@ngx-translate/http-loader": "^4.0.0",
         "browser-request": "^0.3.3",
         "core-js": "^3.2.1",
+        "cypress": "^3.4.1",
         "firebase": "^6.4.0",
         "gtools": "^0.2.8",
         "npm-check-updates": "^3.1.21",
