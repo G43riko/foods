@@ -1,5 +1,6 @@
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import {FeedbackContentComponent} from "../layout/feedback-content/feedback-content.component";
 import {FeedbackPanelComponent} from "../layout/feedback-panel/feedback-panel.component";
 import {ProfileMenuComponent} from "../layout/profile-menu/profile-menu.component";
 import {TopMenuComponent} from "../layout/top-menu/top-menu.component";
@@ -52,6 +53,7 @@ describe("FoodsComponent", () => {
                 FoodRowComponent,
                 FoodRowNameComponent,
                 FoodRowLikesComponent,
+                FeedbackContentComponent,
             ],
             providers: [
                 RestaurantService,

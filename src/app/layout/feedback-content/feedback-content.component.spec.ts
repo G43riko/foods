@@ -1,4 +1,7 @@
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
+import {InputComponent} from "../../shared/components/input/input.component";
+import {SharedComponentsModule} from "../../shared/components/shared-components.module";
+import {TestingModule} from "../../shared/modules/testing.module";
 
 import {FeedbackContentComponent} from "./feedback-content.component";
 
@@ -8,7 +11,13 @@ describe("FeedbackContentComponent", () => {
 
     beforeEach(async(() => {
         TestBed.configureTestingModule({
-            declarations: [FeedbackContentComponent],
+            declarations: [
+                FeedbackContentComponent,
+            ],
+            imports: [
+                SharedComponentsModule,
+                TestingModule,
+            ],
         }).compileComponents();
     }));
 

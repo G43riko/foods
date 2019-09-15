@@ -1,6 +1,7 @@
 import {DragDropModule} from "@angular/cdk/drag-drop";
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 import {MenuModule} from "@g43/menu";
+import {FeedbackContentComponent} from "../../layout/feedback-content/feedback-content.component";
 import {FeedbackPanelComponent} from "../../layout/feedback-panel/feedback-panel.component";
 import {ProfilePanelComponent} from "../../layout/profile-panel/profile-panel.component";
 import {SharedComponentsModule} from "../../shared/components/shared-components.module";
@@ -34,6 +35,7 @@ describe("MainComponent", () => {
             declarations: [
                 MainComponent,
                 ProfilePanelComponent,
+                FeedbackContentComponent,
                 FeedbackPanelComponent,
                 ProfileIconComponent,
                 HighlightSelectorComponent,
