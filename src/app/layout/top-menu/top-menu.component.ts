@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from "@angular/core";
 import {Food} from "../../shared/models/food.model";
 import {AppService} from "../../shared/services/app.service";
 import {AuthService} from "../../shared/services/auth.service";
+import {RemoteConfigService} from "../../shared/services/remote-config.service";
 
 @Component({
     selector: "fds-top-menu",
@@ -15,6 +16,7 @@ export class TopMenuComponent implements OnInit {
     public openHighlighter = false;
 
     public constructor(public readonly appService: AppService,
+                       public readonly remoteConfigService: RemoteConfigService,
                        public readonly authService: AuthService) {
     }
 

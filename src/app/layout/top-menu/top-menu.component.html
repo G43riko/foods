@@ -19,7 +19,7 @@
     </div>
     <div class="divider"></div>
 
-    <a *ngIf="!authService.isLoading"
+    <a *ngIf="!authService.isLoading && remoteConfigService.allowHighlightMenu"
        (click)="profileMenu.close(); openHighlighter = !openHighlighter"
        class="item">
         <i *ngIf="highlight.key !== 'none'" class="material-icons" title="Je zvýraznená kategória jedla">
