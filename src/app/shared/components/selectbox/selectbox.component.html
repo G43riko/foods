@@ -1,0 +1,15 @@
+<div *ngIf="opened" (click)="close()" class="backdrop"></div>
+<div class="selectbox">
+    <div *ngIf="label" class="label">{{label}}</div>
+    <div style="flex: 1 1 auto; position: relative;">
+        <div (click)="open()" class="selected-value" tabindex="0">{{visibleValue}}</div>
+        <div *ngIf="opened" class="select">
+            <div *ngFor="let value of values, let i=index"
+                 class="option"
+                 (mouseenter)="focusIndex = i"
+                 [class.focused]="focusIndex===i"
+                 (click)="setValue(value); close()">{{value}}
+            </div>
+        </div>
+    </div>
+</div>

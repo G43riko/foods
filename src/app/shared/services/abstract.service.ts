@@ -26,8 +26,6 @@ export abstract class AbstractService<T = any> {
     }
 
     private getHeader(): HttpHeaders {
-        const headers = new HttpHeaders();
-
-        return headers;
+        return new HttpHeaders();
     }
 }

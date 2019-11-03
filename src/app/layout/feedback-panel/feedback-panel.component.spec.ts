@@ -1,6 +1,5 @@
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
 import {SafePipe} from "../../components/content/pipes/safe.pipe";
-import {InputComponent} from "../../shared/components/input/input.component";
 import {SharedComponentsModule} from "../../shared/components/shared-components.module";
 import {TestingModule} from "../../shared/modules/testing.module";
 import {FeedbackContentComponent} from "../feedback-content/feedback-content.component";

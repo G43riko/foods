@@ -1,5 +1,4 @@
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {TranslateModule} from "@ngx-translate/core";
 import {SharedComponentsModule} from "../../shared/components/shared-components.module";
 import {FirebaseModule} from "../../shared/modules/firebase.module";
 import {TestingModule} from "../../shared/modules/testing.module";

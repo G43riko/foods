@@ -1,14 +1,10 @@
 @import "variables";
 
-
-label {
-    cursor: pointer;
-}
-
-input {
+.fds-input {
     margin: 0;
     max-width: 100%;
     flex: 1 0 auto;
+    position: relative;
     outline: 0;
     text-align: left;
     line-height: $input-height;
@@ -46,34 +42,47 @@ input {
     }
 }
 
-
-i {
-    position: absolute;
-    top: 0;
-    line-height: 1;
-    pointer-events: none;
-    height: 100%;
+.selectbox {
+    position: relative;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: rgba(0, 0, 0, .37);
-    transition: color 0.3s;
-}
+    flex-wrap: wrap;
+    justify-content: space-between;
 
-input:focus ~ i {
-    color: rgba(0, 0, 0, .8);
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    text-align: left;
-    padding: .3em;
-}
-
-
-@media only screen and (max-width: $breakpoint-tablet) {
-    input {
-        padding: .37857143em .7em;
+    .selected-value {
+        cursor: pointer;
+        @extend .fds-input;
     }
+
+    .label {
+        padding: 0 $input-padding/2;
+    }
+
+    .select {
+        @extend .fds-input;
+        padding: $input-padding/2 0;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+        right: 0;
+        max-height: 200px;
+        overflow-y: auto;
+
+        .option {
+            cursor: pointer;
+            padding: $input-padding/2 1em;
+
+            &.focused {
+                background: $primary-color-hover;
+            }
+        }
+    }
+}
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
 }

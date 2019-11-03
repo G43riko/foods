@@ -1,11 +1,8 @@
 import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from "@angular/core";
-import {FormControl} from "@angular/forms";
-import {Observable, of} from "rxjs";
-import {delay, tap} from "rxjs/operators";
+import {of} from "rxjs";
+import {delay} from "rxjs/operators";
 import {User} from "../../shared/interfaces/user.interface";
-import {FirebaseService} from "../../shared/services/firebase.service";
 import {FeedbackContentComponent} from "../feedback-content/feedback-content.component";
-
 
 @Component({
     selector: "fds-feedback-panel",
@@ -20,7 +17,6 @@ export class FeedbackPanelComponent implements OnInit {
     @Input() public user: User;
     @ViewChild("textAreaElement", {static: false}) private readonly textAreaElement: ElementRef<HTMLTextAreaElement>;
     @ViewChild(FeedbackContentComponent, {static: false}) private readonly content: FeedbackContentComponent;
-
 
     public ngOnInit(): void {
     }

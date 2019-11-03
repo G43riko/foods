@@ -1,5 +1,4 @@
 import {async, ComponentFixture, TestBed} from "@angular/core/testing";
-import {InputComponent} from "../../shared/components/input/input.component";
 import {SharedComponentsModule} from "../../shared/components/shared-components.module";
 import {TestingModule} from "../../shared/modules/testing.module";
 

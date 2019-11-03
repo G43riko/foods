@@ -10,6 +10,9 @@
         </i>
     </a>
     <div class="item">
+        <fds-selectbox [values]="['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J']"></fds-selectbox>
+    </div>
+    <div class="item">
         <fds-input [(ngModel)]="searchKey"
                    [class.inverted]="appService.getConfig('inverted')"
                    [placeholder]="'search' | translate"

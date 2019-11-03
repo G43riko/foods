@@ -10,10 +10,10 @@ $font-color: #fafafa;
 
 
 
-
-
 // DEFAULT VARIABLES
 $primary-color: rgb(255, 255, 255) !default;
 $primary-color-hover: #f8f8f8 !default;
 $primary-color-active: #e2e2e2 !default;
 $font-color: #111111 !default;
+$input-height: 1.21428571em;
+$input-padding: $input-height / 2;

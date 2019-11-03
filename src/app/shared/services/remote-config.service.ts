@@ -7,7 +7,6 @@ import {remoteConfig} from "firebase";
 export class RemoteConfigService {
     private readonly config = remoteConfig();
 
-
     public constructor() {
         this.config.settings = {
             fetchTimeoutMillis: 3600000,
