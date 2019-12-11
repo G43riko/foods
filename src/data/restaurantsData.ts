@@ -289,4 +289,28 @@ export const RestaurantData: Restaurant[] = [
             longitude: 17.1331772,
         },
     },
+    {
+        zomatoId: "16508106",
+        name: "Reštaurácia gurmán",
+        key: "gurman",
+        menuLink: "https://restauraciagurman.eu/denne-menu/",
+        restauracieSmeLink: "/restauracia-gurman-bratislava_3851-ruzinov_2980/denne-menu",
+        visible: true,
+        address: {
+            latitude: 48.1659279901,
+            longitude: 17.1028786,
+        },
+    },
+    {
+        zomatoId: "16507947",
+        name: "Best one",
+        key: "bestOne",
+        menuLink: "http://bestone-ba.sk/",
+        restauracieSmeLink: "/best-one_4524-ruzinov_2980/denne-menu",
+        visible: true,
+        address: {
+            latitude: 48.1633833,
+            longitude: 17.1783,
+        },
+    },
 ];
