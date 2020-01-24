@@ -232,9 +232,9 @@
     },
     {
         "zomatoId": "16508120",
-        "name": "U Zlatitudeého Bažanta",
-        "key": "uZlatitudeehoBazanta",
-        "menuLink": "http://www.uzlatitudeehobazanta.sk/denne-menu",
+        "name": "U Zlatého Bažanta",
+        "key": "uZlatehoBazanta",
+        "menuLink": "http://www.uzlatehobazanta.sk/denne-menu",
         "visible": false,
         "address": {
             "latitude": 48.1443699731,
